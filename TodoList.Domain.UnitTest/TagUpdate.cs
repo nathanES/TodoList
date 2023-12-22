@@ -47,7 +47,7 @@ namespace TodoList.Domain.UnitTest
 
       tag.UpdateColor(color1);
 
-      Assert.AreEqual(tag.Color, color1);
+      Assert.AreEqual(color1, tag.Color);
     }
     [TestMethod]
     [DataRow("Tag Parent")]
@@ -61,9 +61,9 @@ namespace TodoList.Domain.UnitTest
           .SetName("Tag 1")
           .Build();
 
-      tag.UpdateTagParent(tagParent);
+      tag.UpdateTagParent(new List<string>() { tagParent.Id});
 
-      Assert.AreEqual(tag.TagParent, tagParent);
+      Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id ));
     }
     [TestMethod]
     [DataRow("Tag Parent", "#000000", "Description 1", "New name")]
@@ -78,15 +78,15 @@ namespace TodoList.Domain.UnitTest
           .SetName("Tag 1")
           .Build();
 
-      tag.UpdateTagParent(tagParent);
+      tag.UpdateTagParent(new List<string>() { tagParent.Id });
       tag.UpdateColor(color1);
       tag.UpdateDescription(description);
       tag.UpdateName(newname);
 
-      Assert.AreEqual(tag.TagParent, tagParent);
-      Assert.AreEqual(tag.Color, color1);
+      Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
+      Assert.AreEqual(color1, tag.Color);
       Assert.AreEqual(tag.Description, description);
-      Assert.AreEqual(tag.Name, newname);
+      Assert.AreEqual(newname, tag.Name);
     }
   }
 }

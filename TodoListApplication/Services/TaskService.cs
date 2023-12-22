@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoList.Application.Interfaces;
+using TodoList.Domain.Interfaces;
 using TodoList.Domain.Entities;
 
 namespace TodoList.Application.Services

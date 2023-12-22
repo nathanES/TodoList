@@ -1,5 +1,4 @@
-﻿using System;
-namespace TodoList.Application.Interfaces
+﻿namespace TodoList.Domain.Interfaces
 {
   public interface ITaskRepository
   {

@@ -20,43 +20,43 @@ namespace TodoList.Domain.UnitTest
           .SetName(name)
           .Build();
 
-      Assert.AreEqual(tag.Name, name);
+      Assert.AreEqual(name, tag.Name);
       Assert.IsNotNull(tag.Id);
       Assert.IsNull(tag.Description);
       Assert.AreEqual(tag.Color, new Color("#000000"));
-      Assert.IsNull(tag.TagParent);
+      Assert.IsNull(tag.ParentTagIds);
     }
 
     [TestMethod]
-    [DataRow("Tag 1", "Description 1")]
-    public void Constructor_ShouldCreateTag_WithDescription(string name, string description)
+    [DataRow("Tag 1", "Description 1", "#000000")]
+    public void Constructor_ShouldCreateTag_WithDescription(string name, string description, string color)
     {
       Tag tag = new Tag.TagBuilder()
           .SetName(name)
           .SetDescription(description)
           .Build();
 
-      Assert.AreEqual(tag.Name, name);
+      Assert.AreEqual(name, tag.Name);
       Assert.IsNotNull(tag.Id);
-      Assert.AreEqual(tag.Description, description);
-      Assert.AreEqual(tag.Color, new Color("#000000"));
-      Assert.IsNull(tag.TagParent);
+      Assert.AreEqual(description, tag.Description);
+      Assert.AreEqual(tag.Color, new Color(color));
+      Assert.IsNull(tag.ParentTagIds);
     }
     [TestMethod]
     [DataRow("Tag 1", "#000000")]
     public void Constructor_ShouldCreateTag_WithColor(string name, string color)
     {
-    Color color1 = new Color(color);
+      Color color1 = new Color(color);
       Tag tag = new Tag.TagBuilder()
           .SetName(name)
           .SetColor(color1)
           .Build();
 
-      Assert.AreEqual(tag.Name, name);
+      Assert.AreEqual(name, tag.Name);
       Assert.IsNotNull(tag.Id);
       Assert.IsNull(tag.Description);
-      Assert.AreEqual(tag.Color, color1);
-      Assert.IsNull(tag.TagParent);
+      Assert.AreEqual(color1, tag.Color);
+      Assert.IsNull(tag.ParentTagIds);
     }
     [TestMethod]
     [DataRow("Tag 1", "Tag 2")]
@@ -67,14 +67,14 @@ namespace TodoList.Domain.UnitTest
           .Build();
       Tag tag = new Tag.TagBuilder()
           .SetName(name)
-          .SetTagParent(tagParent)
+          .SetParentTagIds(new List<string>() { tagParent.Id })
           .Build();
 
-      Assert.AreEqual(tag.Name, name);
+      Assert.AreEqual(name, tag.Name);
       Assert.IsNotNull(tag.Id);
       Assert.IsNull(tag.Description);
-      Assert.AreEqual(tag.Color, new Color("#000000"));
-      Assert.AreEqual(tag.TagParent, tagParent);
+      Assert.AreEqual(new Color("#000000"), tag.Color);
+      Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
     }
     [TestMethod]
     [DataRow("Tag 1", "Tag 2", "Description 1", "#000000")]
@@ -88,14 +88,14 @@ namespace TodoList.Domain.UnitTest
           .SetName(name)
           .SetDescription(description)
           .SetColor(color1)
-          .SetTagParent(tagParent)
+          .SetParentTagIds(new List<string>() { tagParent.Id})
           .Build();
 
-      Assert.AreEqual(tag.Name, name);
+      Assert.AreEqual(name, tag.Name);
       Assert.IsNotNull(tag.Id);
-      Assert.AreEqual(tag.Description, description);
-      Assert.AreEqual(tag.Color, color1);
-      Assert.AreEqual(tag.TagParent, tagParent);
+      Assert.AreEqual(description, tag.Description);
+      Assert.AreEqual(color1, tag.Color);
+      Assert.IsTrue( tag.ParentTagIds.Contains(tagParent.Id));
     }
   }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,10 @@ namespace TodoList.Domain.Entities
 {
   public class Tag
   {
+    [JsonProperty("Id")]
     public string Id { get; } = Guid.NewGuid().ToString();
     private string name;
+    [JsonProperty("Name")]
     public string Name
     {
       get { return name; }
@@ -20,15 +23,29 @@ namespace TodoList.Domain.Entities
         name = value; 
       }
     }
+    [JsonProperty("Description")]
     public string? Description { get; private set; }
+    [JsonProperty("Color")]
     public Color Color { get; private set; } = new Color("#000000");
-    public Tag? TagParent { get; private set; }
-    //public List<Task> AssociatedTask { get; private set; } = new List<Task>();
+    [JsonProperty("ParentTagIds")]
+    public List<string> ParentTagIds { get; private set; }
 
     private Tag(string name)
     {
       Name = name;
     }
+
+    [JsonConstructor]
+    private Tag(string Id, string Name, string Description, Color Color, List<string> ParentTagIds)
+    {
+      this.Id = Id;
+      this.Name = Name;
+      this.Description = Description;
+      this.Color = Color;
+      this.ParentTagIds = ParentTagIds;
+    }
+
+
     public void UpdateName(string name)
     {
       Name = name;
@@ -41,22 +58,24 @@ namespace TodoList.Domain.Entities
     {
       Color = color;
     }
-    public void UpdateTagParent(Tag tagParent)
+    public void UpdateTagParent(List<string> parentTagIds)
     {
-      TagParent = tagParent;
+      ParentTagIds = parentTagIds;
     }
-    //public void AddAssociatedTask(Task task)
-    //{
-    //  AssociatedTask.Add(task);
-    //}
+    public void AddTagParent(string parentTagId)
+    {
+      ParentTagIds.Add(parentTagId);
+    }
+
+    //TODO : A revoir, je ne suis pas sur que ce soit une bonne idée
+    //public static Tag Empty => new Tag(string.Empty);
 
     public class TagBuilder
     {
       private string name;
       private string description;
       private Color color = new Color("#000000");
-      private Tag? tagParent;
-      //private List<Task> associatedTask = new List<Task>();
+      private List<string> parentTagIds;
 
       public TagBuilder SetName(string name)
       {
@@ -76,25 +95,19 @@ namespace TodoList.Domain.Entities
         return this;
       }
 
-      public TagBuilder SetTagParent(Tag tagParent)
+      public TagBuilder SetParentTagIds(List<string> parentTagIds)
       {
-        this.tagParent = tagParent;
+        this.parentTagIds = parentTagIds;
         return this;
       }
 
-      //public TagBuilder SetAssociatedTask(List<Task> associatedTask)
-      //{
-      //  this.associatedTask = associatedTask;
-      //  return this;
-      //}
       public Tag Build()
       {
         return new Tag(name)
         {
           Description = description,
           Color = color,
-          TagParent = tagParent,
-          //AssociatedTask = associatedTask
+          ParentTagIds = parentTagIds
         };
       }
     }

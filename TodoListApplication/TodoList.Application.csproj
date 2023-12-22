@@ -10,4 +10,8 @@
     <ProjectReference Include="..\TodoListDomain\TodoList.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
 </Project>

@@ -8,10 +8,12 @@ namespace TodoList.Domain.Entities
 {
   public class TaskTag
   {
-        public string TaskId { get; set; }
-        public Task Task { get; set; }
+    public string Id { get; } = Guid.NewGuid().ToString();
+    public string TaskId { get => Task.Id; }
+    public Task Task { get; set; }
 
-        public string TagId { get; set; }
-        public Tag Tag { get; set; }
-    }
+    public string TagId { get => Tag.Id; }
+    public Tag Tag { get; set; }
+  }
+
 }
