@@ -31,10 +31,6 @@ public class Task
     get { return deadLine; }
     private set
     {
-      //TODO : Peut poser problème de tester ici lorsqu'on récupère les donneés du fichier json
-      if (value < DateTime.Now)
-        throw new ArgumentException("DeadLine must be in the future");
-
       deadLine = value;
     }
   }
@@ -90,9 +86,6 @@ public class Task
     IsCompleted = true;
   }
 
-  //TODO : A revoir, je ne suis pas sur que ce soit une bonne idée
-  public static Task Empty => new Task(string.Empty);
-
   public class TaskBuilder
   {
     private string name;
@@ -117,6 +110,10 @@ public class Task
     }
     public TaskBuilder SetDeadLine(DateTime deadLine)
     {
+      //Le contrôle est fait ici pour éviter les erreurs lors de la récupération d'anciennes taches via le Json
+      if (deadLine < DateTime.Now)
+        throw new ArgumentException("DeadLine must be in the future");
+
       this.deadLine = deadLine;
       return this;
     }

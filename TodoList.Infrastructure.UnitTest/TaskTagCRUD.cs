@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using TodoList.Domain.Entities;
 using TodoList.Domain.Enum;
-using TodoList.Domain.Helpers;
 using TodoList.Domain.Interfaces;
 using TodoList.Infrastructure.Repositories;
 
@@ -23,14 +22,14 @@ namespace TodoList.Infrastructure.UnitTest
       Tag tag = AddTag("GetAllTaskTagNameTag", "GetAllTaskTag", "#000000", "GetAllTaskTagParentNameTag");
       Task task = AddTask("GetAllTaskTagNameTask", "GetAllTaskTag", Priority.High);
       ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
-      TaskTag taskTag = new TaskTag() {Task = task, Tag = tag };
+      TaskTag taskTag = new TaskTag(task, tag);
       taskTagRepository.AddTaskTag(taskTag);
 
       //Act
       List<TaskTag> taskTags = taskTagRepository.GetAllTaskTags().ToList();
 
       //Assert
-      Assert.IsTrue(taskTags.Any(t => t.Id == taskTag.Id && t.TaskId == task.Id && t.TagId == tag.Id));
+      Assert.IsTrue(taskTags.Any(t => t.Id == taskTag.Id && t.TaskId == taskTag.TaskId && t.TagId == taskTag.TagId));
     }
 
     [TestMethod]
@@ -40,14 +39,15 @@ namespace TodoList.Infrastructure.UnitTest
       Tag tag = AddTag("GetTaskTagByIdNameTag", "GetTaskTagById", "#000000", "GetTaskTagByIdParentNameTag");
       Task task = AddTask("GetTaskTagByIdNameTask", "GetTaskTagById", Priority.High);
       ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
-      TaskTag taskTag = new TaskTag() { Task = task, Tag = tag };
+      TaskTag taskTag = new TaskTag(task, tag);
       taskTagRepository.AddTaskTag(taskTag);
 
       //Act
       TaskTag taskTagFound = taskTagRepository.GetTaskTagById(taskTag.Id);
 
       //Assert
-      Assert.IsTrue(ObjectHelper.AreObjectsEqual(taskTag, taskTagFound));
+      TaskTagCompare(taskTag, taskTagFound);
+
     }
 
     [TestMethod]
@@ -57,14 +57,14 @@ namespace TodoList.Infrastructure.UnitTest
       Tag tag = AddTag("AddTaskTagNameTag", "AddTaskTag", "#000000", "AddTaskTagParentNameTag");
       Task task = AddTask("AddTaskTagByIdNameTask", "AddTaskTag", Priority.High);
       ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
-      TaskTag taskTag = new TaskTag() { Task = task, Tag = tag };
+      TaskTag taskTag = new TaskTag(task, tag);
 
       //Act
       taskTagRepository.AddTaskTag(taskTag);
 
       //Assert
-      TaskTag taskTagFound = taskTagRepository.GetAllTaskTags().ToList().Where(t => t.Id == taskTag.Id).First();
-      Assert.IsTrue(ObjectHelper.AreObjectsEqual(taskTag, taskTagFound));
+      IEnumerable<TaskTag> taskTagsFound = taskTagRepository.GetAllTaskTags().ToList().Where(t => t.Id == taskTag.Id);
+      TaskTagCompare(taskTag, taskTagsFound.ToList()[0]);
     }
 
     [TestMethod]
@@ -74,9 +74,9 @@ namespace TodoList.Infrastructure.UnitTest
       Tag tag = AddTag("UpdateTaskTagNameTag", "UpdateTaskTag", "#000000", "UpdateTaskTagParentNameTag");
       Task task = AddTask("UpdateTaskTagNameTask", "UpdateTaskTagById", Priority.High);
       ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
-      TaskTag taskTag = new TaskTag() { Task = task, Tag = tag };
+      TaskTag taskTag = new TaskTag(task, tag);
       taskTagRepository.AddTaskTag(taskTag);
-
+      TagCRUD.TagCompare(tag, taskTag.Tag);
       //Act
       Tag tag2 = AddTag("UpdateTaskTagNameTag2", "UpdateTaskTag2", "#000000", "UpdateTaskTagParentNameTag2");
       taskTag.Tag = tag2;
@@ -84,7 +84,15 @@ namespace TodoList.Infrastructure.UnitTest
 
       //Assert
       TaskTag taskTagFound = taskTagRepository.GetAllTaskTags().ToList().Where(t => t.Id == taskTag.Id).First();
-      Assert.IsTrue(ObjectHelper.AreObjectsEqual(taskTag, taskTagFound));
+      TaskTagCompare(taskTag, taskTagFound);
+    }
+    private void TaskTagCompare(TaskTag taskTag, TaskTag taskTag2)
+    {
+      Assert.AreEqual(taskTag.Id, taskTag2.Id);
+      Assert.AreEqual(taskTag.TagId, taskTag2.TagId);
+      Assert.AreEqual(taskTag.TaskId, taskTag2.TaskId);
+      TagCRUD.TagCompare(taskTag.Tag, taskTag2.Tag);
+      TaskCRUD.TaskCompare(taskTag.Task, taskTag2.Task);
     }
     [TestMethod]
     public void DeleteTaskTag()
@@ -93,7 +101,7 @@ namespace TodoList.Infrastructure.UnitTest
       Tag tag = AddTag("DeleteTaskTagNameTag", "DeleteTaskTag", "#000000", "DeleteTaskTagParentNameTag");
       Task task = AddTask("DeleteTaskTagNameTask", "DeleteTaskTag", Priority.High);
       ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
-      TaskTag taskTag = new TaskTag() { Task = task, Tag = tag };
+      TaskTag taskTag = new TaskTag(task, tag);
       taskTagRepository.AddTaskTag(taskTag);
 
       //Act
@@ -109,7 +117,7 @@ namespace TodoList.Infrastructure.UnitTest
       Tag tag = AddTag("GetTaskTagsByTaskIdNameTag", "GetTaskTagsByTaskId", "#000000", "GetTaskTagsByTaskIdParentNameTag");
       Task task = AddTask("GetTaskTagsByTaskIdNameTask", "GetTaskTagsByTaskId", Priority.High);
       ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
-      TaskTag taskTag = new TaskTag() { Task = task, Tag = tag };
+      TaskTag taskTag = new TaskTag(task, tag);
       taskTagRepository.AddTaskTag(taskTag);
       //Act
       IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTaskId(task.Id);
@@ -126,7 +134,7 @@ namespace TodoList.Infrastructure.UnitTest
       Tag tag = AddTag("GetTaskTagsByTagIdNameTag", "GetTaskTagsByTagId", "#000000", "GetTaskTagsByTagIdParentNameTag");
       Task task = AddTask("GetTaskTagsByTagIdNameTask", "GetTaskTagsByTagId", Priority.High);
       ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
-      TaskTag taskTag = new TaskTag() { Task = task, Tag = tag };
+      TaskTag taskTag = new TaskTag(task, tag);
       taskTagRepository.AddTaskTag(taskTag);
       //Act
       IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagId(tag.Id);
@@ -136,9 +144,31 @@ namespace TodoList.Infrastructure.UnitTest
     }
 
     [TestMethod]
-    public void IsRelationExists()
+    public void IsRelationExistsTrue()
     {
-      //TODO a finir
+      //Arrange
+      Tag tag = AddTag("IsRelationExistsTrueNameTag", "IsRelationExistsTrue", "#000000", "IsRelationExistsTrueParentNameTag");
+      Task task = AddTask("IsRelationExistsTrueNameTask", "IsRelationExistsTrue", Priority.High);
+      ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
+      taskTagRepository.AddTaskTag(new TaskTag(task, tag));
+      //Act
+      bool isRelationExists = taskTagRepository.IsRelationExists(task.Id, tag.Id);
+      
+      //Assert
+      Assert.IsTrue(isRelationExists);
+    }
+    [TestMethod]
+    public void IsRelationExistsFalse()
+    {
+      //Arrange
+      Tag tag = AddTag("IsRelationExistsFalseNameTag", "IsRelationExistsFalse", "#000000", "IsRelationExistsFalseParentNameTag");
+      Task task = AddTask("IsRelationExistsFalseNameTask", "IsRelationExistsFalse", Priority.High);
+      ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
+      //Act
+      bool isRelationExists = taskTagRepository.IsRelationExists(task.Id, tag.Id);
+
+      //Assert
+      Assert.IsFalse(isRelationExists);
     }
     //class TaskTag
     //public string Id { get; } = Guid.NewGuid().ToString();
@@ -152,7 +182,7 @@ namespace TodoList.Infrastructure.UnitTest
 
 
 
-
+    //Méthodes pour créer les objets nécessaire aux tests
     private Tag AddTag(string name, string description, string color, string parentName)
     {
       ITagRepository tagRepository = new TagRepositoryJson();

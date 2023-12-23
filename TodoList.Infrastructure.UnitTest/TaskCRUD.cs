@@ -110,5 +110,16 @@ namespace TodoList.Infrastructure.UnitTest
       //Assert  
       Assert.IsTrue(taskRepository.GetAllTasks().Any());
     }
+    public static void TaskCompare(Task task, Task task2)
+    {
+      Assert.AreEqual(task.Id, task2.Id);
+      Assert.AreEqual(task.Name, task2.Name);
+      Assert.AreEqual(task.Description, task2.Description);
+      Assert.AreEqual(task.Priority, task2.Priority);
+      Assert.AreEqual(task.IsCompleted, task2.IsCompleted);
+      Assert.AreEqual(task.CreationTime, task2.CreationTime);
+      Assert.AreEqual(task.DeadLine, task2.DeadLine);
+      Assert.AreEqual(task.TimeLeftBeforeDeadLine, task2.TimeLeftBeforeDeadLine);
+    }
   }
 }

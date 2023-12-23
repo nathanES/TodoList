@@ -2,7 +2,6 @@
 using System.Xml.Linq;
 using TodoList.Domain.Entities;
 using TodoList.Domain.Enum;
-using TodoList.Domain.Helpers;
 using TodoList.Domain.Interfaces;
 using TodoList.Infrastructure.Repositories;
 
@@ -94,8 +93,7 @@ namespace TodoList.Infrastructure.UnitTest
       //Act
       var tagFound = tagRepository.GetTagById(tag.Id);
       //Assert
-      Assert.AreEqual(tagFound.Id, tag.Id);
-      Assert.IsTrue(ObjectHelper.AreObjectsEqual(tagFound, tag));
+      TagCompare(tag, tagFound);
     }
 
     [TestMethod]
@@ -115,6 +113,22 @@ namespace TodoList.Infrastructure.UnitTest
       var tags = tagRepository.GetAllTags();
       //Assert  
       Assert.IsTrue(tagRepository.GetAllTags().Any());
+    }
+
+    public static void TagCompare(Tag tag, Tag tag2)
+    {
+      Assert.AreEqual(tag.Id, tag2.Id);
+      Assert.AreEqual(tag.Description, tag2.Description);
+      Assert.AreEqual(tag.Color, tag2.Color);
+      Assert.AreEqual(tag.Name, tag2.Name);
+      foreach (var parentTagId in tag.ParentTagIds)
+      {
+        Assert.IsTrue(tag2.ParentTagIds.Any(t => t == parentTagId));
+      }
+      foreach (var parentTagId in tag2.ParentTagIds)
+      {
+        Assert.IsTrue(tag.ParentTagIds.Any(t => t == parentTagId));
+      }
     }
   }
 }

@@ -11,8 +11,8 @@ namespace TodoList.Infrastructure.Repositories
 {
   public class TaskTagRepositoryJson : ITaskTagRepository
   {
-    private readonly string _taskTagFilePath = $@"{Settings.JsonDataFilePathBase}taskTag.json";
-    //TODO : Ajouter l'insertion dans le fichier json
+    private readonly string _taskTagFilePath = $@"{Settings.JsonDataFilePathBase}taskTags.json";
+
     public void AddTaskTag(TaskTag taskTag)
     {
       List<TaskTag> taskTags = GetAllTaskTags().ToList();

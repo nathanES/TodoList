@@ -11,7 +11,7 @@ namespace TodoList.Infrastructure.Repositories
 {
   public class TaskRepositoryJson : ITaskRepository
   {
-    private readonly string _taskFilePath = $@"{Settings.JsonDataFilePathBase}task.json";
+    private readonly string _taskFilePath = $@"{Settings.JsonDataFilePathBase}tasks.json";
 
     public void AddTask(Task task)
     {

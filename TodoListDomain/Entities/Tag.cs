@@ -28,7 +28,7 @@ namespace TodoList.Domain.Entities
     [JsonProperty("Color")]
     public Color Color { get; private set; } = new Color("#000000");
     [JsonProperty("ParentTagIds")]
-    public List<string> ParentTagIds { get; private set; }
+    public List<string> ParentTagIds { get; private set; } = new List<string>();
 
     private Tag(string name)
     {
@@ -67,15 +67,12 @@ namespace TodoList.Domain.Entities
       ParentTagIds.Add(parentTagId);
     }
 
-    //TODO : A revoir, je ne suis pas sur que ce soit une bonne idée
-    //public static Tag Empty => new Tag(string.Empty);
-
     public class TagBuilder
     {
       private string name;
       private string description;
       private Color color = new Color("#000000");
-      private List<string> parentTagIds;
+      private List<string> parentTagIds = new List<string>();
 
       public TagBuilder SetName(string name)
       {

@@ -24,7 +24,8 @@ namespace TodoList.Domain.UnitTest
       Assert.IsNotNull(tag.Id);
       Assert.IsNull(tag.Description);
       Assert.AreEqual(tag.Color, new Color("#000000"));
-      Assert.IsNull(tag.ParentTagIds);
+      Assert.IsFalse(tag.ParentTagIds.Any());
+
     }
 
     [TestMethod]
@@ -40,7 +41,7 @@ namespace TodoList.Domain.UnitTest
       Assert.IsNotNull(tag.Id);
       Assert.AreEqual(description, tag.Description);
       Assert.AreEqual(tag.Color, new Color(color));
-      Assert.IsNull(tag.ParentTagIds);
+      Assert.IsFalse(tag.ParentTagIds.Any());
     }
     [TestMethod]
     [DataRow("Tag 1", "#000000")]
@@ -56,7 +57,7 @@ namespace TodoList.Domain.UnitTest
       Assert.IsNotNull(tag.Id);
       Assert.IsNull(tag.Description);
       Assert.AreEqual(color1, tag.Color);
-      Assert.IsNull(tag.ParentTagIds);
+      Assert.IsFalse(tag.ParentTagIds.Any());
     }
     [TestMethod]
     [DataRow("Tag 1", "Tag 2")]
