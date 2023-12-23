@@ -50,7 +50,7 @@ namespace TodoList.Infrastructure.UnitTest
 
       tagRepository.AddTag(tag);
       //Act
-      tagRepository.DeleteTag(tag);
+      tagRepository.DeleteTagById(tag.Id);
       //Assert
       Assert.IsFalse(tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
     }

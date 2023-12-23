@@ -20,15 +20,29 @@ namespace TodoList.Infrastructure.Repositories
       WriteToFile(tasks);
     }
 
-    public void DeleteTask(Task task)
+    public void DeleteTaskById(string id)
     {
       var tasks = GetAllTasks().ToList();
-      int taskIndexToDelete = tasks.FindIndex(t => t.Id == task.Id);
+      int taskIndexToDelete = tasks.FindIndex(t => t.Id == id);
 
       if (taskIndexToDelete == -1)
         return;
 
       tasks.RemoveAt(taskIndexToDelete);
+      WriteToFile(tasks);
+    }
+    public void DeleteTaskByIds(IEnumerable<string> taskIds)
+    {
+      List<Task> tasks = GetAllTasks().ToList();
+      foreach (string taskId in taskIds)
+      {
+        int taskIndexToDelete = tasks.FindIndex(t => t.Id == taskId);
+
+        if (taskIndexToDelete == -1)
+          continue;
+
+        tasks.RemoveAt(taskIndexToDelete);
+      }
       WriteToFile(tasks);
     }
 
@@ -44,10 +58,10 @@ namespace TodoList.Infrastructure.Repositories
     public Task GetTaskById(string id)
     {
       if (!File.Exists(_taskFilePath))
-        return Task.Empty;
+        return null;
 
       List<Task> tasks = GetAllTasks().ToList();
-      return tasks.Find(t => t.Id == id) ?? Task.Empty;
+      return tasks.Find(t => t.Id == id);
     }
 
     public void UpdateTask(Task task)

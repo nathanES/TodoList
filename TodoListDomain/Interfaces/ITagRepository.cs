@@ -8,6 +8,7 @@ namespace TodoList.Domain.Interfaces
       Tag GetTagById(string id);
       void AddTag(Tag tag);
       void UpdateTag(Tag tag);
-      void DeleteTag(Tag tag);
+      void DeleteTagById(string tagId);
+      void DeleteTagByIds(IEnumerable<string> tagIds);
   }
 }

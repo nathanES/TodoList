@@ -6,6 +6,9 @@
     Task GetTaskById(string id);
     void AddTask(Task task);
     void UpdateTask(Task task);
-    void DeleteTask(Task task);
+    void DeleteTaskById(string id);
+    void DeleteTaskByIds(IEnumerable<string> taskTagIds);
+
+
   }
 }

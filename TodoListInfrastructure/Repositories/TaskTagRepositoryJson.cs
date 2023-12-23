@@ -20,15 +20,29 @@ namespace TodoList.Infrastructure.Repositories
       WriteToFile(taskTags);
     }
 
-    public void DeleteTaskTag(TaskTag taskTag)
+    public void DeleteTaskTagById(string taskTagId)
     {
       List<TaskTag> taskTags = GetAllTaskTags().ToList();
-      int taskTagIndexToDelete = taskTags.FindIndex(t=>t.Id == taskTag.Id);
+      int taskTagIndexToDelete = taskTags.FindIndex(t=>t.Id == taskTagId);
       
       if(taskTagIndexToDelete == -1)
         return;
       
       taskTags.RemoveAt(taskTagIndexToDelete);
+      WriteToFile(taskTags);
+    }
+
+    public void DeleteTaskTagByIds(IEnumerable<string> taskTagIds)
+    {
+      List<TaskTag> taskTags = GetAllTaskTags().ToList();
+
+      foreach(string taskTagId in taskTagIds)
+      {
+        int taskTagIndexToDelete = taskTags.FindIndex(t=>t.Id == taskTagId);
+        if(taskTagIndexToDelete == -1)
+          continue;
+        taskTags.RemoveAt(taskTagIndexToDelete);
+      }
       WriteToFile(taskTags);
     }
 

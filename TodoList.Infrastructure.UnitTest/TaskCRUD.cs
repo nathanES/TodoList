@@ -46,7 +46,7 @@ namespace TodoList.Infrastructure.UnitTest
 
       taskRepository.AddTask(task);
       //Act
-      taskRepository.DeleteTask(task);
+      taskRepository.DeleteTaskById(task.Id);
       //Assert
       Assert.IsFalse(taskRepository.GetAllTasks().Any(t => t.Id == task.Id));
     }

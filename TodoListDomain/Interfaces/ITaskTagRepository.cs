@@ -8,7 +8,8 @@ namespace TodoList.Domain.Interfaces
       TaskTag GetTaskTagById(string id);//TODO: Check if this is needed
       void AddTaskTag(TaskTag taskTag);
       void UpdateTaskTag(TaskTag taskTag);
-      void DeleteTaskTag(TaskTag taskTag);
+      void DeleteTaskTagById(string taskTagId);
+      void DeleteTaskTagByIds(IEnumerable<string> taskTagIds);
       IEnumerable<TaskTag> GetTaskTagsByTaskId(string taskId);
       IEnumerable<TaskTag> GetTaskTagsByTagId(string tagId);
       bool IsRelationExists(string taskId, string tagId);

@@ -105,11 +105,35 @@ namespace TodoList.Infrastructure.UnitTest
       taskTagRepository.AddTaskTag(taskTag);
 
       //Act
-      taskTagRepository.DeleteTaskTag(taskTag);
+      taskTagRepository.DeleteTaskTagById(taskTag.Id);
 
       //Assert
       Assert.IsFalse(taskTagRepository.GetAllTaskTags().Any(t => t.Id == taskTag.Id));
     }
+    [TestMethod]
+    public void DeleteTaskTags()
+    {
+      //Arrange
+      ITaskTagRepository taskTagRepository = new TaskTagRepositoryJson();
+
+      Tag tag = AddTag("DeleteTaskTagNameTag", "DeleteTaskTag", "#000000", "DeleteTaskTagParentNameTag");
+      Task task = AddTask("DeleteTaskTagNameTask", "DeleteTaskTag", Priority.High);
+      TaskTag taskTag = new TaskTag(task, tag);
+      taskTagRepository.AddTaskTag(taskTag);
+
+      Tag tag2 = AddTag("DeleteTaskTagNameTag2", "DeleteTaskTag2", "#000000", "DeleteTaskTag2ParentNameTag");
+      Task task2 = AddTask("DeleteTaskTagNameTask2", "DeleteTaskTag2", Priority.High);
+      TaskTag taskTag2 = new TaskTag(task2, tag2);
+      taskTagRepository.AddTaskTag(taskTag2);
+
+      //Act
+      taskTagRepository.DeleteTaskTagByIds(new List<string>() { taskTag.Id, taskTag2.Id });
+
+      //Assert
+      Assert.IsFalse(taskTagRepository.GetAllTaskTags().Any(t => t.Id == taskTag.Id));
+      Assert.IsFalse(taskTagRepository.GetAllTaskTags().Any(t => t.Id == taskTag2.Id));
+    }
+
     [TestMethod]
     public void GetTaskTagsByTaskId()
     {

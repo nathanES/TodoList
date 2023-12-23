@@ -11,14 +11,27 @@ namespace TodoList.Domain.Entities
 {
   public class Tag
   {
+
+    private string id = Guid.NewGuid().ToString();
     [JsonProperty("Id")]
-    public string Id { get; } = Guid.NewGuid().ToString();
+    public string Id
+    {
+      get { return id; }
+      set 
+      { 
+        if(!Guid.TryParse(value, out Guid _))
+          throw new ArgumentException("Id must be a valid Guid");
+        id = value;
+      }
+    }
+
     private string name;
     [JsonProperty("Name")]
     public string Name
     {
       get { return name; }
-      private set {
+      private set 
+      {
         ArgumentException.ThrowIfNullOrEmpty(value, nameof(name));
         name = value; 
       }
@@ -69,11 +82,16 @@ namespace TodoList.Domain.Entities
 
     public class TagBuilder
     {
+      private string id = Guid.NewGuid().ToString();
       private string name;
       private string description;
       private Color color = new Color("#000000");
       private List<string> parentTagIds = new List<string>();
-
+      public TagBuilder SetId(string id)
+      {
+        this.id = id;
+        return this;
+      }
       public TagBuilder SetName(string name)
       {
         this.name = name;
@@ -102,6 +120,7 @@ namespace TodoList.Domain.Entities
       {
         return new Tag(name)
         {
+          Id = id,
           Description = description,
           Color = color,
           ParentTagIds = parentTagIds

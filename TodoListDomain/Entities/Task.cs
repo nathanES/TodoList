@@ -5,8 +5,20 @@ namespace TodoList.Domain.Entities;
 
 public class Task
 {
+  private string id = Guid.NewGuid().ToString();
   [JsonProperty("Id")]
-  public string Id { get; } = Guid.NewGuid().ToString();
+  public string Id
+  {
+    get { return id; }
+    set 
+    { 
+    if(!Guid.TryParse(value, out Guid _))
+        throw new ArgumentException("Id must be a valid Guid");
+      id = value; 
+    }
+  }
+
+
   private string name;
   [JsonProperty("Name")]
   public string Name
@@ -45,7 +57,7 @@ public class Task
     }
   }
   [JsonProperty("CreationTime")]
-  public DateTime CreationTime { get; } = DateTime.UtcNow;
+  public DateTime CreationTime { get; private set; } = DateTime.UtcNow;
   [JsonProperty("IsCompleted")]
   public bool IsCompleted { get; private set; } = false;
 
@@ -79,6 +91,9 @@ public class Task
   }
   public void UpdateDeadLine(DateTime deadLine)
   {
+    //Le contrôle est fait ici pour éviter les erreurs lors de la récupération d'anciennes taches via le Json
+    if (deadLine < DateTime.Now)
+      throw new ArgumentException("DeadLine must be in the future");
     DeadLine = deadLine;
   }
   public void Complete()
@@ -88,11 +103,19 @@ public class Task
 
   public class TaskBuilder
   {
+    private string id = Guid.NewGuid().ToString();
     private string name;
     private string description;
     private Priority priority = Priority.Medium;
     private DateTime deadLine = DateTime.MaxValue;
+    private DateTime creationTime = DateTime.MinValue;
+    private bool isCompleted = false;
 
+    public TaskBuilder SetId(string id)
+    {
+      this.id = id;
+      return this;
+    }
     public TaskBuilder SetName(string name)
     {
       this.name = name;
@@ -117,13 +140,26 @@ public class Task
       this.deadLine = deadLine;
       return this;
     }
+    public TaskBuilder SetCreationTime(DateTime creationTime)
+    {
+      this.creationTime = creationTime;
+      return this;
+    }
+    public TaskBuilder SetIsCompleted(bool isCompleted)
+    {
+      this.isCompleted = isCompleted;
+      return this;
+    }
     public Task Build()
     {
       return new Task(name)
       { 
+        Id = id,
         DeadLine = deadLine,
         Description = description,
-        Priority = priority
+        Priority = priority,
+        CreationTime = creationTime,
+        IsCompleted = isCompleted
       };
     }
   }
