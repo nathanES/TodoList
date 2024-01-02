@@ -8,7 +8,5 @@
     void UpdateTask(Task task);
     void DeleteTaskById(string id);
     void DeleteTaskByIds(IEnumerable<string> taskTagIds);
-
-
   }
 }

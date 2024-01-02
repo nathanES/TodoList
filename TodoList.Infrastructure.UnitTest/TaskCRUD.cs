@@ -50,6 +50,33 @@ namespace TodoList.Infrastructure.UnitTest
       //Assert
       Assert.IsFalse(taskRepository.GetAllTasks().Any(t => t.Id == task.Id));
     }
+    [TestMethod]
+    [DataRow("Delete Tasks", "Description", Priority.High)]
+    public void DeleteTasks(string name, string description, Priority priority)
+    {
+      //Arrange
+      ITaskRepository taskRepository = new TaskRepositoryJson();
+
+      Task task = new Task.TaskBuilder()
+          .SetName(name)
+          .SetDescription(description)
+          .SetPriority(priority)
+          .Build();
+      taskRepository.AddTask(task);
+
+      Task task2 = new Task.TaskBuilder()
+        .SetName(name)
+        .SetDescription(description)
+        .SetPriority(priority)
+        .Build();
+      taskRepository.AddTask(task2);
+
+      //Act
+      taskRepository.DeleteTaskByIds(new List<string>(){ task.Id, task2.Id});
+      //Assert
+      Assert.IsFalse(taskRepository.GetAllTasks().Any(t => t.Id == task.Id));
+      Assert.IsFalse(taskRepository.GetAllTasks().Any(t => t.Id == task2.Id));
+    }
 
     [TestMethod]
     [DataRow("Update Task", "Description", Priority.High)]

@@ -22,6 +22,7 @@ namespace TodoList.Application.DTOs
 
     public static explicit operator Task(TaskDto taskDto)
     {
+      //TODO : gérer les exceptions ou TaskDto n'est pas valide
       return new Task.TaskBuilder()
           .SetId(taskDto.Id)
           .SetName(taskDto.Name)

@@ -10,76 +10,98 @@ namespace TodoList.Infrastructure.Repositories
   public class TagRepositoryJson : ITagRepository
   {
     private readonly string _tagsFilePath = $@"{Settings.JsonDataFilePathBase}tags.json";
+    private List<Tag> cache;
+    private readonly object fileLock = new object();
+    public TagRepositoryJson()
+    {
+      LoadCache();
+    }
+    private void LoadCache()
+    {
+      try
+      {
+        if (!File.Exists(_tagsFilePath))
+        {
+          cache = new List<Tag>();
+          return;
+        }
+
+        string json = File.ReadAllText(_tagsFilePath);
+        cache = JsonConvert.DeserializeObject<List<Tag>>(json) ?? new List<Tag>();
+      }
+      catch (Exception e)
+      {
+          Console.WriteLine("LoadCache Impossible !"); //TODO mettre un logger à la place
+          throw;
+      }
+    }
+    private void WriteToFile()
+    {
+      try
+      {
+        lock (fileLock)
+        {
+          string json = JsonConvert.SerializeObject(cache, Formatting.Indented);
+          File.WriteAllText(_tagsFilePath, json);
+        }
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("WriteToFile Impossible !"); //TODO mettre un logger à la place
+        throw;
+      }
+    }
 
     public void AddTag(Tag tag)
     {
-      List<Tag> tags = GetAllTags().ToList();
-      tags.Add(tag);
-      WriteToFile(tags);
+      cache.Add(tag);
+      WriteToFile();
     }
 
     public void DeleteTagById(string tagId)
     {
-      List<Tag> tags = GetAllTags().ToList();
-      int tagIndexToDelete = tags.FindIndex(t => t.Id == tagId);
+      int tagIndexToDelete = cache.FindIndex(t => t.Id == tagId);
 
       if(tagIndexToDelete == -1)
         return;
       
-      tags.RemoveAt(tagIndexToDelete);
-      WriteToFile(tags);
+      cache.RemoveAt(tagIndexToDelete);
+      WriteToFile();
     }
 
     public void DeleteTagByIds(IEnumerable<string> tagIds)
     {
-      List<Tag> tags = GetAllTags().ToList();
-
       foreach (string tagId in tagIds)
       {
-        int tagIndexToDelete = tags.FindIndex(t => t.Id == tagId);
+        int tagIndexToDelete = cache.FindIndex(t => t.Id == tagId);
 
         if (tagIndexToDelete == -1)
           continue;
 
-        tags.RemoveAt(tagIndexToDelete);
+        cache.RemoveAt(tagIndexToDelete);
       }
-      WriteToFile(tags);
+      WriteToFile();
     }
 
     public IEnumerable<Tag> GetAllTags()
     {
-      if(!File.Exists(_tagsFilePath))
-        return new List<Tag>();
-
-      string json = File.ReadAllText(_tagsFilePath);
-      return JsonConvert.DeserializeObject<IEnumerable<Tag>>(json) ?? new List<Tag>();
+      return cache;
     }
 
     public Tag GetTagById(string id)
     {
-      if (!File.Exists(_tagsFilePath))
-        return null;//Tag.Empty;
-
-      List<Tag> tags = GetAllTags().ToList();
-      return tags.Find(t => t.Id == id);// ??Tag.Empty;
+      return cache.Find(t => t.Id == id);// ??Tag.Empty;
     }
 
     public void UpdateTag(Tag tag)
     {
-      List<Tag> tags = GetAllTags().ToList();
-      int tagIndexToUpdate = tags.FindIndex(t=>t.Id == tag.Id);
+      int tagIndexToUpdate = cache.FindIndex(t=>t.Id == tag.Id);
 
       if (tagIndexToUpdate == -1)
         return;
       
-      tags[tagIndexToUpdate] = tag;
-      WriteToFile(tags);
-    }
-
-    private void WriteToFile(List<Tag> tags)
-    {
-      string json = JsonConvert.SerializeObject(tags, Formatting.Indented);
-      File.WriteAllText(_tagsFilePath, json);
+      cache[tagIndexToUpdate] = tag;
+      WriteToFile();
     }
 
     //private void WriteToFile<T>(T tags) where T : IEnumerable<Tag> 

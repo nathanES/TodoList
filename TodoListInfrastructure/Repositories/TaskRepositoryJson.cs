@@ -12,74 +12,99 @@ namespace TodoList.Infrastructure.Repositories
   public class TaskRepositoryJson : ITaskRepository
   {
     private readonly string _taskFilePath = $@"{Settings.JsonDataFilePathBase}tasks.json";
+    private List<Task> cache;
+    private readonly object fileLock = new object();
+    public TaskRepositoryJson()
+    {
+      LoadCache();
+    }
+    private void LoadCache()
+    {
+      try
+      {
+        if (!File.Exists(_taskFilePath))
+        {
+          cache = new List<Task>();
+          return;
+        }
+
+        string json = File.ReadAllText(_taskFilePath);
+        cache = JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
+      }
+      catch (Exception e)
+      {
+                Console.WriteLine("LoadCache Impossible"); //TODO mettre un logger à la place
+                throw;
+      }
+    }
+    private void WriteToFile()
+    {
+      try
+      {
+        lock (fileLock)
+        {
+          string json = JsonConvert.SerializeObject(cache, Formatting.Indented);
+          File.WriteAllText(_taskFilePath, json);
+        }
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("WriteToFile Impossible"); //TODO mettre un logger à la place
+
+        throw;
+      }
+    }
 
     public void AddTask(Task task)
     {
-      List<Task> tasks = GetAllTasks().ToList();
-      tasks.Add(task);
-      WriteToFile(tasks);
+      cache.Add(task);
+      WriteToFile();
     }
 
     public void DeleteTaskById(string id)
     {
-      var tasks = GetAllTasks().ToList();
-      int taskIndexToDelete = tasks.FindIndex(t => t.Id == id);
+
+      int taskIndexToDelete = cache.FindIndex(t => t.Id == id);
 
       if (taskIndexToDelete == -1)
         return;
 
-      tasks.RemoveAt(taskIndexToDelete);
-      WriteToFile(tasks);
+      cache.RemoveAt(taskIndexToDelete);
+      WriteToFile();
     }
     public void DeleteTaskByIds(IEnumerable<string> taskIds)
     {
-      List<Task> tasks = GetAllTasks().ToList();
       foreach (string taskId in taskIds)
       {
-        int taskIndexToDelete = tasks.FindIndex(t => t.Id == taskId);
+        int taskIndexToDelete = cache.FindIndex(t => t.Id == taskId);
 
         if (taskIndexToDelete == -1)
           continue;
 
-        tasks.RemoveAt(taskIndexToDelete);
+        cache.RemoveAt(taskIndexToDelete);
       }
-      WriteToFile(tasks);
+      WriteToFile();
     }
 
     public IEnumerable<Task> GetAllTasks()
     {
-      if (!File.Exists(_taskFilePath))
-        return new List<Task>();
-
-      string json = File.ReadAllText(_taskFilePath);
-      return JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
+      return cache;
     }
 
     public Task GetTaskById(string id)
     {
-      if (!File.Exists(_taskFilePath))
-        return null;
-
-      List<Task> tasks = GetAllTasks().ToList();
-      return tasks.Find(t => t.Id == id);
+      return cache.Find(t => t.Id == id);
     }
 
     public void UpdateTask(Task task)
-    {
-      List<Task> tasks = GetAllTasks().ToList();
-      int taskIndexToUpdate = tasks.FindIndex(t => t.Id == task.Id);
+    { 
+      int taskIndexToUpdate = cache.FindIndex(t => t.Id == task.Id);
 
       if (taskIndexToUpdate == -1)
         return;
-      
-      tasks[taskIndexToUpdate] = task;
-      WriteToFile(tasks);
-    }
 
-    private void WriteToFile(List<Task> tasks)
-    {
-      string json = JsonConvert.SerializeObject(tasks, Formatting.Indented);
-      File.WriteAllText(_taskFilePath, json);
+      cache[taskIndexToUpdate] = task;
+      WriteToFile();
     }
   }
 }

@@ -12,100 +12,120 @@ namespace TodoList.Infrastructure.Repositories
   public class TaskTagRepositoryJson : ITaskTagRepository
   {
     private readonly string _taskTagFilePath = $@"{Settings.JsonDataFilePathBase}taskTags.json";
+    private List<TaskTag> cache;
+    private readonly object fileLock = new object();
+
+    public TaskTagRepositoryJson()
+    {
+      LoadCache();
+    }
+    private void LoadCache()
+    {
+      try
+      {
+        if (!File.Exists(_taskTagFilePath))
+        {
+          cache = new List<TaskTag>();
+          return;
+        }
+
+        string json = File.ReadAllText(_taskTagFilePath);
+        cache = JsonConvert.DeserializeObject<List<TaskTag>>(json) ?? new List<TaskTag>();
+
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("LoadCache Impossible"); //TODO mettre un logger à la place
+        throw;
+      }
+    }
+    private void WriteToFile()
+    {
+      try
+      {
+        lock (fileLock)
+        {
+          string json = JsonConvert.SerializeObject(cache, Formatting.Indented);
+          File.WriteAllText(_taskTagFilePath, json);
+        }
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("WriteToFile Impossible"); //TODO mettre un logger à la place
+        throw;
+      }
+    }
 
     public void AddTaskTag(TaskTag taskTag)
     {
-      List<TaskTag> taskTags = GetAllTaskTags().ToList();
-      taskTags.Add(taskTag);
-      WriteToFile(taskTags);
+      cache.Add(taskTag);
+      WriteToFile();
     }
 
     public void DeleteTaskTagById(string taskTagId)
     {
-      List<TaskTag> taskTags = GetAllTaskTags().ToList();
-      int taskTagIndexToDelete = taskTags.FindIndex(t=>t.Id == taskTagId);
-      
-      if(taskTagIndexToDelete == -1)
-        return;
-      
-      taskTags.RemoveAt(taskTagIndexToDelete);
-      WriteToFile(taskTags);
+      DeleteTaskTagByIdInCache(taskTagId);
+      WriteToFile();
     }
-
     public void DeleteTaskTagByIds(IEnumerable<string> taskTagIds)
     {
-      List<TaskTag> taskTags = GetAllTaskTags().ToList();
-
-      foreach(string taskTagId in taskTagIds)
+      foreach (string taskTagId in taskTagIds)
       {
-        int taskTagIndexToDelete = taskTags.FindIndex(t=>t.Id == taskTagId);
-        if(taskTagIndexToDelete == -1)
-          continue;
-        taskTags.RemoveAt(taskTagIndexToDelete);
+        DeleteTaskTagByIdInCache(taskTagId);
       }
-      WriteToFile(taskTags);
+      WriteToFile();
+    }
+    private void DeleteTaskTagByIdInCache(string taskTagId)
+    {
+      int taskTagIndexToDelete = cache.FindIndex(t => t.Id == taskTagId);
+      if (taskTagIndexToDelete == -1)
+        return;
+      cache.RemoveAt(taskTagIndexToDelete);
     }
 
     public IEnumerable<TaskTag> GetAllTaskTags()
     {
-      if(!File.Exists(_taskTagFilePath))
-        return new List<TaskTag>();
-      
-      string json = File.ReadAllText(_taskTagFilePath);
-      return JsonConvert.DeserializeObject<IEnumerable<TaskTag>>(json)?? new List<TaskTag>();
+      return cache;
     }
 
     public TaskTag GetTaskTagById(string id)
     {
-      if (!File.Exists(_taskTagFilePath))
-        return null;//TaskTag.Empty;
-
-        List<TaskTag> taskTags = GetAllTaskTags().ToList();
-      return taskTags.Find(t => t.Id == id);//?? TaskTag.Empty;
+      return cache.Find(t => t.Id == id);//?? TaskTag.Empty;
     }
 
     public IEnumerable<TaskTag> GetTaskTagsByTagId(string tagId)
     {
-      if(!File.Exists(_taskTagFilePath))
-        return new List<TaskTag>();
-
-      List<TaskTag> taskTags = GetAllTaskTags().ToList();
-      return taskTags.FindAll(t=>t.TagId == tagId)?? new List<TaskTag>();
+      return cache.FindAll(t => t.TagId == tagId) ?? new List<TaskTag>();
     }
 
     public IEnumerable<TaskTag> GetTaskTagsByTaskId(string taskId)
     {
-    if(!File.Exists(_taskTagFilePath))
-        return new List<TaskTag>();
-
-      List<TaskTag> taskTags = GetAllTaskTags().ToList();
-      return taskTags.FindAll(t=>t.TaskId == taskId)?? new List<TaskTag>();
+      return cache.FindAll(t => t.TaskId == taskId) ?? new List<TaskTag>();
+    }
+    public IEnumerable<TaskTag> GetTaskTagsByTaskIds(IEnumerable<string> taskIds)
+    {
+      foreach (string taskId in taskIds)
+      {
+        foreach (TaskTag taskTag in GetTaskTagsByTaskId(taskId))
+        {
+          yield return taskTag;
+        }
+      }
     }
 
     public bool IsRelationExists(string taskId, string tagId)
     {
-     if(!File.Exists(_taskTagFilePath))
-        return false;
-
-      List<TaskTag> taskTags = GetAllTaskTags().ToList();
-      return taskTags.Exists(t=>t.TaskId == taskId && t.TagId == tagId);
+      return cache.Exists(t => t.TaskId == taskId && t.TagId == tagId);
     }
 
     public void UpdateTaskTag(TaskTag taskTag)
     {
-      List<TaskTag> taskTags = GetAllTaskTags().ToList();
-      int taskTagIndexToUpdate = taskTags.FindIndex(t=>t.Id == taskTag.Id);
-      if(taskTagIndexToUpdate == -1)
+      int taskTagIndexToUpdate = cache.FindIndex(t => t.Id == taskTag.Id);
+      if (taskTagIndexToUpdate == -1)
         return;
 
-      taskTags[taskTagIndexToUpdate] = taskTag;
-      WriteToFile(taskTags);
-    }
-
-    private void WriteToFile(List<TaskTag> taskTags)
-    {
-      string json = JsonConvert.SerializeObject(taskTags, Formatting.Indented);
-      File.WriteAllText(_taskTagFilePath, json);
+      cache[taskTagIndexToUpdate] = taskTag;
+      WriteToFile();
     }
   }
 }

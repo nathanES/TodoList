@@ -9,6 +9,8 @@ using TodoList.Application.DTOs;
 
 namespace TodoList.Application.Services
 {
+//TODO Faire les différents services pour les Tags et les TaskTags,
+//  voir si pour les taskTags on peut pas passer par le service des tags et tasks
   public class TaskService
   {
     private readonly ITaskRepository taskRepository;
@@ -30,6 +32,17 @@ namespace TodoList.Application.Services
     {
       return (TaskDto)taskRepository.GetTaskById(taskId);
     }
+    public IEnumerable<TaskDto> GetTasksByTagId(string tagId)
+    {
+      IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagId(tagId);
+      if (taskTags == null)
+        yield break;
+
+      foreach (TaskTag taskTag in taskTags)
+      {
+        yield return (TaskDto)taskTag.Task;
+      }
+    }
     public void AddTask(TaskDto taskDto)
     {
       Task task = (Task)taskDto;
@@ -39,10 +52,16 @@ namespace TodoList.Application.Services
     {
       Task task = (Task)taskDto;
       taskRepository.UpdateTask(task);
-    } 
+    }
     public void DeleteTaskById(string taskId)
     {
+      UnassignAllTagsFromTask(taskId);
       taskRepository.DeleteTaskById(taskId);
+    }
+    public void DeleteTaskByIds(IEnumerable<string> taskIds)
+    {
+      UnassignAllTagsFromTasks(taskIds);
+      taskRepository.DeleteTaskByIds(taskIds);
     }
     public void AssignTagToTask(string taskId, string tagId)
     {
@@ -53,12 +72,11 @@ namespace TodoList.Application.Services
       Tag tag = tagRepository.GetTagById(tagId);
 
       if (task == null || tag == null)
-        throw new Exception("Task or Tag not found");
+        throw new Exception("Task or Tag not found"); //TODO mettre une exception personnalisée
 
       TaskTag taskTag = new TaskTag(task, tag);
       taskTagRepository.AddTaskTag(taskTag);
     }
-
     public void UnassignTagFromTask(string taskId, string tagId)
     {
       TaskTag taskTag = taskTagRepository.GetTaskTagsByTaskId(taskId).FirstOrDefault(t => t.TagId == tagId);
@@ -68,17 +86,21 @@ namespace TodoList.Application.Services
 
       taskTagRepository.DeleteTaskTagById(taskTag.Id);
     }
-
     public void UnassignAllTagsFromTask(string taskId)
     {
       IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTaskId(taskId);
-      if(taskTags == null)
+      if (taskTags == null)
         return;
 
-      taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t=>t.Id));
+      taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t => t.Id));
     }
+    public void UnassignAllTagsFromTasks(IEnumerable<string> taskIds)
+    {
+      IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTaskIds(taskIds);
+      if (taskTags == null)
+        return;
 
-
-    //TODO ajouter les autres méthodes du repository
+      taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t => t.Id));
+    }
   }
 }

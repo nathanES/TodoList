@@ -11,6 +11,7 @@ namespace TodoList.Domain.Interfaces
       void DeleteTaskTagById(string taskTagId);
       void DeleteTaskTagByIds(IEnumerable<string> taskTagIds);
       IEnumerable<TaskTag> GetTaskTagsByTaskId(string taskId);
+      IEnumerable<TaskTag> GetTaskTagsByTaskIds(IEnumerable<string> taskIds);
       IEnumerable<TaskTag> GetTaskTagsByTagId(string tagId);
       bool IsRelationExists(string taskId, string tagId);
   }

@@ -56,6 +56,36 @@ namespace TodoList.Infrastructure.UnitTest
     }
 
     [TestMethod]
+    [DataRow("DeleteTags", "Description", "#000000")]
+    public void DeleteTags(string name, string description, string color)
+    {
+      //Arrange
+      ITagRepository tagRepository = new TagRepositoryJson();
+
+      Tag tag = new Tag.TagBuilder()
+          .SetName(name)
+          .SetDescription(description)
+          .SetColor(new Domain.ValueObjects.Color(color))
+          .Build();
+
+      tagRepository.AddTag(tag);
+
+      Tag tag2 = new Tag.TagBuilder()
+        .SetName(name)
+        .SetDescription(description)
+        .SetColor(new Domain.ValueObjects.Color(color))
+        .Build();
+
+      tagRepository.AddTag(tag2);
+
+      //Act
+      tagRepository.DeleteTagByIds(new List<string>() { tag.Id, tag2.Id });
+      //Assert
+      Assert.IsFalse(tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
+      Assert.IsFalse(tagRepository.GetAllTags().Any(t => t.Id == tag2.Id));
+    }
+
+    [TestMethod]
     [DataRow("UpdateTag", "UpdateTag2", "Description", "#000000")]
     public void UpdateTag(string name, string updatedName, string description, string color)
     {
