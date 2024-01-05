@@ -121,4 +121,8 @@
     <value>\\Mac\Home\Documents\Developpement\Projets\TodoList\Dev\TodoList\TodoListInfrastructure\JsonData\</value>
     <comment>Chemin vers les données stockées au format json</comment>
   </data>
+  <data name="JsonDataFilePathBaseSurface" xml:space="preserve">
+    <value>C:\Users\natha\OneDrive\Documents\Developpement\Projets\TodoList\Dev\TodoList\TodoListInfrastructure\JsonData</value>
+    <comment>pour la surface</comment>
+  </data>
 </root>

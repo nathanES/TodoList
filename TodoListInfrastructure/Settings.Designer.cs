@@ -68,5 +68,14 @@ namespace TodoList.Infrastructure {
                 return ResourceManager.GetString("JsonDataFilePathBase", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à C:\Users\natha\OneDrive\Documents\Developpement\Projets\TodoList\Dev\TodoList\TodoListInfrastructure\JsonData.
+        /// </summary>
+        internal static string JsonDataFilePathBaseSurface {
+            get {
+                return ResourceManager.GetString("JsonDataFilePathBaseSurface", resourceCulture);
+            }
+        }
     }
 }

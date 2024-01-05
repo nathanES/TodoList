@@ -9,7 +9,7 @@ namespace TodoList.Infrastructure.Repositories
 {
   public class TagRepositoryJson : ITagRepository
   {
-    private readonly string _tagsFilePath = $@"{Settings.JsonDataFilePathBase}tags.json";
+    private readonly string _tagsFilePath = $@"{Settings.JsonDataFilePathBaseSurface}tags.json";
     private List<Tag> cache;
     private readonly object fileLock = new object();
     public TagRepositoryJson()
@@ -103,11 +103,5 @@ namespace TodoList.Infrastructure.Repositories
       cache[tagIndexToUpdate] = tag;
       WriteToFile();
     }
-
-    //private void WriteToFile<T>(T tags) where T : IEnumerable<Tag> 
-    //{
-    //  string json = JsonConvert.SerializeObject(tags, Formatting.Indented);
-    //  File.WriteAllText(_tagsFilePath, json);
-    //}
   }
 }

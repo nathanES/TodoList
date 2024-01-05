@@ -20,8 +20,10 @@ namespace TodoList.Application.Services
     public TaskService(ITaskRepository taskRepository, ITagRepository tagRepository, ITaskTagRepository taskTagRepository)
     {
       this.taskRepository = taskRepository;
-      this.tagRepository = tagRepository;
-      this.taskTagRepository = taskTagRepository;
+      this.tagRepository = tagRepository;//TODO : cf en dessous
+      this.taskTagRepository = taskTagRepository;//TODO : peut-être voir pour les mettre en paramètre des
+                                                 //méthodes et non pas dans le constructeur car toutes les méthodes n'en ont pas besoin
+
     }
 
     public IEnumerable<TaskDto> GetAllTasks()

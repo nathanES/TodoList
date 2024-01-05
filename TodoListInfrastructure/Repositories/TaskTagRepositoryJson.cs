@@ -11,7 +11,7 @@ namespace TodoList.Infrastructure.Repositories
 {
   public class TaskTagRepositoryJson : ITaskTagRepository
   {
-    private readonly string _taskTagFilePath = $@"{Settings.JsonDataFilePathBase}taskTags.json";
+    private readonly string _taskTagFilePath = $@"{Settings.JsonDataFilePathBaseSurface}taskTags.json";
     private List<TaskTag> cache;
     private readonly object fileLock = new object();
 
@@ -112,7 +112,17 @@ namespace TodoList.Infrastructure.Repositories
         }
       }
     }
-
+    public IEnumerable<TaskTag> GetTaskTagsByTagIds(IEnumerable<string> tagIds)
+    {
+      foreach (string tagId in tagIds)
+      {
+        foreach (TaskTag taskTag in GetTaskTagsByTagId(tagId))
+        {
+          yield return taskTag;
+        }
+      }
+    }
+    
     public bool IsRelationExists(string taskId, string tagId)
     {
       return cache.Exists(t => t.TaskId == taskId && t.TagId == tagId);
@@ -127,5 +137,7 @@ namespace TodoList.Infrastructure.Repositories
       cache[taskTagIndexToUpdate] = taskTag;
       WriteToFile();
     }
+
+
   }
 }

@@ -13,6 +13,7 @@ namespace TodoList.Domain.Interfaces
       IEnumerable<TaskTag> GetTaskTagsByTaskId(string taskId);
       IEnumerable<TaskTag> GetTaskTagsByTaskIds(IEnumerable<string> taskIds);
       IEnumerable<TaskTag> GetTaskTagsByTagId(string tagId);
+      IEnumerable<TaskTag> GetTaskTagsByTagIds(IEnumerable<string> tagIds);
       bool IsRelationExists(string taskId, string tagId);
   }
 }
