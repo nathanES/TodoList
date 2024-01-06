@@ -9,7 +9,7 @@ namespace TodoList.Infrastructure.Repositories
 {
   public class TagRepositoryJson : ITagRepository
   {
-    private readonly string _tagsFilePath = $@"{Settings.JsonDataFilePathBaseSurface}tags.json";
+    private readonly string _tagsFilePath = $@"{Settings.JsonDataFilePathBase}tags.json";
     private List<Tag> cache;
     private readonly object fileLock = new object();
     public TagRepositoryJson()

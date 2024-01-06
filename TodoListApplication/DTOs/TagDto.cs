@@ -1,48 +1,37 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TodoList.Domain.Entities;
+﻿using TodoList.Domain.Entities;
 
-namespace TodoList.Application.DTOs
+namespace TodoList.Application.DTOs;
+
+public class TagDto
 {
-  public class TagDto
+  public string Id { get; set; }
+  public string Name { get; set; }
+  public string Description { get; set; }
+  public string Color { get; set; }
+  public List<string> ParentTagIds { get; set; }
+
+  public TagDto() => ParentTagIds = new List<string>();
+  //TODO : peut-être faire une bibliotheque de conversion au lieu de faire des explicit operator
+  public static explicit operator Tag(TagDto tagDto)
   {
-    public string Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public string Color { get; set; }
-    public List<string> ParentTagIds { get; set; }
+    return new Tag.TagBuilder()
+        .SetId(tagDto.Id)
+        .SetName(tagDto.Name)
+        .SetDescription(tagDto.Description)
+        .SetColor(new Domain.ValueObjects.Color(tagDto.Color))
+        .SetParentTagIds(tagDto.ParentTagIds)
+        .Build();
+  }
 
-    public TagDto()
+  public static explicit operator TagDto(Tag tag)
+  {
+    return new TagDto()
     {
-        ParentTagIds = new List<string>();
-    }
-    //TODO : peut-être faire une bibliotheque de conversion au lieu de faire des explicit operator
-    public static explicit operator Tag (TagDto tagDto)
-    {
-        return new Tag.TagBuilder()
-            .SetId(tagDto.Id)
-            .SetName(tagDto.Name)
-            .SetDescription(tagDto.Description)
-            .SetColor(new Domain.ValueObjects.Color(tagDto.Color))
-            .SetParentTagIds(tagDto.ParentTagIds)
-            .Build();
-    }
-
-    public static explicit operator TagDto(Tag tag)
-    {
-      return new TagDto()
-      {
-        Id = tag.Id,
-        Name = tag.Name,
-        Description = tag.Description,
-        Color = tag.Color?.ToString(),
-        ParentTagIds = tag.ParentTagIds
-      };
-    }
-
+      Id = tag.Id,
+      Name = tag.Name,
+      Description = tag.Description,
+      Color = tag.Color?.ToString(),
+      ParentTagIds = tag.ParentTagIds
+    };
   }
 }

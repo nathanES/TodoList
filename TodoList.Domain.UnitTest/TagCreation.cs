@@ -27,7 +27,6 @@ namespace TodoList.Domain.UnitTest
       Assert.IsFalse(tag.ParentTagIds.Any());
 
     }
-
     [TestMethod]
     [DataRow("Tag 1", "Description 1", "#000000")]
     public void Constructor_ShouldCreateTag_WithDescription(string name, string description, string color)
@@ -97,6 +96,22 @@ namespace TodoList.Domain.UnitTest
       Assert.AreEqual(description, tag.Description);
       Assert.AreEqual(color1, tag.Color);
       Assert.IsTrue( tag.ParentTagIds.Contains(tagParent.Id));
+    }
+    [TestMethod]
+    public void Constructor_ShouldNotCreateTag_WithNullName()
+    {
+      Assert.ThrowsException<ArgumentNullException>(() => new Tag.TagBuilder()
+               .SetName(null)
+                        .Build());
+    }
+    [TestMethod]
+    public void Constructor_ShouldNotCreateTag_WithNulNameButOtherProperties()
+    {
+      Assert.ThrowsException<ArgumentNullException>(() => new Tag.TagBuilder()
+               .SetName(null)
+               .SetDescription("Description 1")
+               .SetColor(new Color("#000000"))
+              .Build());
     }
   }
 }

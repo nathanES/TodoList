@@ -9,21 +9,20 @@ public class Task
   [JsonProperty("Id")]
   public string Id
   {
-    get { return id; }
-    set 
-    { 
-    if(!Guid.TryParse(value, out Guid _))
+    get => id;
+    set
+    {
+      if (!Guid.TryParse(value, out Guid _))
         throw new ArgumentException("Id must be a valid Guid");
-      id = value; 
+      id = value;
     }
   }
-
 
   private string name;
   [JsonProperty("Name")]
   public string Name
   {
-    get { return name; }
+    get => name;
     private set
     {
       ArgumentException.ThrowIfNullOrEmpty(value, nameof(name));
@@ -35,27 +34,10 @@ public class Task
   public string? Description { get; private set; }
   [JsonProperty("Priority")]
   public Priority Priority { get; private set; } = Priority.Medium;
-  
-  private DateTime deadLine = DateTime.MaxValue;
   [JsonProperty("DeadLine")]
-  public DateTime DeadLine
-  {
-    get { return deadLine; }
-    private set
-    {
-      deadLine = value;
-    }
-  }
+  public DateTime DeadLine { get; private set; } = DateTime.MaxValue;
   [JsonIgnore]
-  public TimeSpan TimeLeftBeforeDeadLine
-  {
-    get
-    {
-      if (DeadLine == DateTime.MaxValue)
-        return TimeSpan.MaxValue;
-      return DeadLine - DateTime.UtcNow;
-    }
-  }
+  public TimeSpan TimeLeftBeforeDeadLine => DeadLine == DateTime.MaxValue ? TimeSpan.MaxValue : DeadLine - DateTime.UtcNow;
   [JsonProperty("CreationTime")]
   public DateTime CreationTime { get; private set; } = DateTime.UtcNow;
   [JsonProperty("IsCompleted")]
@@ -72,23 +54,11 @@ public class Task
     this.CreationTime = CreationTime;
     this.IsCompleted = IsCompleted;
   }
-  private Task(string name)
-  {
-    Name = name;
-  }
+  private Task(string name) => Name = name;
 
-  public void UpdateName(string name)
-  {
-    Name = name;
-  }
-  public void UpdateDescription(string description)
-  {
-    Description = description;
-  }
-  public void UpdatePriority(Priority priority)
-  {
-    Priority = priority;
-  }
+  public void UpdateName(string name) => Name = name;
+  public void UpdateDescription(string description) => Description = description;
+  public void UpdatePriority(Priority priority) => Priority = priority;
   public void UpdateDeadLine(DateTime deadLine)
   {
     //Le contrôle est fait ici pour éviter les erreurs lors de la récupération d'anciennes taches via le Json
@@ -96,10 +66,7 @@ public class Task
       throw new ArgumentException("DeadLine must be in the future");
     DeadLine = deadLine;
   }
-  public void Complete()
-  {
-    IsCompleted = true;
-  }
+  public void Complete() => IsCompleted = true;
 
   public class TaskBuilder
   {
@@ -153,7 +120,7 @@ public class Task
     public Task Build()
     {
       return new Task(name)
-      { 
+      {
         Id = id,
         DeadLine = deadLine,
         Description = description,

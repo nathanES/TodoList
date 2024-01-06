@@ -1,108 +1,101 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TodoList.Domain.Interfaces;
+﻿using TodoList.Application.DTOs;
 using TodoList.Domain.Entities;
-using TodoList.Application.DTOs;
+using TodoList.Domain.Interfaces;
 
-namespace TodoList.Application.Services
-{
+namespace TodoList.Application.Services;
+
 //TODO Faire les différents services pour les Tags et les TaskTags,
 //  voir si pour les taskTags on peut pas passer par le service des tags et tasks
-  public class TaskService
+public class TaskService
+{
+  private readonly ITaskRepository taskRepository;
+
+  public TaskService(ITaskRepository taskRepository) => this.taskRepository = taskRepository;
+
+  public IEnumerable<TaskDto> GetAllTasks() => taskRepository.GetAllTasks().Select(t => (TaskDto)t);
+  public TaskDto GetTaskById(string taskId) => (TaskDto)taskRepository.GetTaskById(taskId);
+  public IEnumerable<TaskDto> GetTasksByTagId(string tagId, ITaskTagRepository taskTagRepository)
   {
-    private readonly ITaskRepository taskRepository;
-    private readonly ITagRepository tagRepository;
-    private readonly ITaskTagRepository taskTagRepository;
+    IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagId(tagId);
+    if (taskTags == null)
+      yield break;
 
-    public TaskService(ITaskRepository taskRepository, ITagRepository tagRepository, ITaskTagRepository taskTagRepository)
+    foreach (TaskTag taskTag in taskTags)
     {
-      this.taskRepository = taskRepository;
-      this.tagRepository = tagRepository;//TODO : cf en dessous
-      this.taskTagRepository = taskTagRepository;//TODO : peut-être voir pour les mettre en paramètre des
-                                                 //méthodes et non pas dans le constructeur car toutes les méthodes n'en ont pas besoin
+      yield return (TaskDto)taskTag.Task;
+    }
+  }
+  public void AddTask(TaskDto taskDto)
+  {
+    Task task = (Task)taskDto;
+    taskRepository.AddTask(task);
+  }
+  public void UpdateTask(TaskDto taskDto)
+  {
+    Task task = (Task)taskDto;
+    taskRepository.UpdateTask(task);
+  }
+  public void DeleteTaskById(string taskId, ITaskTagRepository taskTagRepository)
+  {
+    UnassignAllTagsFromTask(taskId, taskTagRepository);
+    taskRepository.DeleteTaskById(taskId);
+  }
+  public void DeleteTaskByIds(IEnumerable<string> taskIds, ITaskTagRepository taskTagRepository)
+  {
+    UnassignAllTagsFromTasks(taskIds, taskTagRepository);
+    taskRepository.DeleteTaskByIds(taskIds);
+  }
+  public void AssignTagToTask(string taskId, string tagId, ITaskTagRepository taskTagRepository, ITagRepository tagRepository)
+  {
+    if (taskTagRepository.GetTaskTagsByTaskId(taskId).Any(t => t.TagId == tagId))
+      return; //The task already got this tag
 
-    }
+    Task task = taskRepository.GetTaskById(taskId);
+    Tag tag = tagRepository.GetTagById(tagId);
 
-    public IEnumerable<TaskDto> GetAllTasks()
-    {
-      return taskRepository.GetAllTasks().Select(t => (TaskDto)t);
-    }
-    public TaskDto GetTaskById(string taskId)
-    {
-      return (TaskDto)taskRepository.GetTaskById(taskId);
-    }
-    public IEnumerable<TaskDto> GetTasksByTagId(string tagId)
-    {
-      IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagId(tagId);
-      if (taskTags == null)
-        yield break;
+    if (task == null || tag == null)
+      throw new Exception("Task or Tag not found"); //TODO mettre une exception personnalisée
 
-      foreach (TaskTag taskTag in taskTags)
-      {
-        yield return (TaskDto)taskTag.Task;
-      }
-    }
-    public void AddTask(TaskDto taskDto)
+    TaskTag taskTag = new(task, tag);
+    taskTagRepository.AddTaskTag(taskTag);
+  }
+  public void AssignTagsToTask(string taskId, IEnumerable<string> tagIds, ITaskTagRepository taskTagRepository, ITagRepository tagRepository)
+  {
+    foreach (string tagId in tagIds)
     {
-      Task task = (Task)taskDto;
-      taskRepository.AddTask(task);
+      AssignTagToTask(taskId, tagId, taskTagRepository, tagRepository);
     }
-    public void UpdateTask(TaskDto taskDto)
+  }
+  public void AssignTagToTasks(string tagId, IEnumerable<string> taskIds, ITaskTagRepository taskTagRepository, ITagRepository tagRepository)
+  {
+    foreach (string taskId in taskIds)
     {
-      Task task = (Task)taskDto;
-      taskRepository.UpdateTask(task);
+      AssignTagToTask(taskId, tagId, taskTagRepository, tagRepository);
     }
-    public void DeleteTaskById(string taskId)
-    {
-      UnassignAllTagsFromTask(taskId);
-      taskRepository.DeleteTaskById(taskId);
-    }
-    public void DeleteTaskByIds(IEnumerable<string> taskIds)
-    {
-      UnassignAllTagsFromTasks(taskIds);
-      taskRepository.DeleteTaskByIds(taskIds);
-    }
-    public void AssignTagToTask(string taskId, string tagId)
-    {
-      if (taskTagRepository.GetTaskTagsByTaskId(taskId).Any(t => t.TagId == tagId))
-        return; //The task already got this tag
+  }
+  public void UnassignTagFromTask(string taskId, string tagId, ITaskTagRepository taskTagRepository)
+  {
+    TaskTag taskTag = taskTagRepository.GetTaskTagsByTaskId(taskId).FirstOrDefault(t => t.TagId == tagId);
 
-      Task task = taskRepository.GetTaskById(taskId);
-      Tag tag = tagRepository.GetTagById(tagId);
+    if (taskTag == null)
+      return; //The task doesn't have this tag
 
-      if (task == null || tag == null)
-        throw new Exception("Task or Tag not found"); //TODO mettre une exception personnalisée
+    taskTagRepository.DeleteTaskTagById(taskTag.Id);
+  }
+  public void UnassignAllTagsFromTask(string taskId, ITaskTagRepository taskTagRepository)
+  {
+    IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTaskId(taskId);
+    if (taskTags == null)
+      return;
 
-      TaskTag taskTag = new TaskTag(task, tag);
-      taskTagRepository.AddTaskTag(taskTag);
-    }
-    public void UnassignTagFromTask(string taskId, string tagId)
-    {
-      TaskTag taskTag = taskTagRepository.GetTaskTagsByTaskId(taskId).FirstOrDefault(t => t.TagId == tagId);
+    taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t => t.Id));
+  }
+  public void UnassignAllTagsFromTasks(IEnumerable<string> taskIds, ITaskTagRepository taskTagRepository)
+  {
+    IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTaskIds(taskIds);
+    if (taskTags == null)
+      return;
 
-      if (taskTag == null)
-        return; //The task doesn't have this tag
-
-      taskTagRepository.DeleteTaskTagById(taskTag.Id);
-    }
-    public void UnassignAllTagsFromTask(string taskId)
-    {
-      IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTaskId(taskId);
-      if (taskTags == null)
-        return;
-
-      taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t => t.Id));
-    }
-    public void UnassignAllTagsFromTasks(IEnumerable<string> taskIds)
-    {
-      IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTaskIds(taskIds);
-      if (taskTags == null)
-        return;
-
-      taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t => t.Id));
-    }
+    taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t => t.Id));
   }
 }

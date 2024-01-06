@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TodoList.Application.DTOs;
+﻿using TodoList.Application.DTOs;
 using TodoList.Domain.Entities;
 using TodoList.Domain.Interfaces;
 
@@ -12,21 +7,9 @@ public class TagService
 {
   private readonly ITagRepository tagRepository;
 
-  private readonly ITaskTagRepository taskTagRepository;
-
-  public TagService(ITagRepository tagRepository, ITaskTagRepository taskTagRepository)
-    {
-    this.tagRepository = tagRepository;
-    this.taskTagRepository = taskTagRepository;
-  }
-  public IEnumerable<TagDto> GetAllTags()
-  {
-    return tagRepository.GetAllTags().Select(t => (TagDto)t);
-  }
-  public TagDto GetTagById(string tagId)
-  {
-    return (TagDto)tagRepository.GetTagById(tagId);
-  }
+  public TagService(ITagRepository tagRepository) => this.tagRepository = tagRepository;
+  public IEnumerable<TagDto> GetAllTags() => tagRepository.GetAllTags().Select(t => (TagDto)t);
+  public TagDto GetTagById(string tagId) => (TagDto)tagRepository.GetTagById(tagId);
   public void AddTag(TagDto tagDto)
   {
     Tag tag = (Tag)tagDto;
@@ -37,29 +20,29 @@ public class TagService
     Tag tag = (Tag)tagDto;
     tagRepository.UpdateTag(tag);
   }
-  public void DeleteTagById(string tagId)
+  public void DeleteTagById(string tagId, ITaskTagRepository taskTagRepository)
   {
-    UnassignAllTaskFromTag(tagId);
+    UnassignAllTaskFromTag(tagId, taskTagRepository);
     tagRepository.DeleteTagById(tagId);
   }
-  public void DeleteTagByIds(IEnumerable<string> tagIds)
+  public void DeleteTagByIds(IEnumerable<string> tagIds, ITaskTagRepository taskTagRepository)
   {
     foreach (string tagId in tagIds)
     {
-     UnassignAllTaskFromTag(tagId);
+      UnassignAllTaskFromTag(tagId, taskTagRepository);
     }
     tagRepository.DeleteTagByIds(tagIds);
   }
-  private void UnassignAllTaskFromTag(string tagId)
+  private void UnassignAllTaskFromTag(string tagId, ITaskTagRepository taskTagRepository)
   {
-    var taskTags = taskTagRepository.GetTaskTagsByTagId(tagId);
+    IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagId(tagId);
 
     if (!taskTags.Any())
       return; //The tag does not have task
 
     taskTagRepository.DeleteTaskTagByIds(taskTags.Select(tt => tt.Id));
   }
-  public void UnassignAllTaskFromTags(IEnumerable<string> tagIds)
+  public void UnassignAllTaskFromTags(IEnumerable<string> tagIds, ITaskTagRepository taskTagRepository)
   {
     IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagIds(tagIds);
     if (taskTags == null)
