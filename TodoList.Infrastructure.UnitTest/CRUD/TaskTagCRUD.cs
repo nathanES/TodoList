@@ -187,13 +187,6 @@ public class TaskTagCRUD
     //Assert
     Assert.IsFalse(isRelationExists);
   }
-  //class TaskTag
-  //public string Id { get; } = Guid.NewGuid().ToString();
-  //public string TaskId { get; set; }
-  //public Task Task { get; set; }
-
-  //public string TagId { get; set; }
-  //public Tag Tag { get; set; }
 
   //Méthodes pour créer les objets nécessaire aux tests
   private Tag AddTag(string name, string description, string color, string parentName)

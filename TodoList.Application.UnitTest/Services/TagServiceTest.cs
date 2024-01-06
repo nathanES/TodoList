@@ -8,7 +8,6 @@ namespace TodoList.Application.UnitTest.Services;
 [TestClass]
 public class TagServiceTest
 {
-  //TODO faire les tests
   private ITagRepository? tagRepository;
   private ITaskTagRepository? taskTagRepository;
   [TestInitialize]
@@ -19,30 +18,161 @@ public class TagServiceTest
   }
 
   [TestMethod]
-  public void GetAllTags()
+  [DataRow("", "Tag 1", "Description 1", "#000000")]
+  public void AddTag_WithAllProperties_WithoutParentTags(string id, string name, string description, string color)
+  {
+    string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
+    TagService tagService = new(tagRepository);
+    TagDto tagDtoInsert = new()
+    {
+      Id = idToInsert,
+      Name = name,
+      Description = description,
+      Color = color
+    };
+
+    tagService.AddTag(tagDtoInsert);
+
+    TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
+
+    Assert.IsNotNull(tagDto);
+    Assert.AreEqual(idToInsert, tagDto.Id);
+    Assert.AreEqual(name, tagDto.Name);
+    Assert.AreEqual(description, tagDto.Description);
+    Assert.AreEqual(color, tagDto.Color);
+  }
+  [TestMethod]
+  [DataRow("Tag 1")]
+  public void AddTag_WithName(string name)
+  {
+    string idToInsert = Guid.NewGuid().ToString();
+    TagService tagService = new(tagRepository);
+    TagDto tagDtoInsert = new()
+    {
+      Id = idToInsert,
+      Name = name,
+    };
+
+    tagService.AddTag(tagDtoInsert);
+
+    TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
+
+    Assert.IsNotNull(tagDto);
+    Assert.AreEqual(idToInsert, tagDto.Id);
+    Assert.AreEqual(name, tagDto.Name);
+  }
+  [TestMethod]
+  [DataRow("")]
+  public void AddTag_WithId(string id)
+  {
+    string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
+    TagService tagService = new(tagRepository);
+    TagDto tagDtoInsert = new()
+    {
+      Id = idToInsert,
+    };
+
+    tagService.AddTag(tagDtoInsert);
+
+    TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
+
+    Assert.IsNotNull(tagDto);
+    Assert.AreEqual(idToInsert, tagDto.Id);
+  }
+  [TestMethod]
+  [DataRow("Tag 1", "description")]
+  public void AddTag_WithNameAndDescription(string name, string description)
+  {
+    string idToInsert = Guid.NewGuid().ToString();
+    TagService tagService = new(tagRepository);
+    TagDto tagDtoInsert = new()
+    {
+      Id = idToInsert,
+      Name = name,
+      Description = description
+    };
+
+    tagService.AddTag(tagDtoInsert);
+
+    TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
+
+    Assert.IsNotNull(tagDto);
+    Assert.AreEqual(idToInsert, tagDto.Id);
+    Assert.AreEqual(name, tagDto.Name);
+    Assert.AreEqual(description, tagDto.Description);
+  }
+  [TestMethod]
+  [DataRow("Tag 1", "#000000")]
+  public void AddTag_WithNameAndColor(string name, string color)
+  {
+    string idToInsert = Guid.NewGuid().ToString();
+    TagService tagService = new(tagRepository);
+    TagDto tagDtoInsert = new()
+    {
+      Id = idToInsert,
+      Name = name,
+      Color = color
+    };
+
+    tagService.AddTag(tagDtoInsert);
+
+    TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
+
+    Assert.IsNotNull(tagDto);
+    Assert.AreEqual(idToInsert, tagDto.Id);
+    Assert.AreEqual(name, tagDto.Name);
+    Assert.AreEqual(color, tagDto.Color);
+  }
+  [TestMethod]
+  [DataRow("Description")]
+  public void AddTag_WithoutName_Exception(string description)
+  {
+    string idToInsert = Guid.NewGuid().ToString();
+    TagService tagService = new(tagRepository);
+    TagDto tagDtoInsert = new()
+    {
+      Id = idToInsert,
+      Description = description
+    };
+    _ = Assert.ThrowsException<ArgumentNullException>(() => tagService.AddTag(tagDtoInsert));
+  }
+
+  [TestMethod]
+  [DataRow("Tag 1")]
+  public void GetAllTags(string tagName)
   {
     TagService tagService = new(tagRepository);
-    tagService.AddTag(new TagDto { Name = "Tag1" });
+    tagService.AddTag(new TagDto { Name = tagName });
 
     IEnumerable<TagDto> tagDtos = tagService.GetAllTags();
-    //TODO : faire les assertions
+
     Assert.IsNotNull(tagDtos);
     Assert.IsTrue(tagDtos.Any());
   }
+  [TestMethod]
+  [DataRow("")]
+  public void GetTagById(string id)
+  {
+    string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
+    string nameToInsert = "Tag 1";
+    TagService tagService = new(tagRepository);
+    TagDto tagDtoInsert = new() { Id = idToInsert, Name = nameToInsert };
+    tagService.AddTag(tagDtoInsert);
+
+    TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
+
+    Assert.IsNotNull(tagDto);
+    Assert.AreEqual(idToInsert, tagDto.Id);
+    Assert.AreEqual(nameToInsert, tagDto.Name);
+  }
+
+  //TODO : a continuer avec les différentes méthodes.
 
   //namespace TodoList.Application.Services;
   //public class TagService
   //{
   //  private readonly ITagRepository tagRepository;
 
-  //  public TagService(ITagRepository tagRepository) => this.tagRepository = tagRepository;//this.taskTagRepository = taskTagRepository;
-  //  public IEnumerable<TagDto> GetAllTags() => tagRepository.GetAllTags().Select(t => (TagDto)t);
-  //  public TagDto GetTagById(string tagId) => (TagDto)tagRepository.GetTagById(tagId);
-  //  public void AddTag(TagDto tagDto)
-  //  {
-  //    Tag tag = (Tag)tagDto;
-  //    tagRepository.AddTag(tag);
-  //  }
   //  public void UpdateTag(TagDto tagDto)
   //  {
   //    Tag tag = (Tag)tagDto;

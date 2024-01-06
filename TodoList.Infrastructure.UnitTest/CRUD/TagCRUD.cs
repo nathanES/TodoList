@@ -7,6 +7,7 @@ namespace TodoList.Infrastructure.UnitTest.CRUD;
 [TestClass]
 public class TagCRUD
 {
+  //TODO : rajouter des cas non passant
   [TestMethod]
   [DataRow("AddTag", "AddTagParent", "Description 1", "#000000")]
   public void AddTag(string name, string parentName, string description, string color)

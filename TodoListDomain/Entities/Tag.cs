@@ -13,8 +13,14 @@ public class Tag
     get => id;
     set
     {
+      if (string.IsNullOrEmpty(value))
+      {
+        id = Guid.NewGuid().ToString();
+        return;
+      }
+
       if (!Guid.TryParse(value, out Guid _))
-        throw new ArgumentException("Id must be a valid Guid");
+        throw new ArgumentException($"{nameof(Id)} must be a valid Guid");
       id = value;
     }
   }
@@ -34,9 +40,22 @@ public class Tag
   public string? Description { get; private set; }
   [JsonProperty("Color")]
   public Color Color { get; private set; } = new Color("#000000");
+
+  private List<string> parentTagIds = new();
   [JsonProperty("ParentTagIds")]
-  //TODO surement faire une vérification des valeurs
-  public List<string> ParentTagIds { get; private set; } = new List<string>();
+  public List<string> ParentTagIds
+  {
+    get => parentTagIds;
+    set
+    {
+      foreach (string parentTagId in value)
+      {
+        if (!Guid.TryParse(parentTagId, out Guid _))
+          throw new ArgumentException($"{nameof(parentTagId)} must be a valid Guid");
+      }
+      parentTagIds = value;
+    }
+  }
 
   private Tag(string name) => Name = name;
 
@@ -54,8 +73,13 @@ public class Tag
   public void UpdateDescription(string description) => Description = description;
   public void UpdateColor(Color color) => Color = color;
   public void UpdateTagParent(List<string> parentTagIds) => ParentTagIds = parentTagIds;
-  public void AddTagParent(string parentTagId) => ParentTagIds.Add(parentTagId);
+  public void AddTagParent(string parentTagId)
+  {
+    if (!Guid.TryParse(parentTagId, out _))
+      throw new ArgumentException($"{nameof(parentTagId)} must be a valid Guid");
 
+    ParentTagIds.Add(parentTagId);
+  }
   public class TagBuilder
   {
     private string id = Guid.NewGuid().ToString();

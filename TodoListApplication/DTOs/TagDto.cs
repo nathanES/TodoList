@@ -1,4 +1,5 @@
 ﻿using TodoList.Domain.Entities;
+using TodoList.Domain.ValueObjects;
 
 namespace TodoList.Application.DTOs;
 
@@ -18,7 +19,7 @@ public class TagDto
         .SetId(tagDto.Id)
         .SetName(tagDto.Name)
         .SetDescription(tagDto.Description)
-        .SetColor(new Domain.ValueObjects.Color(tagDto.Color))
+        .SetColor(new Color(tagDto.Color))
         .SetParentTagIds(tagDto.ParentTagIds)
         .Build();
   }
@@ -30,7 +31,7 @@ public class TagDto
       Id = tag.Id,
       Name = tag.Name,
       Description = tag.Description,
-      Color = tag.Color?.ToString(),
+      Color = tag.Color?.ColorValue,
       ParentTagIds = tag.ParentTagIds
     };
   }
