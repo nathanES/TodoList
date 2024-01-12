@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using TodoList.Domain.Entities;
+using TodoList.Domain.Exceptions;
 using TodoList.Domain.Interfaces;
 
 namespace TodoList.Infrastructure.Repositories;
@@ -50,7 +51,9 @@ public class TaskTagRepositoryJson : ITaskTagRepository
 
   public void AddTaskTag(TaskTag taskTag)
   {
-    cache.Add(taskTag);
+        if (cache.Any(t => t.Id == taskTag.Id))
+            throw new DuplicateKeyException($"Duplicate {nameof(TaskTag.Id)}, Value : {taskTag.Id}");
+        cache.Add(taskTag);
     WriteToFile();
   }
 

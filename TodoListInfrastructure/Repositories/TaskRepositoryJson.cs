@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TodoList.Domain.Entities;
+using TodoList.Domain.Exceptions;
 using TodoList.Domain.Interfaces;
 
 namespace TodoList.Infrastructure.Repositories
@@ -57,7 +58,9 @@ namespace TodoList.Infrastructure.Repositories
 
     public void AddTask(Task task)
     {
-      cache.Add(task);
+            if (cache.Any(t => t.Id == task.Id))
+                throw new DuplicateKeyException($"Duplicate {nameof(Task.Id)}, Value : {task.Id}");
+            cache.Add(task);
       WriteToFile();
     }
 
@@ -97,7 +100,7 @@ namespace TodoList.Infrastructure.Repositories
     }
 
     public void UpdateTask(Task task)
-    { 
+    { //TODO : voir pour ne pas update l'ID dans Task mais aussi dans TaskTag et Tag
       int taskIndexToUpdate = cache.FindIndex(t => t.Id == task.Id);
 
       if (taskIndexToUpdate == -1)

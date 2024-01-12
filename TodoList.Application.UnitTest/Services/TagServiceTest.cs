@@ -41,6 +41,8 @@ public class TagServiceTest
     Assert.AreEqual(description, tagDto.Description);
     Assert.AreEqual(color, tagDto.Color);
   }
+
+
   [TestMethod]
   [DataRow("Tag 1")]
   public void AddTag_WithName(string name)
@@ -164,6 +166,64 @@ public class TagServiceTest
     Assert.IsNotNull(tagDto);
     Assert.AreEqual(idToInsert, tagDto.Id);
     Assert.AreEqual(nameToInsert, tagDto.Name);
+  }
+  [TestMethod]
+  public void GetTagById_NotFound()
+  {
+    TagService tagService = new(tagRepository);
+
+    TagDto tagDto = tagService.GetTagById(Guid.NewGuid().ToString());
+
+    Assert.IsNull(tagDto);
+  }
+  [TestMethod]
+  public void GetTagById_NullId_Exception()
+  {
+    TagService tagService = new(tagRepository);
+
+    _ = Assert.ThrowsException<ArgumentNullException>(() => tagService.GetTagById(null));
+  }
+  [TestMethod]
+  public void GetTagById_EmptyId_Exception()
+  {
+    TagService tagService = new(tagRepository);
+
+    _ = Assert.ThrowsException<ArgumentNullException>(() => tagService.GetTagById(""));
+  }
+
+  [TestMethod]
+    [DataRow("", "Tag 1", "Description 1", "#000000", "", "Tag 2", "Description 2", "#FFFFFF")]
+    public void UpdateTag(string id, string name, string description, string color, string id2, string name2, string description2, string color2)
+  {
+  string idToInsert1 = !String.IsNullOrWhiteSpace(id) ? id : Guid.NewGuid().ToString();
+  string idToInsert2 = !String.IsNullOrWhiteSpace(id2) ? id2 : Guid.NewGuid().ToString();
+    TagService tagService = new(tagRepository);
+    TagDto tagDtoInsert = new()
+    {
+      Id = idToInsert1,
+      Name = name,
+      Description = description,
+      Color = color
+    };
+    tagService.AddTag(tagDtoInsert);
+
+    TagDto tagDtoUpdate = new()
+    {
+      Id = idToInsert2,
+      Name = name2,
+      Description = description2,
+      Color = color2
+    };
+    tagService.UpdateTag(tagDtoUpdate);
+
+    TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
+
+    Assert.IsNotNull(tagDto);
+    //TODO continuer l'update
+    //Assert.AreEqual(idToInsert, tagDto.Id);
+    //Assert.AreEqual(nameToUpdate, tagDto.Name);
+    //Assert.AreEqual(descriptionToUpdate, tagDto.Description);
+    //Assert.AreEqual(colorToUpdate, tagDto.Color);
   }
 
   //TODO : a continuer avec les différentes méthodes.

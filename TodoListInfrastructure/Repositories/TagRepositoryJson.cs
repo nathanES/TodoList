@@ -3,6 +3,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using TodoList.Domain.Entities;
+using TodoList.Domain.Exceptions;
 using TodoList.Domain.Interfaces;
 
 namespace TodoList.Infrastructure.Repositories
@@ -54,6 +55,8 @@ namespace TodoList.Infrastructure.Repositories
 
     public void AddTag(Tag tag)
     {
+        if (cache.Any(t => t.Id == tag.Id))
+            throw new DuplicateKeyException($"Duplicate {nameof(Tag.Id)}, Value : {tag.Id}");
       cache.Add(tag);
       WriteToFile();
     }
