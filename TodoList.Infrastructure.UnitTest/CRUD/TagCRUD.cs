@@ -1,5 +1,5 @@
 ﻿using TodoList.Domain.Entities;
-using TodoList.Domain.Interfaces;
+using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure.Repositories;
 
 namespace TodoList.Infrastructure.UnitTest.CRUD;

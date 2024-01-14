@@ -1,113 +1,106 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TodoList.Domain.Entities;
 using TodoList.Domain.Exceptions;
-using TodoList.Domain.Interfaces;
+using TodoList.Domain.Interfaces.Repositories;
 
-namespace TodoList.Infrastructure.Repositories
+namespace TodoList.Infrastructure.Repositories;
+
+public class TaskRepositoryJson : ITaskRepository
 {
-  public class TaskRepositoryJson : ITaskRepository
-  {
     private readonly string _taskFilePath = $@"{Settings.JsonDataFilePathBase}tasks.json";
     private List<Task> cache;
-    private readonly object fileLock = new object();
+    private readonly object fileLock = new();
     public TaskRepositoryJson()
     {
-      LoadCache();
+        LoadCache();
     }
     private void LoadCache()
     {
-      try
-      {
-        if (!File.Exists(_taskFilePath))
+        try
         {
-          cache = new List<Task>();
-          return;
-        }
+            if (!File.Exists(_taskFilePath))
+            {
+                cache = new List<Task>();
+                return;
+            }
 
-        string json = File.ReadAllText(_taskFilePath);
-        cache = JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
-      }
-      catch (Exception e)
-      {
-                Console.WriteLine("LoadCache Impossible"); //TODO mettre un logger à la place
-                throw;
-      }
+            string json = File.ReadAllText(_taskFilePath);
+            cache = JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("LoadCache Impossible"); //TODO mettre un logger à la place
+            throw;
+        }
     }
     private void WriteToFile()
     {
-      try
-      {
-        lock (fileLock)
+        try
         {
-          string json = JsonConvert.SerializeObject(cache, Formatting.Indented);
-          File.WriteAllText(_taskFilePath, json);
+            lock (fileLock)
+            {
+                string json = JsonConvert.SerializeObject(cache, Formatting.Indented);
+                File.WriteAllText(_taskFilePath, json);
+            }
         }
-      }
-      catch (Exception e)
-      {
-        Console.WriteLine("WriteToFile Impossible"); //TODO mettre un logger à la place
+        catch (Exception)
+        {
+            Console.WriteLine("WriteToFile Impossible"); //TODO mettre un logger à la place
 
-        throw;
-      }
+            throw;
+        }
     }
 
     public void AddTask(Task task)
     {
-            if (cache.Any(t => t.Id == task.Id))
-                throw new DuplicateKeyException($"Duplicate {nameof(Task.Id)}, Value : {task.Id}");
-            cache.Add(task);
-      WriteToFile();
+        if (cache.Any(t => t.Id == task.Id))
+            throw new DuplicateKeyException($"Duplicate {nameof(Task.Id)}, Value : {task.Id}");
+        cache.Add(task);
+        WriteToFile();
     }
 
     public void DeleteTaskById(string id)
     {
 
-      int taskIndexToDelete = cache.FindIndex(t => t.Id == id);
+        int taskIndexToDelete = cache.FindIndex(t => t.Id == id);
 
-      if (taskIndexToDelete == -1)
-        return;
+        if (taskIndexToDelete == -1)
+            return;
 
-      cache.RemoveAt(taskIndexToDelete);
-      WriteToFile();
+        cache.RemoveAt(taskIndexToDelete);
+        WriteToFile();
     }
     public void DeleteTaskByIds(IEnumerable<string> taskIds)
     {
-      foreach (string taskId in taskIds)
-      {
-        int taskIndexToDelete = cache.FindIndex(t => t.Id == taskId);
+        foreach (string taskId in taskIds)
+        {
+            int taskIndexToDelete = cache.FindIndex(t => t.Id == taskId);
 
-        if (taskIndexToDelete == -1)
-          continue;
+            if (taskIndexToDelete == -1)
+                continue;
 
-        cache.RemoveAt(taskIndexToDelete);
-      }
-      WriteToFile();
+            cache.RemoveAt(taskIndexToDelete);
+        }
+        WriteToFile();
     }
 
     public IEnumerable<Task> GetAllTasks()
     {
-      return cache;
+        return cache;
     }
 
     public Task GetTaskById(string id)
     {
-      return cache.Find(t => t.Id == id);
+        return cache.Find(t => t.Id == id);
     }
 
     public void UpdateTask(Task task)
-    { //TODO : voir pour ne pas update l'ID dans Task mais aussi dans TaskTag et Tag
-      int taskIndexToUpdate = cache.FindIndex(t => t.Id == task.Id);
+    {
+        int taskIndexToUpdate = cache.FindIndex(t => t.Id == task.Id);
 
-      if (taskIndexToUpdate == -1)
-        return;
+        if (taskIndexToUpdate == -1)
+            return;
 
-      cache[taskIndexToUpdate] = task;
-      WriteToFile();
+        cache[taskIndexToUpdate] = task;
+        WriteToFile();
     }
-  }
 }

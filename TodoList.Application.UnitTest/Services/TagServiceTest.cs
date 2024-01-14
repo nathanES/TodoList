@@ -1,6 +1,7 @@
 ﻿using TodoList.Application.DTOs;
 using TodoList.Application.Services;
 using TodoList.Domain.Interfaces;
+using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure.Repositories;
 
 namespace TodoList.Application.UnitTest.Services;
@@ -41,7 +42,6 @@ public class TagServiceTest
     Assert.AreEqual(description, tagDto.Description);
     Assert.AreEqual(color, tagDto.Color);
   }
-
 
   [TestMethod]
   [DataRow("Tag 1")]
@@ -192,11 +192,10 @@ public class TagServiceTest
   }
 
   [TestMethod]
-    [DataRow("", "Tag 1", "Description 1", "#000000", "", "Tag 2", "Description 2", "#FFFFFF")]
-    public void UpdateTag(string id, string name, string description, string color, string id2, string name2, string description2, string color2)
+    [DataRow("", "Tag 1", "Description 1", "#000000", "Tag 2", "Description 2", "#FFFFFF")]
+    public void UpdateTag_WithFullParameters(string id, string name, string description, string color, string name2, string description2, string color2)
   {
   string idToInsert1 = !String.IsNullOrWhiteSpace(id) ? id : Guid.NewGuid().ToString();
-  string idToInsert2 = !String.IsNullOrWhiteSpace(id2) ? id2 : Guid.NewGuid().ToString();
     TagService tagService = new(tagRepository);
     TagDto tagDtoInsert = new()
     {
@@ -209,7 +208,7 @@ public class TagServiceTest
 
     TagDto tagDtoUpdate = new()
     {
-      Id = idToInsert2,
+      Id = idToInsert1,
       Name = name2,
       Description = description2,
       Color = color2
@@ -219,11 +218,10 @@ public class TagServiceTest
     TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
 
     Assert.IsNotNull(tagDto);
-    //TODO continuer l'update
-    //Assert.AreEqual(idToInsert, tagDto.Id);
-    //Assert.AreEqual(nameToUpdate, tagDto.Name);
-    //Assert.AreEqual(descriptionToUpdate, tagDto.Description);
-    //Assert.AreEqual(colorToUpdate, tagDto.Color);
+    Assert.AreEqual(idToInsert1, tagDto.Id);
+    Assert.AreEqual(name2, tagDto.Name);
+    Assert.AreEqual(description2, tagDto.Description);
+    Assert.AreEqual(color2, tagDto.Color);
   }
 
   //TODO : a continuer avec les différentes méthodes.

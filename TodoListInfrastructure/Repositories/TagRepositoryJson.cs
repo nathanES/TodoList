@@ -4,11 +4,11 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using TodoList.Domain.Entities;
 using TodoList.Domain.Exceptions;
-using TodoList.Domain.Interfaces;
+using TodoList.Domain.Interfaces.Repositories;
 
 namespace TodoList.Infrastructure.Repositories
 {
-  public class TagRepositoryJson : ITagRepository
+    public class TagRepositoryJson : ITagRepository
   {
     private readonly string _tagsFilePath = $@"{Settings.JsonDataFilePathBase}tags.json";
     private List<Tag> cache;

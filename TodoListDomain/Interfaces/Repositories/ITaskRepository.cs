@@ -1,12 +1,11 @@
-﻿namespace TodoList.Domain.Interfaces
+﻿namespace TodoList.Domain.Interfaces.Repositories;
+
+public interface ITaskRepository
 {
-  public interface ITaskRepository
-  {
     IEnumerable<Task> GetAllTasks();
     Task GetTaskById(string id);
     void AddTask(Task task);
     void UpdateTask(Task task);
     void DeleteTaskById(string id);
     void DeleteTaskByIds(IEnumerable<string> taskTagIds);
-  }
 }
