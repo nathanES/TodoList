@@ -43,6 +43,7 @@ public class LoggerCustom : ILogger
 
     public void LogException(Exception exception, string? message, LogLevel logLevel = LogLevel.Error, params object[] args)
     {
+        //TODO : Vérifier si cela fonctionne bien
         string fullMessage = string.Format("{Message} {Exception.Message}", message ?? "An Exception Occurs : ", exception.Message);
         Log(logLevel, fullMessage, args);
     }
@@ -54,6 +55,26 @@ public class LoggerCustom : ILogger
 
     public IDisposable BeginScope<TState>(TState state)
     {
-        throw new NotImplementedException();
+        return new LoggingScope<TState>(state);
+    }
+
+    private class LoggingScope<TState> : IDisposable
+    {
+        private readonly TState _state;
+
+        public LoggingScope(TState state)
+        {
+            //TODO : Peut=être mettre plus d'information dans le scope
+            _state = state;
+            // Ici, vous pourriez écrire un log pour débuter le scope
+            Console.WriteLine($"Début du scope: {_state}");
+        }
+
+        public void Dispose()
+        {
+            //TODO : Peut=être mettre plus d'information dans le scope
+            // Ici, vous pourriez écrire un log pour terminer le scope
+            Console.WriteLine($"Fin du scope: {_state}");
+        }
     }
 }

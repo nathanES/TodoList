@@ -7,10 +7,12 @@ namespace TodoList.Application.Services;
 public class TagService
 {
     private readonly ITagRepository tagRepository;
+    private readonly ILogger logger;
 
-    public TagService(ITagRepository tagRepository)
+    public TagService(ITagRepository tagRepository, ILogger logger)
     {
         this.tagRepository = tagRepository;
+        this.logger = logger;
     }
 
     public IEnumerable<TagDto> GetAllTags()

@@ -1,4 +1,5 @@
 ﻿using TodoList.Domain.Enum;
+using TodoList.Domain.Interfaces;
 using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure.Repositories;
 
@@ -7,13 +8,20 @@ namespace TodoList.Infrastructure.UnitTest.CRUD;
 [TestClass]
 public class TaskCRUD
 {
+    private ITaskRepository? taskRepository;
+    private ILogger? logger;
+    [TestInitialize]
+    public void TaskCRUDInitialize()
+    {
+        logger = new LoggerCustom();
+        taskRepository = new TaskRepositoryJson(logger);
+    }
+
     [TestMethod]
     [DataRow("Add Task", "Description", Priority.High)]
     public void AddTask(string name, string description, Priority priority)
     {
         //Arrange
-        ITaskRepository taskRepository = new TaskRepositoryJson();
-
         Task task = new Task.TaskBuilder()
             .SetName(name)
             .SetDescription(description)
@@ -30,8 +38,6 @@ public class TaskCRUD
     public void DeleteTask(string name, string description, Priority priority)
     {
         //Arrange
-        ITaskRepository taskRepository = new TaskRepositoryJson();
-
         Task task = new Task.TaskBuilder()
             .SetName(name)
             .SetDescription(description)
@@ -49,8 +55,6 @@ public class TaskCRUD
     public void DeleteTasks(string name, string description, Priority priority)
     {
         //Arrange
-        ITaskRepository taskRepository = new TaskRepositoryJson();
-
         Task task = new Task.TaskBuilder()
             .SetName(name)
             .SetDescription(description)
@@ -77,8 +81,6 @@ public class TaskCRUD
     public void UpdateTask(string name, string description, Priority priority)
     {
         //Arrange
-        ITaskRepository taskRepository = new TaskRepositoryJson();
-
         Task task = new Task.TaskBuilder()
             .SetName(name)
             .SetDescription(description)
@@ -99,8 +101,6 @@ public class TaskCRUD
     public void GetTaskById(string name, string description, Priority priority)
     {
         //Arrange
-        ITaskRepository taskRepository = new TaskRepositoryJson();
-
         Task task = new Task.TaskBuilder()
             .SetName(name)
             .SetDescription(description)
@@ -118,8 +118,6 @@ public class TaskCRUD
     public void GetAllTasks(string name, string description, Priority priority)
     {
         //Arrange
-        ITaskRepository taskRepository = new TaskRepositoryJson();
-
         Task task = new Task.TaskBuilder()
             .SetName(name)
             .SetDescription(description)

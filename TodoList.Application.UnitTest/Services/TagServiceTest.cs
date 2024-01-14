@@ -2,6 +2,7 @@
 using TodoList.Application.Services;
 using TodoList.Domain.Interfaces;
 using TodoList.Domain.Interfaces.Repositories;
+using TodoList.Infrastructure;
 using TodoList.Infrastructure.Repositories;
 
 namespace TodoList.Application.UnitTest.Services;
@@ -11,11 +12,13 @@ public class TagServiceTest
 {
   private ITagRepository? tagRepository;
   private ITaskTagRepository? taskTagRepository;
+  private ILogger? logger;
   [TestInitialize]
   public void TagServiceInitialize()
   {
-    tagRepository = new TagRepositoryJson();
-    taskTagRepository = new TaskTagRepositoryJson();
+    logger = new LoggerCustom();
+    tagRepository = new TagRepositoryJson(logger);
+    taskTagRepository = new TaskTagRepositoryJson(logger);
   }
 
   [TestMethod]
@@ -23,7 +26,7 @@ public class TagServiceTest
   public void AddTag_WithAllProperties_WithoutParentTags(string id, string name, string description, string color)
   {
     string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository,logger);
     TagDto tagDtoInsert = new()
     {
       Id = idToInsert,
@@ -48,7 +51,7 @@ public class TagServiceTest
   public void AddTag_WithName(string name)
   {
     string idToInsert = Guid.NewGuid().ToString();
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
     TagDto tagDtoInsert = new()
     {
       Id = idToInsert,
@@ -68,7 +71,7 @@ public class TagServiceTest
   public void AddTag_WithId(string id)
   {
     string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
     TagDto tagDtoInsert = new()
     {
       Id = idToInsert,
@@ -86,7 +89,7 @@ public class TagServiceTest
   public void AddTag_WithNameAndDescription(string name, string description)
   {
     string idToInsert = Guid.NewGuid().ToString();
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
     TagDto tagDtoInsert = new()
     {
       Id = idToInsert,
@@ -108,7 +111,7 @@ public class TagServiceTest
   public void AddTag_WithNameAndColor(string name, string color)
   {
     string idToInsert = Guid.NewGuid().ToString();
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
     TagDto tagDtoInsert = new()
     {
       Id = idToInsert,
@@ -130,7 +133,7 @@ public class TagServiceTest
   public void AddTag_WithoutName_Exception(string description)
   {
     string idToInsert = Guid.NewGuid().ToString();
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
     TagDto tagDtoInsert = new()
     {
       Id = idToInsert,
@@ -143,7 +146,7 @@ public class TagServiceTest
   [DataRow("Tag 1")]
   public void GetAllTags(string tagName)
   {
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
     tagService.AddTag(new TagDto { Name = tagName });
 
     IEnumerable<TagDto> tagDtos = tagService.GetAllTags();
@@ -157,7 +160,7 @@ public class TagServiceTest
   {
     string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
     string nameToInsert = "Tag 1";
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
     TagDto tagDtoInsert = new() { Id = idToInsert, Name = nameToInsert };
     tagService.AddTag(tagDtoInsert);
 
@@ -170,7 +173,7 @@ public class TagServiceTest
   [TestMethod]
   public void GetTagById_NotFound()
   {
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
 
     TagDto tagDto = tagService.GetTagById(Guid.NewGuid().ToString());
 
@@ -179,14 +182,14 @@ public class TagServiceTest
   [TestMethod]
   public void GetTagById_NullId_Exception()
   {
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
 
     _ = Assert.ThrowsException<ArgumentNullException>(() => tagService.GetTagById(null));
   }
   [TestMethod]
   public void GetTagById_EmptyId_Exception()
   {
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
 
     _ = Assert.ThrowsException<ArgumentNullException>(() => tagService.GetTagById(""));
   }
@@ -196,7 +199,7 @@ public class TagServiceTest
     public void UpdateTag_WithFullParameters(string id, string name, string description, string color, string name2, string description2, string color2)
   {
   string idToInsert1 = !String.IsNullOrWhiteSpace(id) ? id : Guid.NewGuid().ToString();
-    TagService tagService = new(tagRepository);
+    TagService tagService = new(tagRepository, logger);
     TagDto tagDtoInsert = new()
     {
       Id = idToInsert1,

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using TodoList.Domain.Exceptions;
+using TodoList.Domain.Interfaces;
 using TodoList.Domain.Interfaces.Repositories;
 
 namespace TodoList.Infrastructure.Repositories;
@@ -9,8 +10,11 @@ public class TaskRepositoryJson : ITaskRepository
     private readonly string _taskFilePath = $@"{Settings.JsonDataFilePathBase}tasks.json";
     private List<Task> cache;
     private readonly object fileLock = new();
-    public TaskRepositoryJson()
+    private readonly ILogger logger;
+
+    public TaskRepositoryJson(ILogger logger)
     {
+        this.logger = logger;
         LoadCache();
     }
     private void LoadCache()

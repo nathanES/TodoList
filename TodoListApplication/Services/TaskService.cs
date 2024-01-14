@@ -9,10 +9,12 @@ namespace TodoList.Application.Services;
 public class TaskService
 {
     private readonly ITaskRepository taskRepository;
+    private readonly ILogger logger;
 
-    public TaskService(ITaskRepository taskRepository)
+    public TaskService(ITaskRepository taskRepository, ILogger logger)
     {
         this.taskRepository = taskRepository;
+        this.logger = logger;
     }
 
     public IEnumerable<TaskDto> GetAllTasks()
