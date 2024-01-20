@@ -1,5 +1,4 @@
-﻿using TodoList.Domain.Enum;
-using TodoList.Domain.Interfaces;
+﻿using TodoList.Domain.Interfaces;
 
 namespace TodoList.Infrastructure;
 public class LoggerCustom : ILogger
@@ -8,7 +7,7 @@ public class LoggerCustom : ILogger
     {
         if (!IsEnabled(logLevel))
             return;
-        Console.WriteLine($"{logLevel}: {string.Format(message, args)}");
+        Console.WriteLine($"{logLevel}: {(args == null || args.Length == 0 ? message : string.Format(message, args))}");
     }
 
     public void LogTrace(string message, params object[] args)

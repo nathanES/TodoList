@@ -222,8 +222,7 @@ public class TaskTagCRUD
         //Arrange
         ITaskRepository taskRepository = new TaskRepositoryJson(logger);
 
-        Task task = new Task.TaskBuilder()
-            .SetName(name)
+        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();

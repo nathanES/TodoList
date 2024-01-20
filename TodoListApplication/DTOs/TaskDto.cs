@@ -16,9 +16,7 @@ public class TaskDto
 
     public static explicit operator Task(TaskDto taskDto)
     {
-        return new Task.TaskBuilder()
-            .SetId(taskDto.Id)
-            .SetName(taskDto.Name)
+        return new Task.TaskBuilder(taskDto.Id, taskDto.Name)
             .SetDescription(taskDto.Description)
             .SetPriority(taskDto.Priority)
             .SetDeadLine(taskDto.DeadLine)

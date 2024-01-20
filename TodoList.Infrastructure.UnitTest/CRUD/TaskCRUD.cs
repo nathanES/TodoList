@@ -22,8 +22,7 @@ public class TaskCRUD
     public void AddTask(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder()
-            .SetName(name)
+        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -38,8 +37,7 @@ public class TaskCRUD
     public void DeleteTask(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder()
-            .SetName(name)
+        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -55,15 +53,13 @@ public class TaskCRUD
     public void DeleteTasks(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder()
-            .SetName(name)
+        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
         taskRepository.AddTask(task);
 
-        Task task2 = new Task.TaskBuilder()
-          .SetName(name)
+        Task task2 = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
           .SetDescription(description)
           .SetPriority(priority)
           .Build();
@@ -81,8 +77,7 @@ public class TaskCRUD
     public void UpdateTask(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder()
-            .SetName(name)
+        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -101,8 +96,7 @@ public class TaskCRUD
     public void GetTaskById(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder()
-            .SetName(name)
+        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -118,8 +112,7 @@ public class TaskCRUD
     public void GetAllTasks(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder()
-            .SetName(name)
+        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();

@@ -58,7 +58,7 @@ public class TagRepositoryJson : ITagRepository
     {
         if (cache.Any(t => t.Id == tag.Id))
         {
-            logger.LogCritical("AddTag : DuplicateKey : {Id}", tag.Id);
+            logger.LogCritical("AddTag : DuplicateKey : {0}", tag.Id);
             throw new DuplicateKeyException($"Duplicate {nameof(Tag.Id)}, Value : {tag.Id}");
         }
         cache.Add(tag);
@@ -71,7 +71,7 @@ public class TagRepositoryJson : ITagRepository
 
         if (tagIndexToDelete == -1)
         {
-            logger.LogWarning(_tagsFilePath, "DeleteTagById : Tag not found : {Id}", tagId);
+            logger.LogWarning(_tagsFilePath, "DeleteTagById : Tag not found : {0}", tagId);
             return;
         }
 
@@ -87,7 +87,7 @@ public class TagRepositoryJson : ITagRepository
 
             if (tagIndexToDelete == -1)
             {
-                logger.LogWarning(_tagsFilePath, "DeleteTagByIds : Tag not found : {Id}", tagId);
+                logger.LogWarning(_tagsFilePath, "DeleteTagByIds : Tag not found : {0}", tagId);
                 continue;
             }
             cache.RemoveAt(tagIndexToDelete);
@@ -100,13 +100,18 @@ public class TagRepositoryJson : ITagRepository
         return cache;
     }
 
-    public Tag? GetTagById(string id)
+    public Tag GetTagById(string id)
     {
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            logger.LogInformation("GetTagById : TagId is null or empty");
+            return Tag.Empty;
+        }
         Tag tag = cache.Find(t => t.Id == id);
         if (tag == null)
         {
-            logger.LogInformation("GetTagById : Tag not found : {Id}", id);
-            return null;// ??Tag.Empty;
+            logger.LogInformation("GetTagById : Tag not found : {0}", id);
+            return Tag.Empty;
         }
         return tag;
     }
@@ -117,7 +122,7 @@ public class TagRepositoryJson : ITagRepository
 
         if (tagIndexToUpdate == -1)
         {
-            logger.LogWarning(_tagsFilePath, "UpdateTag : Tag not found : {Id}", tag.Id);
+            logger.LogWarning(_tagsFilePath, "UpdateTag : Tag not found : {0}", tag.Id);
             return;
         }
 

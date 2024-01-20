@@ -16,7 +16,6 @@ public class TagDto
         ParentTagIds = new List<string>();
     }
 
-    //TODO : peut-être faire une bibliotheque de conversion au lieu de faire des explicit operator
     public static explicit operator Tag(TagDto tagDto)
     {
         return new Tag.TagBuilder(tagDto.Id, tagDto.Name)

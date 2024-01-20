@@ -4059,5 +4059,1746 @@
       "ColorValue": "#FFFFFF"
     },
     "ParentTagIds": []
+  },
+  {
+    "Id": "e071602c-62c7-4dd8-a238-44b1ed974ea0",
+    "Name": "AddTagParent",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4157c69d-29ca-4a47-87e4-0dda95470d76",
+    "Name": "AddTag",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "e071602c-62c7-4dd8-a238-44b1ed974ea0"
+    ]
+  },
+  {
+    "Id": "12169f26-cf12-4437-9079-4c43e213162a",
+    "Name": "GetAllTags",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6f9f9ae7-8126-4b99-9329-0819f39cd4b9",
+    "Name": "GetTagById",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "38fdbed2-a005-447e-ac93-8db7c2dd2599",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7ff8b2e8-883b-498f-9021-ab4fb8d8a172",
+    "Name": "AddTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "46b2b2c3-54a6-4fe4-b630-7b49a9b907a2",
+    "Name": "AddTaskTagNameTag",
+    "Description": "AddTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "7ff8b2e8-883b-498f-9021-ab4fb8d8a172"
+    ]
+  },
+  {
+    "Id": "566aeba4-8a2d-46a7-b444-a3ae2b036d11",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a2efe2f4-8c64-4768-8f4b-b25b6ebb8e2e",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "566aeba4-8a2d-46a7-b444-a3ae2b036d11"
+    ]
+  },
+  {
+    "Id": "48dd9533-be64-4008-8b4b-aca7bbd19785",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "9df66e53-a22b-4cd2-a3a2-9ccefeec331e",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "48dd9533-be64-4008-8b4b-aca7bbd19785"
+    ]
+  },
+  {
+    "Id": "5a89fc4c-2b7a-4d97-ab87-412d52f64beb",
+    "Name": "DeleteTaskTag2ParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "3c01e9e6-9ae0-4d30-8c33-781eb88f188e",
+    "Name": "DeleteTaskTagNameTag2",
+    "Description": "DeleteTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "5a89fc4c-2b7a-4d97-ab87-412d52f64beb"
+    ]
+  },
+  {
+    "Id": "d5685075-1fc2-41d1-bc1b-446994b20e0c",
+    "Name": "GetAllTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "95caad28-3157-4453-9512-1dcedad80501",
+    "Name": "GetAllTaskTagNameTag",
+    "Description": "GetAllTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "d5685075-1fc2-41d1-bc1b-446994b20e0c"
+    ]
+  },
+  {
+    "Id": "f9c61029-8c59-47ee-af14-2ee101c4e71e",
+    "Name": "GetTaskTagByIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "769c3703-750f-40df-b37d-0fabf1529bfd",
+    "Name": "GetTaskTagByIdNameTag",
+    "Description": "GetTaskTagById",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "f9c61029-8c59-47ee-af14-2ee101c4e71e"
+    ]
+  },
+  {
+    "Id": "e09a4b28-842b-4598-8b57-f57e573d68c5",
+    "Name": "GetTaskTagsByTagIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7bc739af-78cc-4fba-aec7-9aa28663a236",
+    "Name": "GetTaskTagsByTagIdNameTag",
+    "Description": "GetTaskTagsByTagId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "e09a4b28-842b-4598-8b57-f57e573d68c5"
+    ]
+  },
+  {
+    "Id": "ba7988c4-5a8c-45b9-a697-7aa660515491",
+    "Name": "GetTaskTagsByTaskIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a8d6474e-2174-447a-9d76-eec1eeae2cd8",
+    "Name": "GetTaskTagsByTaskIdNameTag",
+    "Description": "GetTaskTagsByTaskId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "ba7988c4-5a8c-45b9-a697-7aa660515491"
+    ]
+  },
+  {
+    "Id": "73d48296-210d-43fd-ba6c-3c9d524a99c9",
+    "Name": "IsRelationExistsFalseParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "f7121f16-c0b3-4296-aa2e-1fab8ab23719",
+    "Name": "IsRelationExistsFalseNameTag",
+    "Description": "IsRelationExistsFalse",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "73d48296-210d-43fd-ba6c-3c9d524a99c9"
+    ]
+  },
+  {
+    "Id": "7aee9810-71b2-47da-a52b-27157d523174",
+    "Name": "IsRelationExistsTrueParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "70c48e5d-9948-420f-acb0-d6082e396683",
+    "Name": "IsRelationExistsTrueNameTag",
+    "Description": "IsRelationExistsTrue",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "7aee9810-71b2-47da-a52b-27157d523174"
+    ]
+  },
+  {
+    "Id": "9a423390-f809-46a5-988a-d4bf8789fcfa",
+    "Name": "UpdateTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "dec0fb06-808a-442e-929f-ee6393ff6dcc",
+    "Name": "UpdateTaskTagNameTag",
+    "Description": "UpdateTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "9a423390-f809-46a5-988a-d4bf8789fcfa"
+    ]
+  },
+  {
+    "Id": "4bd0a37b-81b4-42b4-8551-830d304e76b3",
+    "Name": "UpdateTaskTagParentNameTag2",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "5f694ad4-9099-44bc-a44c-a9212500ff58",
+    "Name": "UpdateTaskTagNameTag2",
+    "Description": "UpdateTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "4bd0a37b-81b4-42b4-8551-830d304e76b3"
+    ]
+  },
+  {
+    "Id": "19c2ae72-b282-47d8-b011-8a22533c8cd7",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "db825c34-1fc7-4a3c-8b4a-bce04760d712",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "ba5d7cd7-0ec0-4590-a8ba-f192890a00a5",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "fc053f32-157c-4332-aa4c-a46e40835969",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "dcbe6a94-c8ab-435d-97c9-57f4847007bb",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8d941e6d-8858-4ea7-b68c-02e315405f61",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "ColorValue": "#FFFFFF"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7e84008e-edf8-4837-be38-b32a3e5db559",
+    "Name": "AddTagParent",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "47301557-266b-4546-8775-388c82433c3f",
+    "Name": "AddTag",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "7e84008e-edf8-4837-be38-b32a3e5db559"
+    ]
+  },
+  {
+    "Id": "100c046b-4d85-4670-955e-ec6d2cbcfbf8",
+    "Name": "GetAllTags",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "5838140e-634f-46e4-8122-35dc73d05cc1",
+    "Name": "GetTagById",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "0778d829-7779-4a3b-9fe7-47fc4c6f6c3c",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "aee9300d-3910-4987-8e40-3e80afaad60c",
+    "Name": "AddTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "826fdba2-39b7-478f-8ad7-2af7018992b5",
+    "Name": "AddTaskTagNameTag",
+    "Description": "AddTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "aee9300d-3910-4987-8e40-3e80afaad60c"
+    ]
+  },
+  {
+    "Id": "05bea440-248d-4ec8-a4f4-7a7ca6744c87",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "c49c566f-0a58-49fd-a5f7-d00c526d45dd",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "05bea440-248d-4ec8-a4f4-7a7ca6744c87"
+    ]
+  },
+  {
+    "Id": "dfed9010-e2d8-4752-8233-7fe08da2a92e",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "72754d34-b891-471e-904d-43177c7e57d0",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "dfed9010-e2d8-4752-8233-7fe08da2a92e"
+    ]
+  },
+  {
+    "Id": "562abfe8-6a4d-4539-b127-c4203292f398",
+    "Name": "DeleteTaskTag2ParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a5eab279-14c2-4ae3-a65a-7d164d36e3f9",
+    "Name": "DeleteTaskTagNameTag2",
+    "Description": "DeleteTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "562abfe8-6a4d-4539-b127-c4203292f398"
+    ]
+  },
+  {
+    "Id": "4bcdaa44-bd04-45d2-afb1-0483cdc98c1d",
+    "Name": "GetAllTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "5211e0c1-5ba1-47d2-a850-892a26c1a552",
+    "Name": "GetAllTaskTagNameTag",
+    "Description": "GetAllTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "4bcdaa44-bd04-45d2-afb1-0483cdc98c1d"
+    ]
+  },
+  {
+    "Id": "a0bf20f8-4ffa-49fb-b448-2ab7f8d6b8ea",
+    "Name": "GetTaskTagByIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8585285a-fd4a-4118-98f4-5ad8d66d8cbe",
+    "Name": "GetTaskTagByIdNameTag",
+    "Description": "GetTaskTagById",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "a0bf20f8-4ffa-49fb-b448-2ab7f8d6b8ea"
+    ]
+  },
+  {
+    "Id": "abd72bb0-c768-4272-ae40-e55377d04368",
+    "Name": "GetTaskTagsByTagIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "0482eedd-ba84-44ab-9934-a1822571b943",
+    "Name": "GetTaskTagsByTagIdNameTag",
+    "Description": "GetTaskTagsByTagId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "abd72bb0-c768-4272-ae40-e55377d04368"
+    ]
+  },
+  {
+    "Id": "a0d30c20-7478-4563-8fa9-55bcac41ca0d",
+    "Name": "GetTaskTagsByTaskIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "110d5c79-71b4-48d5-b3af-b8867464afdf",
+    "Name": "GetTaskTagsByTaskIdNameTag",
+    "Description": "GetTaskTagsByTaskId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "a0d30c20-7478-4563-8fa9-55bcac41ca0d"
+    ]
+  },
+  {
+    "Id": "814118dc-04e8-4392-a0c9-298e20a0d890",
+    "Name": "IsRelationExistsFalseParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "2074d585-3627-4a2b-b0a3-43181ce1733b",
+    "Name": "IsRelationExistsFalseNameTag",
+    "Description": "IsRelationExistsFalse",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "814118dc-04e8-4392-a0c9-298e20a0d890"
+    ]
+  },
+  {
+    "Id": "7f2acaa0-c83d-46b3-9733-8df309a9d6f7",
+    "Name": "IsRelationExistsTrueParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "416ed6db-2009-46af-84fa-79d3e682c53c",
+    "Name": "IsRelationExistsTrueNameTag",
+    "Description": "IsRelationExistsTrue",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "7f2acaa0-c83d-46b3-9733-8df309a9d6f7"
+    ]
+  },
+  {
+    "Id": "2fe63dd8-2fd5-4a51-87d4-c40373d61cb5",
+    "Name": "UpdateTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "e44e3e21-b710-4f9b-8ee6-2ffdbc1a3fb4",
+    "Name": "UpdateTaskTagNameTag",
+    "Description": "UpdateTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "2fe63dd8-2fd5-4a51-87d4-c40373d61cb5"
+    ]
+  },
+  {
+    "Id": "57138a6d-3254-4e5f-bb19-b616b2a788a1",
+    "Name": "UpdateTaskTagParentNameTag2",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4499d62e-ce75-4123-9c6a-10727ca4785f",
+    "Name": "UpdateTaskTagNameTag2",
+    "Description": "UpdateTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "57138a6d-3254-4e5f-bb19-b616b2a788a1"
+    ]
+  },
+  {
+    "Id": "8fea4f45-1ecc-43cb-a934-fbc451cc8785",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "17d5e82c-4d53-4f32-b628-7990959f8dc0",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1cdcb811-2f3e-4f53-9409-68c1a9c0052b",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "875faf24-bcab-45d8-97dc-07bcbddabd00",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "51ef8824-4ffc-4124-92fa-cfd1e359436b",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "dba7a5a1-d4a4-4eac-a210-7248ddbd5336",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "449dfd1a-2508-41a6-b4d8-7313df848ded",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "ColorValue": "#FFFFFF"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a10e506b-1ad0-44d0-95a5-f1d8b00f07d3",
+    "Name": "AddTagParent",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6ca06f4b-9b62-45d7-8332-786000191fb3",
+    "Name": "AddTag",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "a10e506b-1ad0-44d0-95a5-f1d8b00f07d3"
+    ]
+  },
+  {
+    "Id": "91557115-72f1-4324-a5b0-1f6a56cfe632",
+    "Name": "GetAllTags",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "483bb65b-f425-41e7-bd61-fdc662fb9b2a",
+    "Name": "GetTagById",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "68e5c953-2a5a-4ff6-9632-bd5719e359a3",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "e7ba07b2-ff9a-42ed-9ed2-43afdb2a67e0",
+    "Name": "AddTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "9cd77773-4463-4925-9e93-d828600507ec",
+    "Name": "AddTaskTagNameTag",
+    "Description": "AddTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "e7ba07b2-ff9a-42ed-9ed2-43afdb2a67e0"
+    ]
+  },
+  {
+    "Id": "c9c96433-efef-42d8-b503-e69d0b965d3f",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1dc33e23-acdd-4a38-a5c3-365716c5b534",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "c9c96433-efef-42d8-b503-e69d0b965d3f"
+    ]
+  },
+  {
+    "Id": "d30eefee-8ce0-41c3-85dc-7ed5817cf8d3",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "0a82eb54-265e-41c8-b746-e1137669b2a6",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "d30eefee-8ce0-41c3-85dc-7ed5817cf8d3"
+    ]
+  },
+  {
+    "Id": "6861210f-3628-4e81-aab2-23722174c5f7",
+    "Name": "DeleteTaskTag2ParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "2e2c7aa3-9abd-468a-b9c3-8179b268fa30",
+    "Name": "DeleteTaskTagNameTag2",
+    "Description": "DeleteTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "6861210f-3628-4e81-aab2-23722174c5f7"
+    ]
+  },
+  {
+    "Id": "94311faf-4d5e-42d7-a736-156f582552f7",
+    "Name": "GetAllTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "f3fe3717-cf0e-4a36-a964-93a8cfbbafcc",
+    "Name": "GetAllTaskTagNameTag",
+    "Description": "GetAllTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "94311faf-4d5e-42d7-a736-156f582552f7"
+    ]
+  },
+  {
+    "Id": "fbb60270-33bc-4a82-bce8-a24b8929189c",
+    "Name": "GetTaskTagByIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "2b831c02-8f76-4d4f-b969-537ca2afd9eb",
+    "Name": "GetTaskTagByIdNameTag",
+    "Description": "GetTaskTagById",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "fbb60270-33bc-4a82-bce8-a24b8929189c"
+    ]
+  },
+  {
+    "Id": "df587726-479c-40f0-8ab5-f6f86318b93c",
+    "Name": "GetTaskTagsByTagIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1358c53a-5d4a-4e60-824f-9d337458d5db",
+    "Name": "GetTaskTagsByTagIdNameTag",
+    "Description": "GetTaskTagsByTagId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "df587726-479c-40f0-8ab5-f6f86318b93c"
+    ]
+  },
+  {
+    "Id": "8f01043e-81e8-4d32-b6a0-5f80b5d0dcfd",
+    "Name": "GetTaskTagsByTaskIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4ea10f73-b57b-4efc-9f66-81d56408217e",
+    "Name": "GetTaskTagsByTaskIdNameTag",
+    "Description": "GetTaskTagsByTaskId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "8f01043e-81e8-4d32-b6a0-5f80b5d0dcfd"
+    ]
+  },
+  {
+    "Id": "8f44182b-9629-4f1d-aedd-45ca06c8fecf",
+    "Name": "IsRelationExistsFalseParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "b0389630-303c-4264-9e9e-27d39a85e402",
+    "Name": "IsRelationExistsFalseNameTag",
+    "Description": "IsRelationExistsFalse",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "8f44182b-9629-4f1d-aedd-45ca06c8fecf"
+    ]
+  },
+  {
+    "Id": "cdb85e04-5767-4679-b297-9b7895288b6c",
+    "Name": "IsRelationExistsTrueParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "475281e8-1a5a-482e-8ffe-fedb850429fc",
+    "Name": "IsRelationExistsTrueNameTag",
+    "Description": "IsRelationExistsTrue",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "cdb85e04-5767-4679-b297-9b7895288b6c"
+    ]
+  },
+  {
+    "Id": "856f90c4-ecd5-4bcb-babb-db29bf7549f4",
+    "Name": "UpdateTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "77ae2313-b24e-4215-ad5b-958fe9a0bb86",
+    "Name": "UpdateTaskTagNameTag",
+    "Description": "UpdateTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "856f90c4-ecd5-4bcb-babb-db29bf7549f4"
+    ]
+  },
+  {
+    "Id": "7e6f54f8-267e-4b8d-bca5-77192f3404d9",
+    "Name": "UpdateTaskTagParentNameTag2",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8269759b-9543-48f3-91c4-8aa54779d543",
+    "Name": "UpdateTaskTagNameTag2",
+    "Description": "UpdateTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "7e6f54f8-267e-4b8d-bca5-77192f3404d9"
+    ]
+  },
+  {
+    "Id": "4e453d9a-7613-40e2-8458-795ec70d4bda",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1a472055-5103-4b43-abcc-2535c6d49919",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7edac290-7749-4517-a6b8-adca8c859192",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "3ba2c5c3-8bd4-4dca-9c72-5e2779d64622",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "006880dd-5b83-432d-8378-024531d21a75",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "f08254db-4446-44ea-9bdd-171122bf5d42",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "492d732d-6b03-4e75-82c4-9ed2692c4cc4",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "ColorValue": "#FFFFFF"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4521cd9e-5d7c-4c5f-906c-d570050a07b0",
+    "Name": "AddTagParent",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "b0a7885d-cd6d-4cb8-be56-8f493995e045",
+    "Name": "AddTag",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "4521cd9e-5d7c-4c5f-906c-d570050a07b0"
+    ]
+  },
+  {
+    "Id": "c7649466-fbb8-4e52-83ac-7e87e61b99e2",
+    "Name": "GetAllTags",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "23073529-42c7-408b-b356-ec2e774b012f",
+    "Name": "GetTagById",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "e3ad31fd-28b4-411c-987f-99270c629bd1",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "697ecf7b-372a-4a4d-abba-ce6e76fc3181",
+    "Name": "AddTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "5fc5d90f-c117-4bce-a52a-e2a6410ba55f",
+    "Name": "AddTaskTagNameTag",
+    "Description": "AddTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "697ecf7b-372a-4a4d-abba-ce6e76fc3181"
+    ]
+  },
+  {
+    "Id": "33cf14e3-67c1-41c6-a126-0bfc14580232",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "f7e53151-48d3-4d74-a76a-69cae8d2d0ae",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "33cf14e3-67c1-41c6-a126-0bfc14580232"
+    ]
+  },
+  {
+    "Id": "855f2da0-c39a-4bc3-87bb-bb9c886b7bc0",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4bb7385f-f28b-466f-87b6-f34f2a8dc8b8",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "855f2da0-c39a-4bc3-87bb-bb9c886b7bc0"
+    ]
+  },
+  {
+    "Id": "a5de6d3f-5c0e-477a-8bb5-965c8c0195d6",
+    "Name": "DeleteTaskTag2ParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "560a4cbb-f6d9-43f8-8361-d08be45d47c0",
+    "Name": "DeleteTaskTagNameTag2",
+    "Description": "DeleteTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "a5de6d3f-5c0e-477a-8bb5-965c8c0195d6"
+    ]
+  },
+  {
+    "Id": "c983af54-6b6c-42fe-97d6-c5af3538d31a",
+    "Name": "GetAllTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "731f4c18-df95-4e53-8a02-98a0cfa0d885",
+    "Name": "GetAllTaskTagNameTag",
+    "Description": "GetAllTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "c983af54-6b6c-42fe-97d6-c5af3538d31a"
+    ]
+  },
+  {
+    "Id": "1f46bcc7-67cf-4d5c-9c2c-25477aa9f151",
+    "Name": "GetTaskTagByIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "151d6028-a9b4-489d-ae9d-0b27cda2d108",
+    "Name": "GetTaskTagByIdNameTag",
+    "Description": "GetTaskTagById",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "1f46bcc7-67cf-4d5c-9c2c-25477aa9f151"
+    ]
+  },
+  {
+    "Id": "fbb183c1-6263-4ecb-9d4b-7f34b06adc72",
+    "Name": "GetTaskTagsByTagIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8a4da17f-438b-4f12-86b8-ddbdd1317fc7",
+    "Name": "GetTaskTagsByTagIdNameTag",
+    "Description": "GetTaskTagsByTagId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "fbb183c1-6263-4ecb-9d4b-7f34b06adc72"
+    ]
+  },
+  {
+    "Id": "754dd390-c383-4a65-9d9c-3f806fe2d8f6",
+    "Name": "GetTaskTagsByTaskIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "78860b39-14b6-413e-8367-23b6ce6e8413",
+    "Name": "GetTaskTagsByTaskIdNameTag",
+    "Description": "GetTaskTagsByTaskId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "754dd390-c383-4a65-9d9c-3f806fe2d8f6"
+    ]
+  },
+  {
+    "Id": "ec91e8a7-80f6-431d-a849-78ce2086f28d",
+    "Name": "IsRelationExistsFalseParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7ed5cb8c-23dc-4591-86b0-e83b8fa4167e",
+    "Name": "IsRelationExistsFalseNameTag",
+    "Description": "IsRelationExistsFalse",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "ec91e8a7-80f6-431d-a849-78ce2086f28d"
+    ]
+  },
+  {
+    "Id": "2b63ca45-687a-4e5d-84da-759a31ca6209",
+    "Name": "IsRelationExistsTrueParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "043be91c-ec0a-4200-af9b-1a155c2fefe3",
+    "Name": "IsRelationExistsTrueNameTag",
+    "Description": "IsRelationExistsTrue",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "2b63ca45-687a-4e5d-84da-759a31ca6209"
+    ]
+  },
+  {
+    "Id": "578248dc-d948-4b20-aeb9-d5853f5d884c",
+    "Name": "UpdateTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a5489713-534f-4e43-a8c2-a64f36a6fd0f",
+    "Name": "UpdateTaskTagNameTag",
+    "Description": "UpdateTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "578248dc-d948-4b20-aeb9-d5853f5d884c"
+    ]
+  },
+  {
+    "Id": "aaf9a761-3d37-4c1f-80ed-749a18d6aad0",
+    "Name": "UpdateTaskTagParentNameTag2",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "62f189ac-a5e1-41f3-8298-f52ec0b36f4d",
+    "Name": "UpdateTaskTagNameTag2",
+    "Description": "UpdateTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "aaf9a761-3d37-4c1f-80ed-749a18d6aad0"
+    ]
+  },
+  {
+    "Id": "1393dcfb-0599-4c43-bb4b-3faecffd35e7",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a380aa12-6e40-4699-8239-c931cb7b2c95",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "60144264-d009-4d6b-91f4-44bf6d047c9a",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "068144cf-e162-45f6-9e71-475f5e11fdd6",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "0c6a6c59-3cb0-4cc2-9dc3-64d5c87b3b11",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8e4191ea-f474-4f73-b2b7-02a29c574623",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "21c898f1-c486-487e-9e9f-c9440685a274",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "ColorValue": "#FFFFFF"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4e63b2b8-4790-49bd-b77e-fb5b2eee9bcc",
+    "Name": "AddTagParent",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "79e7ee89-b968-4b5e-9507-1298d67b487a",
+    "Name": "AddTag",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "4e63b2b8-4790-49bd-b77e-fb5b2eee9bcc"
+    ]
+  },
+  {
+    "Id": "e748e420-b160-467d-8a41-5cfd770b386a",
+    "Name": "GetAllTags",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "72e77ee6-5fad-4b40-9eac-31e5781acc3d",
+    "Name": "GetTagById",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4aaf7bcf-52e5-428c-bf1b-339a92577e87",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "9e77d083-8c55-4238-9e4d-4c615a7f099e",
+    "Name": "AddTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "f2c07525-86ce-4830-b54a-8aefe244f7f0",
+    "Name": "AddTaskTagNameTag",
+    "Description": "AddTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "9e77d083-8c55-4238-9e4d-4c615a7f099e"
+    ]
+  },
+  {
+    "Id": "ac449550-8c64-48e9-9bf9-23b7dd5bb861",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "32620766-9066-40b9-8d67-de7536b06b7f",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "ac449550-8c64-48e9-9bf9-23b7dd5bb861"
+    ]
+  },
+  {
+    "Id": "d210be77-b99a-43ab-8c75-5ad590edd2ad",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "32329875-cb2c-4537-9025-6f6582349038",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "d210be77-b99a-43ab-8c75-5ad590edd2ad"
+    ]
+  },
+  {
+    "Id": "83fc4ddf-73be-4979-ac57-9bf72696e258",
+    "Name": "DeleteTaskTag2ParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "cdb2ab7a-08ba-41c7-ac47-7b8cc7a2e133",
+    "Name": "DeleteTaskTagNameTag2",
+    "Description": "DeleteTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "83fc4ddf-73be-4979-ac57-9bf72696e258"
+    ]
+  },
+  {
+    "Id": "147dc219-2db8-4dfd-927e-4f1d5a425af2",
+    "Name": "GetAllTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "f16d1fb8-8850-4836-96f3-ac44e8193095",
+    "Name": "GetAllTaskTagNameTag",
+    "Description": "GetAllTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "147dc219-2db8-4dfd-927e-4f1d5a425af2"
+    ]
+  },
+  {
+    "Id": "ee9abe3e-d978-4465-afe9-838e236ab413",
+    "Name": "GetTaskTagByIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "b627a19d-454a-4d58-9af4-15a6906d6489",
+    "Name": "GetTaskTagByIdNameTag",
+    "Description": "GetTaskTagById",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "ee9abe3e-d978-4465-afe9-838e236ab413"
+    ]
+  },
+  {
+    "Id": "e00edb98-9cc8-4f27-a340-5ed74147db85",
+    "Name": "GetTaskTagsByTagIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "5a239648-0c8f-457c-8e52-a31457ceb864",
+    "Name": "GetTaskTagsByTagIdNameTag",
+    "Description": "GetTaskTagsByTagId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "e00edb98-9cc8-4f27-a340-5ed74147db85"
+    ]
+  },
+  {
+    "Id": "fdc2a5e8-f589-45e4-9efd-b2e2a9472467",
+    "Name": "GetTaskTagsByTaskIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "d516a59f-3822-4132-b28e-def5f1c60337",
+    "Name": "GetTaskTagsByTaskIdNameTag",
+    "Description": "GetTaskTagsByTaskId",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "fdc2a5e8-f589-45e4-9efd-b2e2a9472467"
+    ]
+  },
+  {
+    "Id": "9bebe9d6-8597-4068-90f3-9706ff8bd6ee",
+    "Name": "IsRelationExistsFalseParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "ee581eea-72fd-405a-820d-2552ce1f6bd0",
+    "Name": "IsRelationExistsFalseNameTag",
+    "Description": "IsRelationExistsFalse",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "9bebe9d6-8597-4068-90f3-9706ff8bd6ee"
+    ]
+  },
+  {
+    "Id": "30eb6b6d-08cd-4a30-88fb-b5b737edc7df",
+    "Name": "IsRelationExistsTrueParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "c5d8a685-bd35-471e-8a08-7cbb7c0a0d38",
+    "Name": "IsRelationExistsTrueNameTag",
+    "Description": "IsRelationExistsTrue",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "30eb6b6d-08cd-4a30-88fb-b5b737edc7df"
+    ]
+  },
+  {
+    "Id": "97846ced-8583-4308-a7c1-26958dfc5e82",
+    "Name": "UpdateTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "2f177986-8c96-481e-88ed-48bdd4c68fe1",
+    "Name": "UpdateTaskTagNameTag",
+    "Description": "UpdateTaskTag",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "97846ced-8583-4308-a7c1-26958dfc5e82"
+    ]
+  },
+  {
+    "Id": "67aea5c3-1a0b-4a3e-aa5e-76b7adc953c4",
+    "Name": "UpdateTaskTagParentNameTag2",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "954e10b0-b152-45ba-9e2a-eb87a8bda878",
+    "Name": "UpdateTaskTagNameTag2",
+    "Description": "UpdateTaskTag2",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": [
+      "67aea5c3-1a0b-4a3e-aa5e-76b7adc953c4"
+    ]
+  },
+  {
+    "Id": "6214c232-8c1d-4baa-99dd-e203ec187e7e",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "79b7abbe-d4db-4b67-b956-ccaf767999d3",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8033f95b-d5cd-48b5-b9e5-012570f66229",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6a351313-90e1-4692-9b04-8d7cfca3db89",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8cc7c41e-f533-46d5-a0a3-553fbf53bb14",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "118a5ad8-3f68-47b7-b9b9-cada4ad2c462",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "ColorValue": "#000000"
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "e9948805-87a9-46c6-b037-ccf94788b743",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "ColorValue": "#FFFFFF"
+    },
+    "ParentTagIds": []
   }
 ]
