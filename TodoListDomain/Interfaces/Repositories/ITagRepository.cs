@@ -6,8 +6,8 @@ public interface ITagRepository
 {
     IEnumerable<Tag> GetAllTags();
     Tag GetTagById(string id);
-    void AddTag(Tag tag);
-    void UpdateTag(Tag tag);
-    void DeleteTagById(string tagId);
-    void DeleteTagByIds(IEnumerable<string> tagIds);
+    bool AddTag(Tag tag);
+    bool UpdateTag(Tag tag);
+    bool DeleteTagById(string tagId);
+    bool DeleteTagByIds(IEnumerable<string> tagIds);
 }

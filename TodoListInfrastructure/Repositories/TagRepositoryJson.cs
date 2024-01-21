@@ -54,7 +54,7 @@ public class TagRepositoryJson : ITagRepository
         }
     }
 
-    public void AddTag(Tag tag)
+    public bool AddTag(Tag tag)
     {
         if (cache.Any(t => t.Id == tag.Id))
         {
@@ -63,36 +63,41 @@ public class TagRepositoryJson : ITagRepository
         }
         cache.Add(tag);
         WriteToFile();
+        return true;
     }
 
-    public void DeleteTagById(string tagId)
+    public bool DeleteTagById(string tagId)
     {
         int tagIndexToDelete = cache.FindIndex(t => t.Id == tagId);
 
         if (tagIndexToDelete == -1)
         {
-            logger.LogWarning(_tagsFilePath, "DeleteTagById : Tag not found : {0}", tagId);
-            return;
+            logger.LogWarning("DeleteTagById : Tag not found : {0}", tagId);
+            return false;
         }
 
         cache.RemoveAt(tagIndexToDelete);
         WriteToFile();
+        return true;
     }
 
-    public void DeleteTagByIds(IEnumerable<string> tagIds)
+    public bool DeleteTagByIds(IEnumerable<string> tagIds)
     {
+        bool result = true;
         foreach (string tagId in tagIds)
         {
             int tagIndexToDelete = cache.FindIndex(t => t.Id == tagId);
 
             if (tagIndexToDelete == -1)
             {
-                logger.LogWarning(_tagsFilePath, "DeleteTagByIds : Tag not found : {0}", tagId);
+                logger.LogWarning("DeleteTagByIds : Tag not found : {0}", tagId);
+                result = false;
                 continue;
             }
             cache.RemoveAt(tagIndexToDelete);
         }
         WriteToFile();
+        return result;
     }
 
     public IEnumerable<Tag> GetAllTags()
@@ -107,26 +112,21 @@ public class TagRepositoryJson : ITagRepository
             logger.LogInformation("GetTagById : TagId is null or empty");
             return Tag.Empty;
         }
-        Tag tag = cache.Find(t => t.Id == id);
-        if (tag == null)
-        {
-            logger.LogInformation("GetTagById : Tag not found : {0}", id);
-            return Tag.Empty;
-        }
-        return tag;
+        return cache.Find(t => t.Id == id) ?? Tag.Empty;
     }
 
-    public void UpdateTag(Tag tag)
+    public bool UpdateTag(Tag tag)
     {
         int tagIndexToUpdate = cache.FindIndex(t => t.Id == tag.Id);
 
         if (tagIndexToUpdate == -1)
         {
-            logger.LogWarning(_tagsFilePath, "UpdateTag : Tag not found : {0}", tag.Id);
-            return;
+            logger.LogWarning("UpdateTag : Tag not found : {0}", tag.Id);
+            return false;
         }
 
         cache[tagIndexToUpdate] = tag;
         WriteToFile();
+        return true;
     }
 }

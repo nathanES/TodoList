@@ -5,11 +5,11 @@ namespace TodoList.Domain.Interfaces.Repositories;
 public interface ITaskTagRepository
 {
     IEnumerable<TaskTag> GetAllTaskTags();
-    TaskTag GetTaskTagById(string id);//TODO: Check if this is needed
-    void AddTaskTag(TaskTag taskTag);
-    void UpdateTaskTag(TaskTag taskTag);
-    void DeleteTaskTagById(string taskTagId);
-    void DeleteTaskTagByIds(IEnumerable<string> taskTagIds);
+    TaskTag GetTaskTagById(string id);
+    bool AddTaskTag(TaskTag taskTag);
+    bool UpdateTaskTag(TaskTag taskTag);
+    bool DeleteTaskTagById(string taskTagId);
+    bool DeleteTaskTagByIds(IEnumerable<string> taskTagIds);
     IEnumerable<TaskTag> GetTaskTagsByTaskId(string taskId);
     IEnumerable<TaskTag> GetTaskTagsByTaskIds(IEnumerable<string> taskIds);
     IEnumerable<TaskTag> GetTaskTagsByTagId(string tagId);

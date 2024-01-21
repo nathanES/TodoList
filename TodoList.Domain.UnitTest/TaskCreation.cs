@@ -4,7 +4,7 @@ namespace TodoList.Domain.UnitTest;
 
 [TestClass]
 public class TaskCreation
-{//TODO faire en sorte que les tests fonctionnes
+{
     [TestMethod]
     [DataRow("Task 1")]
     public void Constructor_ShouldCreateTask_WithGivenName(string name)

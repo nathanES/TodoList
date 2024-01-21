@@ -15,11 +15,11 @@ public class TaskUpdate
 
         task.UpdateDescription(description);
 
-        Assert.AreEqual(task.Name, name);
+        Assert.AreEqual(name, task.Name);
         Assert.IsNotNull(task.Id);
-        Assert.AreEqual(task.Description, description);
-        Assert.AreEqual(task.Priority, Priority.Medium);
-        Assert.AreEqual(task.DeadLine, DateTime.MaxValue);
+        Assert.AreEqual(description, task.Description);
+        Assert.AreEqual(Priority.Medium, task.Priority);
+        Assert.AreEqual(DateTime.MaxValue, task.DeadLine);
         Assert.IsTrue(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
     }
@@ -34,21 +34,21 @@ public class TaskUpdate
             .SetDescription(description)
             .Build();
 
-        Assert.AreEqual(task.Name, name);
+        Assert.AreEqual(name, task.Name);
         Assert.IsNotNull(task.Id);
-        Assert.AreEqual(task.Description, description);
-        Assert.AreEqual(task.Priority, Priority.Medium);
-        Assert.AreEqual(task.DeadLine, DateTime.MaxValue);
+        Assert.AreEqual(description, task.Description);
+        Assert.AreEqual(Priority.Medium, task.Priority);
+        Assert.AreEqual(DateTime.MaxValue, task.DeadLine);
         Assert.IsTrue(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
 
         task.UpdateDescription(description2);
 
-        Assert.AreEqual(task.Name, name);
+        Assert.AreEqual(name, task.Name);
         Assert.IsNotNull(task.Id);
-        Assert.AreEqual(task.Description, description2);
-        Assert.AreEqual(task.Priority, Priority.Medium);
-        Assert.AreEqual(task.DeadLine, DateTime.MaxValue);
+        Assert.AreEqual(description2, task.Description);
+        Assert.AreEqual(Priority.Medium, task.Priority);
+        Assert.AreEqual(DateTime.MaxValue, task.DeadLine);
         Assert.IsTrue(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
     }
@@ -63,11 +63,11 @@ public class TaskUpdate
 
         task.UpdatePriority(priority);
 
-        Assert.AreEqual(task.Name, name);
+        Assert.AreEqual(name, actual: task.Name);
         Assert.IsNotNull(task.Id);
         Assert.IsNull(task.Description);
-        Assert.AreEqual(task.Priority, Priority.High);
-        Assert.AreEqual(task.DeadLine, DateTime.MaxValue);
+        Assert.AreEqual(Priority.High, task.Priority);
+        Assert.AreEqual(DateTime.MaxValue, task.DeadLine);
         Assert.IsTrue(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
     }
@@ -82,21 +82,21 @@ public class TaskUpdate
             .SetPriority(priority)
             .Build();
 
-        Assert.AreEqual(task.Name, name);
+        Assert.AreEqual(name, actual: task.Name);
         Assert.IsNotNull(task.Id);
         Assert.IsNull(task.Description);
-        Assert.AreEqual(task.Priority, Priority.Low);
-        Assert.AreEqual(task.DeadLine, DateTime.MaxValue);
+        Assert.AreEqual(Priority.Low, task.Priority);
+        Assert.AreEqual(DateTime.MaxValue, task.DeadLine);
         Assert.IsTrue(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
 
         task.UpdatePriority(priority2);
 
-        Assert.AreEqual(task.Name, name);
+        Assert.AreEqual(name, task.Name);
         Assert.IsNotNull(task.Id);
         Assert.IsNull(task.Description);
-        Assert.AreEqual(task.Priority, Priority.High);
-        Assert.AreEqual(task.DeadLine, DateTime.MaxValue);
+        Assert.AreEqual(Priority.High, task.Priority);
+        Assert.AreEqual(DateTime.MaxValue, task.DeadLine);
         Assert.IsTrue(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
     }
@@ -111,11 +111,11 @@ public class TaskUpdate
         DateTime deadLine = DateTime.UtcNow.AddDays(1);
         task.UpdateDeadLine(deadLine);
 
-        Assert.AreEqual(task.Name, name);
+        Assert.AreEqual(name, task.Name);
         Assert.IsNotNull(task.Id);
         Assert.IsNull(task.Description);
-        Assert.AreEqual(task.Priority, Priority.Medium);
-        Assert.AreEqual(task.DeadLine, deadLine);
+        Assert.AreEqual(Priority.Medium, task.Priority);
+        Assert.AreEqual(deadLine, task.DeadLine);
         Assert.IsTrue(task.TimeLeftBeforeDeadLine >= deadLine - DateTime.UtcNow);
         Assert.IsFalse(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
@@ -130,11 +130,11 @@ public class TaskUpdate
             .SetDeadLine(deadLine)
             .Build();
 
-        Assert.AreEqual(task.Name, name);
+        Assert.AreEqual(name, task.Name);
         Assert.IsNotNull(task.Id);
         Assert.IsNull(task.Description);
-        Assert.AreEqual(task.Priority, Priority.Medium);
-        Assert.AreEqual(task.DeadLine, deadLine);
+        Assert.AreEqual(Priority.Medium, task.Priority);
+        Assert.AreEqual(deadLine, task.DeadLine);
         Assert.IsTrue(task.TimeLeftBeforeDeadLine >= deadLine - DateTime.UtcNow);
         Assert.IsFalse(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
@@ -142,11 +142,11 @@ public class TaskUpdate
         DateTime deadLine2 = DateTime.UtcNow.AddDays(3);
         task.UpdateDeadLine(deadLine2);
 
-        Assert.AreEqual(task.Name, name);
+        Assert.AreEqual(name, task.Name);
         Assert.IsNotNull(task.Id);
         Assert.IsNull(task.Description);
-        Assert.AreEqual(task.Priority, Priority.Medium);
-        Assert.AreEqual(task.DeadLine, deadLine2);
+        Assert.AreEqual(Priority.Medium, task.Priority);
+        Assert.AreEqual(deadLine2, task.DeadLine);
         Assert.IsTrue(task.TimeLeftBeforeDeadLine >= deadLine2 - DateTime.UtcNow);
         Assert.IsFalse(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);

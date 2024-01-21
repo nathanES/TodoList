@@ -25,7 +25,7 @@ public class TagCRUD
         //Arrange
         Tag tagParent = new Tag.TagBuilder(Guid.NewGuid().ToString(), parentName)
             .Build();
-        tagRepository.AddTag(tagParent);
+        _ = tagRepository.AddTag(tagParent);
         Assert.IsTrue(tagRepository.GetAllTags().Any(t => t.Id == tagParent.Id));
 
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
@@ -34,8 +34,9 @@ public class TagCRUD
             .SetParentTagIds(new List<string>() { tagParent.Id })
             .Build();
         //Act
-        tagRepository.AddTag(tag);
+        bool addResult = tagRepository.AddTag(tag);
         //Assert
+        Assert.IsTrue(addResult);
         Assert.IsTrue(tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
 
     }
@@ -51,10 +52,11 @@ public class TagCRUD
             .SetColor(new Domain.ValueObjects.Color(color))
             .Build();
 
-        tagRepository.AddTag(tag);
+        _ = tagRepository.AddTag(tag);
         //Act
-        tagRepository.DeleteTagById(tag.Id);
+        bool deleteResult = tagRepository.DeleteTagById(tag.Id);
         //Assert
+        Assert.IsTrue(deleteResult);
         Assert.IsFalse(tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
     }
 
@@ -68,18 +70,19 @@ public class TagCRUD
             .SetColor(new Domain.ValueObjects.Color(color))
             .Build();
 
-        tagRepository.AddTag(tag);
+        _ = tagRepository.AddTag(tag);
 
         Tag tag2 = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
           .SetDescription(description)
           .SetColor(new Domain.ValueObjects.Color(color))
           .Build();
 
-        tagRepository.AddTag(tag2);
+        _ = tagRepository.AddTag(tag2);
 
         //Act
-        tagRepository.DeleteTagByIds(new List<string>() { tag.Id, tag2.Id });
+        bool deleteResult = tagRepository.DeleteTagByIds(new List<string>() { tag.Id, tag2.Id });
         //Assert
+        Assert.IsTrue(deleteResult);
         Assert.IsFalse(tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
         Assert.IsFalse(tagRepository.GetAllTags().Any(t => t.Id == tag2.Id));
     }
@@ -94,15 +97,31 @@ public class TagCRUD
             .SetColor(new Domain.ValueObjects.Color(color))
             .Build();
 
-        tagRepository.AddTag(tag);
+        _ = tagRepository.AddTag(tag);
 
         tag.UpdateName(updatedName);
         //Act
-        tagRepository.UpdateTag(tag);
+        bool updateResult = tagRepository.UpdateTag(tag);
         //Assert
+        Assert.IsTrue(updateResult);
         Assert.IsTrue(tagRepository.GetAllTags().Any(t => t.Name == updatedName));
     }
+    [TestMethod]
+    [DataRow("UpdateTagNotExisted", "UpdateTagNotExisted2", "Description", "#000000")]
+    public void UpdateTag_NotExisting(string name, string updatedName, string description, string color)
+    {
+        //Arrange
+        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+            .SetDescription(description)
+            .SetColor(new Domain.ValueObjects.Color(color))
+            .Build();
 
+        tag.UpdateName(updatedName);
+        //Act
+        bool updateResult = tagRepository.UpdateTag(tag);
+        //Assert
+        Assert.IsFalse(updateResult);
+    }
     [TestMethod]
     [DataRow("GetTagById", "Description", "#000000")]
     public void GetTagById(string name, string description, string color)
@@ -112,11 +131,25 @@ public class TagCRUD
             .SetDescription(description)
             .SetColor(new Domain.ValueObjects.Color(color))
             .Build();
-        tagRepository.AddTag(tag);
+        _ = tagRepository.AddTag(tag);
         //Act
         Tag tagFound = tagRepository.GetTagById(tag.Id);
         //Assert
-        TagCompare(tag, tagFound);
+        TagCompare(tagFound, tag);
+    }
+    [TestMethod]
+    [DataRow("GetTagById", "Description", "#000000")]
+    public void GetTagById_NotFound(string name, string description, string color)
+    {
+        //Arrange
+        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+            .SetDescription(description)
+            .SetColor(new Domain.ValueObjects.Color(color))
+            .Build();
+        //Act
+        Tag tagFound = tagRepository.GetTagById(tag.Id);
+        //Assert
+        TagCompare(tagFound, Tag.Empty);
     }
 
     [TestMethod]
@@ -128,7 +161,7 @@ public class TagCRUD
             .SetDescription(description)
             .SetColor(new Domain.ValueObjects.Color(color))
             .Build();
-        tagRepository.AddTag(tag);
+        _ = tagRepository.AddTag(tag);
         //Act
         _ = tagRepository.GetAllTags();
         //Assert  

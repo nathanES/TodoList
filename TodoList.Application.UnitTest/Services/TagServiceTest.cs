@@ -69,7 +69,7 @@ public class TagServiceTest
     }
     [TestMethod]
     [DataRow("")]
-    public void AddTag_WithId(string id)
+    public void AddTag_WithId_Exception(string id) //Il manque le nom
     {
         string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
         TagService tagService = new(tagRepository, logger);
@@ -80,10 +80,6 @@ public class TagServiceTest
 
         _ = Assert.ThrowsException<ArgumentNullException>(()=>tagService.AddTag(tagDtoInsert));
 
-        //TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
-
-        //Assert.IsNotNull(tagDto);
-        //Assert.AreEqual(idToInsert, tagDto.Id);
     }
     [TestMethod]
     [DataRow("Tag 1", "description")]

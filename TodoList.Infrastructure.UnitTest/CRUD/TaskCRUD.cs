@@ -8,6 +8,7 @@ namespace TodoList.Infrastructure.UnitTest.CRUD;
 [TestClass]
 public class TaskCRUD
 {
+    //TODO continuer la modification des tests comme  TagCRUD
     private ITaskRepository? taskRepository;
     private ILogger? logger;
     [TestInitialize]
@@ -27,7 +28,7 @@ public class TaskCRUD
             .SetPriority(priority)
             .Build();
         //Act
-        taskRepository.AddTask(task);
+        _ = taskRepository.AddTask(task);
         //Assert
         Assert.IsTrue(taskRepository.GetAllTasks().Any(t => t.Id == task.Id));
     }
@@ -42,9 +43,9 @@ public class TaskCRUD
             .SetPriority(priority)
             .Build();
 
-        taskRepository.AddTask(task);
+        _ = taskRepository.AddTask(task);
         //Act
-        taskRepository.DeleteTaskById(task.Id);
+        _ = taskRepository.DeleteTaskById(task.Id);
         //Assert
         Assert.IsFalse(taskRepository.GetAllTasks().Any(t => t.Id == task.Id));
     }
@@ -57,16 +58,16 @@ public class TaskCRUD
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
-        taskRepository.AddTask(task);
+        _ = taskRepository.AddTask(task);
 
         Task task2 = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
           .SetDescription(description)
           .SetPriority(priority)
           .Build();
-        taskRepository.AddTask(task2);
+        _ = taskRepository.AddTask(task2);
 
         //Act
-        taskRepository.DeleteTaskByIds(new List<string>() { task.Id, task2.Id });
+        _ = taskRepository.DeleteTaskByIds(new List<string>() { task.Id, task2.Id });
         //Assert
         Assert.IsFalse(taskRepository.GetAllTasks().Any(t => t.Id == task.Id));
         Assert.IsFalse(taskRepository.GetAllTasks().Any(t => t.Id == task2.Id));
@@ -82,15 +83,34 @@ public class TaskCRUD
             .SetPriority(priority)
             .Build();
 
-        taskRepository.AddTask(task);
+        _ = taskRepository.AddTask(task);
 
-        task.UpdateName("Test2");
+        task.UpdateName("UpdateTask");
         //Act
-        taskRepository.UpdateTask(task);
+        bool updateResult = taskRepository.UpdateTask(task);
         //Assert
-        Assert.IsTrue(taskRepository.GetAllTasks().Any(t => t.Name == "Test2"));
+        Assert.IsTrue(updateResult);
+        Assert.IsTrue(taskRepository.GetAllTasks().Any(t => t.Name == "UpdateTask"));
     }
+    [TestMethod]
+    [DataRow("Update Task NotFound", "Description", Priority.High)]
+    public void UpdateTask_NotFound(string name, string description, Priority priority)
+    {
+        //Arrange
+        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+            .SetDescription(description)
+            .SetPriority(priority)
+            .Build();
 
+        _ = taskRepository.AddTask(task);
+
+        task.UpdateName("UpdateTask_NotFound");
+        //Act
+        bool updateResult = taskRepository.UpdateTask(task);
+        //Assert
+        Assert.IsFalse(updateResult);
+        Assert.IsFalse(taskRepository.GetAllTasks().Any(t => t.Name == "UpdateTask_NotFound"));
+    }
     [TestMethod]
     [DataRow("Get Task By Id", "Description", Priority.High)]
     public void GetTaskById(string name, string description, Priority priority)
@@ -100,13 +120,27 @@ public class TaskCRUD
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
-        taskRepository.AddTask(task);
+        _ = taskRepository.AddTask(task);
         //Act
         Task taskFound = taskRepository.GetTaskById(task.Id);
         //Assert
-        Assert.AreEqual(taskFound.Id, task.Id);
-    }
+        TaskCompare(taskFound, task);
 
+    }
+    [TestMethod]
+    [DataRow("Get Task By Id", "Description", Priority.High)]
+    public void GetTaskById_NotFound(string name, string description, Priority priority)
+    {
+        //Arrange
+        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+            .SetDescription(description)
+            .SetPriority(priority)
+            .Build();
+        //Act
+        Task taskFound = taskRepository.GetTaskById(task.Id);
+        //Assert
+        TaskCompare(taskFound, Task.Empty);
+    }
     [TestMethod]
     [DataRow("Get All Tasks", "Description", Priority.High)]
     public void GetAllTasks(string name, string description, Priority priority)
@@ -116,11 +150,11 @@ public class TaskCRUD
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
-        taskRepository.AddTask(task);
+        _ = taskRepository.AddTask(task);
         //Act
-        _ = taskRepository.GetAllTasks();
+        IEnumerable<Task> tasks = taskRepository.GetAllTasks();
         //Assert  
-        Assert.IsTrue(taskRepository.GetAllTasks().Any());
+        Assert.IsTrue(tasks.Any());
     }
     public static void TaskCompare(Task task, Task task2)
     {
