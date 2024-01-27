@@ -13,4 +13,5 @@ public interface ILogger
     void LogException(Exception exception, string? message, LogLevel logLevel, params object[] args);
     bool IsEnabled(LogLevel level);
     IDisposable BeginScope<TState>(TState state);
+    void FlushLogs();
 }
