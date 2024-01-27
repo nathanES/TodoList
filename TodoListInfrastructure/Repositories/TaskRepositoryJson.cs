@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using TodoList.Domain.Exceptions;
-using TodoList.Domain.Interfaces;
+using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
 
 namespace TodoList.Infrastructure.Repositories;

@@ -1,5 +1,5 @@
 ﻿using TodoList.Domain.Enum;
-using TodoList.Domain.Interfaces;
+using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure.Repositories;
 

@@ -1,6 +1,6 @@
 ﻿using TodoList.Domain.Enum;
 
-namespace TodoList.Domain.Interfaces;
+namespace TodoList.Domain.Interfaces.Logger;
 public interface ILogger
 {
     void Log(LogLevel logLevel, string message, params object[] args);

@@ -1,13 +1,20 @@
-﻿using TodoList.Domain.Interfaces;
+﻿using TodoList.Domain.Interfaces.Logger;
 
-namespace TodoList.Infrastructure;
+namespace TodoList.Infrastructure.Loggers;
 public class LoggerCustom : ILogger
 {
+    private readonly LogLevel _minimumLogLevel;
+    public LoggerCustom(LogLevel _minimumLogLevel = LogLevel.Information)
+    {
+        this._minimumLogLevel = _minimumLogLevel;
+    }
     public void Log(LogLevel logLevel, string message, params object[] args)
     {
+        if (string.IsNullOrEmpty(message))
+            return;
         if (!IsEnabled(logLevel))
             return;
-        Console.WriteLine($"{logLevel}: {(args == null || args.Length == 0 ? message : string.Format(message, args))}");
+        Console.WriteLine($"{DateTime.Now} [{logLevel}]: {(args == null || args.Length == 0 ? message : string.Format(message, args))}");
     }
 
     public void LogTrace(string message, params object[] args)
@@ -43,13 +50,13 @@ public class LoggerCustom : ILogger
     public void LogException(Exception exception, string? message, LogLevel logLevel = LogLevel.Error, params object[] args)
     {
         //TODO : Vérifier si cela fonctionne bien
-        string fullMessage = string.Format("{Message} {Exception.Message}", message ?? "An Exception Occurs : ", exception.Message);
+        string fullMessage = string.Format("{0} {1}", message ?? "An Exception Occurs : ", exception == null ? "Exception Message Empty" : exception.Message);
         Log(logLevel, fullMessage, args);
     }
 
     public bool IsEnabled(LogLevel level)
     {
-        return true;
+        return level >= _minimumLogLevel;
     }
 
     public IDisposable BeginScope<TState>(TState state)
@@ -63,7 +70,6 @@ public class LoggerCustom : ILogger
 
         public LoggingScope(TState state)
         {
-            //TODO : Peut=être mettre plus d'information dans le scope
             _state = state;
             // Ici, vous pourriez écrire un log pour débuter le scope
             Console.WriteLine($"Début du scope: {_state}");
@@ -71,7 +77,6 @@ public class LoggerCustom : ILogger
 
         public void Dispose()
         {
-            //TODO : Peut=être mettre plus d'information dans le scope
             // Ici, vous pourriez écrire un log pour terminer le scope
             Console.WriteLine($"Fin du scope: {_state}");
         }

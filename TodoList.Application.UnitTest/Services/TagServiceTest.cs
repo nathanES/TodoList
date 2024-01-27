@@ -1,7 +1,7 @@
 ﻿using TodoList.Application.DTOs;
 using TodoList.Application.Services;
 using TodoList.Domain.Entities;
-using TodoList.Domain.Interfaces;
+using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure;
 using TodoList.Infrastructure.Repositories;
