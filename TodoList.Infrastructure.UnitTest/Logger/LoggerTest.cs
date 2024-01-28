@@ -369,7 +369,6 @@ public class LoggerTest
     [DataRow("Error processing user {0}", "Alice", "Test exception")]
     public void LoggerCustom_LogException_WithAdditionalArgs_RecordsFormattedMessage(string customMessage, string arg, string exceptionMessage)
     {
-        //TODO trouver comment faire pour que le test passe
         Mock<ILogDestination> logDestinationMock = new();
         using ILogger logger = new LoggerCustom(logDestinationMock.Object, LogLevel.Information);
         InvalidOperationException exception = new(exceptionMessage);
@@ -387,10 +386,9 @@ public class LoggerTest
         Exception exception = new("Test exception");
 
         logger.LogException(exception, "Error {0} {1}", LogLevel.Error, "arg1");
-        //TODO corriger le problème de formatage
 
         // Vérifier que le log est enregistré, mais sans lancer d'exception pour un formatage incorrect
-        logDestinationMock.Verify(ld => ld.WriteLog(It.IsAny<string>()), Times.Once);
+        logDestinationMock.Verify(ld => ld.WriteLog(It.IsAny<string>()), Times.Exactly(2));
     }
 
     #endregion

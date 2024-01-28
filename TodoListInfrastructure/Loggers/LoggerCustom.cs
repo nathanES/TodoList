@@ -37,6 +37,7 @@ public sealed class LoggerCustom : ILogger
         AppDomain.CurrentDomain.UnhandledException += (sender, eventArgs)
             => Dispose();
     }
+    #region Logs
     public void LogTrace(string message, params object[] args)
     {
         Log(LogLevel.Trace, message, args);
@@ -71,24 +72,24 @@ public sealed class LoggerCustom : ILogger
     {
         if (exception == null)
             return;
+        if (!TryFormatMessage(ref message, args))
+        {
+            string argsEntry = $"Arguments: {string.Join(", ", args.Select(arg => arg?.ToString() ?? "null"))}";
+            message = "Original message: " + message + ",  " + argsEntry;
+            Log(logLevel, message);
+            return;
+        }
 
         var exceptionData = new
         {
             Message = message ?? "An Exception Occurred",
+            ExceptionType = exception.GetType().FullName,
             ExceptionMessage = exception.Message,
-            exception.StackTrace
+            exception.StackTrace,
         };
         string jsonExceptionData = JsonConvert.SerializeObject(exceptionData);
 
         Log(logLevel, jsonExceptionData, args);
-    }
-
-    public bool IsEnabled(LogLevel level)
-    {
-        //#if DEBUG
-        //        return true;
-        //#endif
-        return level >= _minimumLogLevel;
     }
 
     public void Log(LogLevel logLevel, string message, params object[] args)
@@ -99,29 +100,55 @@ public sealed class LoggerCustom : ILogger
             return;
         string logEntry = CreateLogEntry(logLevel, message, args);
 
-        lock (_logQueue)
-        {
-            _logQueue.Enqueue(logEntry);
-            if (_logQueue.Count >= _maxBufferSize)
-            {
-                FlushLogs();
-            }
-        }
-        _ = _logEvent.Set();
+        AddLogToQueue(logEntry);
+
+    }
+    #endregion
+
+    public bool IsEnabled(LogLevel level)
+    {
+        //#if DEBUG
+        //        return true;
+        //#endif
+        return level >= _minimumLogLevel;
     }
 
+    #region Formatage des logs
     private string CreateLogEntry(LogLevel logLevel, string message, params object[] args)
     {
-        string formattedMessage = args == null || args.Length == 0
-            ? message
-            : string.Format(message, args);
-        return $"{DateTime.Now} [{logLevel}]: {formattedMessage}";
-    }
-    private void WriteLog(string logEntry)
-    {
-        _logDestination.WriteLog(logEntry);
-    }
+        if (!TryFormatMessage(ref message, args))
+        {
+            string argsEntry = $"Arguments: {string.Join(", ", args.Select(arg => arg?.ToString() ?? "null"))}";
+            message = "Original message: " + message + ",  " + argsEntry;
+        }
 
+        return $"{DateTime.Now} [{logLevel}]: {message}";
+    }
+    private bool TryFormatMessage(ref string message, object[] args)
+    {
+        try
+        {
+            message = FormatMessage(message, args);
+            return true;
+        }
+        catch (FormatException formatException)
+        {
+            LogFormatException(formatException);
+            return false;
+        }
+    }
+    private string FormatMessage(string message, object[] args)
+    {
+        return args == null || args.Length == 0 ? message : string.Format(message, args);
+    }
+    private void LogFormatException(FormatException formatException)
+    {
+        string errorEntry = $"{DateTime.Now} [{LogLevel.Error}]: Format exception: {formatException.Message}, StackTrace : {formatException.StackTrace}";
+        AddLogToQueue(errorEntry);
+    }
+    #endregion
+
+    #region Ecriture des logs
     public void FlushLogs()
     {
         lock (_logQueue)
@@ -139,7 +166,22 @@ public sealed class LoggerCustom : ILogger
             _ = _logBuilder.Clear();
         }
     }
-
+    private void AddLogToQueue(string logEntry)
+    {
+        lock (_lockObject)
+        {
+            _logQueue.Enqueue(logEntry);
+            if (_logQueue.Count >= _maxBufferSize)
+            {
+                FlushLogs();
+            }
+        }
+        _ = _logEvent.Set();
+    }
+    private void WriteLog(string logEntry)
+    {
+        _logDestination.WriteLog(logEntry);
+    }
     private void ProcessLogQueue()
     {
         while (_running)
@@ -174,6 +216,9 @@ public sealed class LoggerCustom : ILogger
             }
         }
     }
+    #endregion
+
+    #region Liberation ressources
     public void Dispose()
     {
         Dispose(true);
@@ -195,6 +240,7 @@ public sealed class LoggerCustom : ILogger
         }
         _disposed = true;
     }
+    #endregion
 
     public IDisposable BeginScope<TState>(TState state)
     {
