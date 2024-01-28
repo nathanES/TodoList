@@ -1,7 +1,9 @@
-﻿using TodoList.Domain.Entities;
+﻿using Moq;
+using TodoList.Domain.Entities;
 using TodoList.Domain.Enum;
 using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
+using TodoList.Infrastructure.Loggers;
 using TodoList.Infrastructure.Repositories;
 
 namespace TodoList.Infrastructure.UnitTest.CRUD;
@@ -12,10 +14,12 @@ public class TaskTagCRUD
 
     private ITaskTagRepository? taskTagRepository;
     private ILogger? logger;
+    private readonly Mock<ILogDestination> logDestination = new();
+
     [TestInitialize]
     public void TagCRUDInitialize()
     {
-        logger = new LoggerCustom();
+        logger = new LoggerCustom(logDestination.Object);
         taskTagRepository = new TaskTagRepositoryJson(logger);
     }
     [TestMethod]
@@ -27,7 +31,7 @@ public class TaskTagCRUD
         Task task = AddTask("GetAllTaskTagNameTask", "GetAllTaskTag", Priority.High);
 
         TaskTag taskTag = new(task, tag);
-        taskTagRepository.AddTaskTag(taskTag);
+        _ = taskTagRepository.AddTaskTag(taskTag);
 
         //Act
         List<TaskTag> taskTags = taskTagRepository.GetAllTaskTags().ToList();
@@ -44,7 +48,7 @@ public class TaskTagCRUD
         Task task = AddTask("GetTaskTagByIdNameTask", "GetTaskTagById", Priority.High);
 
         TaskTag taskTag = new(task, tag);
-        taskTagRepository.AddTaskTag(taskTag);
+        _ = taskTagRepository.AddTaskTag(taskTag);
 
         //Act
         TaskTag taskTagFound = taskTagRepository.GetTaskTagById(taskTag.Id);
@@ -64,7 +68,7 @@ public class TaskTagCRUD
         TaskTag taskTag = new(task, tag);
 
         //Act
-        taskTagRepository.AddTaskTag(taskTag);
+        _ = taskTagRepository.AddTaskTag(taskTag);
 
         //Assert
         IEnumerable<TaskTag> taskTagsFound = taskTagRepository.GetAllTaskTags().ToList().Where(t => t.Id == taskTag.Id);
@@ -79,12 +83,12 @@ public class TaskTagCRUD
         Task task = AddTask("UpdateTaskTagNameTask", "UpdateTaskTagById", Priority.High);
 
         TaskTag taskTag = new(task, tag);
-        taskTagRepository.AddTaskTag(taskTag);
+        _ = taskTagRepository.AddTaskTag(taskTag);
         TagCRUD.TagCompare(tag, taskTag.Tag);
         //Act
         Tag tag2 = AddTag("UpdateTaskTagNameTag2", "UpdateTaskTag2", "#000000", "UpdateTaskTagParentNameTag2");
         taskTag.Tag = tag2;
-        taskTagRepository.UpdateTaskTag(taskTag);
+        _ = taskTagRepository.UpdateTaskTag(taskTag);
 
         //Assert
         TaskTag taskTagFound = taskTagRepository.GetAllTaskTags().ToList().Where(t => t.Id == taskTag.Id).First();
@@ -106,10 +110,10 @@ public class TaskTagCRUD
         Task task = AddTask("DeleteTaskTagNameTask", "DeleteTaskTag", Priority.High);
 
         TaskTag taskTag = new(task, tag);
-        taskTagRepository.AddTaskTag(taskTag);
+        _ = taskTagRepository.AddTaskTag(taskTag);
 
         //Act
-        taskTagRepository.DeleteTaskTagById(taskTag.Id);
+        _ = taskTagRepository.DeleteTaskTagById(taskTag.Id);
 
         //Assert
         Assert.IsFalse(taskTagRepository.GetAllTaskTags().Any(t => t.Id == taskTag.Id));
@@ -121,15 +125,15 @@ public class TaskTagCRUD
         Tag tag = AddTag("DeleteTaskTagNameTag", "DeleteTaskTag", "#000000", "DeleteTaskTagParentNameTag");
         Task task = AddTask("DeleteTaskTagNameTask", "DeleteTaskTag", Priority.High);
         TaskTag taskTag = new(task, tag);
-        taskTagRepository.AddTaskTag(taskTag);
+        _ = taskTagRepository.AddTaskTag(taskTag);
 
         Tag tag2 = AddTag("DeleteTaskTagNameTag2", "DeleteTaskTag2", "#000000", "DeleteTaskTag2ParentNameTag");
         Task task2 = AddTask("DeleteTaskTagNameTask2", "DeleteTaskTag2", Priority.High);
         TaskTag taskTag2 = new(task2, tag2);
-        taskTagRepository.AddTaskTag(taskTag2);
+        _ = taskTagRepository.AddTaskTag(taskTag2);
 
         //Act
-        taskTagRepository.DeleteTaskTagByIds(new List<string>() { taskTag.Id, taskTag2.Id });
+        _ = taskTagRepository.DeleteTaskTagByIds(new List<string>() { taskTag.Id, taskTag2.Id });
 
         //Assert
         Assert.IsFalse(taskTagRepository.GetAllTaskTags().Any(t => t.Id == taskTag.Id));
@@ -144,7 +148,7 @@ public class TaskTagCRUD
         Task task = AddTask("GetTaskTagsByTaskIdNameTask", "GetTaskTagsByTaskId", Priority.High);
 
         TaskTag taskTag = new(task, tag);
-        taskTagRepository.AddTaskTag(taskTag);
+        _ = taskTagRepository.AddTaskTag(taskTag);
         //Act
         IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTaskId(task.Id);
         //Assert
@@ -161,7 +165,7 @@ public class TaskTagCRUD
         Task task = AddTask("GetTaskTagsByTagIdNameTask", "GetTaskTagsByTagId", Priority.High);
 
         TaskTag taskTag = new(task, tag);
-        taskTagRepository.AddTaskTag(taskTag);
+        _ = taskTagRepository.AddTaskTag(taskTag);
         //Act
         IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagId(tag.Id);
         //Assert
@@ -176,7 +180,7 @@ public class TaskTagCRUD
         Tag tag = AddTag("IsRelationExistsTrueNameTag", "IsRelationExistsTrue", "#000000", "IsRelationExistsTrueParentNameTag");
         Task task = AddTask("IsRelationExistsTrueNameTask", "IsRelationExistsTrue", Priority.High);
 
-        taskTagRepository.AddTaskTag(new TaskTag(task, tag));
+        _ = taskTagRepository.AddTaskTag(new TaskTag(task, tag));
         //Act
         bool isRelationExists = taskTagRepository.IsRelationExists(task.Id, tag.Id);
 
@@ -203,7 +207,7 @@ public class TaskTagCRUD
         ITagRepository tagRepository = new TagRepositoryJson(logger);
         Tag tagParent = new Tag.TagBuilder(Guid.NewGuid().ToString(), parentName)
             .Build();
-        tagRepository.AddTag(tagParent);
+        _ = tagRepository.AddTag(tagParent);
         Assert.IsTrue(tagRepository.GetAllTags().Any(t => t.Id == tagParent.Id));
 
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
@@ -212,7 +216,7 @@ public class TaskTagCRUD
             .SetParentTagIds(new List<string>() { tagParent.Id })
             .Build();
         //Act
-        tagRepository.AddTag(tag);
+        _ = tagRepository.AddTag(tag);
         //Assert
         Assert.IsTrue(tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
         return tag;
@@ -227,7 +231,7 @@ public class TaskTagCRUD
             .SetPriority(priority)
             .Build();
         //Act
-        taskRepository.AddTask(task);
+        _ = taskRepository.AddTask(task);
         //Assert
         Assert.IsTrue(taskRepository.GetAllTasks().Any(t => t.Id == task.Id));
         return task;

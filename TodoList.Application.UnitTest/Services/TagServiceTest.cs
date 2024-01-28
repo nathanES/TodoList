@@ -4,6 +4,7 @@ using TodoList.Domain.Entities;
 using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure;
+using TodoList.Infrastructure.Loggers;
 using TodoList.Infrastructure.Repositories;
 
 namespace TodoList.Application.UnitTest.Services;
@@ -14,10 +15,12 @@ public class TagServiceTest
     private ITagRepository? tagRepository;
     private ITaskTagRepository? taskTagRepository;
     private ILogger? logger;
+    private ILogDestination _logDestinationMock = new ConsoleLogDestination(); 
+    //TODO voir pour remplacer l'objet logDestination par un mock
     [TestInitialize]
     public void TagServiceInitialize()
     {
-        logger = new LoggerCustom();
+        logger = new LoggerCustom(_logDestinationMock);
         tagRepository = new TagRepositoryJson(logger);
         taskTagRepository = new TaskTagRepositoryJson(logger);
     }

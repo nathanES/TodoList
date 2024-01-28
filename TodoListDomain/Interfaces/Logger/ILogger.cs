@@ -1,7 +1,7 @@
 ﻿using TodoList.Domain.Enum;
 
 namespace TodoList.Domain.Interfaces.Logger;
-public interface ILogger
+public interface ILogger : IDisposable
 {
     void Log(LogLevel logLevel, string message, params object[] args);
     void LogTrace(string message, params object[] args);

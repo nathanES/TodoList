@@ -1,6 +1,8 @@
-﻿using TodoList.Domain.Enum;
+﻿using Moq;
+using TodoList.Domain.Enum;
 using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
+using TodoList.Infrastructure.Loggers;
 using TodoList.Infrastructure.Repositories;
 
 namespace TodoList.Infrastructure.UnitTest.CRUD;
@@ -11,10 +13,12 @@ public class TaskCRUD
     //TODO continuer la modification des tests comme  TagCRUD
     private ITaskRepository? taskRepository;
     private ILogger? logger;
+    private readonly Mock<ILogDestination> logDestination = new();
+
     [TestInitialize]
     public void TaskCRUDInitialize()
     {
-        logger = new LoggerCustom();
+        logger = new LoggerCustom(logDestination.Object);
         taskRepository = new TaskRepositoryJson(logger);
     }
 

@@ -3,19 +3,27 @@ using System.Text;
 using TodoList.Domain.Interfaces.Logger;
 
 namespace TodoList.Infrastructure.Loggers;
-public sealed class LoggerCustom : ILogger, IDisposable
+public sealed class LoggerCustom : ILogger
 {
+    //Gestion du stockage des logs
     private readonly int _maxBufferSize = 100; //Nombre maximum de logs avant le flush
-    //Todo : Est-ce que ca a un intéret de faire une queue et un stringbuilder ?
     private readonly Queue<string> _logQueue = new();
     private readonly StringBuilder _logBuilder = new();
-    private readonly ILogDestination _logDestination;
+
+    //Gestion des threads de logging
     private readonly Thread _logThread;
-    private readonly object _lockObject = new();
     private bool _running = true;
-    private readonly LogLevel _minimumLogLevel;
-    private readonly ManualResetEvent _logEvent = new(false);
+    private readonly ManualResetEvent _logEvent = new(false);//Indique au thread de logging qu'il y a des logs à traiter
+
+    //Gestion de la suppression de l'objet
     private bool _disposed = false;
+
+    //Gestion des appels concurrents
+    private readonly object _lockObject = new();
+
+    private readonly ILogDestination _logDestination;
+    private readonly LogLevel _minimumLogLevel;
+
     public LoggerCustom(ILogDestination logDestination, LogLevel _minimumLogLevel = LogLevel.Information)
     {
         _logDestination = logDestination;
@@ -62,10 +70,8 @@ public sealed class LoggerCustom : ILogger, IDisposable
     public void LogException(Exception exception, string? message, LogLevel logLevel = LogLevel.Error, params object[] args)
     {
         if (exception == null)
-        {
-            Log(logLevel, "Passed exception is null", args);
             return;
-        }
+
         var exceptionData = new
         {
             Message = message ?? "An Exception Occurred",
@@ -79,9 +85,9 @@ public sealed class LoggerCustom : ILogger, IDisposable
 
     public bool IsEnabled(LogLevel level)
     {
-#if DEBUG
-        return true;
-#endif
+        //#if DEBUG
+        //        return true;
+        //#endif
         return level >= _minimumLogLevel;
     }
 
@@ -178,7 +184,8 @@ public sealed class LoggerCustom : ILogger, IDisposable
         if (_disposed)
             return;
         if (disposing)
-        {        // Indiquer au thread de logging de terminer son exécution
+        {
+            // Indiquer au thread de logging de terminer son exécution
             _running = false;
             // Réveiller le thread s'il est en attente
             _ = _logEvent.Set();
@@ -203,12 +210,12 @@ public sealed class LoggerCustom : ILogger, IDisposable
         {
             _state = state;
             _logger = logger;
-            _logger.LogTrace("Début du scope: {0}", _state);
+            _logger.LogInformation("Début du scope: {0}", _state);
         }
 
         public void Dispose()
         {
-            _logger.LogTrace("Fin du scope: {0}", _state);
+            _logger.LogInformation("Fin du scope: {0}", _state);
         }
     }
 }
