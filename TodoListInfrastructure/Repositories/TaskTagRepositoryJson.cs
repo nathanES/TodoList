@@ -9,13 +9,13 @@ namespace TodoList.Infrastructure.Repositories;
 public class TaskTagRepositoryJson : ITaskTagRepository
 {
     private readonly string _taskTagFilePath = $@"{Settings.JsonDataFilePathBase}taskTags.json";
-    private List<TaskTag> cache;
-    private readonly object fileLock = new();
-    private readonly ILogger logger;
+    private List<TaskTag> _cache;
+    private readonly object _fileLock = new();
+    private readonly ILogger _logger;
 
     public TaskTagRepositoryJson(ILogger logger)
     {
-        this.logger = logger;
+        _logger = logger;
         LoadCache();
     }
 
@@ -25,17 +25,17 @@ public class TaskTagRepositoryJson : ITaskTagRepository
         {
             if (!File.Exists(_taskTagFilePath))
             {
-                cache = new List<TaskTag>();
+                _cache = new List<TaskTag>();
                 return;
             }
 
             string json = File.ReadAllText(_taskTagFilePath);
-            cache = JsonConvert.DeserializeObject<List<TaskTag>>(json) ?? new List<TaskTag>();
+            _cache = JsonConvert.DeserializeObject<List<TaskTag>>(json) ?? new List<TaskTag>();
 
         }
         catch (Exception e)
         {
-            logger.LogException(e, "LoadCache Impossible !", LogLevel.Error);
+            _logger.LogException(e, "LoadCache Impossible !", LogLevel.Error);
             throw;
         }
     }
@@ -43,27 +43,27 @@ public class TaskTagRepositoryJson : ITaskTagRepository
     {
         try
         {
-            lock (fileLock)
+            lock (_fileLock)
             {
-                string json = JsonConvert.SerializeObject(cache, Formatting.Indented);
+                string json = JsonConvert.SerializeObject(_cache, Formatting.Indented);
                 File.WriteAllText(_taskTagFilePath, json);
             }
         }
         catch (Exception e)
         {
-            logger.LogException(e, "WriteToFile Impossible !", LogLevel.Error);
+            _logger.LogException(e, "WriteToFile Impossible !", LogLevel.Error);
             throw;
         }
     }
 
     public bool AddTaskTag(TaskTag taskTag)
     {
-        if (cache.Any(t => t.Id == taskTag.Id))
+        if (_cache.Any(t => t.Id == taskTag.Id))
         {
-            logger.LogCritical("AddTaskTag : DuplicateKey : {0}", taskTag.Id);
+            _logger.LogCritical("AddTaskTag : DuplicateKey : {0}", taskTag.Id);
             throw new DuplicateKeyException($"Duplicate {nameof(TaskTag.Id)}, Value : {taskTag.Id}");
         }
-        cache.Add(taskTag);
+        _cache.Add(taskTag);
         WriteToFile();
         return true;
     }
@@ -72,7 +72,7 @@ public class TaskTagRepositoryJson : ITaskTagRepository
     {
         if (DeleteTaskTagByIdInCache(taskTagId) == false)
         {
-            logger.LogWarning("DeleteTaskTagById : TaskTag Deletion Impossible : {0}", taskTagId);
+            _logger.LogWarning("DeleteTaskTagById : TaskTag Deletion Impossible : {0}", taskTagId);
             return false;
         }
         WriteToFile();
@@ -85,7 +85,7 @@ public class TaskTagRepositoryJson : ITaskTagRepository
         {
             if (DeleteTaskTagByIdInCache(taskTagId) == false)
             {
-                logger.LogWarning("DeleteTaskTagByIds : TaskTag Deletion Impossible : {0}", taskTagId);
+                _logger.LogWarning("DeleteTaskTagByIds : TaskTag Deletion Impossible : {0}", taskTagId);
                 result = false;
             }
         }
@@ -94,34 +94,34 @@ public class TaskTagRepositoryJson : ITaskTagRepository
     }
     private bool DeleteTaskTagByIdInCache(string taskTagId)
     {
-        int taskTagIndexToDelete = cache.FindIndex(t => t.Id == taskTagId);
+        int taskTagIndexToDelete = _cache.FindIndex(t => t.Id == taskTagId);
         if (taskTagIndexToDelete == -1)
         {
-            logger.LogWarning("DeleteTaskTagByIdInCache : TaskTag not found : {0}", taskTagId);
+            _logger.LogWarning("DeleteTaskTagByIdInCache : TaskTag not found : {0}", taskTagId);
             return false;
         }
-        cache.RemoveAt(taskTagIndexToDelete);
+        _cache.RemoveAt(taskTagIndexToDelete);
         return true;
     }
 
     public IEnumerable<TaskTag> GetAllTaskTags()
     {
-        return cache;
+        return _cache;
     }
 
     public TaskTag GetTaskTagById(string id)
     {
-        return cache.Find(t => t.Id == id) ?? TaskTag.Empty;
+        return _cache.Find(t => t.Id == id) ?? TaskTag.Default;
     }
 
     public IEnumerable<TaskTag> GetTaskTagsByTagId(string tagId)
     {
-        return cache.FindAll(t => t.TagId == tagId) ?? new List<TaskTag>();
+        return _cache.FindAll(t => t.TagId == tagId) ?? new List<TaskTag>();
     }
 
     public IEnumerable<TaskTag> GetTaskTagsByTaskId(string taskId)
     {
-        return cache.FindAll(t => t.TaskId == taskId) ?? new List<TaskTag>();
+        return _cache.FindAll(t => t.TaskId == taskId) ?? new List<TaskTag>();
     }
 
     public IEnumerable<TaskTag> GetTaskTagsByTaskIds(IEnumerable<string> taskIds)
@@ -147,18 +147,18 @@ public class TaskTagRepositoryJson : ITaskTagRepository
 
     public bool IsRelationExists(string taskId, string tagId)
     {
-        return cache.Exists(t => t.TaskId == taskId && t.TagId == tagId);
+        return _cache.Exists(t => t.TaskId == taskId && t.TagId == tagId);
     }
 
     public bool UpdateTaskTag(TaskTag taskTag)
     {
-        int taskTagIndexToUpdate = cache.FindIndex(t => t.Id == taskTag.Id);
+        int taskTagIndexToUpdate = _cache.FindIndex(t => t.Id == taskTag.Id);
         if (taskTagIndexToUpdate == -1)
         {
-            logger.LogWarning("UpdateTaskTag : TaskTag not found : {0}", taskTag.Id);
+            _logger.LogWarning("UpdateTaskTag : TaskTag not found : {0}", taskTag.Id);
             return false;
         }
-        cache[taskTagIndexToUpdate] = taskTag;
+        _cache[taskTagIndexToUpdate] = taskTag;
         WriteToFile();
         return true;
     }

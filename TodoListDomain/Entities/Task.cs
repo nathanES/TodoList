@@ -5,7 +5,7 @@ namespace TodoList.Domain.Entities;
 
 public class Task
 {
-    private string id = Guid.NewGuid().ToString();
+    private string id;
     [JsonProperty("Id")]
     public string Id
     {
@@ -57,7 +57,7 @@ public class Task
     public DateTime CreationTime { get; private set; } = DateTime.UtcNow;
     [JsonProperty("IsCompleted")]
     public bool IsCompleted { get; private set; } = false;
-    public static Task Empty = new("00000000-0000-0000-0000-000000000000", "___Empty")
+    public static Task Default = new("00000000-0000-0000-0000-000000000000", "___Default")
     {
         Description = string.Empty,
         Priority = Priority.Medium,

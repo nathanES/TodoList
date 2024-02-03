@@ -445,6 +445,17 @@ public class LoggerTest
         logDestinationMock.Verify(ld => ld.WriteLog(It.IsAny<string>()), Times.Exactly(2));
     }
 
+    [TestMethod]//Voir comment faire pour voir si il y a un enregistrement dans la console
+    public void LoggerCustom_WhenExceptionIsThrow()
+    {
+
+        ILogDestination logDestinationConsole = new ConsoleLogDestination();
+        using ILogger logger = new LoggerCustom(logDestinationConsole, LogLevel.Trace);
+
+        logger.LogWarning("Hello Je suis écrit quand une Exception est envoyé");
+
+        _ = Assert.ThrowsException<Exception>(() => throw new Exception("Exception"));
+    }
     #endregion
     //TODO voir plus tard pour faire les tests sur les threads
 }

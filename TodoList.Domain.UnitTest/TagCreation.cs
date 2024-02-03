@@ -16,7 +16,7 @@ public class TagCreation
         Assert.AreEqual(name, tag.Name);
         Assert.IsNotNull(tag.Id);
         Assert.IsNull(tag.Description);
-        Assert.AreEqual(tag.Color, new Color("#000000"));
+        Assert.AreEqual(Color.Default, tag.Color);
         Assert.IsFalse(tag.ParentTagIds.Any());
 
     }
@@ -31,7 +31,7 @@ public class TagCreation
         Assert.AreEqual(name, tag.Name);
         Assert.IsNotNull(tag.Id);
         Assert.AreEqual(description, tag.Description);
-        Assert.AreEqual(tag.Color, new Color(color));
+        Assert.AreEqual(Color.Default, tag.Color);
         Assert.IsFalse(tag.ParentTagIds.Any());
     }
     [TestMethod]
@@ -62,7 +62,7 @@ public class TagCreation
         Assert.AreEqual(name, tag.Name);
         Assert.IsNotNull(tag.Id);
         Assert.IsNull(tag.Description);
-        Assert.AreEqual(new Color("#000000"), tag.Color);
+        Assert.AreEqual(Color.Default, tag.Color);
         Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
     }
     [TestMethod]
@@ -83,6 +83,8 @@ public class TagCreation
         Assert.AreEqual(description, tag.Description);
         Assert.AreEqual(color1, tag.Color);
         Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
+        Assert.AreEqual(Color.Default, tagParent.Color);
+
     }
     [TestMethod]
     public void Constructor_ShouldNotCreateTag_WithNullName()
@@ -91,11 +93,12 @@ public class TagCreation
                           .Build());
     }
     [TestMethod]
-    public void Constructor_ShouldNotCreateTag_WithNulNameButOtherProperties()
+    [DataRow("Description1")]
+    public void Constructor_ShouldNotCreateTag_WithNulNameButOtherProperties(string description)
     {
         _ = Assert.ThrowsException<ArgumentNullException>(() => new Tag.TagBuilder(Guid.NewGuid().ToString(), null)
-                 .SetDescription("Description 1")
-                 .SetColor(new Color("#000000"))
+                 .SetDescription(description)
+                 .SetColor(Color.Default)
                 .Build());
     }
 }

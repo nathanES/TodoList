@@ -9,13 +9,13 @@ namespace TodoList.Infrastructure.Repositories;
 public class TagRepositoryJson : ITagRepository
 {
     private readonly string _tagsFilePath = $@"{Settings.JsonDataFilePathBase}tags.json";
-    private List<Tag> cache;
-    private readonly object fileLock = new();
-    private readonly ILogger logger;
+    private List<Tag> _cache;
+    private readonly object _fileLock = new();
+    private readonly ILogger _logger;
 
     public TagRepositoryJson(ILogger logger)
     {
-        this.logger = logger;
+        _logger = logger;
         LoadCache();
     }
     private void LoadCache()
@@ -24,16 +24,16 @@ public class TagRepositoryJson : ITagRepository
         {
             if (!File.Exists(_tagsFilePath))
             {
-                cache = new List<Tag>();
+                _cache = new List<Tag>();
                 return;
             }
 
             string json = File.ReadAllText(_tagsFilePath);
-            cache = JsonConvert.DeserializeObject<List<Tag>>(json) ?? new List<Tag>();
+            _cache = JsonConvert.DeserializeObject<List<Tag>>(json) ?? new List<Tag>();
         }
         catch (Exception e)
         {
-            logger.LogException(e, "LoadCache Impossible !", LogLevel.Error);
+            _logger.LogException(e, "LoadCache Impossible !", LogLevel.Error);
             throw;
         }
     }
@@ -41,42 +41,42 @@ public class TagRepositoryJson : ITagRepository
     {
         try
         {
-            lock (fileLock)
+            lock (_fileLock)
             {
-                string json = JsonConvert.SerializeObject(cache, Formatting.Indented);
+                string json = JsonConvert.SerializeObject(_cache, Formatting.Indented);
                 File.WriteAllText(_tagsFilePath, json);
             }
         }
         catch (Exception e)
         {
-            logger.LogException(e, "WriteToFile Impossible !", LogLevel.Error);
+            _logger.LogException(e, "WriteToFile Impossible !", LogLevel.Error);
             throw;
         }
     }
 
     public bool AddTag(Tag tag)
     {
-        if (cache.Any(t => t.Id == tag.Id))
+        if (_cache.Any(t => t.Id == tag.Id))
         {
-            logger.LogCritical("AddTag : DuplicateKey : {0}", tag.Id);
+            _logger.LogCritical("AddTag : DuplicateKey : {0}", tag.Id);
             throw new DuplicateKeyException($"Duplicate {nameof(Tag.Id)}, Value : {tag.Id}");
         }
-        cache.Add(tag);
+        _cache.Add(tag);
         WriteToFile();
         return true;
     }
 
     public bool DeleteTagById(string tagId)
     {
-        int tagIndexToDelete = cache.FindIndex(t => t.Id == tagId);
+        int tagIndexToDelete = _cache.FindIndex(t => t.Id == tagId);
 
         if (tagIndexToDelete == -1)
         {
-            logger.LogWarning("DeleteTagById : Tag not found : {0}", tagId);
+            _logger.LogWarning("DeleteTagById : Tag not found : {0}", tagId);
             return false;
         }
 
-        cache.RemoveAt(tagIndexToDelete);
+        _cache.RemoveAt(tagIndexToDelete);
         WriteToFile();
         return true;
     }
@@ -86,15 +86,15 @@ public class TagRepositoryJson : ITagRepository
         bool result = true;
         foreach (string tagId in tagIds)
         {
-            int tagIndexToDelete = cache.FindIndex(t => t.Id == tagId);
+            int tagIndexToDelete = _cache.FindIndex(t => t.Id == tagId);
 
             if (tagIndexToDelete == -1)
             {
-                logger.LogWarning("DeleteTagByIds : Tag not found : {0}", tagId);
+                _logger.LogWarning("DeleteTagByIds : Tag not found : {0}", tagId);
                 result = false;
                 continue;
             }
-            cache.RemoveAt(tagIndexToDelete);
+            _cache.RemoveAt(tagIndexToDelete);
         }
         WriteToFile();
         return result;
@@ -102,30 +102,30 @@ public class TagRepositoryJson : ITagRepository
 
     public IEnumerable<Tag> GetAllTags()
     {
-        return cache;
+        return _cache;
     }
 
     public Tag GetTagById(string id)
     {
         if (string.IsNullOrWhiteSpace(id))
         {
-            logger.LogInformation("GetTagById : TagId is null or empty");
-            return Tag.Empty;
+            _logger.LogInformation("GetTagById : TagId is null or empty");
+            return Tag.Default;
         }
-        return cache.Find(t => t.Id == id) ?? Tag.Empty;
+        return _cache.Find(t => t.Id == id) ?? Tag.Default;
     }
 
     public bool UpdateTag(Tag tag)
     {
-        int tagIndexToUpdate = cache.FindIndex(t => t.Id == tag.Id);
+        int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tag.Id);
 
         if (tagIndexToUpdate == -1)
         {
-            logger.LogWarning("UpdateTag : Tag not found : {0}", tag.Id);
+            _logger.LogWarning("UpdateTag : Tag not found : {0}", tag.Id);
             return false;
         }
 
-        cache[tagIndexToUpdate] = tag;
+        _cache[tagIndexToUpdate] = tag;
         WriteToFile();
         return true;
     }

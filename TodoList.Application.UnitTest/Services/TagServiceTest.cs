@@ -1,28 +1,30 @@
-﻿using TodoList.Application.DTOs;
+﻿using Moq;
+using TodoList.Application.DTOs;
 using TodoList.Application.Services;
 using TodoList.Domain.Entities;
+using TodoList.Domain.Enum;
 using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure;
 using TodoList.Infrastructure.Loggers;
 using TodoList.Infrastructure.Repositories;
+using Color = TodoList.Domain.ValueObjects.Color;
 
 namespace TodoList.Application.UnitTest.Services;
 
-[TestClass]
+[TestClass] 
 public class TagServiceTest
 {
-    private ITagRepository? tagRepository;
-    private ITaskTagRepository? taskTagRepository;
-    private ILogger? logger;
-    private ILogDestination _logDestinationMock = new ConsoleLogDestination(); 
-    //TODO voir pour remplacer l'objet logDestination par un mock
+    private ITagRepository? _tagRepository;
+    private ITaskTagRepository? _taskTagRepository;
+    private ILogger? _logger;
+
     [TestInitialize]
     public void TagServiceInitialize()
     {
-        logger = new LoggerCustom(_logDestinationMock);
-        tagRepository = new TagRepositoryJson(logger);
-        taskTagRepository = new TaskTagRepositoryJson(logger);
+        _logger = new LoggerCustom(new Mock<ILogDestination>().Object, LogLevel.Trace);
+        _tagRepository = new TagRepositoryJson(_logger);
+        _taskTagRepository = new TaskTagRepositoryJson(_logger);
     }
 
     [TestMethod]
@@ -30,13 +32,13 @@ public class TagServiceTest
     public void AddTag_WithAllProperties_WithoutParentTags(string id, string name, string description, string color)
     {
         string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
             Id = idToInsert,
             Name = name,
             Description = description,
-            Color = color
+            Color = new Color(color)
         };
 
         tagService.AddTag(tagDtoInsert);
@@ -47,7 +49,7 @@ public class TagServiceTest
         Assert.AreEqual(idToInsert, tagDto.Id);
         Assert.AreEqual(name, tagDto.Name);
         Assert.AreEqual(description, tagDto.Description);
-        Assert.AreEqual(color, tagDto.Color);
+        Assert.AreEqual(new Color(color), tagDto.Color);
     }
 
     [TestMethod]
@@ -55,7 +57,7 @@ public class TagServiceTest
     public void AddTag_WithNameAndId(string name)
     {
         string idToInsert = Guid.NewGuid().ToString();
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
             Id = idToInsert,
@@ -75,7 +77,7 @@ public class TagServiceTest
     public void AddTag_WithId_Exception(string id) //Il manque le nom
     {
         string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
             Id = idToInsert,
@@ -89,7 +91,7 @@ public class TagServiceTest
     public void AddTag_WithNameAndDescription(string name, string description)
     {
         string idToInsert = Guid.NewGuid().ToString();
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
             Id = idToInsert,
@@ -111,12 +113,12 @@ public class TagServiceTest
     public void AddTag_WithNameAndColor(string name, string color)
     {
         string idToInsert = Guid.NewGuid().ToString();
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
             Id = idToInsert,
             Name = name,
-            Color = color
+            Color = new Color(color)
         };
 
         tagService.AddTag(tagDtoInsert);
@@ -126,14 +128,14 @@ public class TagServiceTest
         Assert.IsNotNull(tagDto);
         Assert.AreEqual(idToInsert, tagDto.Id);
         Assert.AreEqual(name, tagDto.Name);
-        Assert.AreEqual(color, tagDto.Color);
+        Assert.IsTrue(new Color(color).Equals(tagDto.Color));
     }
     [TestMethod]
     [DataRow("Description")]
     public void AddTag_WithoutName_Exception(string description)
     {
         string idToInsert = Guid.NewGuid().ToString();
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
             Id = idToInsert,
@@ -146,7 +148,7 @@ public class TagServiceTest
     [DataRow("Tag 1")]
     public void GetAllTags(string tagName)
     {
-        TagService tagService = new TagService(tagRepository, logger); 
+        TagService tagService = new TagService(_tagRepository, _logger); 
         tagService.AddTag(new TagDto { Id = Guid.NewGuid().ToString(), Name = tagName });
 
         IEnumerable<TagDto> tagDtos = tagService.GetAllTags();
@@ -160,7 +162,7 @@ public class TagServiceTest
     {
         string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
         string nameToInsert = "Tag 1";
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new() { Id = idToInsert, Name = nameToInsert };
         tagService.AddTag(tagDtoInsert);
 
@@ -173,10 +175,10 @@ public class TagServiceTest
     [TestMethod]
     public void GetTagById_NotFound()
     {
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
 
         TagDto tagDto = tagService.GetTagById(Guid.NewGuid().ToString());
-        var tagDtoEmpty = (TagDto)Tag.Empty;
+        var tagDtoEmpty = (TagDto)Tag.Default;
         Assert.AreEqual(tagDtoEmpty.Id, tagDto.Id);
         Assert.AreEqual(tagDtoEmpty.Name,tagDto.Name);
         Assert.AreEqual(tagDtoEmpty.Description,tagDto.Description);
@@ -186,11 +188,11 @@ public class TagServiceTest
     [TestMethod]
     public void GetTagById_NullId()
     {
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
 
         TagDto tagDto = tagService.GetTagById(null);
 
-        var tagDtoEmpty = (TagDto)Tag.Empty;
+        var tagDtoEmpty = (TagDto)Tag.Default;
         Assert.AreEqual(tagDtoEmpty.Id, tagDto.Id);
         Assert.AreEqual(tagDtoEmpty.Name, tagDto.Name);
         Assert.AreEqual(tagDtoEmpty.Description, tagDto.Description);
@@ -201,15 +203,15 @@ public class TagServiceTest
     [TestMethod]
     public void GetTagById_EmptyId()
     {
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
 
         TagDto tagDto = tagService.GetTagById("");
 
-        var tagDtoEmpty = (TagDto)Tag.Empty;
+        var tagDtoEmpty = (TagDto)Tag.Default;
         Assert.AreEqual(tagDtoEmpty.Id, tagDto.Id);
         Assert.AreEqual(tagDtoEmpty.Name, tagDto.Name);
         Assert.AreEqual(tagDtoEmpty.Description, tagDto.Description);
-        Assert.AreEqual(tagDtoEmpty.Color, tagDto.Color);
+        Assert.IsTrue(tagDtoEmpty.Color.Equals(tagDto.Color));
         Assert.AreEqual(tagDtoEmpty.ParentTagIds, tagDto.ParentTagIds);
     }
 
@@ -218,13 +220,13 @@ public class TagServiceTest
     public void UpdateTag_WithFullParameters(string id, string name, string description, string color, string name2, string description2, string color2)
     {
         string idToInsert1 = !String.IsNullOrWhiteSpace(id) ? id : Guid.NewGuid().ToString();
-        TagService tagService = new(tagRepository, logger);
+        TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
             Id = idToInsert1,
             Name = name,
             Description = description,
-            Color = color
+            Color = new Color(color)
         };
         tagService.AddTag(tagDtoInsert);
 
@@ -233,7 +235,7 @@ public class TagServiceTest
             Id = idToInsert1,
             Name = name2,
             Description = description2,
-            Color = color2
+            Color = new Color(color2)
         };
         tagService.UpdateTag(tagDtoUpdate);
 
@@ -243,7 +245,7 @@ public class TagServiceTest
         Assert.AreEqual(idToInsert1, tagDto.Id);
         Assert.AreEqual(name2, tagDto.Name);
         Assert.AreEqual(description2, tagDto.Description);
-        Assert.AreEqual(color2, tagDto.Color);
+        Assert.IsTrue(tagDto.Color.Equals(new Color(color2)));
     }
 
     //TODO : a continuer avec les différentes méthodes.

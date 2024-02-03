@@ -24,10 +24,10 @@ public sealed class LoggerCustom : ILogger
     private readonly ILogDestination _logDestination;
     private readonly LogLevel _minimumLogLevel;
 
-    public LoggerCustom(ILogDestination logDestination, LogLevel _minimumLogLevel = LogLevel.Information)
+    public LoggerCustom(ILogDestination logDestination, LogLevel minimumLogLevel = LogLevel.Information)
     {
         _logDestination = logDestination;
-        this._minimumLogLevel = _minimumLogLevel;
+        _minimumLogLevel = minimumLogLevel;
         _logThread = new Thread(ProcessLogQueue)
         {
             IsBackground = true

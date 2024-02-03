@@ -6,41 +6,41 @@ using TodoList.Domain.Interfaces.Repositories;
 namespace TodoList.Application.Services;
 public class TagService
 {
-    private readonly ITagRepository tagRepository;
-    private readonly ILogger logger;
+    private readonly ITagRepository _tagRepository;
+    private readonly ILogger _logger;
 
     public TagService(ITagRepository tagRepository, ILogger logger)
     {
-        this.tagRepository = tagRepository;
-        this.logger = logger;
+        _tagRepository = tagRepository;
+        _logger = logger;
     }
 
     public IEnumerable<TagDto> GetAllTags()
     {
-        return tagRepository.GetAllTags().Select(t => (TagDto)t);
+        return _tagRepository.GetAllTags().Select(t => (TagDto)t);
     }
 
     public TagDto GetTagById(string tagId)
     {
-        return (TagDto)tagRepository.GetTagById(tagId);
+        return (TagDto)_tagRepository.GetTagById(tagId);
     }
 
     public void AddTag(TagDto tagDto)
     {
         Tag tag = (Tag)tagDto;
-        tagRepository.AddTag(tag);
+        _ = _tagRepository.AddTag(tag);
     }
     public void UpdateTag(TagDto tagDto)
     {
         Tag tag = (Tag)tagDto;
-        tagRepository.UpdateTag(tag);
+        _ = _tagRepository.UpdateTag(tag);
     }
 
     // Peut être mettre le tasktagService à la place de taskTagRepository, si cela se complexifie.
     public void DeleteTagById(string tagId, ITaskTagRepository taskTagRepository)
     {
         UnassignAllTaskFromTag(tagId, taskTagRepository);
-        tagRepository.DeleteTagById(tagId);
+        _ = _tagRepository.DeleteTagById(tagId);
     }
     public void DeleteTagByIds(IEnumerable<string> tagIds, ITaskTagRepository taskTagRepository)
     {
@@ -48,7 +48,7 @@ public class TagService
         {
             UnassignAllTaskFromTag(tagId, taskTagRepository);
         }
-        tagRepository.DeleteTagByIds(tagIds);
+        _ = _tagRepository.DeleteTagByIds(tagIds);
     }
     private void UnassignAllTaskFromTag(string tagId, ITaskTagRepository taskTagRepository)
     {
@@ -57,7 +57,7 @@ public class TagService
         if (!taskTags.Any())
             return; //The tag does not have task
 
-        taskTagRepository.DeleteTaskTagByIds(taskTags.Select(tt => tt.Id));
+        _ = taskTagRepository.DeleteTaskTagByIds(taskTags.Select(tt => tt.Id));
     }
     public void UnassignAllTaskFromTags(IEnumerable<string> tagIds, ITaskTagRepository taskTagRepository)
     {
@@ -65,6 +65,6 @@ public class TagService
         if (taskTags == null)
             return; //The tag does not have task
 
-        taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t => t.Id));
+        _ = taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t => t.Id));
     }
 }

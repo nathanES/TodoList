@@ -41,7 +41,7 @@ public class Tag
     [JsonProperty("Description")]
     public string? Description { get; private set; }
     [JsonProperty("Color")]
-    public Color Color { get; private set; } = new Color("#000000");
+    public Color Color { get; private set; } = Color.Default;
 
     private List<string> parentTagIds = new();
     [JsonProperty("ParentTagIds")]
@@ -62,11 +62,10 @@ public class Tag
             parentTagIds = value;
         }
     }
-    //TODO faire la même chose pour Task et modifier surement le constructeur pour faire aussi pareil que Tag
-    public static Tag Empty = new("00000000-0000-0000-0000-000000000000", "___Empty")
+    public static Tag Default = new("00000000-0000-0000-0000-000000000000", "___Default")
     {
         Description = string.Empty,
-        Color = new Color("#000000"),
+        Color = Color.Default,
         ParentTagIds = new List<string>()
     };
 
@@ -119,7 +118,7 @@ public class Tag
         private readonly string id;
         private readonly string name;
         private string description;
-        private Color color = new("#000000");
+        private Color color = Color.Default;
         private List<string> parentTagIds = new();
         public TagBuilder(string id, string name)
         {

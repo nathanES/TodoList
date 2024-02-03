@@ -8,7 +8,7 @@ public class TagDto
     public string Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
-    public string Color { get; set; }
+    public Color Color { get; set; }
     public List<string> ParentTagIds { get; set; }
 
     public TagDto()
@@ -20,7 +20,7 @@ public class TagDto
     {
         return new Tag.TagBuilder(tagDto.Id, tagDto.Name)
             .SetDescription(tagDto.Description)
-            .SetColor(new Color(tagDto.Color))
+            .SetColor(tagDto.Color)
             .SetParentTagIds(tagDto.ParentTagIds)
             .Build();
     }
@@ -32,7 +32,7 @@ public class TagDto
             Id = tag.Id,
             Name = tag.Name,
             Description = tag.Description,
-            Color = tag.Color?.ColorValue,
+            Color = tag.Color,
             ParentTagIds = tag.ParentTagIds
         };
     }

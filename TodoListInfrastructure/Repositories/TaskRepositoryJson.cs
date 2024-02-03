@@ -8,13 +8,13 @@ namespace TodoList.Infrastructure.Repositories;
 public class TaskRepositoryJson : ITaskRepository
 {
     private readonly string _taskFilePath = $@"{Settings.JsonDataFilePathBase}tasks.json";
-    private List<Task> cache;
-    private readonly object fileLock = new();
-    private readonly ILogger logger;
+    private List<Task> _cache;
+    private readonly object _fileLock = new();
+    private readonly ILogger _logger;
 
     public TaskRepositoryJson(ILogger logger)
     {
-        this.logger = logger;
+        _logger = logger;
         LoadCache();
     }
     private void LoadCache()
@@ -23,16 +23,16 @@ public class TaskRepositoryJson : ITaskRepository
         {
             if (!File.Exists(_taskFilePath))
             {
-                cache = new List<Task>();
+                _cache = new List<Task>();
                 return;
             }
 
             string json = File.ReadAllText(_taskFilePath);
-            cache = JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
+            _cache = JsonConvert.DeserializeObject<List<Task>>(json) ?? new List<Task>();
         }
         catch (Exception e)
         {
-            logger.LogException(e, "LoadCache Impossible !", LogLevel.Error);
+            _logger.LogException(e, "LoadCache Impossible !", LogLevel.Error);
             throw;
         }
     }
@@ -40,40 +40,40 @@ public class TaskRepositoryJson : ITaskRepository
     {
         try
         {
-            lock (fileLock)
+            lock (_fileLock)
             {
-                string json = JsonConvert.SerializeObject(cache, Formatting.Indented);
+                string json = JsonConvert.SerializeObject(_cache, Formatting.Indented);
                 File.WriteAllText(_taskFilePath, json);
             }
         }
         catch (Exception e)
         {
-            logger.LogException(e, "WriteToFile Impossible !", LogLevel.Error);
+            _logger.LogException(e, "WriteToFile Impossible !", LogLevel.Error);
             throw;
         }
     }
 
     public bool AddTask(Task task)
     {
-        if (cache.Any(t => t.Id == task.Id))
+        if (_cache.Any(t => t.Id == task.Id))
         {
-            logger.LogCritical("AddTask : DuplicateKey : {0}", task.Id);
+            _logger.LogCritical("AddTask : DuplicateKey : {0}", task.Id);
             throw new DuplicateKeyException($"Duplicate {nameof(Task.Id)}, Value : {task.Id}");
         }
-        cache.Add(task);
+        _cache.Add(task);
         WriteToFile();
         return true;
     }
 
     public bool DeleteTaskById(string taskId)
     {
-        int taskIndexToDelete = cache.FindIndex(t => t.Id == taskId);
+        int taskIndexToDelete = _cache.FindIndex(t => t.Id == taskId);
         if (taskIndexToDelete == -1)
         {
-            logger.LogWarning("DeleteTaskById : Task not found : {0}", taskId);
+            _logger.LogWarning("DeleteTaskById : Task not found : {0}", taskId);
             return false;
         }
-        cache.RemoveAt(taskIndexToDelete);
+        _cache.RemoveAt(taskIndexToDelete);
         WriteToFile();
         return true;
     }
@@ -84,16 +84,16 @@ public class TaskRepositoryJson : ITaskRepository
 
         foreach (string taskId in taskIds)
         {
-            int taskIndexToDelete = cache.FindIndex(t => t.Id == taskId);
+            int taskIndexToDelete = _cache.FindIndex(t => t.Id == taskId);
 
             if (taskIndexToDelete == -1)
             {
-                logger.LogWarning("DeleteTagByIds : Tag not found : {0}", taskId);
+                _logger.LogWarning("DeleteTagByIds : Tag not found : {0}", taskId);
                 result = false;
                 continue;
             }
 
-            cache.RemoveAt(taskIndexToDelete);
+            _cache.RemoveAt(taskIndexToDelete);
         }
         WriteToFile();
         return result;
@@ -101,25 +101,25 @@ public class TaskRepositoryJson : ITaskRepository
 
     public IEnumerable<Task> GetAllTasks()
     {
-        return cache;
+        return _cache;
     }
 
     public Task GetTaskById(string id)
     {
-        return cache.Find(t => t.Id == id) ?? Task.Empty;
+        return _cache.Find(t => t.Id == id) ?? Task.Default;
     }
 
     public bool UpdateTask(Task task)
     {
-        int taskIndexToUpdate = cache.FindIndex(t => t.Id == task.Id);
+        int taskIndexToUpdate = _cache.FindIndex(t => t.Id == task.Id);
 
         if (taskIndexToUpdate == -1)
         {
-            logger.LogWarning("UpdateTask : Task not found : {0}", task.Id);
+            _logger.LogWarning("UpdateTask : Task not found : {0}", task.Id);
             return false;
         }
 
-        cache[taskIndexToUpdate] = task;
+        _cache[taskIndexToUpdate] = task;
         WriteToFile();
         return true;
     }

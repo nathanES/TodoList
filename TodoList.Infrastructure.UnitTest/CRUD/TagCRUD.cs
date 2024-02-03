@@ -1,5 +1,6 @@
 ﻿using Moq;
 using TodoList.Domain.Entities;
+using TodoList.Domain.Exceptions;
 using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure.Loggers;
@@ -10,18 +11,17 @@ namespace TodoList.Infrastructure.UnitTest.CRUD;
 [TestClass]
 public class TagCRUD
 {
-    private ITagRepository? tagRepository;
-    private ILogger? logger;
-    private readonly Mock<ILogDestination> logDestination = new();
+    private ITagRepository? _tagRepository;
+    private ILogger? _logger;
+    private readonly Mock<ILogDestination> _logDestination = new();
 
     [TestInitialize]
     public void TagCRUDInitialize()
     {
-        logger = new LoggerCustom(logDestination.Object);
-        tagRepository = new TagRepositoryJson(logger);
+        _logger = new LoggerCustom(_logDestination.Object);
+        _tagRepository = new TagRepositoryJson(_logger);
     }
 
-    //TODO : rajouter des cas non passant
     [TestMethod]
     [DataRow("AddTag", "AddTagParent", "Description 1", "#000000")]
     public void AddTag(string name, string parentName, string description, string color)
@@ -29,20 +29,34 @@ public class TagCRUD
         //Arrange
         Tag tagParent = new Tag.TagBuilder(Guid.NewGuid().ToString(), parentName)
             .Build();
-        _ = tagRepository.AddTag(tagParent);
-        Assert.IsTrue(tagRepository.GetAllTags().Any(t => t.Id == tagParent.Id));
+        _ = _tagRepository.AddTag(tagParent);
+        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Id == tagParent.Id));
 
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
-            .SetColor(new Domain.ValueObjects.Color(color))
+            .SetColor(new Color(color))
             .SetParentTagIds(new List<string>() { tagParent.Id })
             .Build();
         //Act
-        bool addResult = tagRepository.AddTag(tag);
+        bool addResult = _tagRepository.AddTag(tag);
         //Assert
         Assert.IsTrue(addResult);
-        Assert.IsTrue(tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
-
+        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
+    }
+    [TestMethod]
+    [DataRow("AddTagDuplicateKey", "AddTagParent", "Description 1", "#000000")]
+    public void AddTag_DuplicateKey(string name, string parentName, string description, string color)
+    {
+        //Arrange
+        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+            .SetDescription(description)
+            .SetColor(new Color(color))
+            .Build();
+        bool addResult = _tagRepository.AddTag(tag);
+        Assert.IsTrue(addResult);
+        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
+        //Act and Assert
+        _ = Assert.ThrowsException<DuplicateKeyException>(() => _tagRepository.AddTag(tag));
     }
 
     [TestMethod]
@@ -53,17 +67,16 @@ public class TagCRUD
 
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
-            .SetColor(new Domain.ValueObjects.Color(color))
+            .SetColor(new Color(color))
             .Build();
 
-        _ = tagRepository.AddTag(tag);
+        _ = _tagRepository.AddTag(tag);
         //Act
-        bool deleteResult = tagRepository.DeleteTagById(tag.Id);
+        bool deleteResult = _tagRepository.DeleteTagById(tag.Id);
         //Assert
         Assert.IsTrue(deleteResult);
-        Assert.IsFalse(tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
+        Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
     }
-
     [TestMethod]
     [DataRow("DeleteTags", "Description", "#000000")]
     public void DeleteTags(string name, string description, string color)
@@ -71,24 +84,41 @@ public class TagCRUD
         //Arrange
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
-            .SetColor(new Domain.ValueObjects.Color(color))
+            .SetColor(new Color(color))
             .Build();
 
-        _ = tagRepository.AddTag(tag);
+        _ = _tagRepository.AddTag(tag);
 
         Tag tag2 = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
           .SetDescription(description)
-          .SetColor(new Domain.ValueObjects.Color(color))
+          .SetColor(new Color(color))
           .Build();
 
-        _ = tagRepository.AddTag(tag2);
+        _ = _tagRepository.AddTag(tag2);
 
         //Act
-        bool deleteResult = tagRepository.DeleteTagByIds(new List<string>() { tag.Id, tag2.Id });
+        bool deleteResult = _tagRepository.DeleteTagByIds(new List<string>() { tag.Id, tag2.Id });
         //Assert
         Assert.IsTrue(deleteResult);
-        Assert.IsFalse(tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
-        Assert.IsFalse(tagRepository.GetAllTags().Any(t => t.Id == tag2.Id));
+        Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
+        Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.Id == tag2.Id));
+    }
+    [TestMethod]
+    public void DeleteTag_NotFound()
+    {
+        //Act
+        bool deleteResult = _tagRepository.DeleteTagById(Guid.NewGuid().ToString());
+        //Assert
+        Assert.IsFalse(deleteResult);
+    }
+    [TestMethod]
+    public void DeleteTags_NotFound()
+    {
+        IEnumerable<Guid> guids = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), };
+        //Arrange
+        bool deleteResult = _tagRepository.DeleteTagByIds(guids.Select(x => x.ToString()));
+        //Assert
+        Assert.IsFalse(deleteResult);
     }
 
     [TestMethod]
@@ -98,34 +128,36 @@ public class TagCRUD
         //Arrange
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
-            .SetColor(new Domain.ValueObjects.Color(color))
+            .SetColor(new Color(color))
             .Build();
 
-        _ = tagRepository.AddTag(tag);
+        _ = _tagRepository.AddTag(tag);
 
         tag.UpdateName(updatedName);
         //Act
-        bool updateResult = tagRepository.UpdateTag(tag);
+        bool updateResult = _tagRepository.UpdateTag(tag);
         //Assert
         Assert.IsTrue(updateResult);
-        Assert.IsTrue(tagRepository.GetAllTags().Any(t => t.Name == updatedName));
+        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Name == updatedName));
     }
     [TestMethod]
-    [DataRow("UpdateTagNotExisted", "UpdateTagNotExisted2", "Description", "#000000")]
-    public void UpdateTag_NotExisting(string name, string updatedName, string description, string color)
+    [DataRow("UpdateTagNotFound", "Description", "#000000")]
+    public void UpdateTag_NotFound(string name, string description, string color)
     {
         //Arrange
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
-            .SetColor(new Domain.ValueObjects.Color(color))
+            .SetColor(new Color(color))
             .Build();
 
-        tag.UpdateName(updatedName);
         //Act
-        bool updateResult = tagRepository.UpdateTag(tag);
+        bool updateResult = _tagRepository.UpdateTag(tag);
         //Assert
         Assert.IsFalse(updateResult);
+        Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.Name == name));
+
     }
+
     [TestMethod]
     [DataRow("GetTagById", "Description", "#000000")]
     public void GetTagById(string name, string description, string color)
@@ -133,11 +165,11 @@ public class TagCRUD
         //Arrange
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
-            .SetColor(new Domain.ValueObjects.Color(color))
+            .SetColor(new Color(color))
             .Build();
-        _ = tagRepository.AddTag(tag);
+        _ = _tagRepository.AddTag(tag);
         //Act
-        Tag tagFound = tagRepository.GetTagById(tag.Id);
+        Tag tagFound = _tagRepository.GetTagById(tag.Id);
         //Assert
         TagCompare(tagFound, tag);
     }
@@ -148,12 +180,12 @@ public class TagCRUD
         //Arrange
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
-            .SetColor(new Domain.ValueObjects.Color(color))
+            .SetColor(new Color(color))
             .Build();
         //Act
-        Tag tagFound = tagRepository.GetTagById(tag.Id);
+        Tag tagFound = _tagRepository.GetTagById(tag.Id);
         //Assert
-        TagCompare(tagFound, Tag.Empty);
+        TagCompare(tagFound, Tag.Default);
     }
 
     [TestMethod]
@@ -163,13 +195,13 @@ public class TagCRUD
         //Arrange
         Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
             .SetDescription(description)
-            .SetColor(new Domain.ValueObjects.Color(color))
+            .SetColor(new Color(color))
             .Build();
-        _ = tagRepository.AddTag(tag);
+        _ = _tagRepository.AddTag(tag);
         //Act
-        _ = tagRepository.GetAllTags();
+        IEnumerable<Tag> tags = _tagRepository.GetAllTags();
         //Assert  
-        Assert.IsTrue(tagRepository.GetAllTags().Any());
+        Assert.IsTrue(tags.Any());
     }
 
     public static void TagCompare(Tag tag, Tag tag2)

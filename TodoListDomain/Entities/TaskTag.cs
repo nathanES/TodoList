@@ -4,7 +4,22 @@ namespace TodoList.Domain.Entities;
 
 public class TaskTag
 {
-    public string Id { get; } = Guid.NewGuid().ToString();
+    private string id;
+    [JsonProperty("Id")]
+    public string Id
+    {
+        get
+        {
+            return id;
+        }
+
+        set
+        {
+            if (!Guid.TryParse(value, out Guid _))
+                throw new ArgumentException("Id must be a valid Guid");
+            id = value;
+        }
+    }
     public string TaskId
     {
         get
@@ -23,18 +38,19 @@ public class TaskTag
     }
     public Tag Tag { get; set; }
 
-    public static TaskTag Empty = new(Task.Empty, Tag.Empty);
+    public static TaskTag Default = new(Task.Default, Tag.Default);
     public TaskTag(Task task, Tag tag)
     {
+        Id = Guid.NewGuid().ToString();//TODO corriger les problèmes de l'id de taskTag
         Task = task;
         Tag = tag;
     }
 
     [JsonConstructor]
-    private TaskTag(string Id, string TaskId, Task Task, string TagId, Tag tag)
+    private TaskTag(string id, string taskId, Task task, string tagId, Tag tag)
     {
-        this.Id = Id;
-        this.Task = Task;
+        Id = id;
+        Task = task;
         Tag = tag;
     }
 }
