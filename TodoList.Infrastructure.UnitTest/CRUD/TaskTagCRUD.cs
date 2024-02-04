@@ -5,6 +5,7 @@ using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure.Loggers;
 using TodoList.Infrastructure.Repositories;
+using static TodoList.Domain.Entities.TaskTag;
 
 namespace TodoList.Infrastructure.UnitTest.CRUD;
 
@@ -30,7 +31,7 @@ public class TaskTagCRUD
         Tag tag = AddTag("GetAllTaskTagNameTag", "GetAllTaskTag", "#000000", "GetAllTaskTagParentNameTag");
         Task task = AddTask("GetAllTaskTagNameTask", "GetAllTaskTag", Priority.High);
 
-        TaskTag taskTag = new(task, tag);
+        TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
         _ = taskTagRepository.AddTaskTag(taskTag);
 
         //Act
@@ -47,7 +48,7 @@ public class TaskTagCRUD
         Tag tag = AddTag("GetTaskTagByIdNameTag", "GetTaskTagById", "#000000", "GetTaskTagByIdParentNameTag");
         Task task = AddTask("GetTaskTagByIdNameTask", "GetTaskTagById", Priority.High);
 
-        TaskTag taskTag = new(task, tag);
+        TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
         _ = taskTagRepository.AddTaskTag(taskTag);
 
         //Act
@@ -65,7 +66,7 @@ public class TaskTagCRUD
         Tag tag = AddTag("AddTaskTagNameTag", "AddTaskTag", "#000000", "AddTaskTagParentNameTag");
         Task task = AddTask("AddTaskTagByIdNameTask", "AddTaskTag", Priority.High);
 
-        TaskTag taskTag = new(task, tag);
+        TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
 
         //Act
         _ = taskTagRepository.AddTaskTag(taskTag);
@@ -82,12 +83,12 @@ public class TaskTagCRUD
         Tag tag = AddTag("UpdateTaskTagNameTag", "UpdateTaskTag", "#000000", "UpdateTaskTagParentNameTag");
         Task task = AddTask("UpdateTaskTagNameTask", "UpdateTaskTagById", Priority.High);
 
-        TaskTag taskTag = new(task, tag);
+        TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
         _ = taskTagRepository.AddTaskTag(taskTag);
         TagCRUD.TagCompare(tag, taskTag.Tag);
         //Act
         Tag tag2 = AddTag("UpdateTaskTagNameTag2", "UpdateTaskTag2", "#000000", "UpdateTaskTagParentNameTag2");
-        taskTag.Tag = tag2;
+        taskTag.UpdateTag(tag2);
         _ = taskTagRepository.UpdateTaskTag(taskTag);
 
         //Assert
@@ -109,7 +110,7 @@ public class TaskTagCRUD
         Tag tag = AddTag("DeleteTaskTagNameTag", "DeleteTaskTag", "#000000", "DeleteTaskTagParentNameTag");
         Task task = AddTask("DeleteTaskTagNameTask", "DeleteTaskTag", Priority.High);
 
-        TaskTag taskTag = new(task, tag);
+        TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
         _ = taskTagRepository.AddTaskTag(taskTag);
 
         //Act
@@ -124,16 +125,16 @@ public class TaskTagCRUD
         //Arrange
         Tag tag = AddTag("DeleteTaskTagNameTag", "DeleteTaskTag", "#000000", "DeleteTaskTagParentNameTag");
         Task task = AddTask("DeleteTaskTagNameTask", "DeleteTaskTag", Priority.High);
-        TaskTag taskTag = new(task, tag);
+        TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
         _ = taskTagRepository.AddTaskTag(taskTag);
 
         Tag tag2 = AddTag("DeleteTaskTagNameTag2", "DeleteTaskTag2", "#000000", "DeleteTaskTag2ParentNameTag");
         Task task2 = AddTask("DeleteTaskTagNameTask2", "DeleteTaskTag2", Priority.High);
-        TaskTag taskTag2 = new(task2, tag2);
+        TaskTag taskTag2 = new TaskTagBuilder(task2, tag2).Build();
         _ = taskTagRepository.AddTaskTag(taskTag2);
 
         //Act
-        _ = taskTagRepository.DeleteTaskTagByIds(new List<string>() { taskTag.Id, taskTag2.Id });
+        _ = taskTagRepository.DeleteTaskTagByIds(new List<Guid>() { taskTag.Id, taskTag2.Id });
 
         //Assert
         Assert.IsFalse(taskTagRepository.GetAllTaskTags().Any(t => t.Id == taskTag.Id));
@@ -147,7 +148,7 @@ public class TaskTagCRUD
         Tag tag = AddTag("GetTaskTagsByTaskIdNameTag", "GetTaskTagsByTaskId", "#000000", "GetTaskTagsByTaskIdParentNameTag");
         Task task = AddTask("GetTaskTagsByTaskIdNameTask", "GetTaskTagsByTaskId", Priority.High);
 
-        TaskTag taskTag = new(task, tag);
+        TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
         _ = taskTagRepository.AddTaskTag(taskTag);
         //Act
         IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTaskId(task.Id);
@@ -164,7 +165,7 @@ public class TaskTagCRUD
         Tag tag = AddTag("GetTaskTagsByTagIdNameTag", "GetTaskTagsByTagId", "#000000", "GetTaskTagsByTagIdParentNameTag");
         Task task = AddTask("GetTaskTagsByTagIdNameTask", "GetTaskTagsByTagId", Priority.High);
 
-        TaskTag taskTag = new(task, tag);
+        TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
         _ = taskTagRepository.AddTaskTag(taskTag);
         //Act
         IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagId(tag.Id);
@@ -180,7 +181,7 @@ public class TaskTagCRUD
         Tag tag = AddTag("IsRelationExistsTrueNameTag", "IsRelationExistsTrue", "#000000", "IsRelationExistsTrueParentNameTag");
         Task task = AddTask("IsRelationExistsTrueNameTask", "IsRelationExistsTrue", Priority.High);
 
-        _ = taskTagRepository.AddTaskTag(new TaskTag(task, tag));
+        _ = taskTagRepository.AddTaskTag(new TaskTagBuilder(task, tag).Build());
         //Act
         bool isRelationExists = taskTagRepository.IsRelationExists(task.Id, tag.Id);
 
@@ -205,15 +206,15 @@ public class TaskTagCRUD
     private Tag AddTag(string name, string description, string color, string parentName)
     {
         ITagRepository tagRepository = new TagRepositoryJson(logger);
-        Tag tagParent = new Tag.TagBuilder(Guid.NewGuid().ToString(), parentName)
+        Tag tagParent = new Tag.TagBuilder(parentName)
             .Build();
         _ = tagRepository.AddTag(tagParent);
         Assert.IsTrue(tagRepository.GetAllTags().Any(t => t.Id == tagParent.Id));
 
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Domain.ValueObjects.Color(color))
-            .SetParentTagIds(new List<string>() { tagParent.Id })
+            .SetParentTagIds(new List<Guid>() { tagParent.Id })
             .Build();
         //Act
         _ = tagRepository.AddTag(tag);
@@ -226,7 +227,7 @@ public class TaskTagCRUD
         //Arrange
         ITaskRepository taskRepository = new TaskRepositoryJson(logger);
 
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();

@@ -20,7 +20,7 @@ public class TagService
         return _tagRepository.GetAllTags().Select(t => (TagDto)t);
     }
 
-    public TagDto GetTagById(string tagId)
+    public TagDto GetTagById(Guid tagId)
     {
         return (TagDto)_tagRepository.GetTagById(tagId);
     }
@@ -37,20 +37,20 @@ public class TagService
     }
 
     // Peut être mettre le tasktagService à la place de taskTagRepository, si cela se complexifie.
-    public void DeleteTagById(string tagId, ITaskTagRepository taskTagRepository)
+    public void DeleteTagById(Guid tagId, ITaskTagRepository taskTagRepository)
     {
         UnassignAllTaskFromTag(tagId, taskTagRepository);
         _ = _tagRepository.DeleteTagById(tagId);
     }
-    public void DeleteTagByIds(IEnumerable<string> tagIds, ITaskTagRepository taskTagRepository)
+    public void DeleteTagByIds(IEnumerable<Guid> tagIds, ITaskTagRepository taskTagRepository)
     {
-        foreach (string tagId in tagIds)
+        foreach (Guid tagId in tagIds)
         {
             UnassignAllTaskFromTag(tagId, taskTagRepository);
         }
         _ = _tagRepository.DeleteTagByIds(tagIds);
     }
-    private void UnassignAllTaskFromTag(string tagId, ITaskTagRepository taskTagRepository)
+    private void UnassignAllTaskFromTag(Guid tagId, ITaskTagRepository taskTagRepository)
     {
         IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagId(tagId);
 
@@ -59,7 +59,7 @@ public class TagService
 
         _ = taskTagRepository.DeleteTaskTagByIds(taskTags.Select(tt => tt.Id));
     }
-    public void UnassignAllTaskFromTags(IEnumerable<string> tagIds, ITaskTagRepository taskTagRepository)
+    public void UnassignAllTaskFromTags(IEnumerable<Guid> tagIds, ITaskTagRepository taskTagRepository)
     {
         IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagIds(tagIds);
         if (taskTags == null)

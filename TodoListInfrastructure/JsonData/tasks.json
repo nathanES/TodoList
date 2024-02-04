@@ -6955,5 +6955,50 @@
     "DeadLine": "9999-12-31T23:59:59.9999999",
     "CreationTime": "0001-01-01T00:00:00",
     "IsCompleted": false
+  },
+  {
+    "Id": "c1ea38c1-599c-4246-a16e-0d0787239aec",
+    "Name": "Add Task",
+    "Description": "Description",
+    "Priority": 2,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "ef9e5e3b-f09b-47af-a747-136e5053de53",
+    "Name": "Add Task ",
+    "Description": "Description",
+    "Priority": 2,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "66cef915-cc90-4309-95b1-cc3d92b9db8c",
+    "Name": "Get All Tasks",
+    "Description": "Description",
+    "Priority": 2,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "d7a84f64-2a82-4480-b0bb-8fc3caf44a0a",
+    "Name": "GetTaskById",
+    "Description": "Description",
+    "Priority": 2,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "585f9d24-3902-4aa6-8e04-4366f1c78ef6",
+    "Name": "UpdateTask",
+    "Description": "Description",
+    "Priority": 2,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
   }
 ]

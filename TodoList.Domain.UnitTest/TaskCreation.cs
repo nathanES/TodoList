@@ -9,7 +9,7 @@ public class TaskCreation
     [DataRow("Task 1")]
     public void Constructor_ShouldCreateTask_WithGivenName(string name)
     {
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .Build();
 
         Assert.AreEqual(task.Name, name);
@@ -25,7 +25,7 @@ public class TaskCreation
     [DataRow("Task 1", Priority.High)]
     public void Constructor_ShouldCreateTask_WithPriority(string name, Priority priority)
     {
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetPriority(priority)
             .Build();
 
@@ -42,7 +42,7 @@ public class TaskCreation
     [DataRow("Task 1", "Description 1")]
     public void Constructor_ShouldCreateTask_WithDescription(string name, string description)
     {
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .Build();
 
@@ -60,7 +60,7 @@ public class TaskCreation
     public void Constructor_ShouldCreateTask_WithDeadline(string name)
     {
         DateTime deadLine = DateTime.UtcNow.AddDays(1);
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDeadLine(deadLine)
             .Build();
 
@@ -79,7 +79,7 @@ public class TaskCreation
     [DataRow(null!)]
     public void Constructor_ShouldThrowArgumentNullException_WhenNameIsNull(string name)
     {
-        _ = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        _ = new Task.TaskBuilder(name)
           .Build();
     }
 
@@ -88,7 +88,7 @@ public class TaskCreation
     [DataRow("")]
     public void Constructor_ShouldThrowArgumentNullException_WhenNameIsEmpty(string name)
     {
-        _ = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        _ = new Task.TaskBuilder(name)
           .Build();
     }
 
@@ -98,7 +98,7 @@ public class TaskCreation
     public void Constructor_ShouldThrowArgumentException_WhenDeadLineInThePast(string name)
     {
         DateTime deadLine = DateTime.UtcNow.AddDays(-1);
-        _ = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        _ = new Task.TaskBuilder(name)
           .SetDeadLine(deadLine)
           .Build();
     }

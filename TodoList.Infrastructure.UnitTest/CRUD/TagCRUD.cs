@@ -27,15 +27,15 @@ public class TagCRUD
     public void AddTag(string name, string parentName, string description, string color)
     {
         //Arrange
-        Tag tagParent = new Tag.TagBuilder(Guid.NewGuid().ToString(), parentName)
+        Tag tagParent = new Tag.TagBuilder(parentName)
             .Build();
         _ = _tagRepository.AddTag(tagParent);
         Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Id == tagParent.Id));
 
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Color(color))
-            .SetParentTagIds(new List<string>() { tagParent.Id })
+            .SetParentTagIds(new List<Guid>() { tagParent.Id })
             .Build();
         //Act
         bool addResult = _tagRepository.AddTag(tag);
@@ -48,7 +48,7 @@ public class TagCRUD
     public void AddTag_DuplicateKey(string name, string parentName, string description, string color)
     {
         //Arrange
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Color(color))
             .Build();
@@ -65,7 +65,7 @@ public class TagCRUD
     {
         //Arrange
 
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Color(color))
             .Build();
@@ -82,14 +82,14 @@ public class TagCRUD
     public void DeleteTags(string name, string description, string color)
     {
         //Arrange
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Color(color))
             .Build();
 
         _ = _tagRepository.AddTag(tag);
 
-        Tag tag2 = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag2 = new Tag.TagBuilder(name)
           .SetDescription(description)
           .SetColor(new Color(color))
           .Build();
@@ -97,7 +97,7 @@ public class TagCRUD
         _ = _tagRepository.AddTag(tag2);
 
         //Act
-        bool deleteResult = _tagRepository.DeleteTagByIds(new List<string>() { tag.Id, tag2.Id });
+        bool deleteResult = _tagRepository.DeleteTagByIds(new List<Guid>() { tag.Id, tag2.Id });
         //Assert
         Assert.IsTrue(deleteResult);
         Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
@@ -107,7 +107,7 @@ public class TagCRUD
     public void DeleteTag_NotFound()
     {
         //Act
-        bool deleteResult = _tagRepository.DeleteTagById(Guid.NewGuid().ToString());
+        bool deleteResult = _tagRepository.DeleteTagById(Guid.NewGuid());
         //Assert
         Assert.IsFalse(deleteResult);
     }
@@ -116,7 +116,7 @@ public class TagCRUD
     {
         IEnumerable<Guid> guids = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), };
         //Arrange
-        bool deleteResult = _tagRepository.DeleteTagByIds(guids.Select(x => x.ToString()));
+        bool deleteResult = _tagRepository.DeleteTagByIds(guids);
         //Assert
         Assert.IsFalse(deleteResult);
     }
@@ -126,7 +126,7 @@ public class TagCRUD
     public void UpdateTag(string name, string updatedName, string description, string color)
     {
         //Arrange
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Color(color))
             .Build();
@@ -145,7 +145,7 @@ public class TagCRUD
     public void UpdateTag_NotFound(string name, string description, string color)
     {
         //Arrange
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Color(color))
             .Build();
@@ -163,7 +163,7 @@ public class TagCRUD
     public void GetTagById(string name, string description, string color)
     {
         //Arrange
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Color(color))
             .Build();
@@ -178,7 +178,7 @@ public class TagCRUD
     public void GetTagById_NotFound(string name, string description, string color)
     {
         //Arrange
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Color(color))
             .Build();
@@ -193,7 +193,7 @@ public class TagCRUD
     public void GetAllTags(string name, string description, string color)
     {
         //Arrange
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(new Color(color))
             .Build();
@@ -210,11 +210,11 @@ public class TagCRUD
         Assert.AreEqual(tag.Description, tag2.Description);
         Assert.AreEqual(tag.Color, tag2.Color);
         Assert.AreEqual(tag.Name, tag2.Name);
-        foreach (string parentTagId in tag.ParentTagIds)
+        foreach (Guid parentTagId in tag.ParentTagIds)
         {
             Assert.IsTrue(tag2.ParentTagIds.Any(t => t == parentTagId));
         }
-        foreach (string parentTagId in tag2.ParentTagIds)
+        foreach (Guid parentTagId in tag2.ParentTagIds)
         {
             Assert.IsTrue(tag.ParentTagIds.Any(t => t == parentTagId));
         }

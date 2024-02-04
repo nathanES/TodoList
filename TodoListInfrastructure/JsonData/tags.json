@@ -20128,9 +20128,9 @@
     "Name": "AddTaskTagParentNameTag",
     "Description": null,
     "Color": {
-      "Red": 255,
-      "Green": 255,
-      "Blue": 255
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
     },
     "ParentTagIds": []
   },
@@ -20146,5 +20146,73 @@
     "ParentTagIds": [
       "6cfd7d3e-eabf-414f-ad45-28303617ee89"
     ]
+  },
+  {
+    "Id": "37adebfd-6853-478b-990a-f130711e4625",
+    "Name": "AddTagParent",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "f81d05a4-b3a1-47a2-8cf6-88b1e3261374",
+    "Name": "AddTag",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "37adebfd-6853-478b-990a-f130711e4625"
+    ]
+  },
+  {
+    "Id": "5806f3e4-4654-4a79-96fe-1e04606cd164",
+    "Name": "AddTagDuplicateKey",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "28ee336e-d3c9-4a11-beca-8fe14a33fd3e",
+    "Name": "GetAllTags",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "d8aa28fb-f710-4593-9f80-1f0a08dd767d",
+    "Name": "GetTagById",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "09551655-5356-46ba-a585-b4e011bdbf13",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
   }
 ]

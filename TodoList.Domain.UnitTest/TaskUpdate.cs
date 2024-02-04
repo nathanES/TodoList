@@ -10,7 +10,7 @@ public class TaskUpdate
     public void UpdateDescription_ShouldUpdateDescription(string description)
     {
         string name = "Task 1";
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .Build();
 
         task.UpdateDescription(description);
@@ -30,7 +30,7 @@ public class TaskUpdate
     {
         string name = "Task 1";
         string description = "Description 1";
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .Build();
 
@@ -58,7 +58,7 @@ public class TaskUpdate
     public void UpdatePriority_ShouldUpdatePriority(Priority priority)
     {
         string name = "Task 1";
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .Build();
 
         task.UpdatePriority(priority);
@@ -78,7 +78,7 @@ public class TaskUpdate
     {
         string name = "Task 1";
         Priority priority = Priority.Low;
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetPriority(priority)
             .Build();
 
@@ -105,7 +105,7 @@ public class TaskUpdate
     public void UpdateDeadLine_ShouldUpdateDeadLine()
     {
         string name = "Task 1";
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .Build();
 
         DateTime deadLine = DateTime.UtcNow.AddDays(1);
@@ -126,7 +126,7 @@ public class TaskUpdate
     {
         string name = "Task 1";
         DateTime deadLine = DateTime.UtcNow.AddDays(1);
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDeadLine(deadLine)
             .Build();
 
@@ -159,7 +159,7 @@ public class TaskUpdate
         DateTime deadLine = DateTime.UtcNow.AddDays(-1);
         string name = "Task 1";
 
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
           .Build();
 
         task.UpdateDeadLine(deadLine);

@@ -10,7 +10,7 @@ public class TagUpdate
     [DataRow("Tag 1")]
     public void UpdateName_ShouldUpdateTagName(string name)
     {
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .Build();
 
         string newName = "New Name";
@@ -22,7 +22,7 @@ public class TagUpdate
     [DataRow("Description 1", "Tag 1")]
     public void UpdateDescription_ShouldUpdateTagDescription(string description, string name)
     {
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .Build();
 
         tag.UpdateDescription(description);
@@ -34,7 +34,7 @@ public class TagUpdate
     public void UpdateColor_ShouldUpdateTagColor(string color, string name)
     {
         Color color1 = new(color);
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .Build();
 
         tag.UpdateColor(color1);
@@ -45,13 +45,13 @@ public class TagUpdate
     [DataRow("Tag Parent")]
     public void UpdateTagParent_ShouldUpdateTagParent(string parentName)
     {
-        Tag tagParent = new Tag.TagBuilder(Guid.NewGuid().ToString(), parentName)
+        Tag tagParent = new Tag.TagBuilder(parentName)
         .Build();
 
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), "Tag 1")
+        Tag tag = new Tag.TagBuilder("Tag 1")
             .Build();
 
-        tag.UpdateTagParent(new List<string>() { tagParent.Id });
+        tag.UpdateTagParent(new List<Guid>() { tagParent.Id });
 
         Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
     }
@@ -59,14 +59,14 @@ public class TagUpdate
     [DataRow("Tag Parent", "#000000", "Description 1", "New name")]
     public void UpdateAllProperties_ShouldUpdateAllProperties(string parentName, string color, string description, string newname)
     {
-        Tag tagParent = new Tag.TagBuilder(Guid.NewGuid().ToString(), parentName)
+        Tag tagParent = new Tag.TagBuilder(parentName)
         .Build();
         Color color1 = new(color);
 
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), "Tag1")
+        Tag tag = new Tag.TagBuilder("Tag1")
             .Build();
 
-        tag.UpdateTagParent(new List<string>() { tagParent.Id });
+        tag.UpdateTagParent(new List<Guid>() { tagParent.Id });
         tag.UpdateColor(color1);
         tag.UpdateDescription(description);
         tag.UpdateName(newname);

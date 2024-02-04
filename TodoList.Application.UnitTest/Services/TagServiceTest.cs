@@ -5,14 +5,13 @@ using TodoList.Domain.Entities;
 using TodoList.Domain.Enum;
 using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
-using TodoList.Infrastructure;
 using TodoList.Infrastructure.Loggers;
 using TodoList.Infrastructure.Repositories;
 using Color = TodoList.Domain.ValueObjects.Color;
 
 namespace TodoList.Application.UnitTest.Services;
 
-[TestClass] 
+[TestClass]
 public class TagServiceTest
 {
     private ITagRepository? _tagRepository;
@@ -31,7 +30,7 @@ public class TagServiceTest
     [DataRow("", "Tag 1", "Description 1", "#000000")]
     public void AddTag_WithAllProperties_WithoutParentTags(string id, string name, string description, string color)
     {
-        string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
+        Guid idToInsert = !string.IsNullOrEmpty(id) ? Guid.Parse(id) : Guid.NewGuid();
         TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
@@ -56,7 +55,7 @@ public class TagServiceTest
     [DataRow("Tag 1")]
     public void AddTag_WithNameAndId(string name)
     {
-        string idToInsert = Guid.NewGuid().ToString();
+        Guid idToInsert = Guid.NewGuid();
         TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
@@ -74,23 +73,24 @@ public class TagServiceTest
     }
     [TestMethod]
     [DataRow("")]
-    public void AddTag_WithId_Exception(string id) //Il manque le nom
+    public void AddTag_WithId_Exception(string id)
     {
-        string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
+        Guid idToInsert = !string.IsNullOrEmpty(id) ? Guid.Parse(id) : Guid.NewGuid();
+
         TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
             Id = idToInsert,
         };
 
-        _ = Assert.ThrowsException<ArgumentNullException>(()=>tagService.AddTag(tagDtoInsert));
+        _ = Assert.ThrowsException<ArgumentNullException>(() => tagService.AddTag(tagDtoInsert));
 
     }
     [TestMethod]
     [DataRow("Tag 1", "description")]
     public void AddTag_WithNameAndDescription(string name, string description)
     {
-        string idToInsert = Guid.NewGuid().ToString();
+        Guid idToInsert = Guid.NewGuid();
         TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
@@ -112,7 +112,7 @@ public class TagServiceTest
     [DataRow("Tag 1", "#000000")]
     public void AddTag_WithNameAndColor(string name, string color)
     {
-        string idToInsert = Guid.NewGuid().ToString();
+        Guid idToInsert = Guid.NewGuid();
         TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
@@ -134,7 +134,7 @@ public class TagServiceTest
     [DataRow("Description")]
     public void AddTag_WithoutName_Exception(string description)
     {
-        string idToInsert = Guid.NewGuid().ToString();
+        Guid idToInsert = Guid.NewGuid();
         TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {
@@ -148,8 +148,8 @@ public class TagServiceTest
     [DataRow("Tag 1")]
     public void GetAllTags(string tagName)
     {
-        TagService tagService = new TagService(_tagRepository, _logger); 
-        tagService.AddTag(new TagDto { Id = Guid.NewGuid().ToString(), Name = tagName });
+        TagService tagService = new(_tagRepository, _logger);
+        tagService.AddTag(new TagDto { Id = Guid.NewGuid(), Name = tagName });
 
         IEnumerable<TagDto> tagDtos = tagService.GetAllTags();
 
@@ -160,7 +160,7 @@ public class TagServiceTest
     [DataRow("")]
     public void GetTagById(string id)
     {
-        string idToInsert = !string.IsNullOrEmpty(id) ? id : Guid.NewGuid().ToString();
+        Guid idToInsert = !string.IsNullOrEmpty(id) ? Guid.Parse(id) : Guid.NewGuid();
         string nameToInsert = "Tag 1";
         TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new() { Id = idToInsert, Name = nameToInsert };
@@ -177,37 +177,23 @@ public class TagServiceTest
     {
         TagService tagService = new(_tagRepository, _logger);
 
-        TagDto tagDto = tagService.GetTagById(Guid.NewGuid().ToString());
-        var tagDtoEmpty = (TagDto)Tag.Default;
-        Assert.AreEqual(tagDtoEmpty.Id, tagDto.Id);
-        Assert.AreEqual(tagDtoEmpty.Name,tagDto.Name);
-        Assert.AreEqual(tagDtoEmpty.Description,tagDto.Description);
-        Assert.AreEqual(tagDtoEmpty.Color,tagDto.Color);
-        Assert.AreEqual(tagDtoEmpty.ParentTagIds,tagDto.ParentTagIds);
-    }
-    [TestMethod]
-    public void GetTagById_NullId()
-    {
-        TagService tagService = new(_tagRepository, _logger);
-
-        TagDto tagDto = tagService.GetTagById(null);
-
-        var tagDtoEmpty = (TagDto)Tag.Default;
+        TagDto tagDto = tagService.GetTagById(Guid.NewGuid());
+        TagDto tagDtoEmpty = (TagDto)Tag.Default;
         Assert.AreEqual(tagDtoEmpty.Id, tagDto.Id);
         Assert.AreEqual(tagDtoEmpty.Name, tagDto.Name);
         Assert.AreEqual(tagDtoEmpty.Description, tagDto.Description);
         Assert.AreEqual(tagDtoEmpty.Color, tagDto.Color);
         Assert.AreEqual(tagDtoEmpty.ParentTagIds, tagDto.ParentTagIds);
-
     }
+
     [TestMethod]
     public void GetTagById_EmptyId()
     {
         TagService tagService = new(_tagRepository, _logger);
 
-        TagDto tagDto = tagService.GetTagById("");
+        TagDto tagDto = tagService.GetTagById(Guid.Empty);
 
-        var tagDtoEmpty = (TagDto)Tag.Default;
+        TagDto tagDtoEmpty = (TagDto)Tag.Default;
         Assert.AreEqual(tagDtoEmpty.Id, tagDto.Id);
         Assert.AreEqual(tagDtoEmpty.Name, tagDto.Name);
         Assert.AreEqual(tagDtoEmpty.Description, tagDto.Description);
@@ -219,7 +205,8 @@ public class TagServiceTest
     [DataRow("", "Tag 1", "Description 1", "#000000", "Tag 2", "Description 2", "#FFFFFF")]
     public void UpdateTag_WithFullParameters(string id, string name, string description, string color, string name2, string description2, string color2)
     {
-        string idToInsert1 = !String.IsNullOrWhiteSpace(id) ? id : Guid.NewGuid().ToString();
+        Guid idToInsert1 = !string.IsNullOrEmpty(id) ? Guid.Parse(id) : Guid.NewGuid();
+
         TagService tagService = new(_tagRepository, _logger);
         TagDto tagDtoInsert = new()
         {

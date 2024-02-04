@@ -5,20 +5,14 @@ namespace TodoList.Domain.Entities;
 
 public class Task
 {
-    private string id;
+    [JsonIgnore]
+    public Guid Id { get; private set; }
     [JsonProperty("Id")]
-    public string Id
+    public string IdString
     {
         get
         {
-            return id;
-        }
-
-        set
-        {
-            if (!Guid.TryParse(value, out Guid _))
-                throw new ArgumentException("Id must be a valid Guid");
-            id = value;
+            return Id.ToString();
         }
     }
 
@@ -57,7 +51,7 @@ public class Task
     public DateTime CreationTime { get; private set; } = DateTime.UtcNow;
     [JsonProperty("IsCompleted")]
     public bool IsCompleted { get; private set; } = false;
-    public static Task Default = new("00000000-0000-0000-0000-000000000000", "___Default")
+    public static Task Default = new(Guid.Parse("00000000-0000-0000-0000-000000000000"), "___Default")
     {
         Description = string.Empty,
         Priority = Priority.Medium,
@@ -65,7 +59,12 @@ public class Task
         CreationTime = DateTime.MinValue,
         IsCompleted = false
     };
-    private Task(string id, string name)
+    private Task(string name)
+    {
+        Id = Guid.NewGuid();
+        Name = name;
+    }
+    private Task(Guid id, string name)
     {
         Id = id;
         Name = name;
@@ -73,7 +72,9 @@ public class Task
     [JsonConstructor]
     private Task(string id, string name, string description, Priority priority, DateTime deadLine, DateTime creationTime, bool isCompleted)
     {
-        Id = id;
+        if (!Guid.TryParse(id, out Guid idFormated))
+            throw new ArgumentException("Id must be a valid Guid");
+        Id = idFormated;
         Name = name;
         Description = description;
         Priority = priority;
@@ -100,68 +101,86 @@ public class Task
     public void UpdateDeadLine(DateTime deadLine)
     {
         //Le contrôle est fait ici pour éviter les erreurs lors de la récupération d'anciennes taches via le Json
-        if (deadLine < DateTime.Now)
-            throw new ArgumentException("DeadLine must be in the future");
+        if (IsDeadLineInPast(deadLine))
+            throw new ArgumentException($"{nameof(DeadLine)} must be in the future");
         DeadLine = deadLine;
     }
     public void Complete()
     {
         IsCompleted = true;
     }
-
+    private static bool IsDeadLineInPast(DateTime deadLine)
+    {
+        return deadLine > DateTime.UtcNow;
+    }
     public class TaskBuilder
     {
-        private readonly string id;
-        private readonly string name;
-        private string description;
-        private Priority priority = Priority.Medium;
-        private DateTime deadLine = DateTime.MaxValue;
-        private DateTime creationTime = DateTime.MinValue;
-        private bool isCompleted = false;
+        private Guid _id = Guid.Empty;
+        private readonly string _name;
+        private string _description;
+        private Priority _priority = Priority.Medium;
+        private DateTime _deadLine = DateTime.MaxValue;
+        private DateTime _creationTime = DateTime.MinValue;
+        private bool _isCompleted = false;
 
-        public TaskBuilder(string id, string name)
+        public TaskBuilder(string name)
         {
-            this.id = id;
-            this.name = name;
+            _name = name;
+        }
+        public TaskBuilder SetId(Guid id)
+        {
+            _id = id;
+            return this;
         }
         public TaskBuilder SetDescription(string description)
         {
-            this.description = description;
+            _description = description;
             return this;
         }
         public TaskBuilder SetPriority(Priority priority)
         {
-            this.priority = priority;
+            _priority = priority;
             return this;
         }
         public TaskBuilder SetDeadLine(DateTime deadLine)
         {
-            //Le contrôle est fait ici pour éviter les erreurs lors de la récupération d'anciennes taches via le Json
-            if (deadLine < DateTime.Now)
+            if (IsDeadLineInPast(deadLine))
                 throw new ArgumentException("DeadLine must be in the future");
 
-            this.deadLine = deadLine;
+            _deadLine = deadLine;
             return this;
         }
         public TaskBuilder SetCreationTime(DateTime creationTime)
         {
-            this.creationTime = creationTime;
+            _creationTime = creationTime;
             return this;
         }
         public TaskBuilder SetIsCompleted(bool isCompleted)
         {
-            this.isCompleted = isCompleted;
+            _isCompleted = isCompleted;
             return this;
         }
         public Task Build()
         {
-            return new Task(id, name)
+            if (_id == Guid.Empty)
             {
-                DeadLine = deadLine,
-                Description = description,
-                Priority = priority,
-                CreationTime = creationTime,
-                IsCompleted = isCompleted
+                return new Task(_name)
+                {
+                    Description = _description,
+                    Priority = _priority,
+                    DeadLine = _deadLine,
+                    CreationTime = _creationTime,
+                    IsCompleted = _isCompleted
+                };
+            }
+
+            return new Task(_id, _name)
+            {
+                DeadLine = _deadLine,
+                Description = _description,
+                Priority = _priority,
+                CreationTime = _creationTime,
+                IsCompleted = _isCompleted
             };
         }
     }

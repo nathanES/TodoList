@@ -10,7 +10,7 @@ public class TagCreation
     [DataRow("Tag 1")]
     public void Constructor_ShouldCreateTag_WithGivenName(string name)
     {
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .Build();
 
         Assert.AreEqual(name, tag.Name);
@@ -24,7 +24,7 @@ public class TagCreation
     [DataRow("Tag 1", "Description 1", "#000000")]
     public void Constructor_ShouldCreateTag_WithDescription(string name, string description, string color)
     {
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .Build();
 
@@ -39,7 +39,7 @@ public class TagCreation
     public void Constructor_ShouldCreateTag_WithColor(string name, string color)
     {
         Color color1 = new(color);
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetColor(color1)
             .Build();
 
@@ -53,10 +53,10 @@ public class TagCreation
     [DataRow("Tag 1", "Tag 2")]
     public void Constructor_ShouldCreateTag_WithParent(string name, string parentName)
     {
-        Tag tagParent = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tagParent = new Tag.TagBuilder(name)
             .Build();
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
-            .SetParentTagIds(new List<string>() { tagParent.Id })
+        Tag tag = new Tag.TagBuilder(name)
+            .SetParentTagIds(new List<Guid>() { tagParent.Id })
             .Build();
 
         Assert.AreEqual(name, tag.Name);
@@ -70,12 +70,12 @@ public class TagCreation
     public void Constructor_ShouldCreateTag_WithAllProperties(string name, string parentName, string description, string color)
     {
         Color color1 = new(color);
-        Tag tagParent = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tagParent = new Tag.TagBuilder(name)
             .Build();
-        Tag tag = new Tag.TagBuilder(Guid.NewGuid().ToString(), name)
+        Tag tag = new Tag.TagBuilder(name)
             .SetDescription(description)
             .SetColor(color1)
-            .SetParentTagIds(new List<string>() { tagParent.Id })
+            .SetParentTagIds(new List<Guid>() { tagParent.Id })
             .Build();
 
         Assert.AreEqual(name, tag.Name);
@@ -89,14 +89,14 @@ public class TagCreation
     [TestMethod]
     public void Constructor_ShouldNotCreateTag_WithNullName()
     {
-        _ = Assert.ThrowsException<ArgumentNullException>(() => new Tag.TagBuilder(Guid.NewGuid().ToString(), null)
+        _ = Assert.ThrowsException<ArgumentNullException>(() => new Tag.TagBuilder(null)
                           .Build());
     }
     [TestMethod]
     [DataRow("Description1")]
     public void Constructor_ShouldNotCreateTag_WithNulNameButOtherProperties(string description)
     {
-        _ = Assert.ThrowsException<ArgumentNullException>(() => new Tag.TagBuilder(Guid.NewGuid().ToString(), null)
+        _ = Assert.ThrowsException<ArgumentNullException>(() => new Tag.TagBuilder(null)
                  .SetDescription(description)
                  .SetColor(Color.Default)
                 .Build());

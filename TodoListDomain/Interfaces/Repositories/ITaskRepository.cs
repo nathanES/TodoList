@@ -3,9 +3,9 @@
 public interface ITaskRepository
 {
     IEnumerable<Task> GetAllTasks();
-    Task GetTaskById(string id);
+    Task GetTaskById(Guid id);
     bool AddTask(Task task);
     bool UpdateTask(Task task);
-    bool DeleteTaskById(string id);
-    bool DeleteTaskByIds(IEnumerable<string> taskTagIds);
+    bool DeleteTaskById(Guid id);
+    bool DeleteTaskByIds(IEnumerable<Guid> taskTagIds);
 }

@@ -4,7 +4,7 @@ namespace TodoList.Application.DTOs;
 
 public class TaskDto
 {
-    public string Id { get; set; }
+    public Guid Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public Priority Priority { get; set; }
@@ -16,7 +16,8 @@ public class TaskDto
 
     public static explicit operator Task(TaskDto taskDto)
     {
-        return new Task.TaskBuilder(taskDto.Id, taskDto.Name)
+        return new Task.TaskBuilder(taskDto.Name)
+            .SetId(taskDto.Id)
             .SetDescription(taskDto.Description)
             .SetPriority(taskDto.Priority)
             .SetDeadLine(taskDto.DeadLine)

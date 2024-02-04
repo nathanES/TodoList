@@ -7,7 +7,7 @@ namespace TodoList.Infrastructure.Repositories;
 
 public class TaskRepositoryJson : ITaskRepository
 {
-    private readonly string _taskFilePath = $@"{Settings.JsonDataFilePathBase}tasks.json";
+    private readonly string _taskFilePath = $@"{Settings.JsonDataFilePathBase}Tasks.json";
     private List<Task> _cache;
     private readonly object _fileLock = new();
     private readonly ILogger _logger;
@@ -65,7 +65,7 @@ public class TaskRepositoryJson : ITaskRepository
         return true;
     }
 
-    public bool DeleteTaskById(string taskId)
+    public bool DeleteTaskById(Guid taskId)
     {
         int taskIndexToDelete = _cache.FindIndex(t => t.Id == taskId);
         if (taskIndexToDelete == -1)
@@ -78,11 +78,11 @@ public class TaskRepositoryJson : ITaskRepository
         return true;
     }
 
-    public bool DeleteTaskByIds(IEnumerable<string> taskIds)
+    public bool DeleteTaskByIds(IEnumerable<Guid> taskIds)
     {
         bool result = true;
 
-        foreach (string taskId in taskIds)
+        foreach (Guid taskId in taskIds)
         {
             int taskIndexToDelete = _cache.FindIndex(t => t.Id == taskId);
 
@@ -104,7 +104,7 @@ public class TaskRepositoryJson : ITaskRepository
         return _cache;
     }
 
-    public Task GetTaskById(string id)
+    public Task GetTaskById(Guid id)
     {
         return _cache.Find(t => t.Id == id) ?? Task.Default;
     }

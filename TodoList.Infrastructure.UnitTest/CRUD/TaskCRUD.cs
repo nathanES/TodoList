@@ -27,7 +27,7 @@ public class TaskCRUD
     public void AddTask(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -42,7 +42,7 @@ public class TaskCRUD
     public void AddTask_DuplicateKey(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -58,7 +58,7 @@ public class TaskCRUD
     public void DeleteTask(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -75,20 +75,20 @@ public class TaskCRUD
     public void DeleteTasks(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
         _ = _taskRepository.AddTask(task);
 
-        Task task2 = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task2 = new Task.TaskBuilder(name)
           .SetDescription(description)
           .SetPriority(priority)
           .Build();
         _ = _taskRepository.AddTask(task2);
 
         //Act
-        bool deleteResult = _taskRepository.DeleteTaskByIds(new List<string>() { task.Id, task2.Id });
+        bool deleteResult = _taskRepository.DeleteTaskByIds(new List<Guid>() { task.Id, task2.Id });
         //Assert
         Assert.IsTrue(deleteResult);
         Assert.IsFalse(_taskRepository.GetAllTasks().Any(t => t.Id == task.Id));
@@ -98,7 +98,7 @@ public class TaskCRUD
     public void DeleteTask_NotFound()
     {
         //Act
-        bool deleteResult = _taskRepository.DeleteTaskById(Guid.NewGuid().ToString());
+        bool deleteResult = _taskRepository.DeleteTaskById(Guid.NewGuid());
         //Assert
         Assert.IsFalse(deleteResult);
     }
@@ -108,7 +108,7 @@ public class TaskCRUD
         IEnumerable<Guid> guids = new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), };
 
         //Act
-        bool deleteResult = _taskRepository.DeleteTaskByIds(guids.Select(x => x.ToString()));
+        bool deleteResult = _taskRepository.DeleteTaskByIds(guids);
         //Assert
         Assert.IsFalse(deleteResult);
     }
@@ -117,7 +117,7 @@ public class TaskCRUD
     public void UpdateTask(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -136,7 +136,7 @@ public class TaskCRUD
     public void UpdateTask_NotFound(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -152,7 +152,7 @@ public class TaskCRUD
     public void GetTaskById(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -168,7 +168,7 @@ public class TaskCRUD
     public void GetTaskById_NotFound(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();
@@ -182,7 +182,7 @@ public class TaskCRUD
     public void GetAllTasks(string name, string description, Priority priority)
     {
         //Arrange
-        Task task = new Task.TaskBuilder(Guid.NewGuid().ToString(), name)
+        Task task = new Task.TaskBuilder(name)
             .SetDescription(description)
             .SetPriority(priority)
             .Build();

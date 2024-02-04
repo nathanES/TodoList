@@ -8,7 +8,7 @@ namespace TodoList.Infrastructure.Repositories;
 
 public class TaskTagRepositoryJson : ITaskTagRepository
 {
-    private readonly string _taskTagFilePath = $@"{Settings.JsonDataFilePathBase}taskTags.json";
+    private readonly string _taskTagFilePath = $@"{Settings.JsonDataFilePathBase}TaskTags.json";
     private List<TaskTag> _cache;
     private readonly object _fileLock = new();
     private readonly ILogger _logger;
@@ -68,7 +68,7 @@ public class TaskTagRepositoryJson : ITaskTagRepository
         return true;
     }
 
-    public bool DeleteTaskTagById(string taskTagId)
+    public bool DeleteTaskTagById(Guid taskTagId)
     {
         if (DeleteTaskTagByIdInCache(taskTagId) == false)
         {
@@ -78,10 +78,10 @@ public class TaskTagRepositoryJson : ITaskTagRepository
         WriteToFile();
         return true;
     }
-    public bool DeleteTaskTagByIds(IEnumerable<string> taskTagIds)
+    public bool DeleteTaskTagByIds(IEnumerable<Guid> taskTagIds)
     {
         bool result = true;
-        foreach (string taskTagId in taskTagIds)
+        foreach (Guid taskTagId in taskTagIds)
         {
             if (DeleteTaskTagByIdInCache(taskTagId) == false)
             {
@@ -92,7 +92,7 @@ public class TaskTagRepositoryJson : ITaskTagRepository
         WriteToFile();
         return result;
     }
-    private bool DeleteTaskTagByIdInCache(string taskTagId)
+    private bool DeleteTaskTagByIdInCache(Guid taskTagId)
     {
         int taskTagIndexToDelete = _cache.FindIndex(t => t.Id == taskTagId);
         if (taskTagIndexToDelete == -1)
@@ -109,24 +109,24 @@ public class TaskTagRepositoryJson : ITaskTagRepository
         return _cache;
     }
 
-    public TaskTag GetTaskTagById(string id)
+    public TaskTag GetTaskTagById(Guid id)
     {
         return _cache.Find(t => t.Id == id) ?? TaskTag.Default;
     }
 
-    public IEnumerable<TaskTag> GetTaskTagsByTagId(string tagId)
+    public IEnumerable<TaskTag> GetTaskTagsByTagId(Guid tagId)
     {
         return _cache.FindAll(t => t.TagId == tagId) ?? new List<TaskTag>();
     }
 
-    public IEnumerable<TaskTag> GetTaskTagsByTaskId(string taskId)
+    public IEnumerable<TaskTag> GetTaskTagsByTaskId(Guid taskId)
     {
         return _cache.FindAll(t => t.TaskId == taskId) ?? new List<TaskTag>();
     }
 
-    public IEnumerable<TaskTag> GetTaskTagsByTaskIds(IEnumerable<string> taskIds)
+    public IEnumerable<TaskTag> GetTaskTagsByTaskIds(IEnumerable<Guid> taskIds)
     {
-        foreach (string taskId in taskIds)
+        foreach (Guid taskId in taskIds)
         {
             foreach (TaskTag taskTag in GetTaskTagsByTaskId(taskId))
             {
@@ -134,9 +134,9 @@ public class TaskTagRepositoryJson : ITaskTagRepository
             }
         }
     }
-    public IEnumerable<TaskTag> GetTaskTagsByTagIds(IEnumerable<string> tagIds)
+    public IEnumerable<TaskTag> GetTaskTagsByTagIds(IEnumerable<Guid> tagIds)
     {
-        foreach (string tagId in tagIds)
+        foreach (Guid tagId in tagIds)
         {
             foreach (TaskTag taskTag in GetTaskTagsByTagId(tagId))
             {
@@ -145,7 +145,7 @@ public class TaskTagRepositoryJson : ITaskTagRepository
         }
     }
 
-    public bool IsRelationExists(string taskId, string tagId)
+    public bool IsRelationExists(Guid taskId, Guid tagId)
     {
         return _cache.Exists(t => t.TaskId == taskId && t.TagId == tagId);
     }

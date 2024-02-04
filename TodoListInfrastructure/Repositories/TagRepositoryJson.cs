@@ -8,7 +8,7 @@ namespace TodoList.Infrastructure.Repositories;
 
 public class TagRepositoryJson : ITagRepository
 {
-    private readonly string _tagsFilePath = $@"{Settings.JsonDataFilePathBase}tags.json";
+    private readonly string _tagsFilePath = $@"{Settings.JsonDataFilePathBase}Tags.json";
     private List<Tag> _cache;
     private readonly object _fileLock = new();
     private readonly ILogger _logger;
@@ -66,7 +66,7 @@ public class TagRepositoryJson : ITagRepository
         return true;
     }
 
-    public bool DeleteTagById(string tagId)
+    public bool DeleteTagById(Guid tagId)
     {
         int tagIndexToDelete = _cache.FindIndex(t => t.Id == tagId);
 
@@ -81,10 +81,10 @@ public class TagRepositoryJson : ITagRepository
         return true;
     }
 
-    public bool DeleteTagByIds(IEnumerable<string> tagIds)
+    public bool DeleteTagByIds(IEnumerable<Guid> tagIds)
     {
         bool result = true;
-        foreach (string tagId in tagIds)
+        foreach (Guid tagId in tagIds)
         {
             int tagIndexToDelete = _cache.FindIndex(t => t.Id == tagId);
 
@@ -105,9 +105,9 @@ public class TagRepositoryJson : ITagRepository
         return _cache;
     }
 
-    public Tag GetTagById(string id)
+    public Tag GetTagById(Guid id)
     {
-        if (string.IsNullOrWhiteSpace(id))
+        if (id == null || id == Guid.Empty)
         {
             _logger.LogInformation("GetTagById : TagId is null or empty");
             return Tag.Default;
