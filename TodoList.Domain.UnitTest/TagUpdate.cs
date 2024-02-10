@@ -76,4 +76,68 @@ public class TagUpdate
         Assert.AreEqual(tag.Description, description);
         Assert.AreEqual(newname, tag.Name);
     }
+    [TestMethod]
+    [DataRow("Tag Parent")]
+    public void AddTagParent_ShouldAddTagParent(string parentName)
+    {
+        Tag tagParent = new Tag.TagBuilder(parentName)
+        .Build();
+
+        Tag tag = new Tag.TagBuilder("Tag 1")
+            .Build();
+
+        tag.AddTagParent(tagParent.Id);
+
+        Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
+    }
+    [TestMethod]
+    [DataRow("Tag Parent")]
+    public void AddTagParent_ShouldAddOneTagParent(string parentName)
+    {
+        Tag tagParent = new Tag.TagBuilder(parentName)
+        .Build();
+
+        Tag tag = new Tag.TagBuilder("Tag 1")
+            .Build();
+
+        tag.AddTagParent(tagParent.Id);
+        tag.AddTagParent(tagParent.Id);
+
+        Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
+        Assert.AreEqual(1, tag.ParentTagIds.Where(t => t == tagParent.Id).Count());
+    }
+    [TestMethod]
+    [DataRow("Tag Parent")]
+    public void RemoveTagParent_ShouldRemoveTagParent(string parentName)
+    {
+        Tag tagParent = new Tag.TagBuilder(parentName)
+        .Build();
+
+        Tag tag = new Tag.TagBuilder("Tag 1")
+            .Build();
+
+        tag.AddTagParent(tagParent.Id);
+
+        bool result = tag.RemoveTagParent(tagParent.Id);
+        Assert.IsTrue(result);
+        Assert.IsFalse(tag.ParentTagIds.Contains(tagParent.Id));
+    }
+    [TestMethod]
+    [DataRow("Tag Parent")]
+    public void RemoveTagParent_ShouldRemoveOneTagParent(string parentName)
+    {
+        Tag tagParent = new Tag.TagBuilder(parentName)
+        .Build();
+        Tag tag = new Tag.TagBuilder("Tag 1")
+            .Build();
+
+        tag.AddTagParent(tagParent.Id);
+
+        bool result = tag.RemoveTagParent(tagParent.Id);
+        bool result2 = tag.RemoveTagParent(tagParent.Id);
+
+        Assert.IsTrue(result);
+        Assert.IsFalse(result2);
+        Assert.IsFalse(tag.ParentTagIds.Contains(tagParent.Id));
+    }
 }

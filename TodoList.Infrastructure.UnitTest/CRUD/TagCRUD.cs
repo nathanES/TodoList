@@ -204,7 +204,109 @@ public class TagCRUD
         Assert.IsTrue(tags.Any());
     }
 
-    public static void TagCompare(Tag tag, Tag tag2)
+    [TestMethod]
+    [DataRow("UpdateTag", "UpdateTag2", "Description", "#000000")]
+    public void UpdateTagName_ShouldUpdateTagName(string name, string updatedName, string description, string color)
+    {
+        //Arrange
+        Tag tag = new Tag.TagBuilder(name)
+            .SetDescription(description)
+            .SetColor(new Color(color))
+            .Build();
+
+        _ = _tagRepository.AddTag(tag);
+
+        //Act
+        bool updateResult = _tagRepository.UpdateTagName(tag.Id, updatedName);
+        //Assert
+        Assert.IsTrue(updateResult);
+        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Name == updatedName));
+    }
+    [TestMethod]
+    [DataRow("UpdateTag")]
+    public void UpdateTagName_ShouldNotUpdateTagName_NotFound(string updatedName)
+    {
+        //Arrange
+        Guid id = Guid.NewGuid();
+
+        //Act
+        bool updateResult = _tagRepository.UpdateTagName(id, updatedName);
+        //Assert
+        Assert.IsFalse(updateResult);
+        Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.Name == updatedName));
+    }
+    //TODO faire les tests de ces méthodes
+
+    //public bool UpdateTagDescription(Guid tagId, string newDescription)
+    //{
+    //    int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+    //    if (tagIndexToUpdate == -1)
+    //    {
+    //        _logger.LogWarning("UpdateTagDescription : Tag not found : {0}", tagId);
+    //        return false;
+    //    }
+
+    //    _cache[tagIndexToUpdate].UpdateDescription(newDescription);
+    //    WriteToFile();
+    //    return true;
+    //}
+    //public bool UpdateTagColor(Guid tagId, Color newColor)
+    //{
+    //    int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+    //    if (tagIndexToUpdate == -1)
+    //    {
+    //        _logger.LogWarning("UpdateTagColor : Tag not found : {0}", tagId);
+    //        return false;
+    //    }
+
+    //    _cache[tagIndexToUpdate].UpdateColor(newColor);
+    //    WriteToFile();
+    //    return true;
+    //}
+    //public bool UpdateTagParent(Guid tagId, List<Guid> newParentTagIds)
+    //{
+    //    int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+    //    if (tagIndexToUpdate == -1)
+    //    {
+    //        _logger.LogWarning("UpdateTagParent : Tag not found : {0}", tagId);
+    //        return false;
+    //    }
+
+    //    _cache[tagIndexToUpdate].UpdateTagParent(newParentTagIds);
+    //    WriteToFile();
+    //    return true;
+    //}
+    //public bool AddTagParent(Guid tagId, Guid parentTagId)
+    //{
+    //    int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+    //    if (tagIndexToUpdate == -1)
+    //    {
+    //        _logger.LogWarning("AddTagParent : Tag not found : {0}", tagId);
+    //        return false;
+    //    }
+
+    //    _cache[tagIndexToUpdate].AddTagParent(parentTagId);
+    //    WriteToFile();
+    //    return true;
+    //}
+    //public bool RemoveTagParent(Guid tagId, Guid parentTagId)
+    //{
+    //    int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+    //    if (tagIndexToUpdate == -1)
+    //    {
+    //        _logger.LogWarning("RemoveTagParent : Tag not found : {0}", tagId);
+    //        return false;
+    //    }
+
+    //    return _cache[tagIndexToUpdate].RemoveTagParent(parentTagId);
+    //}
+
+    private void TagCompare(Tag tag, Tag tag2)
     {
         Assert.AreEqual(tag.Id, tag2.Id);
         Assert.AreEqual(tag.Description, tag2.Description);

@@ -111,7 +111,7 @@ public class Task
     }
     private static bool IsDeadLineInPast(DateTime deadLine)
     {
-        return deadLine > DateTime.UtcNow;
+        return deadLine < DateTime.UtcNow;
     }
     public class TaskBuilder
     {

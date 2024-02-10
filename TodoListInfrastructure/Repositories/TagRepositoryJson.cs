@@ -3,6 +3,7 @@ using TodoList.Domain.Entities;
 using TodoList.Domain.Exceptions;
 using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
+using TodoList.Domain.ValueObjects;
 
 namespace TodoList.Infrastructure.Repositories;
 
@@ -128,5 +129,88 @@ public class TagRepositoryJson : ITagRepository
         _cache[tagIndexToUpdate] = tag;
         WriteToFile();
         return true;
+    }
+
+    public bool UpdateTagName(Guid tagId, string newName)
+    {
+        int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+        if (tagIndexToUpdate == -1)
+        {
+            _logger.LogWarning("UpdateTagName : Tag not found : {0}", tagId);
+            return false;
+        }
+
+        _cache[tagIndexToUpdate].UpdateName(newName);
+        WriteToFile();
+        return true;
+    }
+    public bool UpdateTagDescription(Guid tagId, string newDescription)
+    {
+        int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+        if (tagIndexToUpdate == -1)
+        {
+            _logger.LogWarning("UpdateTagDescription : Tag not found : {0}", tagId);
+            return false;
+        }
+
+        _cache[tagIndexToUpdate].UpdateDescription(newDescription);
+        WriteToFile();
+        return true;
+    }
+    public bool UpdateTagColor(Guid tagId, Color newColor)
+    {
+        int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+        if (tagIndexToUpdate == -1)
+        {
+            _logger.LogWarning("UpdateTagColor : Tag not found : {0}", tagId);
+            return false;
+        }
+
+        _cache[tagIndexToUpdate].UpdateColor(newColor);
+        WriteToFile();
+        return true;
+    }
+    public bool UpdateTagParent(Guid tagId, List<Guid> newParentTagIds)
+    {
+        int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+        if (tagIndexToUpdate == -1)
+        {
+            _logger.LogWarning("UpdateTagParent : Tag not found : {0}", tagId);
+            return false;
+        }
+
+        _cache[tagIndexToUpdate].UpdateTagParent(newParentTagIds);
+        WriteToFile();
+        return true;
+    }
+    public bool AddTagParent(Guid tagId, Guid parentTagId)
+    {
+        int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+        if (tagIndexToUpdate == -1)
+        {
+            _logger.LogWarning("AddTagParent : Tag not found : {0}", tagId);
+            return false;
+        }
+
+        _cache[tagIndexToUpdate].AddTagParent(parentTagId);
+        WriteToFile();
+        return true;
+    }
+    public bool RemoveTagParent(Guid tagId, Guid parentTagId)
+    {
+        int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
+
+        if (tagIndexToUpdate == -1)
+        {
+            _logger.LogWarning("RemoveTagParent : Tag not found : {0}", tagId);
+            return false;
+        }
+
+        return _cache[tagIndexToUpdate].RemoveTagParent(parentTagId);
     }
 }

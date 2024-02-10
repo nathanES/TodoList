@@ -89,9 +89,16 @@ public class Tag
 
     public void AddTagParent(Guid parentTagId)
     {
+        if (ParentTagIds.Contains(parentTagId))
+            return;
         ParentTagIds.Add(parentTagId);
     }
-
+    public bool RemoveTagParent(Guid parentTagId)
+    {
+        if (!ParentTagIds.Contains(parentTagId))
+            return false;
+        return ParentTagIds.Remove(parentTagId);
+    }
     public class TagBuilder
     {
         private Guid _id = Guid.Empty;
