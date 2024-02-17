@@ -17,6 +17,7 @@ public class TaskTagCRUD
     private ITaskTagRepository? taskTagRepository;
     private ILogger? logger;
     private readonly Mock<ILogDestination> logDestination = new();
+    //TODO faire la refonte des tests
 
     [TestInitialize]
     public void TagCRUDInitialize()

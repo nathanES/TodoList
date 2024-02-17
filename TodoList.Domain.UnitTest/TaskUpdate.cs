@@ -119,10 +119,10 @@ public class TaskUpdate
         DateTime taskDeadlineValue = DateTime.ParseExact(taskDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None);
 
         Task task = new Task.TaskBuilder(taskName)
-            .SetDeadLine(DateTime.MaxValue)
+            .SetDeadline(DateTime.MaxValue)
             .Build();
 
-        task.UpdateDeadLine(taskDeadlineValue);
+        task.UpdateDeadline(taskDeadlineValue);
 
         Assert.IsNotNull(task.Id);
         Assert.IsFalse(string.IsNullOrEmpty(task.Name));
@@ -142,10 +142,10 @@ public class TaskUpdate
         DateTime taskDeadlineValue = DateTime.ParseExact(taskDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None);
 
         Task task = new Task.TaskBuilder(taskName)
-            .SetDeadLine(DateTime.MaxValue)
+            .SetDeadline(DateTime.MaxValue)
             .Build();
 
-        task.UpdateDeadLine(taskDeadlineValue);
+        task.UpdateDeadline(taskDeadlineValue);
 
         Assert.IsNotNull(task.Id);
         Assert.IsFalse(string.IsNullOrEmpty(task.Name));
@@ -169,7 +169,7 @@ public class TaskUpdate
         Task task = new Task.TaskBuilder(taskName)
           .Build();
 
-        task.UpdateDeadLine(deadlineValue);
+        task.UpdateDeadline(deadlineValue);
     }
 
     [TestMethod]

@@ -74,7 +74,7 @@ public class TaskCreation
         DateTime taskDeadlineValue = DateTime.ParseExact(taskDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None);
 
         Task task = new Task.TaskBuilder(taskName)
-            .SetDeadLine(taskDeadlineValue)
+            .SetDeadline(taskDeadlineValue)
             .Build();
 
         Assert.IsNotNull(task.Id);
@@ -115,7 +115,7 @@ public class TaskCreation
         string taskName = nameof(ConstructorTask_WhenDeadLineInThePast_ShouldNotCreateTask_ArgumentException);
 
         _ = new Task.TaskBuilder(taskName)
-          .SetDeadLine(taskDeadlineValue)
+          .SetDeadline(taskDeadlineValue)
           .Build();
     }
 }

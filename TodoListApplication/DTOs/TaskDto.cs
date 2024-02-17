@@ -22,7 +22,7 @@ public class TaskDto
         Task.TaskBuilder builder = new Task.TaskBuilder(taskDto.Name)
             .SetDescription(taskDto.Description)
             .SetPriority(taskDto.Priority)
-            .SetDeadLine(taskDto.DeadLine)
+            .SetDeadline(taskDto.DeadLine)
             .SetCreationTime(taskDto.CreationTime)
             .SetIsCompleted(taskDto.IsCompleted);
 

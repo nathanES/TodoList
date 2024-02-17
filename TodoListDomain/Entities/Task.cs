@@ -103,7 +103,7 @@ public class Task
     /// </summary>
     /// <param name="value">La date limite à définir.</param>
     /// <exception cref="DeadlineInThePastException">Si la date limite est dans le passé.</exception>
-    public void UpdateDeadLine(DateTime deadline)
+    public void UpdateDeadline(DateTime deadline)
     {
         //Le contrôle est fait ici pour éviter les erreurs lors de la récupération d'anciennes taches via le Json
         if (IsDeadlineInPast(deadline))
@@ -153,7 +153,7 @@ public class Task
         /// <param name="value">La date limite à définir.</param>
         /// <returns>Le builder pour chaînage.</returns>
         /// <exception cref="DeadlineInThePastException">Si la date limite est dans le passé.</exception>
-        public TaskBuilder SetDeadLine(DateTime deadline)
+        public TaskBuilder SetDeadline(DateTime deadline)
         {
             if (IsDeadlineInPast(deadline))
                 throw new DeadlineInThePastException("Deadline must be in the future");

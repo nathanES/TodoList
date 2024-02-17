@@ -24,6 +24,45 @@ public class TagCRUD
     }
 
     [TestMethod]
+    public void TagCRUD_GetTagByIdWhenFound_ShouldGetTag()
+    {
+        //Arrange
+        string tagName = nameof(TagCRUD_GetTagByIdWhenFound_ShouldGetTag);
+        Tag tag = new Tag.TagBuilder(tagName)
+            .Build();
+        _ = _tagRepository.AddTag(tag);
+        //Act
+        Tag tagFound = _tagRepository.GetTagById(tag.Id);
+        //Assert
+        CompareEntity.TagCompare(tagFound, tag);
+    }
+    [TestMethod]
+    public void TagCRUD_GetTagByIdWhenNotFound_ShouldGetTagDefault()
+    {
+        //Arrange
+        string tagName = nameof(TagCRUD_GetTagByIdWhenNotFound_ShouldGetTagDefault);
+        Tag tag = new Tag.TagBuilder(tagName)
+            .Build();
+        //Act
+        Tag tagFound = _tagRepository.GetTagById(tag.Id);
+        //Assert
+        CompareEntity.TagCompare(tagFound, Tag.Default);
+    }
+    [TestMethod]
+    public void TagCRUD_GetAllTag_ShouldGetAllTags()
+    {
+        //Arrange
+        string tagName = nameof(TagCRUD_GetAllTag_ShouldGetAllTags);
+        Tag tag = new Tag.TagBuilder(tagName)
+            .Build();
+        _ = _tagRepository.AddTag(tag);
+        //Act
+        IEnumerable<Tag> tags = _tagRepository.GetAllTags();
+        //Assert  
+        Assert.IsTrue(tags.Any());
+    }
+
+    [TestMethod]
     public void TagCRUD_AddTag_ShouldAddTag()
     {
         string tagName = nameof(TagCRUD_AddTag_ShouldAddTag);
@@ -33,8 +72,10 @@ public class TagCRUD
         //Act
         bool addResult = _tagRepository.AddTag(tag);
         //Assert
+        Tag tagResult = _tagRepository.GetTagById(tag.Id);
         Assert.IsTrue(addResult);
-        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Id == tag.Id));
+        Assert.AreNotEqual(Tag.Default, tagResult);
+        Assert.AreEqual(tagName, tagResult.Name);
     }
     [TestMethod]
     [DataRow("AddTagWithAllParameters", "Description", "#000000")]
@@ -113,7 +154,7 @@ public class TagCRUD
         Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.Id == tag2.Id));
     }
     [TestMethod]
-    public void TagCRUD_DeleteTagWhenNotExisting_ShouldReturnFalse()
+    public void TagCRUD_DeleteTagWhenNotFound_ShouldReturnFalse()
     {
         //Act
         bool deleteResult = _tagRepository.DeleteTagById(Guid.NewGuid());
@@ -121,7 +162,7 @@ public class TagCRUD
         Assert.IsFalse(deleteResult);
     }
     [TestMethod]
-    public void TagCRUD_DeleteTagsWhenNotExisting_ShouldReturnFalse()
+    public void TagCRUD_DeleteTagsWhenNotFound_ShouldReturnFalse()
     {
         //Arrange
         bool deleteResult = _tagRepository.DeleteTagByIds(new List<Guid>() { Guid.NewGuid(), Guid.NewGuid(), });
@@ -131,14 +172,16 @@ public class TagCRUD
 
     [TestMethod]
     [DataRow("UpdateTag2", "Description", "#008760")]
-    public void TagCRUD_UpdateTag_ShouldReturnFalse(string newTagName, string newTagDescription, string newTagColor)
+    public void TagCRUD_UpdateTagAllProperties_ShouldUpdateAllProperties(string newTagName, string newTagDescription, string newTagColor)
     {
         //Arrange
-        string tagName = nameof(TagCRUD_UpdateTag_ShouldReturnFalse);
+        string tagName = nameof(TagCRUD_UpdateTagAllProperties_ShouldUpdateAllProperties);
 
+        Guid parentTagID = Guid.NewGuid();
         Tag tag = new Tag.TagBuilder(tagName)
             .SetDescription("First Description")
             .SetColor(new Color("#098734"))
+            .SetParentTagIds(new List<Guid>() { Guid.NewGuid() })
             .Build();
 
         _ = _tagRepository.AddTag(tag);
@@ -160,10 +203,38 @@ public class TagCRUD
         Assert.IsTrue(tagResult.ParentTagIds.Any(t => t == newParentTagID));
     }
     [TestMethod]
-    public void TagCRUD_UpdateTagWhenNotExisting_ShouldReturnFalse()
+    [DataRow("UpdateTag2", "Description", "#008760")]
+    public void TagCRUD_UpdateTagAllPropertiesWithNoProperties_ShouldUpdateAllProperties(string newTagName, string newTagDescription, string newTagColor)
     {
         //Arrange
-        string tagName = nameof(TagCRUD_UpdateTagWhenNotExisting_ShouldReturnFalse);
+        string tagName = nameof(TagCRUD_UpdateTagAllPropertiesWithNoProperties_ShouldUpdateAllProperties);
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .Build();
+
+        _ = _tagRepository.AddTag(tag);
+
+        Color newTagColorValue = new(newTagColor);
+        Guid newParentTagID = Guid.NewGuid();
+        tag.UpdateName(newTagName);
+        tag.UpdateDescription(newTagDescription);
+        tag.UpdateColor(newTagColorValue);
+        tag.UpdateParentTagIds(new List<Guid>() { newParentTagID });
+        //Act
+        bool updateResult = _tagRepository.UpdateTag(tag);
+        //Assert
+        Tag tagResult = _tagRepository.GetTagById(tag.Id);
+        Assert.IsTrue(updateResult);
+        Assert.AreEqual(newTagName, tagResult.Name);
+        Assert.AreEqual(newTagDescription, tagResult.Description);
+        Assert.AreEqual(newTagColorValue, tagResult.Color);
+        Assert.IsTrue(tagResult.ParentTagIds.Any(t => t == newParentTagID));
+    }
+    [TestMethod]
+    public void TagCRUD_UpdateTagAllPropertiesWhenNotExisting_ShouldReturnFalse()
+    {
+        //Arrange
+        string tagName = nameof(TagCRUD_UpdateTagAllPropertiesWhenNotExisting_ShouldReturnFalse);
         Tag tag = new Tag.TagBuilder(tagName)
             .SetDescription("description Not existing")
             .Build();
@@ -176,267 +247,315 @@ public class TagCRUD
     }
 
     [TestMethod]
-    public void TagCRUD_GetTagByIdWhenFound_ShouldGetTag()
+    [DataRow("UpdateTag")]
+    public void TagCRUD_UpdateTagName_ShouldUpdateTagName(string newTagName)
     {
         //Arrange
-        string tagName = nameof(TagCRUD_GetTagByIdWhenFound_ShouldGetTag);
+        string tagName = nameof(TagCRUD_UpdateTagName_ShouldUpdateTagName);
         Tag tag = new Tag.TagBuilder(tagName)
             .Build();
-        _ = _tagRepository.AddTag(tag);
-        //Act
-        Tag tagFound = _tagRepository.GetTagById(tag.Id);
-        //Assert
-        CompareEntity.TagCompare(tagFound, tag);
-    }
-    [TestMethod]
-    public void TagCRUD_GetTagByIdWhenFound_ShouldGetTagDefault()
-    {
-        //Arrange
-        string tagName = nameof(TagCRUD_GetTagByIdWhenFound_ShouldGetTagDefault);
-        Tag tag = new Tag.TagBuilder(tagName)
-            .Build();
-        //Act
-        Tag tagFound = _tagRepository.GetTagById(tag.Id);
-        //Assert
-        CompareEntity.TagCompare(tagFound, Tag.Default);
-    }
-    //TODO continuer le rework
-    [TestMethod]
-    [DataRow("GetAllTags", "Description", "#000000")]
-    public void GetAllTags(string name, string description, string color)
-    {
-        //Arrange
-        Tag tag = new Tag.TagBuilder(name)
-            .SetDescription(description)
-            .SetColor(new Color(color))
-            .Build();
-        _ = _tagRepository.AddTag(tag);
-        //Act
-        IEnumerable<Tag> tags = _tagRepository.GetAllTags();
-        //Assert  
-        Assert.IsTrue(tags.Any());
-    }
-
-    [TestMethod]
-    [DataRow("UpdateTag", "UpdateTag2", "Description", "#000000")]
-    public void UpdateTagName_ShouldUpdateTagName(string name, string updatedName, string description, string color)
-    {
-        //Arrange
-        Tag tag = new Tag.TagBuilder(name)
-            .SetDescription(description)
-            .SetColor(new Color(color))
-            .Build();
 
         _ = _tagRepository.AddTag(tag);
 
         //Act
-        bool updateResult = _tagRepository.UpdateTagName(tag.Id, updatedName);
+        bool updateResult = _tagRepository.UpdateTagName(tag.Id, newTagName);
         //Assert
         Assert.IsTrue(updateResult);
-        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Name == updatedName));
+        Assert.AreEqual(newTagName, _tagRepository.GetTagById(tag.Id).Name);
     }
     [TestMethod]
     [DataRow("UpdateTagNotFound")]
-    public void UpdateTagName_ShouldNotUpdateTagName_NotFound(string updatedName)
+    public void TagCRUD_UpdateTagNameWhenNotFound_ShouldReturnFalse(string newTagName)
     {
         //Arrange
-        Guid id = Guid.NewGuid();
+        Guid tagID = Guid.NewGuid();
 
         //Act
-        bool updateResult = _tagRepository.UpdateTagName(id, updatedName);
+        bool updateResult = _tagRepository.UpdateTagName(tagID, newTagName);
         //Assert
         Assert.IsFalse(updateResult);
-        Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.Name == updatedName));
+        Assert.AreEqual(Tag.Default, _tagRepository.GetTagById(tagID));
     }
+
     [TestMethod]
-    [DataRow("UpdateTag", "UpdateTag2", "Description", "#000000")]
-    public void UpdateTagDescription_ShouldUpdateTagDescription(string name, string updatedDescription, string description, string color)
+    [DataRow("Description")]
+    public void TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription(string newTagDescription)
     {
         //Arrange
-        Tag tag = new Tag.TagBuilder(name)
-            .SetDescription(description)
-            .SetColor(new Color(color))
+        string tagName = nameof(TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription);
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetDescription("FirstTagDescription")
             .Build();
 
         _ = _tagRepository.AddTag(tag);
 
         //Act
-        bool updateResult = _tagRepository.UpdateTagDescription(tag.Id, updatedDescription);
+        bool updateResult = _tagRepository.UpdateTagDescription(tag.Id, newTagDescription);
         //Assert
         Assert.IsTrue(updateResult);
-        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Description == updatedDescription));
+        Assert.AreEqual(newTagDescription, _tagRepository.GetTagById(tag.Id).Description);
     }
     [TestMethod]
-    [DataRow("UpdateTag")]
-    public void UpdateTagDescription_ShouldNotUpdateTagDescription_NotFound(string updatedDescription)
+    [DataRow("Description")]
+    public void TagCRUD_UpdateTagDescriptionWithNoDescription_ShouldUpdateTagDescription(string newTagDescription)
     {
         //Arrange
-        Guid id = Guid.NewGuid();
-
-        //Act
-        bool updateResult = _tagRepository.UpdateTagDescription(id, updatedDescription);
-        //Assert
-        Assert.IsFalse(updateResult);
-        Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.Description == updatedDescription));
-    }
-
-    [TestMethod]
-    [DataRow("UpdateTag", "Description", "#000000", "#000000")]
-    public void UpdateTagColor_ShouldUpdateTagColor(string name, string description, string color, string updatedColor)
-    {
-        //Arrange
-        Tag tag = new Tag.TagBuilder(name)
-            .SetDescription(description)
-            .SetColor(new Color(color))
+        string tagName = nameof(TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription);
+        Tag tag = new Tag.TagBuilder(tagName)
             .Build();
 
         _ = _tagRepository.AddTag(tag);
 
         //Act
-        bool updateResult = _tagRepository.UpdateTagColor(tag.Id, new Color(updatedColor));
+        bool updateResult = _tagRepository.UpdateTagDescription(tag.Id, newTagDescription);
         //Assert
         Assert.IsTrue(updateResult);
-        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.Color.Equals(new Color(updatedColor))));
+        Assert.AreEqual(newTagDescription, _tagRepository.GetTagById(tag.Id).Description);
+    }
+    [TestMethod]
+    [DataRow("TagDescription")]
+    public void TagCRUD_UpdateTagDescriptionWhenNotFound_ShouldReturnFalse(string newTagDescription)
+    {
+        //Arrange
+        Guid tagID = Guid.NewGuid();
+
+        //Act
+        bool updateResult = _tagRepository.UpdateTagDescription(tagID, newTagDescription);
+
+        //Assert
+        Assert.IsFalse(updateResult);
+        Assert.AreEqual(Tag.Default, _tagRepository.GetTagById(tagID));
+    }
+
+    [TestMethod]
+    [DataRow("#987654")]
+    public void TagCRUD_UpdateTagColor_ShouldUpdateTagColor(string newTagColor)
+    {
+        //Arrange
+        string tagName = nameof(TagCRUD_UpdateTagColor_ShouldUpdateTagColor);
+        Color newTagColorValue = new(newTagColor);
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetColor(new Color("#070809"))
+            .Build();
+
+        _ = _tagRepository.AddTag(tag);
+
+        //Act
+        bool updateResult = _tagRepository.UpdateTagColor(tag.Id, newTagColorValue);
+        //Assert
+        Assert.IsTrue(updateResult);
+        Assert.AreEqual(newTagColorValue, _tagRepository.GetTagById(tag.Id).Color);
+    }
+    [TestMethod]
+    [DataRow("#987654")]
+    public void TagCRUD_UpdateTagColorWithNoColor_ShouldUpdateTagColor(string newTagColor)
+    {
+        //Arrange
+        string tagName = nameof(TagCRUD_UpdateTagColor_ShouldUpdateTagColor);
+        Color newTagColorValue = new(newTagColor);
+        Tag tag = new Tag.TagBuilder(tagName)
+            .Build();
+
+        _ = _tagRepository.AddTag(tag);
+
+        //Act
+        bool updateResult = _tagRepository.UpdateTagColor(tag.Id, newTagColorValue);
+        //Assert
+        Assert.IsTrue(updateResult);
+        Assert.AreEqual(newTagColorValue, _tagRepository.GetTagById(tag.Id).Color);
     }
     [TestMethod]
     [DataRow("#987873")]
-    public void UpdateTagColor_ShouldNotUpdateTagColor_NotFound(string updatedColor)
+    public void TagCRUD_UpdateTagColorWhenNotFound_ShouldReturnFalse(string newTagColor)
     {
         //Arrange
-        Guid id = Guid.NewGuid();
+        Guid tagID = Guid.NewGuid();
+        Color newTagColorValue = new(newTagColor);
 
         //Act
-        bool updateResult = _tagRepository.UpdateTagColor(id, new Color(updatedColor));
+        bool updateResult = _tagRepository.UpdateTagColor(tagID, newTagColorValue);
         //Assert
         Assert.IsFalse(updateResult);
-        Assert.IsFalse(_tagRepository.GetAllTags().Where(t => t.Color.Equals(new Color(updatedColor))).Any());
+        Assert.AreEqual(Tag.Default, _tagRepository.GetTagById(tagID));
     }
 
     [TestMethod]
-    [DataRow("UpdateTag", "Description", "#000000")]
-    public void UpdateTagParentTag_ShouldUpdateTagParentTag(string name, string description, string color)
+    public void TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag()
     {
         //Arrange
-        Tag tagParent1 = new Tag.TagBuilder("ParentTag1").Build();
-        Tag tagParent2 = new Tag.TagBuilder("ParentTag2").Build();
-        Tag tagParent3 = new Tag.TagBuilder("ParentTag3").Build();
-        List<Guid> parentTagIds = new() { tagParent1.Id, tagParent2.Id };
-        Tag tag = new Tag.TagBuilder(name)
-            .SetDescription(description)
-            .SetColor(new Color(color))
+        string tagName = nameof(TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag);
+        Guid tagParentID1 = Guid.NewGuid();
+        Guid tagParentID2 = Guid.NewGuid();
+        List<Guid> parentTagIds = new() { tagParentID1, tagParentID2 };
+        Tag tag = new Tag.TagBuilder(tagName)
             .SetParentTagIds(parentTagIds)
             .Build();
 
         _ = _tagRepository.AddTag(tag);
 
-        parentTagIds.Add(tagParent3.Id);
+        Guid tagParentID3 = Guid.NewGuid();
+        parentTagIds.Add(tagParentID3);
 
         //Act
         bool updateResult = _tagRepository.UpdateTagParentTag(tag.Id, parentTagIds);
 
         //Assert
         Assert.IsTrue(updateResult);
-        Assert.IsTrue(_tagRepository.GetAllTags().Any(t => t.ParentTagIds.SetEquals(new HashSet<Guid>(parentTagIds))));
+        Assert.IsTrue(_tagRepository.GetTagById(tag.Id).ParentTagIds.SetEquals(new HashSet<Guid>(parentTagIds)));
     }
     [TestMethod]
-    public void UpdateTagParentTag_ShouldNotUpdateTagParentTag_NotFound()
+    public void TagCRUD_UpdateTagParentTagWithNoTagParent_ShouldUpdateTagParentTag()
     {
         //Arrange
-        Tag tagParent1 = new Tag.TagBuilder("ParentTag1").Build();
-        Tag tagParent2 = new Tag.TagBuilder("ParentTag2").Build();
-        Tag tagParent3 = new Tag.TagBuilder("ParentTag3").Build();
-        List<Guid> parentTagIds = new() { tagParent1.Id, tagParent2.Id, tagParent3.Id };
-        Guid id = Guid.NewGuid();
+        string tagName = nameof(TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag);
+        Guid tagParentID1 = Guid.NewGuid();
+        Guid tagParentID2 = Guid.NewGuid();
+        List<Guid> parentTagIds = new() { tagParentID1, tagParentID2 };
+        Tag tag = new Tag.TagBuilder(tagName)
+            .Build();
+
+        _ = _tagRepository.AddTag(tag);
+
+        Guid tagParentID3 = Guid.NewGuid();
+        parentTagIds.Add(tagParentID3);
+
         //Act
-        bool updateResult = _tagRepository.UpdateTagParentTag(id, parentTagIds);
+        bool updateResult = _tagRepository.UpdateTagParentTag(tag.Id, parentTagIds);
+
+        //Assert
+        Assert.IsTrue(updateResult);
+        Assert.IsTrue(_tagRepository.GetTagById(tag.Id).ParentTagIds.SetEquals(new HashSet<Guid>(parentTagIds)));
+    }
+    [TestMethod]
+    public void TagCRUD_UpdateTagParentTagWhenNotFound_ShouldReturnFalse()
+    {
+        Guid tagParentID1 = Guid.NewGuid();
+        Guid tagParentID2 = Guid.NewGuid();
+        List<Guid> parentTagIds = new() { tagParentID1, tagParentID2 };
+        Guid tagID = Guid.NewGuid();
+        //Act
+        bool updateResult = _tagRepository.UpdateTagParentTag(tagID, parentTagIds);
 
         //Assert
         Assert.IsFalse(updateResult);
-        Assert.IsFalse(_tagRepository.GetAllTags().Any(t => t.ParentTagIds.Equals(new HashSet<Guid>(parentTagIds))));
+        Assert.AreEqual(Tag.Default, _tagRepository.GetTagById(tagID));
     }
     [TestMethod]
-    [DataRow("UpdateTag", "Description", "#000000")]
-    public void AddTagParentTag_ShouldAddTagParentTag(string name, string description, string color)
+    public void TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag()
     {
         //Arrange
-        Tag tagParent1 = new Tag.TagBuilder("ParentTag1").Build();
-        Tag tagParent2 = new Tag.TagBuilder("ParentTag2").Build();
-        List<Guid> parentTagIds = new() { tagParent1.Id, tagParent2.Id };
-        Tag tag = new Tag.TagBuilder(name)
-            .SetDescription(description)
-            .SetColor(new Color(color))
+        Guid tagParentID1 = Guid.NewGuid();
+        Guid tagParentID2 = Guid.NewGuid();
+        List<Guid> parentTagIds = new() { tagParentID1, tagParentID2 };
+
+        string tagName = nameof(TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag);
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetParentTagIds(parentTagIds)
+            .Build();
+
+        _ = _tagRepository.AddTag(tag);
+        Guid tagParentID3 = Guid.NewGuid();
+
+        //Act
+        bool updateResult = _tagRepository.AddTagParentTag(tag.Id, tagParentID3);
+
+        //Assert
+        Tag tagResult = _tagRepository.GetTagById(tag.Id);
+        Assert.IsTrue(updateResult);
+        Assert.IsTrue(tagResult.ParentTagIds.Contains(tagParentID1));
+        Assert.IsTrue(tagResult.ParentTagIds.Contains(tagParentID2));
+        Assert.IsTrue(tagResult.ParentTagIds.Contains(tagParentID3));
+    }
+    [TestMethod]
+    public void TagCRUD_UpdateTagAddParentTagWithNoTagParent_ShouldUpdateAddParentTag()
+    {
+        //Arrange
+        string tagName = nameof(TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag);
+        Tag tag = new Tag.TagBuilder(tagName)
+            .Build();
+
+        _ = _tagRepository.AddTag(tag);
+        Guid tagParentID1 = Guid.NewGuid();
+
+        //Act
+        bool updateResult = _tagRepository.AddTagParentTag(tag.Id, tagParentID1);
+
+        //Assert
+        Tag tagResult = _tagRepository.GetTagById(tag.Id);
+        Assert.IsTrue(updateResult);
+        Assert.IsTrue(tagResult.ParentTagIds.Contains(tagParentID1));
+    }
+    [TestMethod]
+    public void TagCRUD_UpdateTagAddParentTagWhenNotFound_ShouldReturnFalse()
+    {
+        //Arrange
+        Guid tagID = Guid.NewGuid();
+        Guid tagParentID3 = Guid.NewGuid();
+
+        //Act
+        bool updateResult = _tagRepository.AddTagParentTag(tagID, tagParentID3);
+
+        //Assert
+        Assert.IsFalse(updateResult);
+        Assert.AreEqual(Tag.Default, _tagRepository.GetTagById(tagID));
+    }
+    [TestMethod]
+    public void TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag()
+    {
+        //Arrange
+        string tagName = nameof(TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag);
+        Guid tagParentID1 = Guid.NewGuid();
+        Guid tagParentID2 = Guid.NewGuid();
+        List<Guid> parentTagIds = new() { tagParentID1, tagParentID2 };
+        Tag tag = new Tag.TagBuilder(tagName)
             .SetParentTagIds(parentTagIds)
             .Build();
 
         _ = _tagRepository.AddTag(tag);
 
-        Tag tagParent3 = new Tag.TagBuilder("ParentTag3").Build();
-
         //Act
-        bool updateResult = _tagRepository.AddTagParentTag(tag.Id, tagParent3.Id);
+        bool updateResult = _tagRepository.RemoveTagParentTag(tag.Id, tagParentID2);
 
         //Assert
         Assert.IsTrue(updateResult);
-        Assert.IsTrue(_tagRepository.GetAllTags().Select(t => t.ParentTagIds.Select(t => t == tagParent1.Id)).Any());
-        Assert.IsTrue(_tagRepository.GetAllTags().Select(t => t.ParentTagIds.Select(t => t == tagParent2.Id)).Any());
-        Assert.IsTrue(_tagRepository.GetAllTags().Select(t => t.ParentTagIds.Select(t => t == tagParent3.Id)).Any());
+        Assert.IsTrue(_tagRepository.GetTagById(tag.Id).ParentTagIds.Contains(tagParentID1));
+        Assert.IsFalse(_tagRepository.GetTagById(tag.Id).ParentTagIds.Contains(tagParentID2));
     }
     [TestMethod]
-    public void AddTagParentTag_ShouldNotAddTagParentTag_NotFound()
+    public void TagCRUD_UpdateTagRemoveParentTagWhenNotFound_ShouldReturnFalse()
     {
-        //Arrange
-        Tag tagParent1 = new Tag.TagBuilder("ParentTag1").Build();
-        Tag tagParent2 = new Tag.TagBuilder("ParentTag2").Build();
-        Tag tagParent3 = new Tag.TagBuilder("ParentTag3").Build();
-        List<Guid> parentTagIds = new() { tagParent1.Id, tagParent2.Id };
+        Guid tagParentID1 = Guid.NewGuid();
+        Guid tagParentID2 = Guid.NewGuid();
+        _ = new List<Guid>() { tagParentID1, tagParentID2 };
         Guid id = Guid.NewGuid();
 
         //Act
-        bool updateResult = _tagRepository.AddTagParentTag(id, tagParent3.Id);
+        bool updateResult = _tagRepository.RemoveTagParentTag(id, tagParentID2);
 
         //Assert
         Assert.IsFalse(updateResult);
-        Assert.IsFalse(_tagRepository.GetAllTags().Where(t => t.ParentTagIds.Contains(tagParent3.Id)).Any());
+        Assert.AreEqual(Tag.Default, _tagRepository.GetTagById(id));
     }
-
     [TestMethod]
-    [DataRow("UpdateTag", "Description", "#000000")]
-    public void RemoveTagParentTag_ShouldRemoveTagParentTag(string name, string description, string color)
+    public void TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse()
     {
         //Arrange
-        Tag tagParent1 = new Tag.TagBuilder("ParentTag1").Build();
-        Tag tagParent2 = new Tag.TagBuilder("ParentTag2").Build();
-        List<Guid> parentTagIds = new() { tagParent1.Id, tagParent2.Id };
-        Tag tag = new Tag.TagBuilder(name)
-            .SetDescription(description)
-            .SetColor(new Color(color))
+        string tagName = nameof(TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse);
+        Guid tagParentID1 = Guid.NewGuid();
+        Guid tagParentID2 = Guid.NewGuid();
+        List<Guid> parentTagIds = new() { tagParentID1, tagParentID2 };
+        Tag tag = new Tag.TagBuilder(tagName)
             .SetParentTagIds(parentTagIds)
             .Build();
 
         _ = _tagRepository.AddTag(tag);
 
         //Act
-        bool updateResult = _tagRepository.RemoveTagParentTag(tag.Id, tagParent2.Id);
-
-        //Assert
-        Assert.IsTrue(updateResult);
-        Assert.IsTrue(_tagRepository.GetAllTags().Where(t => t.ParentTagIds.Contains(tagParent1.Id)).Any());
-        Assert.IsFalse(_tagRepository.GetAllTags().Where(t => t.ParentTagIds.Contains(tagParent2.Id)).Any());
-    }
-    [TestMethod]
-    public void RemoveTagParentTag_ShouldNotRemoveTagParentTag_NotFound()
-    {
-        //Arrange
-        Tag tagParent1 = new Tag.TagBuilder("ParentTag1").Build();
-        Tag tagParent2 = new Tag.TagBuilder("ParentTag2").Build();
-        List<Guid> parentTagIds = new() { tagParent1.Id, tagParent2.Id };
-        Guid id = Guid.NewGuid();
-
-        //Act
-        bool updateResult = _tagRepository.RemoveTagParentTag(id, tagParent2.Id);
+        bool updateResult = _tagRepository.RemoveTagParentTag(tag.Id, Guid.NewGuid());
 
         //Assert
         Assert.IsFalse(updateResult);
-        Assert.IsFalse(_tagRepository.GetAllTags().Where(t => t.ParentTagIds.Contains(tagParent2.Id)).Any());
+        Assert.IsTrue(_tagRepository.GetTagById(tag.Id).ParentTagIds.Contains(tagParentID1));
+        Assert.IsTrue(_tagRepository.GetTagById(tag.Id).ParentTagIds.Contains(tagParentID2));
     }
 }
