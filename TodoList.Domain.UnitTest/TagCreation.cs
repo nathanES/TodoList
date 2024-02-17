@@ -7,98 +7,116 @@ namespace TodoList.Domain.UnitTest;
 public class TagCreation
 {
     [TestMethod]
-    [DataRow("Tag 1")]
-    public void Constructor_ShouldCreateTag_WithGivenName(string name)
+    [DataRow("TagNameWithGivenName")]
+    public void ConstructorTag_WithGivenName_ShouldCreateTag(string tagName)
     {
-        Tag tag = new Tag.TagBuilder(name)
+        Tag tag = new Tag.TagBuilder(tagName)
             .Build();
 
-        Assert.AreEqual(name, tag.Name);
         Assert.IsNotNull(tag.Id);
+        Assert.AreEqual(tagName, tag.Name);
         Assert.IsNull(tag.Description);
         Assert.AreEqual(Color.Default, tag.Color);
         Assert.IsFalse(tag.ParentTagIds.Any());
 
     }
     [TestMethod]
-    [DataRow("Tag 1", "Description 1", "#000000")]
-    public void Constructor_ShouldCreateTag_WithDescription(string name, string description, string color)
+    [DataRow("Description 1")]
+    public void ConstructorTag_WithGivenDescription_ShouldCreateTag(string tagDescription)
     {
-        Tag tag = new Tag.TagBuilder(name)
-            .SetDescription(description)
+        string tagName = nameof(ConstructorTag_WithGivenDescription_ShouldCreateTag);
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetDescription(tagDescription)
             .Build();
 
-        Assert.AreEqual(name, tag.Name);
         Assert.IsNotNull(tag.Id);
-        Assert.AreEqual(description, tag.Description);
+        Assert.AreEqual(tagName, tag.Name);
+        Assert.AreEqual(tagDescription, tag.Description);
         Assert.AreEqual(Color.Default, tag.Color);
         Assert.IsFalse(tag.ParentTagIds.Any());
     }
     [TestMethod]
-    [DataRow("Tag 1", "#000000")]
-    public void Constructor_ShouldCreateTag_WithColor(string name, string color)
+    [DataRow("#000000")]
+    public void ConstructorTag_WithGivenColor_ShouldCreateTag(string tagColor)
     {
-        Color color1 = new(color);
-        Tag tag = new Tag.TagBuilder(name)
+        string tagName = nameof(ConstructorTag_WithGivenColor_ShouldCreateTag);
+        Color color = new(tagColor);
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetColor(color)
+            .Build();
+
+        Assert.IsNotNull(tag.Id);
+        Assert.AreEqual(tagName, tag.Name);
+        Assert.IsNull(tag.Description);
+        Assert.AreEqual(color, tag.Color);
+        Assert.IsFalse(tag.ParentTagIds.Any());
+    }
+    [TestMethod]
+    public void ConstructorTag_WithGivenParentTag_ShouldCreateTag()
+    {
+        string tagName = nameof(ConstructorTag_WithGivenParentTag_ShouldCreateTag);
+        Guid parentTagID = Guid.NewGuid();
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetParentTagIds(new List<Guid>() { parentTagID })
+            .Build();
+
+        Assert.IsNotNull(tag.Id);
+        Assert.AreEqual(tagName, tag.Name);
+        Assert.IsNull(tag.Description);
+        Assert.AreEqual(Color.Default, tag.Color);
+        Assert.IsTrue(tag.ParentTagIds.Contains(parentTagID));
+    }
+    [TestMethod]
+    [DataRow("TagNameWithGivenAllProperties", "Description 1", "#000000")]
+    public void ConstructorTag_WithGivenAllProperties_ShouldCreateTag(string tagName, string tagDescription, string tagColor)
+    {
+        Color color1 = new(tagColor);
+        Guid parentTagID = Guid.NewGuid();
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetDescription(tagDescription)
             .SetColor(color1)
+            .SetParentTagIds(new List<Guid>() { parentTagID })
             .Build();
 
-        Assert.AreEqual(name, tag.Name);
         Assert.IsNotNull(tag.Id);
-        Assert.IsNull(tag.Description);
+        Assert.AreEqual(tagName, tag.Name);
+        Assert.AreEqual(tagDescription, tag.Description);
         Assert.AreEqual(color1, tag.Color);
-        Assert.IsFalse(tag.ParentTagIds.Any());
+        Assert.IsTrue(tag.ParentTagIds.Contains(parentTagID));
+
     }
     [TestMethod]
-    [DataRow("Tag 1", "Tag 2")]
-    public void Constructor_ShouldCreateTag_WithParent(string name, string parentName)
+    public void ConstructorTag_WithOneGivenParentTag_ShouldCreateTag()
     {
-        Tag tagParent = new Tag.TagBuilder(name)
-            .Build();
-        Tag tag = new Tag.TagBuilder(name)
-            .SetParentTagIds(new List<Guid>() { tagParent.Id })
+        string tagName = nameof(ConstructorTag_WithOneGivenParentTag_ShouldCreateTag);
+        Guid parentTagID = Guid.NewGuid();
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetParentTagIds(new List<Guid>() { parentTagID, parentTagID })
             .Build();
 
-        Assert.AreEqual(name, tag.Name);
         Assert.IsNotNull(tag.Id);
+        Assert.AreEqual(tagName, tag.Name);
         Assert.IsNull(tag.Description);
         Assert.AreEqual(Color.Default, tag.Color);
-        Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
-    }
-    [TestMethod]
-    [DataRow("Tag 1", "Tag 2", "Description 1", "#000000")]
-    public void Constructor_ShouldCreateTag_WithAllProperties(string name, string parentName, string description, string color)
-    {
-        Color color1 = new(color);
-        Tag tagParent = new Tag.TagBuilder(name)
-            .Build();
-        Tag tag = new Tag.TagBuilder(name)
-            .SetDescription(description)
-            .SetColor(color1)
-            .SetParentTagIds(new List<Guid>() { tagParent.Id })
-            .Build();
-
-        Assert.AreEqual(name, tag.Name);
-        Assert.IsNotNull(tag.Id);
-        Assert.AreEqual(description, tag.Description);
-        Assert.AreEqual(color1, tag.Color);
-        Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
-        Assert.AreEqual(Color.Default, tagParent.Color);
+        Assert.IsTrue(tag.ParentTagIds.Contains(parentTagID));
+        Assert.IsTrue(tag.ParentTagIds.Where(x => x == parentTagID).Count() == 1);
 
     }
     [TestMethod]
-    public void Constructor_ShouldNotCreateTag_WithNullName()
+    public void ConstructorTag_WithNullName_ShouldNotCreateTag_ArgumentNullException()
     {
         _ = Assert.ThrowsException<ArgumentNullException>(() => new Tag.TagBuilder(null)
                           .Build());
     }
     [TestMethod]
-    [DataRow("Description1")]
-    public void Constructor_ShouldNotCreateTag_WithNulNameButOtherProperties(string description)
+    public void ConstructorTag_WithEmptyName_ShouldNotCreateTag_ArgumentNullException()
     {
-        _ = Assert.ThrowsException<ArgumentNullException>(() => new Tag.TagBuilder(null)
-                 .SetDescription(description)
-                 .SetColor(Color.Default)
-                .Build());
+        _ = Assert.ThrowsException<ArgumentException>(() => new Tag.TagBuilder(string.Empty)
+                          .Build());
     }
 }

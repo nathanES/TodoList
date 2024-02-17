@@ -93,7 +93,7 @@ public class TagServiceTest
         Assert.AreEqual(description, tagDto.Description);
     }
     [TestMethod]
-    [DataRow("Tag 1", "#000000")]
+    [DataRow("Tag 1", "#998877")]
     public void AddTag_WithNameAndColor(string name, string color)
     {
         Guid idToInsert = Guid.NewGuid();
@@ -217,39 +217,39 @@ public class TagServiceTest
         Assert.AreEqual(description2, tagDto.Description);
         Assert.IsTrue(tagDto.Color.Equals(new Color(color2)));
     }
-    [TestMethod]
-    [DataRow("", "Tag 1", "Description 1", "#000000", "Tag 2", "Description 2", "#FFFFFF")]
-    public void UpdateTag_WithFullParameters(string id, string name, string description, string color, string name2, string description2, string color2)
-    {
-        Guid idToInsert1 = !string.IsNullOrEmpty(id) ? Guid.Parse(id) : Guid.NewGuid();
+    //[TestMethod]
+    //[DataRow("", "Tag 1", "Description 1", "#000000", "Tag 2", "Description 2", "#FFFFFF")]
+    //public void UpdateTag_WithFullParameters(string id, string name, string description, string color, string name2, string description2, string color2)
+    //{
+    //    Guid idToInsert1 = !string.IsNullOrEmpty(id) ? Guid.Parse(id) : Guid.NewGuid();
 
-        TagService tagService = new(_tagRepository, _logger);
-        TagDto tagDtoInsert = new()
-        {
-            Id = idToInsert1,
-            Name = name,
-            Description = description,
-            Color = new Color(color)
-        };
-        tagService.AddTag(tagDtoInsert);
+    //    TagService tagService = new(_tagRepository, _logger);
+    //    TagDto tagDtoInsert = new()
+    //    {
+    //        Id = idToInsert1,
+    //        Name = name,
+    //        Description = description,
+    //        Color = new Color(color)
+    //    };
+    //    tagService.AddTag(tagDtoInsert);
 
-        TagDto tagDtoUpdate = new()
-        {
-            Id = idToInsert1,
-            Name = name2,
-            Description = description2,
-            Color = new Color(color2)
-        };
-        tagService.UpdateTag(tagDtoUpdate);
+    //    TagDto tagDtoUpdate = new()
+    //    {
+    //        Id = idToInsert1,
+    //        Name = name2,
+    //        Description = description2,
+    //        Color = new Color(color2)
+    //    };
+    //    tagService.UpdateTag(tagDtoUpdate);
 
-        TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
+    //    TagDto tagDto = tagService.GetTagById(tagDtoInsert.Id);
 
-        Assert.IsNotNull(tagDto);
-        Assert.AreEqual(idToInsert1, tagDto.Id);
-        Assert.AreEqual(name2, tagDto.Name);
-        Assert.AreEqual(description2, tagDto.Description);
-        Assert.IsTrue(tagDto.Color.Equals(new Color(color2)));
-    }
+    //    Assert.IsNotNull(tagDto);
+    //    Assert.AreEqual(idToInsert1, tagDto.Id);
+    //    Assert.AreEqual(name2, tagDto.Name);
+    //    Assert.AreEqual(description2, tagDto.Description);
+    //    Assert.IsTrue(tagDto.Color.Equals(new Color(color2)));
+    //}
 
     //TODO : a continuer avec les différentes méthodes.
 

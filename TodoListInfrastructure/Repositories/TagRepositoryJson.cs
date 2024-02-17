@@ -173,7 +173,7 @@ public class TagRepositoryJson : ITagRepository
         WriteToFile();
         return true;
     }
-    public bool UpdateTagParent(Guid tagId, List<Guid> newParentTagIds)
+    public bool UpdateTagParentTag(Guid tagId, List<Guid> newParentTagIds)
     {
         int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
 
@@ -183,11 +183,11 @@ public class TagRepositoryJson : ITagRepository
             return false;
         }
 
-        _cache[tagIndexToUpdate].UpdateTagParent(newParentTagIds);
+        _cache[tagIndexToUpdate].UpdateParentTagIds(newParentTagIds);
         WriteToFile();
         return true;
     }
-    public bool AddTagParent(Guid tagId, Guid parentTagId)
+    public bool AddTagParentTag(Guid tagId, Guid parentTagId)
     {
         int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
 
@@ -201,7 +201,7 @@ public class TagRepositoryJson : ITagRepository
         WriteToFile();
         return true;
     }
-    public bool RemoveTagParent(Guid tagId, Guid parentTagId)
+    public bool RemoveTagParentTag(Guid tagId, Guid parentTagId)
     {
         int tagIndexToUpdate = _cache.FindIndex(t => t.Id == tagId);
 

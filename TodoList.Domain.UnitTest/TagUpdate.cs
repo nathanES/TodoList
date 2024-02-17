@@ -1,5 +1,4 @@
 ﻿using TodoList.Domain.Entities;
-using TodoList.Domain.ValueObjects;
 
 namespace TodoList.Domain.UnitTest;
 
@@ -7,137 +6,233 @@ namespace TodoList.Domain.UnitTest;
 public class TagUpdate
 {
     [TestMethod]
-    [DataRow("Tag 1")]
-    public void UpdateName_ShouldUpdateTagName(string name)
+    [DataRow("NewTagName")]
+    public void UpdateTag_UpdateTagName_ShouldUpdateTagName(string newTagName)
     {
-        Tag tag = new Tag.TagBuilder(name)
+        string tagName = nameof(UpdateTag_UpdateTagName_ShouldUpdateTagName);
+
+        Tag tag = new Tag.TagBuilder(tagName)
             .Build();
 
-        string newName = "New Name";
-        tag.UpdateName(newName);
+        tag.UpdateName(newTagName);
 
-        Assert.AreEqual(tag.Name, newName);
+        Assert.AreEqual(newTagName, tag.Name);
     }
+
     [TestMethod]
-    [DataRow("Description 1", "Tag 1")]
-    public void UpdateDescription_ShouldUpdateTagDescription(string description, string name)
+    [DataRow("NewTagDescription")]
+    public void UpdateTag_UpdateTagDescription_ShouldUpdateTagDescription(string newTagDescription)
     {
-        Tag tag = new Tag.TagBuilder(name)
+        string tagName = nameof(UpdateTag_UpdateTagDescription_ShouldUpdateTagDescription);
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetDescription("FirstTagDescription")
             .Build();
 
-        tag.UpdateDescription(description);
+        tag.UpdateDescription(newTagDescription);
 
-        Assert.AreEqual(tag.Description, description);
+        Assert.AreEqual(newTagDescription, tag.Description);
     }
+
     [TestMethod]
-    [DataRow("#000000", "Tag 1")]
-    public void UpdateColor_ShouldUpdateTagColor(string color, string name)
+    [DataRow("NewTagDescription")]
+    public void UpdateTag_UpdateTagDescriptionWhenNoTagDescription_ShouldUpdateTagDescription(string newTagDescription)
     {
-        Color color1 = new(color);
-        Tag tag = new Tag.TagBuilder(name)
+        string tagName = nameof(UpdateTag_UpdateTagDescriptionWhenNoTagDescription_ShouldUpdateTagDescription);
+
+        Tag tag = new Tag.TagBuilder(tagName)
             .Build();
 
-        tag.UpdateColor(color1);
+        tag.UpdateDescription(newTagDescription);
 
-        Assert.AreEqual(color1, tag.Color);
+        Assert.AreEqual(newTagDescription, tag.Description);
+    }
+
+    [TestMethod]
+    [DataRow("#000000")]
+    public void UpdateTag_UpdateTagColor_ShouldUpdateTagColor(string newTagColor)
+    {
+        string tagName = nameof(UpdateTag_UpdateTagColor_ShouldUpdateTagColor);
+        ValueObjects.Color color = new(newTagColor);
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetColor(new ValueObjects.Color("#070809"))
+            .Build();
+
+        tag.UpdateColor(color);
+
+        Assert.AreEqual(color, tag.Color);
     }
     [TestMethod]
-    [DataRow("Tag Parent")]
-    public void UpdateTagParent_ShouldUpdateTagParent(string parentName)
+    [DataRow("#099880")]
+    public void UpdateTag_UpdateTagColorWhenNoTagColor_ShouldUpdateTagColor(string newTagColor)
     {
-        Tag tagParent = new Tag.TagBuilder(parentName)
+        string tagName = nameof(UpdateTag_UpdateTagColorWhenNoTagColor_ShouldUpdateTagColor);
+        ValueObjects.Color color = new(newTagColor);
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .Build();
+
+        tag.UpdateColor(color);
+
+        Assert.AreEqual(color, tag.Color);
+    }
+
+    [TestMethod]
+    public void UpdateTag_UpdateTagParent_ShouldUpdateTagParent()
+    {
+        string tagName = nameof(UpdateTag_UpdateTagParent_ShouldUpdateTagParent);
+        Guid newTagParentId = Guid.NewGuid();
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetParentTagIds(new List<Guid>() { Guid.NewGuid() })
+            .Build();
+        tag.UpdateParentTagIds(new List<Guid>() { newTagParentId });
+
+        Assert.IsTrue(tag.ParentTagIds.Contains(newTagParentId));
+        Assert.IsTrue(tag.ParentTagIds.Count() == 1);
+    }
+    [TestMethod]
+    public void UpdateTag_UpdateTagParentWhenNoTagParent_ShouldUpdateTagParent()
+    {
+        string tagName = nameof(UpdateTag_UpdateTagParentWhenNoTagParent_ShouldUpdateTagParent);
+        Guid newTagParentId = Guid.NewGuid();
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .Build();
+
+        tag.UpdateParentTagIds(new List<Guid>() { newTagParentId });
+
+        Assert.IsTrue(tag.ParentTagIds.Contains(newTagParentId));
+        Assert.IsTrue(tag.ParentTagIds.Count() == 1);
+    }
+
+    [TestMethod]
+    [DataRow("newTagName", "newTagDescription", "#099880")]
+    public void UpdateTag_UpdateAllProperties_ShouldUpdateAllProperties(string newTagName, string newTagDescription, string newTagColor)
+    {
+        string tagName = nameof(UpdateTag_UpdateAllProperties_ShouldUpdateAllProperties);
+        ValueObjects.Color newTagColorValue = new(newTagColor);
+        Guid newTagParentId = Guid.NewGuid();
+
+        Tag tag = new Tag.TagBuilder(tagName)
+        .SetDescription("FirstTagDescription")
+        .SetColor(new ValueObjects.Color("#012345"))
+        .SetParentTagIds(new List<Guid>() { Guid.NewGuid() })
         .Build();
 
-        Tag tag = new Tag.TagBuilder("Tag 1")
-            .Build();
+        tag.UpdateName(newTagName);
+        tag.UpdateDescription(newTagDescription);
+        tag.UpdateColor(newTagColorValue);
+        tag.UpdateParentTagIds(new List<Guid>() { newTagParentId });
 
-        tag.UpdateTagParent(new List<Guid>() { tagParent.Id });
-
-        Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
+        Assert.AreEqual(newTagName, tag.Name);
+        Assert.AreEqual(newTagDescription, tag.Description);
+        Assert.AreEqual(newTagColorValue, tag.Color);
+        Assert.IsTrue(tag.ParentTagIds.Count() == 1);
+        Assert.IsTrue(tag.ParentTagIds.Contains(newTagParentId));
     }
     [TestMethod]
-    [DataRow("Tag Parent", "#000000", "Description 1", "New name")]
-    public void UpdateAllProperties_ShouldUpdateAllProperties(string parentName, string color, string description, string newname)
+    [DataRow("newTagName", "newTagDescription", "#099880")]
+    public void UpdateTag_UpdateAllPropertiesWhenNoProperties_ShouldUpdateAllProperties(string newTagName, string newTagDescription, string newTagColor)
     {
-        Tag tagParent = new Tag.TagBuilder(parentName)
-        .Build();
-        Color color1 = new(color);
+        string tagName = nameof(UpdateTag_UpdateAllPropertiesWhenNoProperties_ShouldUpdateAllProperties);
+        ValueObjects.Color newTagColorValue = new(newTagColor);
+        Guid newTagParentId = Guid.NewGuid();
 
-        Tag tag = new Tag.TagBuilder("Tag1")
+        Tag tag = new Tag.TagBuilder(tagName)
+        .Build();
+
+        tag.UpdateName(newTagName);
+        tag.UpdateDescription(newTagDescription);
+        tag.UpdateColor(newTagColorValue);
+        tag.UpdateParentTagIds(new List<Guid>() { newTagParentId });
+
+        Assert.AreEqual(newTagName, tag.Name);
+        Assert.AreEqual(newTagDescription, tag.Description);
+        Assert.AreEqual(newTagColorValue, tag.Color);
+        Assert.IsTrue(tag.ParentTagIds.Count() == 1);
+        Assert.IsTrue(tag.ParentTagIds.Contains(newTagParentId));
+    }
+
+    [TestMethod]
+    public void UpdateTag_AddTagParent_ShouldAddTagParent()
+    {
+        string tagName = nameof(UpdateTag_AddTagParent_ShouldAddTagParent);
+        Guid newTagParentId = Guid.NewGuid();
+
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetParentTagIds(new List<Guid>() { Guid.NewGuid() })
             .Build();
 
-        tag.UpdateTagParent(new List<Guid>() { tagParent.Id });
-        tag.UpdateColor(color1);
-        tag.UpdateDescription(description);
-        tag.UpdateName(newname);
+        tag.AddTagParent(newTagParentId);
 
-        Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
-        Assert.AreEqual(color1, tag.Color);
-        Assert.AreEqual(tag.Description, description);
-        Assert.AreEqual(newname, tag.Name);
+        Assert.IsTrue(tag.ParentTagIds.Count() == 2);
+        Assert.IsTrue(tag.ParentTagIds.Contains(newTagParentId));
     }
     [TestMethod]
-    [DataRow("Tag Parent")]
-    public void AddTagParent_ShouldAddTagParent(string parentName)
+    public void UpdateTag_AddTagParentWhenNoTagParent_ShouldAddTagParent()
     {
-        Tag tagParent = new Tag.TagBuilder(parentName)
-        .Build();
+        string tagName = nameof(UpdateTag_AddTagParentWhenNoTagParent_ShouldAddTagParent);
+        Guid newTagParentId = Guid.NewGuid();
 
-        Tag tag = new Tag.TagBuilder("Tag 1")
+        Tag tag = new Tag.TagBuilder(tagName)
             .Build();
 
-        tag.AddTagParent(tagParent.Id);
+        tag.AddTagParent(newTagParentId);
 
-        Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
+        Assert.IsTrue(tag.ParentTagIds.Count() == 1);
+        Assert.IsTrue(tag.ParentTagIds.Contains(newTagParentId));
     }
     [TestMethod]
-    [DataRow("Tag Parent")]
-    public void AddTagParent_ShouldAddOneTagParent(string parentName)
+    public void UpdateTag_AddTagParent_ShouldAddOneTagParent()
     {
-        Tag tagParent = new Tag.TagBuilder(parentName)
-        .Build();
+        string tagName = nameof(UpdateTag_AddTagParent_ShouldAddOneTagParent);
+        Guid newTagParentId = Guid.NewGuid();
 
-        Tag tag = new Tag.TagBuilder("Tag 1")
+        Tag tag = new Tag.TagBuilder(tagName)
             .Build();
 
-        tag.AddTagParent(tagParent.Id);
-        tag.AddTagParent(tagParent.Id);
+        tag.AddTagParent(newTagParentId);
+        tag.AddTagParent(newTagParentId);
 
-        Assert.IsTrue(tag.ParentTagIds.Contains(tagParent.Id));
-        Assert.AreEqual(1, tag.ParentTagIds.Where(t => t == tagParent.Id).Count());
+        Assert.IsTrue(tag.ParentTagIds.Contains(newTagParentId));
+        Assert.IsTrue(tag.ParentTagIds.Where(t => t == newTagParentId).Count() == 1);
     }
     [TestMethod]
-    [DataRow("Tag Parent")]
-    public void RemoveTagParent_ShouldRemoveTagParent(string parentName)
+    public void UpdateTag_RemoveTagParent_ShouldRemoveTagParent()
     {
-        Tag tagParent = new Tag.TagBuilder(parentName)
-        .Build();
+        string tagName = nameof(UpdateTag_RemoveTagParent_ShouldRemoveTagParent);
+        Guid tagParentIDToRemove = Guid.NewGuid();
 
-        Tag tag = new Tag.TagBuilder("Tag 1")
+        Tag tag = new Tag.TagBuilder(tagName)
+            .SetParentTagIds(new List<Guid>() { Guid.NewGuid(), tagParentIDToRemove })
             .Build();
 
-        tag.AddTagParent(tagParent.Id);
+        bool result = tag.RemoveTagParent(tagParentIDToRemove);
 
-        bool result = tag.RemoveTagParent(tagParent.Id);
         Assert.IsTrue(result);
-        Assert.IsFalse(tag.ParentTagIds.Contains(tagParent.Id));
+        Assert.IsFalse(tag.ParentTagIds.Contains(tagParentIDToRemove));
+        Assert.IsTrue(tag.ParentTagIds.Count() == 1);
     }
+
     [TestMethod]
-    [DataRow("Tag Parent")]
-    public void RemoveTagParent_ShouldRemoveOneTagParent(string parentName)
+    public void UpdateTag_RemoveTagParent_ShouldRemoveOneTagParent()
     {
-        Tag tagParent = new Tag.TagBuilder(parentName)
-        .Build();
-        Tag tag = new Tag.TagBuilder("Tag 1")
+        string tagName = nameof(UpdateTag_RemoveTagParent_ShouldRemoveOneTagParent);
+        Guid tagParentIDToRemove = Guid.NewGuid();
+
+        Tag tag = new Tag.TagBuilder(tagName)
+        .SetParentTagIds(new List<Guid>() { Guid.NewGuid(), tagParentIDToRemove })
             .Build();
 
-        tag.AddTagParent(tagParent.Id);
-
-        bool result = tag.RemoveTagParent(tagParent.Id);
-        bool result2 = tag.RemoveTagParent(tagParent.Id);
+        bool result = tag.RemoveTagParent(tagParentIDToRemove);
+        bool result2 = tag.RemoveTagParent(tagParentIDToRemove);
 
         Assert.IsTrue(result);
         Assert.IsFalse(result2);
-        Assert.IsFalse(tag.ParentTagIds.Contains(tagParent.Id));
+        Assert.IsFalse(tag.ParentTagIds.Contains(tagParentIDToRemove));
+        Assert.IsTrue(tag.ParentTagIds.Count() == 1);
+
     }
 }

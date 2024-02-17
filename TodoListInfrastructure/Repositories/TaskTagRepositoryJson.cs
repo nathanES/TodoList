@@ -24,7 +24,7 @@ public class TaskTagRepositoryJson : ITaskTagRepository
         try
         {
             if (!File.Exists(_taskTagFilePath))
-            {//c'est ici que cela pose problème
+            {
                 _cache = new List<TaskTag>();
                 return;
             }

@@ -200,6 +200,6 @@ public class TaskCRUD
         Assert.AreEqual(task.Priority, task2.Priority);
         Assert.AreEqual(task.IsCompleted, task2.IsCompleted);
         Assert.AreEqual(task.CreationTime, task2.CreationTime);
-        Assert.AreEqual(task.DeadLine, task2.DeadLine);
+        Assert.AreEqual(task.Deadline, task2.Deadline);
     }
 }

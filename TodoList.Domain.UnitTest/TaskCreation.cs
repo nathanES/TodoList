@@ -1,4 +1,6 @@
+using System.Globalization;
 using TodoList.Domain.Enum;
+using TodoList.Domain.Exceptions;
 
 namespace TodoList.Domain.UnitTest;
 
@@ -6,100 +8,114 @@ namespace TodoList.Domain.UnitTest;
 public class TaskCreation
 {
     [TestMethod]
-    [DataRow("Task 1")]
-    public void Constructor_ShouldCreateTask_WithGivenName(string name)
+    [DataRow("TaskName")]
+    public void ConstructorTask_WithGivenName_ShouldCreateTask(string taskName)
     {
-        Task task = new Task.TaskBuilder(name)
+        Task task = new Task.TaskBuilder(taskName)
             .Build();
 
-        Assert.AreEqual(task.Name, name);
         Assert.IsNotNull(task.Id);
+        Assert.AreEqual(task.Name, taskName);
         Assert.IsNull(task.Description);
-        Assert.AreEqual(task.Priority, Priority.Medium);
-        Assert.AreEqual(task.DeadLine, DateTime.MaxValue);
-        Assert.IsTrue(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
+        Assert.AreEqual(Priority.Medium, task.Priority);
+        Assert.AreEqual(DateTime.MaxValue, task.Deadline);
+        Assert.AreEqual(TimeSpan.MaxValue, task.TimeLeftBeforeDeadline);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
+        Assert.IsFalse(task.IsCompleted);
     }
 
     [TestMethod]
-    [DataRow("Task 1", Priority.High)]
-    public void Constructor_ShouldCreateTask_WithPriority(string name, Priority priority)
+    [DataRow(Priority.High)]
+    public void ConstructorTask_WithGivenPriority_ShouldCreateTask(Priority taskPriority)
     {
-        Task task = new Task.TaskBuilder(name)
-            .SetPriority(priority)
+        string taskName = nameof(ConstructorTask_WithGivenPriority_ShouldCreateTask);
+
+        Task task = new Task.TaskBuilder(taskName)
+            .SetPriority(taskPriority)
             .Build();
 
-        Assert.AreEqual(task.Name, name);
         Assert.IsNotNull(task.Id);
+        Assert.AreEqual(task.Name, taskName);
         Assert.IsNull(task.Description);
-        Assert.AreEqual(task.Priority, Priority.High);
-        Assert.AreEqual(task.DeadLine, DateTime.MaxValue);
-        Assert.IsTrue(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
+        Assert.AreEqual(Priority.High, task.Priority);
+        Assert.AreEqual(DateTime.MaxValue, task.Deadline);
+        Assert.AreEqual(TimeSpan.MaxValue, task.TimeLeftBeforeDeadline);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
+        Assert.IsFalse(task.IsCompleted);
     }
 
     [TestMethod]
-    [DataRow("Task 1", "Description 1")]
-    public void Constructor_ShouldCreateTask_WithDescription(string name, string description)
+    [DataRow("DescriptionName")]
+    public void ConstructorTask_WithGivenDescription_ShouldCreateTask(string taskDescription)
     {
-        Task task = new Task.TaskBuilder(name)
-            .SetDescription(description)
+        string taskName = nameof(ConstructorTask_WithGivenDescription_ShouldCreateTask);
+
+        Task task = new Task.TaskBuilder(taskName)
+            .SetDescription(taskDescription)
             .Build();
 
-        Assert.AreEqual(task.Name, name);
         Assert.IsNotNull(task.Id);
-        Assert.AreEqual(task.Description, description);
-        Assert.AreEqual(task.Priority, Priority.Medium);
-        Assert.AreEqual(task.DeadLine, DateTime.MaxValue);
-        Assert.IsTrue(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
+        Assert.AreEqual(taskName, task.Name);
+        Assert.AreEqual(taskDescription, task.Description);
+        Assert.AreEqual(Priority.Medium, task.Priority);
+        Assert.AreEqual(DateTime.MaxValue, task.Deadline);
+        Assert.IsTrue(task.TimeLeftBeforeDeadline.CompareTo(TimeSpan.MaxValue) == 0);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
+        Assert.IsFalse(task.IsCompleted);
     }
 
     [TestMethod]
-    [DataRow("Task 1")]
-    public void Constructor_ShouldCreateTask_WithDeadline(string name)
+    [DataRow("01/01/2025")]
+    [DataRow("01/01/2026")]
+    [DataRow("01/01/2027")]
+    public void ConstructorTask_WithGivenDeadline_ShouldCreateTask(string taskDeadline)
     {
-        DateTime deadLine = DateTime.UtcNow.AddDays(1);
-        Task task = new Task.TaskBuilder(name)
-            .SetDeadLine(deadLine)
+        string taskName = nameof(ConstructorTask_WithGivenDeadline_ShouldCreateTask);
+        DateTime taskDeadlineValue = DateTime.ParseExact(taskDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+        Task task = new Task.TaskBuilder(taskName)
+            .SetDeadLine(taskDeadlineValue)
             .Build();
 
-        Assert.AreEqual(task.Name, name);
         Assert.IsNotNull(task.Id);
+        Assert.AreEqual(taskName, task.Name);
         Assert.IsNull(task.Description);
-        Assert.AreEqual(task.Priority, Priority.Medium);
-        Assert.AreEqual(task.DeadLine, deadLine);
-        Assert.IsTrue(task.TimeLeftBeforeDeadLine >= deadLine - DateTime.UtcNow);
-        Assert.IsFalse(task.TimeLeftBeforeDeadLine == TimeSpan.MaxValue);
+        Assert.AreEqual(Priority.Medium, task.Priority);
+        Assert.AreEqual(taskDeadlineValue, task.Deadline);
+        Assert.IsTrue(task.TimeLeftBeforeDeadline >= taskDeadlineValue - DateTime.UtcNow);
+        Assert.IsTrue(task.TimeLeftBeforeDeadline.CompareTo(TimeSpan.MaxValue) <= 0);
         Assert.IsTrue(task.CreationTime <= DateTime.UtcNow);
+        Assert.IsFalse(task.IsCompleted);
     }
 
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
-    [DataRow(null!)]
-    public void Constructor_ShouldThrowArgumentNullException_WhenNameIsNull(string name)
+    public void ConstructorTask_WhenNameIsNull_ShouldNotCreateTask_ArgumentNullException()
     {
-        _ = new Task.TaskBuilder(name)
+        _ = new Task.TaskBuilder(null!)
           .Build();
     }
 
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
-    [DataRow("")]
-    public void Constructor_ShouldThrowArgumentNullException_WhenNameIsEmpty(string name)
+    public void ConstructorTask_WhenNameIsEmpty_ShouldNotCreateTask_ArgumentException()
     {
-        _ = new Task.TaskBuilder(name)
+        _ = new Task.TaskBuilder(string.Empty)
           .Build();
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    [DataRow("Task 2")]
-    public void Constructor_ShouldThrowArgumentException_WhenDeadLineInThePast(string name)
+    [ExpectedException(typeof(DeadlineInThePastException))]
+    [DataRow("01/01/2020")]
+    [DataRow("01/01/2019")]
+    [DataRow("01/01/2018")]
+    public void ConstructorTask_WhenDeadLineInThePast_ShouldNotCreateTask_ArgumentException(string taskDeadline)
     {
-        DateTime deadLine = DateTime.UtcNow.AddDays(-1);
-        _ = new Task.TaskBuilder(name)
-          .SetDeadLine(deadLine)
+        DateTime taskDeadlineValue = DateTime.ParseExact(taskDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None);
+        string taskName = nameof(ConstructorTask_WhenDeadLineInThePast_ShouldNotCreateTask_ArgumentException);
+
+        _ = new Task.TaskBuilder(taskName)
+          .SetDeadLine(taskDeadlineValue)
           .Build();
     }
 }

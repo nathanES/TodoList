@@ -9,21 +9,27 @@ public class TagDto
     public string Name { get; set; }
     public string Description { get; set; }
     public Color Color { get; set; }
-    public List<Guid> ParentTagIds { get; set; }
+    public HashSet<Guid> ParentTagIds { get; set; } = new();
 
     public TagDto()
     {
-        ParentTagIds = new List<Guid>();
+        ParentTagIds = new();
     }
 
     public static explicit operator Tag(TagDto tagDto)
     {
-        return new Tag.TagBuilder(tagDto.Name)
-            .SetId(tagDto.Id)
-            .SetDescription(tagDto.Description)
-            .SetColor(tagDto.Color)
-            .SetParentTagIds(tagDto.ParentTagIds)
-            .Build();
+        if (tagDto == null)
+            throw new ArgumentNullException(nameof(tagDto), $"L'objet {nameof(TagDto)} ne doit pas être null.");
+
+        Tag.TagBuilder builder = new(tagDto.Name);
+        builder = builder.SetDescription(tagDto.Description);
+        if (tagDto.Id != Guid.Empty)
+            builder = builder.SetId(tagDto.Id);
+        if (tagDto.Color != null)
+            builder = builder.SetColor(tagDto.Color);
+        if (tagDto.ParentTagIds != null)
+            builder = builder.SetParentTagIds(tagDto.ParentTagIds);
+        return builder.Build();
     }
 
     public static explicit operator TagDto(Tag tag)

@@ -16,14 +16,19 @@ public class TaskDto
 
     public static explicit operator Task(TaskDto taskDto)
     {
-        return new Task.TaskBuilder(taskDto.Name)
-            .SetId(taskDto.Id)
+        if (taskDto == null)
+            throw new ArgumentNullException(nameof(taskDto), $"L'objet {nameof(TaskDto)} ne doit pas être null.");
+
+        Task.TaskBuilder builder = new Task.TaskBuilder(taskDto.Name)
             .SetDescription(taskDto.Description)
             .SetPriority(taskDto.Priority)
             .SetDeadLine(taskDto.DeadLine)
             .SetCreationTime(taskDto.CreationTime)
-            .SetIsCompleted(taskDto.IsCompleted)
-            .Build();
+            .SetIsCompleted(taskDto.IsCompleted);
+
+        if (taskDto.Id != Guid.Empty)
+            builder = builder.SetId(taskDto.Id);
+        return builder.Build();
     }
     public static explicit operator TaskDto(Task task)
     {
@@ -33,7 +38,7 @@ public class TaskDto
             Name = task.Name,
             Description = task.Description,
             Priority = task.Priority,
-            DeadLine = task.DeadLine,
+            DeadLine = task.Deadline,
             CreationTime = task.CreationTime,
             IsCompleted = task.IsCompleted
         };

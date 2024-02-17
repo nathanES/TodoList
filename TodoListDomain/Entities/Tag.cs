@@ -17,32 +17,45 @@ public class Tag
         }
     }
 
-    private string name;
+    private string _name;
     [JsonProperty("Name")]
     public string Name
     {
         get
         {
-            return name;
+            return _name;
         }
 
         private set
         {
-            ArgumentException.ThrowIfNullOrEmpty(argument: value, nameof(name));
-            name = value;
+            ArgumentNullException.ThrowIfNullOrEmpty(argument: value, nameof(_name));
+            _name = value;
         }
     }
     [JsonProperty("Description")]
     public string? Description { get; private set; }
+
+    [JsonIgnore]
+    private Color _color = Color.Default;
+
     [JsonProperty("Color")]
-    public Color Color { get; private set; } = Color.Default;
+    public Color Color
+    {
+        get { return _color; }
+        set
+        {
+            ArgumentNullException.ThrowIfNull(value, nameof(Color));
+            _color = value;
+        }
+    }
+
     [JsonProperty("ParentTagIds")]
-    public List<Guid> ParentTagIds { get; private set; } = new();
+    public HashSet<Guid> ParentTagIds { get; private set; } = new(); //HashSet to avoid duplicate
     public static Tag Default = new(Guid.Parse("00000000-0000-0000-0000-000000000000"), "___Default")
     {
         Description = string.Empty,
         Color = Color.Default,
-        ParentTagIds = new List<Guid>()
+        ParentTagIds = new HashSet<Guid>()
     };
 
     private Tag(string name)
@@ -64,7 +77,7 @@ public class Tag
         Name = name;
         Description = description;
         Color = color;
-        ParentTagIds = parentTagIds.Select(Guid.Parse).ToList();
+        ParentTagIds = new HashSet<Guid>(parentTagIds.Select(Guid.Parse));
     }
 
     public void UpdateName(string name)
@@ -82,16 +95,16 @@ public class Tag
         Color = color;
     }
 
-    public void UpdateTagParent(List<Guid> parentTagIds)
+    public void UpdateParentTagIds(IEnumerable<Guid> parentTagIds)
     {
-        ParentTagIds = parentTagIds;
+        ParentTagIds = new HashSet<Guid>(parentTagIds);
     }
 
     public void AddTagParent(Guid parentTagId)
     {
         if (ParentTagIds.Contains(parentTagId))
             return;
-        ParentTagIds.Add(parentTagId);
+        _ = ParentTagIds.Add(parentTagId);
     }
     public bool RemoveTagParent(Guid parentTagId)
     {
@@ -105,7 +118,7 @@ public class Tag
         private readonly string _name;
         private string _description;
         private Color _color = Color.Default;
-        private List<Guid> _parentTagIds = new();
+        private HashSet<Guid> _parentTagIds = new();
         public TagBuilder(string name)
         {
             _name = name;
@@ -127,9 +140,9 @@ public class Tag
             return this;
         }
 
-        public TagBuilder SetParentTagIds(List<Guid> parentTagIds)
+        public TagBuilder SetParentTagIds(IEnumerable<Guid> parentTagIds)
         {
-            _parentTagIds = parentTagIds;
+            _parentTagIds = new HashSet<Guid>(parentTagIds);
             return this;
         }
 

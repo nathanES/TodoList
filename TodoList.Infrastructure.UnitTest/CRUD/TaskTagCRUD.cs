@@ -5,6 +5,7 @@ using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure.Loggers;
 using TodoList.Infrastructure.Repositories;
+using TodoList.Infrastructure.UnitTest.Compare;
 using static TodoList.Domain.Entities.TaskTag;
 
 namespace TodoList.Infrastructure.UnitTest.CRUD;
@@ -85,7 +86,7 @@ public class TaskTagCRUD
 
         TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
         _ = taskTagRepository.AddTaskTag(taskTag);
-        TagCRUD.TagCompare(tag, taskTag.Tag);
+        CompareEntity.TagCompare(tag, taskTag.Tag);
         //Act
         Tag tag2 = AddTag("UpdateTaskTagNameTag2", "UpdateTaskTag2", "#000000", "UpdateTaskTagParentNameTag2");
         taskTag.UpdateTag(tag2);
@@ -100,7 +101,7 @@ public class TaskTagCRUD
         Assert.AreEqual(taskTag.Id, taskTag2.Id);
         Assert.AreEqual(taskTag.TagId, taskTag2.TagId);
         Assert.AreEqual(taskTag.TaskId, taskTag2.TaskId);
-        TagCRUD.TagCompare(taskTag.Tag, taskTag2.Tag);
+        CompareEntity.TagCompare(taskTag.Tag, taskTag2.Tag);
         TaskCRUD.TaskCompare(taskTag.Task, taskTag2.Task);
     }
     [TestMethod]

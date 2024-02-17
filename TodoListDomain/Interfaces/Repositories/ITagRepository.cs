@@ -12,9 +12,9 @@ public interface ITagRepository
     bool UpdateTagName(Guid tagId, string newName);
     bool UpdateTagDescription(Guid tagId, string newDescription);
     bool UpdateTagColor(Guid tagId, Color newColor);
-    bool UpdateTagParent(Guid tagId, List<Guid> newParentTagIds);
-    bool AddTagParent(Guid tagId, Guid parentTagId);
-    bool RemoveTagParent(Guid tagId, Guid parentTagId);
+    bool UpdateTagParentTag(Guid tagId, List<Guid> newParentTagIds);
+    bool AddTagParentTag(Guid tagId, Guid parentTagId);
+    bool RemoveTagParentTag(Guid tagId, Guid parentTagId);
     bool DeleteTagById(Guid tagId);
     bool DeleteTagByIds(IEnumerable<Guid> tagIds);
 }
