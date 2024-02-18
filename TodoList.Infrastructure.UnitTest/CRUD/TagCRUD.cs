@@ -5,7 +5,6 @@ using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
 using TodoList.Infrastructure.Loggers;
 using TodoList.Infrastructure.Repositories;
-using TodoList.Infrastructure.UnitTest.Compare;
 
 namespace TodoList.Infrastructure.UnitTest.CRUD;
 
@@ -34,7 +33,7 @@ public class TagCRUD
         //Act
         Tag tagFound = _tagRepository.GetTagById(tag.Id);
         //Assert
-        CompareEntity.TagCompare(tagFound, tag);
+        Assert.AreEqual(tag, tagFound);
     }
     [TestMethod]
     public void TagCRUD_GetTagByIdWhenNotFound_ShouldGetTagDefault()
@@ -46,7 +45,7 @@ public class TagCRUD
         //Act
         Tag tagFound = _tagRepository.GetTagById(tag.Id);
         //Assert
-        CompareEntity.TagCompare(tagFound, Tag.Default);
+        Assert.AreEqual(Tag.Default, tagFound);
     }
     [TestMethod]
     public void TagCRUD_GetAllTag_ShouldGetAllTags()

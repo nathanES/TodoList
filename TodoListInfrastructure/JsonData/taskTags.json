@@ -2854,5 +2854,2055 @@
         "43d87f56-6b83-4877-a848-63150d02c67e"
       ]
     }
+  },
+  {
+    "Id": "11b52d7a-0875-4660-bea0-2d1503d33f0e",
+    "TaskId": "b798a2db-8864-47d1-9cdb-99c8591d3f9c",
+    "Task": {
+      "Id": "b798a2db-8864-47d1-9cdb-99c8591d3f9c",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "ccb7d04d-5e7f-4c94-bdf6-80ca49431939",
+    "Tag": {
+      "Id": "ccb7d04d-5e7f-4c94-bdf6-80ca49431939",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "73743f36-6119-497f-9191-bab60c3f8002",
+    "TaskId": "274b576d-ce15-4727-adaf-fd8d71bf7e80",
+    "Task": {
+      "Id": "274b576d-ce15-4727-adaf-fd8d71bf7e80",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "a84597e6-95c2-4bd6-bc80-3761b0edc8c6",
+    "Tag": {
+      "Id": "a84597e6-95c2-4bd6-bc80-3761b0edc8c6",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "e224cfc8-8a40-49e8-8a31-bd487f8a8fbd",
+    "TaskId": "f6dc1be3-1b17-43cd-98e5-e1a81eb00090",
+    "Task": {
+      "Id": "f6dc1be3-1b17-43cd-98e5-e1a81eb00090",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "3523799d-0c80-43ab-a4fc-17ec1cc4b8b3",
+    "Tag": {
+      "Id": "3523799d-0c80-43ab-a4fc-17ec1cc4b8b3",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "51c9f959-a12f-4882-b60a-504194f1bd6a",
+    "TaskId": "fa5e27f6-223c-4c4a-a271-55d89a39bf32",
+    "Task": {
+      "Id": "fa5e27f6-223c-4c4a-a271-55d89a39bf32",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "8850cb39-2e51-42e0-bbce-f7f10a171db5",
+    "Tag": {
+      "Id": "8850cb39-2e51-42e0-bbce-f7f10a171db5",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "43a20d88-9927-48b7-be10-8e34d7e51875",
+    "TaskId": "1d75a7f1-2efc-4f0c-a6e9-27d87690b085",
+    "Task": {
+      "Id": "1d75a7f1-2efc-4f0c-a6e9-27d87690b085",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "cef2af03-47e7-4b0c-95c7-bff1a6c980c8",
+    "Tag": {
+      "Id": "cef2af03-47e7-4b0c-95c7-bff1a6c980c8",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "13cddf9e-4f36-4d65-ad70-a53eb2315ee8",
+    "TaskId": "4205833d-58d5-46cd-9107-5b4f52468a3c",
+    "Task": {
+      "Id": "4205833d-58d5-46cd-9107-5b4f52468a3c",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "a8e1ddeb-db96-405d-b0c1-91de7e10ccd2",
+    "Tag": {
+      "Id": "a8e1ddeb-db96-405d-b0c1-91de7e10ccd2",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "f8cf923a-7d30-4ba7-8da1-a3e6d0aaec51",
+    "TaskId": "10b6c4ab-615c-465d-b269-cd385bca65f9",
+    "Task": {
+      "Id": "10b6c4ab-615c-465d-b269-cd385bca65f9",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "07348578-8bad-4e3c-8dd5-7d5c9000ee88",
+    "Tag": {
+      "Id": "07348578-8bad-4e3c-8dd5-7d5c9000ee88",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "b0b90ef7-7e3b-4fd0-b64a-109b6c5dbfa4",
+    "TaskId": "9df4939d-ec6b-466b-85d8-e55c812812a0",
+    "Task": {
+      "Id": "9df4939d-ec6b-466b-85d8-e55c812812a0",
+      "Name": "TaskTagCRUD_UpdateTaskTagTag_ShouldUpdateTaskTagTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "40478b69-bb7a-4fdb-bd0f-a030e022c78f",
+    "Tag": {
+      "Id": "40478b69-bb7a-4fdb-bd0f-a030e022c78f",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "d2953815-8060-49b6-85b4-4a84bdb02ac8",
+    "TaskId": "debae79e-dd47-4eda-b51b-904905e87cef",
+    "Task": {
+      "Id": "debae79e-dd47-4eda-b51b-904905e87cef",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Priority": 2,
+      "DeadLine": "2025-06-12T00:00:00",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": true
+    },
+    "TagId": "7f56de2f-fe35-4310-97e3-668013e4945b",
+    "Tag": {
+      "Id": "7f56de2f-fe35-4310-97e3-668013e4945b",
+      "Name": "TaskTagCRUD_UpdateTaskTagTask_ShouldUpdateTaskTagTask",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "e8a80e43-6566-41f6-af0c-0273358d2120",
+    "TaskId": "7afd948e-69de-4369-a70b-5444b11a1a18",
+    "Task": {
+      "Id": "7afd948e-69de-4369-a70b-5444b11a1a18",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "42fc1154-0734-4c23-bbc6-1c8c98d0c6fb",
+    "Tag": {
+      "Id": "42fc1154-0734-4c23-bbc6-1c8c98d0c6fb",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "e0ca3511-2a15-426d-b240-cdc03cc1976c",
+    "TaskId": "fe286794-814a-4262-827a-d88918e8f59e",
+    "Task": {
+      "Id": "fe286794-814a-4262-827a-d88918e8f59e",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "ab3e60c1-4668-44a7-97bc-1caf0eb3526b",
+    "Tag": {
+      "Id": "ab3e60c1-4668-44a7-97bc-1caf0eb3526b",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "81be3644-419c-42a4-ba40-48fce097c1aa",
+    "TaskId": "64808fe5-af9e-430a-8b45-0a50a18634e3",
+    "Task": {
+      "Id": "64808fe5-af9e-430a-8b45-0a50a18634e3",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "368d62c6-d65d-41a0-806e-e9df92dcf15c",
+    "Tag": {
+      "Id": "368d62c6-d65d-41a0-806e-e9df92dcf15c",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "81f52f80-70b0-424e-b1f6-3bc7714f58ed",
+    "TaskId": "c68dc7d9-3d5f-4c45-a2b8-a13bf50294ef",
+    "Task": {
+      "Id": "c68dc7d9-3d5f-4c45-a2b8-a13bf50294ef",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "40cfb9d1-650b-4af4-b09e-9a03c6b3185f",
+    "Tag": {
+      "Id": "40cfb9d1-650b-4af4-b09e-9a03c6b3185f",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "41c55b8b-f208-4616-a941-331b105af7c9",
+    "TaskId": "df130f8a-45f1-4e9a-bc49-7741650177df",
+    "Task": {
+      "Id": "df130f8a-45f1-4e9a-bc49-7741650177df",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "96bbefe1-e3ff-4aa7-9368-544bae95e793",
+    "Tag": {
+      "Id": "96bbefe1-e3ff-4aa7-9368-544bae95e793",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "428c8912-4217-4e86-a85a-67b77f4290e3",
+    "TaskId": "5556cea1-f1c6-4f28-afaf-1238bb5ff2a3",
+    "Task": {
+      "Id": "5556cea1-f1c6-4f28-afaf-1238bb5ff2a3",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "c90009c6-14f5-4512-8f12-0be5fc41cf04",
+    "Tag": {
+      "Id": "c90009c6-14f5-4512-8f12-0be5fc41cf04",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "9e4a2288-bd5e-4c6e-8fa1-406464b5c358",
+    "TaskId": "6faf8e1f-3b8b-4be5-b4b1-812aa743df7e",
+    "Task": {
+      "Id": "6faf8e1f-3b8b-4be5-b4b1-812aa743df7e",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID2",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "5c487d9b-4731-47e9-a4d7-228ebff67395",
+    "Tag": {
+      "Id": "5c487d9b-4731-47e9-a4d7-228ebff67395",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID2",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "218f3baf-ced5-42d3-a6f8-0a1b8cd14082",
+    "TaskId": "dbfa24ff-d478-41bb-a9bc-e6f1cf3b8084",
+    "Task": {
+      "Id": "dbfa24ff-d478-41bb-a9bc-e6f1cf3b8084",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "dc255cf9-5a09-4cc1-a514-c40d429c145d",
+    "Tag": {
+      "Id": "dc255cf9-5a09-4cc1-a514-c40d429c145d",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "4c27283d-6013-4c0a-8788-892878a74566",
+    "TaskId": "8e4599e1-5601-4bfd-86ee-a5d02d957d73",
+    "Task": {
+      "Id": "8e4599e1-5601-4bfd-86ee-a5d02d957d73",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag2",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "165d66e4-8e9e-42b8-b84c-654c6e3efdde",
+    "Tag": {
+      "Id": "165d66e4-8e9e-42b8-b84c-654c6e3efdde",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag2",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "1784fc07-3fdf-4478-b81d-80fa6a8b8b2c",
+    "TaskId": "7b105ff1-7fa3-428e-bf6a-43574caba6c2",
+    "Task": {
+      "Id": "7b105ff1-7fa3-428e-bf6a-43574caba6c2",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "1e0f503c-9eac-4fa1-8320-19bc5af0a800",
+    "Tag": {
+      "Id": "1e0f503c-9eac-4fa1-8320-19bc5af0a800",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "ab1ba998-966d-4755-bc73-e14ede6baa02",
+    "TaskId": "96efb846-4bc6-4353-a20a-eceef6ebf56d",
+    "Task": {
+      "Id": "96efb846-4bc6-4353-a20a-eceef6ebf56d",
+      "Name": "TaskTagCRUD_UpdateTaskTagTag_ShouldUpdateTaskTagTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "7af30793-eae7-4a14-9540-d0c405ad5051",
+    "Tag": {
+      "Id": "7af30793-eae7-4a14-9540-d0c405ad5051",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "6384acc1-d03d-4522-9bff-1f356d429809",
+    "TaskId": "8b1a2526-e03e-4b6c-bc35-02fe866b6b6e",
+    "Task": {
+      "Id": "8b1a2526-e03e-4b6c-bc35-02fe866b6b6e",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Priority": 2,
+      "DeadLine": "2025-06-12T00:00:00",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": true
+    },
+    "TagId": "66da4609-ed3f-4059-86e3-49625563e5dc",
+    "Tag": {
+      "Id": "66da4609-ed3f-4059-86e3-49625563e5dc",
+      "Name": "TaskTagCRUD_UpdateTaskTagTask_ShouldUpdateTaskTagTask",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "d346424a-347e-4c35-ad2d-ce6508fd8867",
+    "TaskId": "00f36c85-1d92-434c-949d-e5c32fda8f59",
+    "Task": {
+      "Id": "00f36c85-1d92-434c-949d-e5c32fda8f59",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "e9fd1536-195d-4b5a-98a8-ce65fd8a6d01",
+    "Tag": {
+      "Id": "e9fd1536-195d-4b5a-98a8-ce65fd8a6d01",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "345211ae-aff4-4710-bce8-e3019b78b50f",
+    "TaskId": "cf24251e-d4f1-438f-9029-b81c1ebb446c",
+    "Task": {
+      "Id": "cf24251e-d4f1-438f-9029-b81c1ebb446c",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "5272b832-7861-49e4-8618-1ae4b3570ed0",
+    "Tag": {
+      "Id": "5272b832-7861-49e4-8618-1ae4b3570ed0",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "782ec024-c11a-4849-a9cc-d6ea0afc6908",
+    "TaskId": "5343094f-428a-4e32-ac16-1815ff367d9b",
+    "Task": {
+      "Id": "5343094f-428a-4e32-ac16-1815ff367d9b",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "bca2bf5e-7de5-49ed-b468-58dc4d08ea38",
+    "Tag": {
+      "Id": "bca2bf5e-7de5-49ed-b468-58dc4d08ea38",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "5f4c008c-4328-4069-a060-bccb968fabe1",
+    "TaskId": "2afa9ac2-c4dd-4607-ac46-a305ba791d47",
+    "Task": {
+      "Id": "2afa9ac2-c4dd-4607-ac46-a305ba791d47",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "8242ddbe-b5b1-41f9-b5bd-9733d9a989c5",
+    "Tag": {
+      "Id": "8242ddbe-b5b1-41f9-b5bd-9733d9a989c5",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "8b2cacf9-4335-4d79-b140-1d86ad3d3f1b",
+    "TaskId": "05682411-e38a-4a5e-96db-6908b0f9e9ff",
+    "Task": {
+      "Id": "05682411-e38a-4a5e-96db-6908b0f9e9ff",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "78f44665-c524-469f-a3ae-f504890035b6",
+    "Tag": {
+      "Id": "78f44665-c524-469f-a3ae-f504890035b6",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "18ce40f6-c61a-4cdb-967c-900238574653",
+    "TaskId": "0b72c654-9892-4574-9411-1dd167ff61d2",
+    "Task": {
+      "Id": "0b72c654-9892-4574-9411-1dd167ff61d2",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "23b130c6-725c-4237-86d4-e18a7fee6fe9",
+    "Tag": {
+      "Id": "23b130c6-725c-4237-86d4-e18a7fee6fe9",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "a19e1498-6419-47fc-ad34-f92b2dfc50b8",
+    "TaskId": "8a3c3ffb-c640-44ee-aa33-e2752b9a6c7a",
+    "Task": {
+      "Id": "8a3c3ffb-c640-44ee-aa33-e2752b9a6c7a",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID2",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "23409f46-26af-45c4-9f65-3bbdac5eb39b",
+    "Tag": {
+      "Id": "23409f46-26af-45c4-9f65-3bbdac5eb39b",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID2",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "9eb0d06d-f7d2-40c3-b5df-ee53816067d5",
+    "TaskId": "eea8b738-d2d9-4639-ae91-35064b9ee100",
+    "Task": {
+      "Id": "eea8b738-d2d9-4639-ae91-35064b9ee100",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "032b6fec-9b43-4d9c-ba5b-c945bc3a74fc",
+    "Tag": {
+      "Id": "032b6fec-9b43-4d9c-ba5b-c945bc3a74fc",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "59bf5f0b-2fb5-4943-87f9-c836adc3f2c7",
+    "TaskId": "36349756-edad-47ef-be5f-0bc2cf625e20",
+    "Task": {
+      "Id": "36349756-edad-47ef-be5f-0bc2cf625e20",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag2",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "10fa2b3b-8616-4c08-9c14-06487e9a1092",
+    "Tag": {
+      "Id": "10fa2b3b-8616-4c08-9c14-06487e9a1092",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag2",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "47b649b2-a958-479d-8b1a-7507a831ef9f",
+    "TaskId": "355b4524-dddc-4969-bca4-ba79b9158681",
+    "Task": {
+      "Id": "355b4524-dddc-4969-bca4-ba79b9158681",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "1a4c0392-e248-4e7b-9fd8-dd334ddd2414",
+    "Tag": {
+      "Id": "1a4c0392-e248-4e7b-9fd8-dd334ddd2414",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "b9cb3b6d-9f3c-43c8-a153-e3f5f4eb3880",
+    "TaskId": "4e887c3a-3144-4dc6-a186-afb1e75f4410",
+    "Task": {
+      "Id": "4e887c3a-3144-4dc6-a186-afb1e75f4410",
+      "Name": "TaskTagCRUD_UpdateTaskTagTag_ShouldUpdateTaskTagTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "d0b66222-67ff-4f5a-960c-22c134a940ae",
+    "Tag": {
+      "Id": "d0b66222-67ff-4f5a-960c-22c134a940ae",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "14be3b42-bf1f-49be-bb81-a62850a7e6ee",
+    "TaskId": "9c600b4a-da0c-410b-ab58-3a76e434f19e",
+    "Task": {
+      "Id": "9c600b4a-da0c-410b-ab58-3a76e434f19e",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Priority": 2,
+      "DeadLine": "2025-06-12T00:00:00",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": true
+    },
+    "TagId": "83e6e5ca-dbfb-4335-9d97-0a29b4bce128",
+    "Tag": {
+      "Id": "83e6e5ca-dbfb-4335-9d97-0a29b4bce128",
+      "Name": "TaskTagCRUD_UpdateTaskTagTask_ShouldUpdateTaskTagTask",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "2efffb7e-2860-49c7-a1d5-a42d61042b1f",
+    "TaskId": "e633f3a2-55fe-4d39-9dd9-736db52c80e2",
+    "Task": {
+      "Id": "e633f3a2-55fe-4d39-9dd9-736db52c80e2",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "a9fc4bfa-502c-4b6b-8630-43545432b22a",
+    "Tag": {
+      "Id": "a9fc4bfa-502c-4b6b-8630-43545432b22a",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "ab9117b9-45b1-420c-bdb3-5d8561dcf1bc",
+    "TaskId": "6a387ca7-ace9-495f-ae47-b9897a6134aa",
+    "Task": {
+      "Id": "6a387ca7-ace9-495f-ae47-b9897a6134aa",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "db83c0c2-d8ee-4aec-90d4-db134a9c2a75",
+    "Tag": {
+      "Id": "db83c0c2-d8ee-4aec-90d4-db134a9c2a75",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "bb5da887-b1dc-49df-adef-1a863b3b1c4b",
+    "TaskId": "c664d67e-3750-456c-9daf-4291ca953185",
+    "Task": {
+      "Id": "c664d67e-3750-456c-9daf-4291ca953185",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "91ae6519-d775-4fdf-8824-894161cc129d",
+    "Tag": {
+      "Id": "91ae6519-d775-4fdf-8824-894161cc129d",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "c7b0cb87-4364-4706-ae50-6f1cfe2998d2",
+    "TaskId": "b200fee1-94cd-43f1-a00f-bdc583fde7f8",
+    "Task": {
+      "Id": "b200fee1-94cd-43f1-a00f-bdc583fde7f8",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "725ae4e1-3ed1-4f25-a822-f73c701a4cc8",
+    "Tag": {
+      "Id": "725ae4e1-3ed1-4f25-a822-f73c701a4cc8",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "69d900cc-0adb-4c12-8d44-7df9d8778fd0",
+    "TaskId": "9d8b3024-7001-4d15-a802-d2414b4b3d1c",
+    "Task": {
+      "Id": "9d8b3024-7001-4d15-a802-d2414b4b3d1c",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "23a2c659-8ddd-4051-9338-e8cffbebc016",
+    "Tag": {
+      "Id": "23a2c659-8ddd-4051-9338-e8cffbebc016",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "122a6108-7358-425c-8d3a-2d3675a00a48",
+    "TaskId": "af2c8e83-2152-49e7-a21b-013b9d48ed4b",
+    "Task": {
+      "Id": "af2c8e83-2152-49e7-a21b-013b9d48ed4b",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "b8a11e95-0765-4695-8fac-4aaff1df9854",
+    "Tag": {
+      "Id": "b8a11e95-0765-4695-8fac-4aaff1df9854",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "322912c4-5516-4385-b6f5-2d874743de36",
+    "TaskId": "af2c8e83-2152-49e7-a21b-013b9d48ed4b",
+    "Task": {
+      "Id": "af2c8e83-2152-49e7-a21b-013b9d48ed4b",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "b8a11e95-0765-4695-8fac-4aaff1df9854",
+    "Tag": {
+      "Id": "b8a11e95-0765-4695-8fac-4aaff1df9854",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "b90dd1d8-6e47-45c7-a096-38381eac5cf4",
+    "TaskId": "128045f6-29dd-4d23-9c2d-8567130cd394",
+    "Task": {
+      "Id": "128045f6-29dd-4d23-9c2d-8567130cd394",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "94eb96f2-22f5-4efa-86f8-a747a0fac341",
+    "Tag": {
+      "Id": "94eb96f2-22f5-4efa-86f8-a747a0fac341",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "0f88f805-8439-4940-bf02-4c3f3c749fc5",
+    "TaskId": "128045f6-29dd-4d23-9c2d-8567130cd394",
+    "Task": {
+      "Id": "128045f6-29dd-4d23-9c2d-8567130cd394",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "94eb96f2-22f5-4efa-86f8-a747a0fac341",
+    "Tag": {
+      "Id": "94eb96f2-22f5-4efa-86f8-a747a0fac341",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "6d428547-5627-4876-9caf-fbe16151b75e",
+    "TaskId": "75c09561-3469-453b-908d-750ff5deb451",
+    "Task": {
+      "Id": "75c09561-3469-453b-908d-750ff5deb451",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "c96ed730-b8ff-4cba-94ba-9cc567f694fd",
+    "Tag": {
+      "Id": "c96ed730-b8ff-4cba-94ba-9cc567f694fd",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "3c61c92e-9ccd-40b4-b816-c72ae33574d8",
+    "TaskId": "97c8847c-4f3d-4ec4-9190-1e11a6e2d99a",
+    "Task": {
+      "Id": "97c8847c-4f3d-4ec4-9190-1e11a6e2d99a",
+      "Name": "TaskTagCRUD_UpdateTaskTagTag_ShouldUpdateTaskTagTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "4c2068f8-c2f4-499b-a1a4-0d45ed8e30a0",
+    "Tag": {
+      "Id": "4c2068f8-c2f4-499b-a1a4-0d45ed8e30a0",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "43f01f75-6b51-45d4-95d6-aac29ea50b7d",
+    "TaskId": "2f7376bf-7e1f-41f4-8fa6-fa63640aa36c",
+    "Task": {
+      "Id": "2f7376bf-7e1f-41f4-8fa6-fa63640aa36c",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Priority": 2,
+      "DeadLine": "2025-06-12T00:00:00",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": true
+    },
+    "TagId": "eae3b541-7498-41d4-9043-c3f1ac43c1ad",
+    "Tag": {
+      "Id": "eae3b541-7498-41d4-9043-c3f1ac43c1ad",
+      "Name": "TaskTagCRUD_UpdateTaskTagTask_ShouldUpdateTaskTagTask",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "d14f350d-689f-4431-8c2f-72f655964a3b",
+    "TaskId": "d6e71b8e-0ee6-433c-9ad4-146b858678f7",
+    "Task": {
+      "Id": "d6e71b8e-0ee6-433c-9ad4-146b858678f7",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "c1fa27e5-048a-43f6-860c-c28d0bd8967f",
+    "Tag": {
+      "Id": "c1fa27e5-048a-43f6-860c-c28d0bd8967f",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "b01d4855-82c3-412d-bfaf-fb162699feb3",
+    "TaskId": "47fc48ff-dafe-4e82-9321-22313a62faac",
+    "Task": {
+      "Id": "47fc48ff-dafe-4e82-9321-22313a62faac",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "7fb2b03e-f916-4252-b342-90156617886f",
+    "Tag": {
+      "Id": "7fb2b03e-f916-4252-b342-90156617886f",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "3af14e85-b4b6-4d21-bd58-d20eae5ad7c6",
+    "TaskId": "9f9a50a4-96bf-4c4a-a54c-c618faf7fea1",
+    "Task": {
+      "Id": "9f9a50a4-96bf-4c4a-a54c-c618faf7fea1",
+      "Name": "TaskTagCRUD_DeleteTaskTags_ShouldDeleteTaskTags",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "92939c08-4718-40d7-84a6-730de65ef588",
+    "Tag": {
+      "Id": "92939c08-4718-40d7-84a6-730de65ef588",
+      "Name": "TaskTagCRUD_DeleteTaskTags_ShouldDeleteTaskTags",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "64920389-c029-4aa8-a413-415b1baa9d8a",
+    "TaskId": "d232ba24-62ef-4d3a-842c-34ce2c3e1678",
+    "Task": {
+      "Id": "d232ba24-62ef-4d3a-842c-34ce2c3e1678",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "803b0078-c942-453b-92ba-a6d1605f074f",
+    "Tag": {
+      "Id": "803b0078-c942-453b-92ba-a6d1605f074f",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "b29aa8a9-373a-49a8-87e8-7c56e831deff",
+    "TaskId": "8eb405f1-adf0-4faa-a7ea-aeb04493859e",
+    "Task": {
+      "Id": "8eb405f1-adf0-4faa-a7ea-aeb04493859e",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "de01f542-66e9-47a9-a510-3d063172a500",
+    "Tag": {
+      "Id": "de01f542-66e9-47a9-a510-3d063172a500",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "19dbe466-3820-4557-a818-78510ab43e2c",
+    "TaskId": "3984ce4e-403b-4d40-ab65-e74ac06c3685",
+    "Task": {
+      "Id": "3984ce4e-403b-4d40-ab65-e74ac06c3685",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "b0aad851-d90f-4295-a052-d6f2dc7885b4",
+    "Tag": {
+      "Id": "b0aad851-d90f-4295-a052-d6f2dc7885b4",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "fc8dbbc2-9db6-4b88-a5dc-6afbfae92c0b",
+    "TaskId": "17770d6a-a99d-41e9-bdf4-5da51783dded",
+    "Task": {
+      "Id": "17770d6a-a99d-41e9-bdf4-5da51783dded",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "aa7541f0-1da1-4d2c-b994-cdb2977050e4",
+    "Tag": {
+      "Id": "aa7541f0-1da1-4d2c-b994-cdb2977050e4",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "7b2c0791-06a6-4dc6-8801-5d3f6b03c51b",
+    "TaskId": "17770d6a-a99d-41e9-bdf4-5da51783dded",
+    "Task": {
+      "Id": "17770d6a-a99d-41e9-bdf4-5da51783dded",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "aa7541f0-1da1-4d2c-b994-cdb2977050e4",
+    "Tag": {
+      "Id": "aa7541f0-1da1-4d2c-b994-cdb2977050e4",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "c7a810b1-24f7-474e-9cd6-c9c26b9c5ded",
+    "TaskId": "19026fd2-6e00-4758-873e-289c7a3bafd7",
+    "Task": {
+      "Id": "19026fd2-6e00-4758-873e-289c7a3bafd7",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "de1e5910-8a72-4ab6-87a6-9e76b2501ff7",
+    "Tag": {
+      "Id": "de1e5910-8a72-4ab6-87a6-9e76b2501ff7",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "99571c78-0712-40ff-a2bc-8414ce4aa794",
+    "TaskId": "19026fd2-6e00-4758-873e-289c7a3bafd7",
+    "Task": {
+      "Id": "19026fd2-6e00-4758-873e-289c7a3bafd7",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "de1e5910-8a72-4ab6-87a6-9e76b2501ff7",
+    "Tag": {
+      "Id": "de1e5910-8a72-4ab6-87a6-9e76b2501ff7",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "8f50ecf6-c27a-441c-8dae-b87491ff5a07",
+    "TaskId": "4d3c9801-c78b-4c4f-a9bb-fe54e01d8616",
+    "Task": {
+      "Id": "4d3c9801-c78b-4c4f-a9bb-fe54e01d8616",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "518661e2-a622-4679-947b-22beaa76209c",
+    "Tag": {
+      "Id": "518661e2-a622-4679-947b-22beaa76209c",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "f214cbd2-a9fc-435d-9f49-6ab4984ecdfc",
+    "TaskId": "49d5aeb2-e972-4fd5-9c06-58cbcb1fd482",
+    "Task": {
+      "Id": "49d5aeb2-e972-4fd5-9c06-58cbcb1fd482",
+      "Name": "TaskTagCRUD_UpdateTaskTagTag_ShouldUpdateTaskTagTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "69e033d3-2e97-4cc1-907a-b725c3b02346",
+    "Tag": {
+      "Id": "69e033d3-2e97-4cc1-907a-b725c3b02346",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "a1f57337-dda1-4fad-a0b2-0e16de09c3c9",
+    "TaskId": "e914cf2e-807f-443f-be36-7988dea8901a",
+    "Task": {
+      "Id": "e914cf2e-807f-443f-be36-7988dea8901a",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Priority": 2,
+      "DeadLine": "2025-06-12T00:00:00",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": true
+    },
+    "TagId": "bd8885fa-9394-478e-a290-c80f87ed9fe6",
+    "Tag": {
+      "Id": "bd8885fa-9394-478e-a290-c80f87ed9fe6",
+      "Name": "TaskTagCRUD_UpdateTaskTagTask_ShouldUpdateTaskTagTask",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "a60b99bd-0862-4b1d-be60-416f05684df5",
+    "TaskId": "cfeb622f-2fb8-4153-a3b4-eac2f7ece2d5",
+    "Task": {
+      "Id": "cfeb622f-2fb8-4153-a3b4-eac2f7ece2d5",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "c4978ca9-aab3-4f70-83b2-e97042227935",
+    "Tag": {
+      "Id": "c4978ca9-aab3-4f70-83b2-e97042227935",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "9440c3dc-0f27-44d4-b292-98bcce32ca2c",
+    "TaskId": "cd049ac8-08b1-4aca-96ab-658cd2efc240",
+    "Task": {
+      "Id": "cd049ac8-08b1-4aca-96ab-658cd2efc240",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "1538aba5-5033-4a73-9390-aa7d511622bb",
+    "Tag": {
+      "Id": "1538aba5-5033-4a73-9390-aa7d511622bb",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "3956b293-10c7-4a78-9794-20c7b0c1e3a4",
+    "TaskId": "d8bbce62-f78a-4bea-922a-501d1a4c2453",
+    "Task": {
+      "Id": "d8bbce62-f78a-4bea-922a-501d1a4c2453",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "5859a61c-784c-4ed7-a907-926a071ddb33",
+    "Tag": {
+      "Id": "5859a61c-784c-4ed7-a907-926a071ddb33",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "3a98d50c-3f37-4350-aad3-450d8e0568ec",
+    "TaskId": "e141998d-8031-4160-a7a3-32acdfbd9af9",
+    "Task": {
+      "Id": "e141998d-8031-4160-a7a3-32acdfbd9af9",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "4c5603de-5e40-4de2-8f2d-4f5f0154fca8",
+    "Tag": {
+      "Id": "4c5603de-5e40-4de2-8f2d-4f5f0154fca8",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "6506c771-2224-41f2-8ef1-b412cd5164ff",
+    "TaskId": "94810214-0842-4c22-a323-e0497a1fc1b3",
+    "Task": {
+      "Id": "94810214-0842-4c22-a323-e0497a1fc1b3",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "69f854f7-7166-4c97-83c7-2cfc13fe3504",
+    "Tag": {
+      "Id": "69f854f7-7166-4c97-83c7-2cfc13fe3504",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "ff2971ea-22d3-4115-bd29-06a3b766f6c7",
+    "TaskId": "fb998903-54b2-43c1-8656-dabc5f8aea4d",
+    "Task": {
+      "Id": "fb998903-54b2-43c1-8656-dabc5f8aea4d",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "577e4323-9711-4b47-9834-3254d686761b",
+    "Tag": {
+      "Id": "577e4323-9711-4b47-9834-3254d686761b",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "564beb3f-a6c1-4f6b-bc55-3c0ff3e398f4",
+    "TaskId": "fb998903-54b2-43c1-8656-dabc5f8aea4d",
+    "Task": {
+      "Id": "fb998903-54b2-43c1-8656-dabc5f8aea4d",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "577e4323-9711-4b47-9834-3254d686761b",
+    "Tag": {
+      "Id": "577e4323-9711-4b47-9834-3254d686761b",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "0a7059e8-4333-433b-a02a-cd2ed82d8360",
+    "TaskId": "8f0c412f-23ad-4f5e-a8e9-5c3f71d87a2c",
+    "Task": {
+      "Id": "8f0c412f-23ad-4f5e-a8e9-5c3f71d87a2c",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "776ff481-fa84-4d33-b78c-773a3bea77ae",
+    "Tag": {
+      "Id": "776ff481-fa84-4d33-b78c-773a3bea77ae",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "b32cbe97-ae39-4cde-bc69-67e372ac3b25",
+    "TaskId": "8f0c412f-23ad-4f5e-a8e9-5c3f71d87a2c",
+    "Task": {
+      "Id": "8f0c412f-23ad-4f5e-a8e9-5c3f71d87a2c",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "776ff481-fa84-4d33-b78c-773a3bea77ae",
+    "Tag": {
+      "Id": "776ff481-fa84-4d33-b78c-773a3bea77ae",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "a5ad6250-181c-47b7-ad08-db1596ef9468",
+    "TaskId": "e99838bf-286a-4072-8b0d-3eb252f4dec4",
+    "Task": {
+      "Id": "e99838bf-286a-4072-8b0d-3eb252f4dec4",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "feef4883-548e-4923-9c45-82e30895a3b7",
+    "Tag": {
+      "Id": "feef4883-548e-4923-9c45-82e30895a3b7",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "fc10aaa5-0114-48e4-8d52-03e258c46fb5",
+    "TaskId": "9a341e97-df95-41b7-b928-8cb969b5d1c5",
+    "Task": {
+      "Id": "9a341e97-df95-41b7-b928-8cb969b5d1c5",
+      "Name": "TaskTagCRUD_UpdateTaskTagTag_ShouldUpdateTaskTagTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "bbf6e01b-40de-4779-99ce-1e27e82cbcfa",
+    "Tag": {
+      "Id": "bbf6e01b-40de-4779-99ce-1e27e82cbcfa",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "d06855c8-5a21-4deb-a046-85ef46b72a84",
+    "TaskId": "ed725eb8-fa60-47d7-b7a4-2ce733b62b6a",
+    "Task": {
+      "Id": "ed725eb8-fa60-47d7-b7a4-2ce733b62b6a",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Priority": 2,
+      "DeadLine": "2025-06-12T00:00:00",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": true
+    },
+    "TagId": "e137a8d4-153b-40a5-a0ce-4aea0a4c0f88",
+    "Tag": {
+      "Id": "e137a8d4-153b-40a5-a0ce-4aea0a4c0f88",
+      "Name": "TaskTagCRUD_UpdateTaskTagTask_ShouldUpdateTaskTagTask",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "14fbf4ca-b308-4f0a-bd2e-b3ac07b27246",
+    "TaskId": "2fd606ee-9552-401b-ab9b-68df2d73de2e",
+    "Task": {
+      "Id": "2fd606ee-9552-401b-ab9b-68df2d73de2e",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "0c6aa040-ed08-4cdf-a3e1-92ec37d2fa62",
+    "Tag": {
+      "Id": "0c6aa040-ed08-4cdf-a3e1-92ec37d2fa62",
+      "Name": "TaskTagCRUD_AddTaskTagDuplicateKey_ShouldReturnDuplicateKeyException",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "c7507574-7173-4971-8b60-58531c21bf51",
+    "TaskId": "95d662ef-f3b4-4413-9398-1921f110aff3",
+    "Task": {
+      "Id": "95d662ef-f3b4-4413-9398-1921f110aff3",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "d91c7b9a-a9ae-4414-b21f-492100e68f57",
+    "Tag": {
+      "Id": "d91c7b9a-a9ae-4414-b21f-492100e68f57",
+      "Name": "TaskTagCRUD_AddTaskTag_ShouldAddTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "a30d6ffe-9c1c-4769-84a7-d3c7ba0af6ba",
+    "TaskId": "99f5910a-1656-4f4d-af98-8f82c4b13a7c",
+    "Task": {
+      "Id": "99f5910a-1656-4f4d-af98-8f82c4b13a7c",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "52441754-937c-4acb-9fe2-11def1ab0669",
+    "Tag": {
+      "Id": "52441754-937c-4acb-9fe2-11def1ab0669",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "2628d0e4-e365-47f7-9dcb-daf55486be0d",
+    "TaskId": "78ba52d4-60f0-477c-8934-42fbd9e2b02f",
+    "Task": {
+      "Id": "78ba52d4-60f0-477c-8934-42fbd9e2b02f",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "ea31625f-8ec9-4b85-b482-97a2c0add041",
+    "Tag": {
+      "Id": "ea31625f-8ec9-4b85-b482-97a2c0add041",
+      "Name": "TaskTagCRUD_GetAllTaskTag_ShouldGetAllTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "112fc430-4285-44ab-873e-278db26a612d",
+    "TaskId": "82a4c699-85c1-413d-a555-540da0ba42fd",
+    "Task": {
+      "Id": "82a4c699-85c1-413d-a555-540da0ba42fd",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "664c4ca2-157b-425c-b850-44ada047127f",
+    "Tag": {
+      "Id": "664c4ca2-157b-425c-b850-44ada047127f",
+      "Name": "TaskTagCRUD_GetTaskTagById_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "d891e147-2161-470c-a88f-f2b2f5c53b4f",
+    "TaskId": "98462fea-89d7-4a82-b0b1-99f851fa0406",
+    "Task": {
+      "Id": "98462fea-89d7-4a82-b0b1-99f851fa0406",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "51a04b6f-7925-43d0-997b-9c55b3f25027",
+    "Tag": {
+      "Id": "51a04b6f-7925-43d0-997b-9c55b3f25027",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "74a7ac8a-142b-47dd-bed9-1b06d8d2db6c",
+    "TaskId": "98462fea-89d7-4a82-b0b1-99f851fa0406",
+    "Task": {
+      "Id": "98462fea-89d7-4a82-b0b1-99f851fa0406",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "51a04b6f-7925-43d0-997b-9c55b3f25027",
+    "Tag": {
+      "Id": "51a04b6f-7925-43d0-997b-9c55b3f25027",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "4f512b7e-91fc-48c9-84d2-28897de9cbf4",
+    "TaskId": "2063edcb-0919-45c3-aca7-5d6825b006b0",
+    "Task": {
+      "Id": "2063edcb-0919-45c3-aca7-5d6825b006b0",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "ea5d55df-6536-40ff-8478-0224dc34e038",
+    "Tag": {
+      "Id": "ea5d55df-6536-40ff-8478-0224dc34e038",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "b1f3984a-777f-4a5f-b5bb-47cb2581bfc0",
+    "TaskId": "2063edcb-0919-45c3-aca7-5d6825b006b0",
+    "Task": {
+      "Id": "2063edcb-0919-45c3-aca7-5d6825b006b0",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "ea5d55df-6536-40ff-8478-0224dc34e038",
+    "Tag": {
+      "Id": "ea5d55df-6536-40ff-8478-0224dc34e038",
+      "Name": "TaskTagCRUD_GetTaskTagByTaskID_ShouldGetTaskTag",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "c57bb9f6-d100-4d0d-b65e-b139cd1296de",
+    "TaskId": "f5dc2856-7a16-4102-9879-863c78af0197",
+    "Task": {
+      "Id": "f5dc2856-7a16-4102-9879-863c78af0197",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "dc2976ee-c8c2-4e64-a75c-aa2a3d491034",
+    "Tag": {
+      "Id": "dc2976ee-c8c2-4e64-a75c-aa2a3d491034",
+      "Name": "TaskTagCRUD_GetTaskTagByTagID_ShouldGetTaskTagByTagID",
+      "Description": null,
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "a8deae5e-0876-44a6-884a-8ee437dc1daf",
+    "TaskId": "18772e5d-1886-4d3d-94df-cdc2f85da262",
+    "Task": {
+      "Id": "18772e5d-1886-4d3d-94df-cdc2f85da262",
+      "Name": "TaskTagCRUD_UpdateTaskTagTag_ShouldUpdateTaskTagTag",
+      "Description": null,
+      "Priority": 1,
+      "DeadLine": "9999-12-31T23:59:59.9999999",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": false
+    },
+    "TagId": "b523cbdd-aaf5-4b5e-877f-c2feb5e2a7b8",
+    "Tag": {
+      "Id": "b523cbdd-aaf5-4b5e-877f-c2feb5e2a7b8",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Color": {
+        "Red": 0,
+        "Green": 0,
+        "Blue": 0
+      },
+      "ParentTagIds": []
+    }
+  },
+  {
+    "Id": "2746c80c-94a5-4103-9be7-efa0ce5b6536",
+    "TaskId": "ceea0310-4a2c-47d0-8b14-b7af7cac9da3",
+    "Task": {
+      "Id": "ceea0310-4a2c-47d0-8b14-b7af7cac9da3",
+      "Name": "NouveauNom",
+      "Description": "NouvelleDescription",
+      "Priority": 2,
+      "DeadLine": "2025-06-12T00:00:00",
+      "CreationTime": "0001-01-01T00:00:00",
+      "IsCompleted": true
+    },
+    "TagId": "e392e71f-7f7a-4307-bf89-2ee742ca66a8",
+    "Tag": {
+      "Id": "e392e71f-7f7a-4307-bf89-2ee742ca66a8",
+      "Name": "TaskTagCRUD_UpdateTaskTagTask_ShouldUpdateTaskTagTask",
+      "Description": null,
+      "Color": {
+        "Red": 255,
+        "Green": 255,
+        "Blue": 255
+      },
+      "ParentTagIds": []
+    }
   }
 ]

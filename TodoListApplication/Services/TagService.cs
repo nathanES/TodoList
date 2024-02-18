@@ -1,7 +1,9 @@
 ﻿using TodoList.Application.DTOs;
 using TodoList.Domain.Entities;
+using TodoList.Domain.Exceptions;
 using TodoList.Domain.Interfaces.Logger;
 using TodoList.Domain.Interfaces.Repositories;
+using static TodoList.Domain.Entities.TaskTag;
 
 namespace TodoList.Application.Services;
 public class TagService
@@ -50,7 +52,48 @@ public class TagService
         }
         _ = _tagRepository.DeleteTagByIds(tagIds);
     }
-    private void UnassignAllTaskFromTag(Guid tagId, ITaskTagRepository taskTagRepository)
+    public void AssignTaskToTag(Guid taskId, Guid tagId, ITaskTagRepository taskTagRepository, ITaskRepository taskRepository)
+    {
+        if (taskTagRepository.IsRelationExists(taskId, tagId))
+            return; //The task already got this tag
+
+        Task task = taskRepository.GetTaskById(taskId);
+        Tag tag = _tagRepository.GetTagById(tagId);
+
+        if (task == null && tag == null)
+            throw new NotFoundException("Task and Tag not found");
+        if (task == null)
+            throw new NotFoundException("Task not found");
+        if (tag == null)
+            throw new NotFoundException("Tag not found");
+
+        TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
+        _ = taskTagRepository.AddTaskTag(taskTag);
+    }
+    public void AssignTasksToTag(IEnumerable<Guid> taskIds, Guid tagId, ITaskTagRepository taskTagRepository, ITaskRepository taskRepository)
+    {
+        foreach (Guid taskId in taskIds)
+        {
+            AssignTaskToTag(taskId, tagId, taskTagRepository, taskRepository);
+        }
+    }
+    public void AssignTaskToTags(Guid taskId, IEnumerable<Guid> tagIds, ITaskTagRepository taskTagRepository, ITaskRepository taskRepository)
+    {
+        foreach (Guid tagId in tagIds)
+        {
+            AssignTaskToTag(taskId, tagId, taskTagRepository, taskRepository);
+        }
+    }
+    public void UnassignTagFromTask(Guid tagId, Guid taskId, ITaskTagRepository taskTagRepository)
+    {
+        TaskTag taskTag = taskTagRepository.GetTaskTagsByTaskId(taskId).FirstOrDefault(t => t.TagId == tagId);
+
+        if (taskTag == null)
+            return; //The task doesn't have this tag
+
+        _ = taskTagRepository.DeleteTaskTagById(taskTag.Id);
+    }
+    public void UnassignAllTaskFromTag(Guid tagId, ITaskTagRepository taskTagRepository)
     {
         IEnumerable<TaskTag> taskTags = taskTagRepository.GetTaskTagsByTagId(tagId);
 

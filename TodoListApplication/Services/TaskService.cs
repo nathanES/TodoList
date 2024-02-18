@@ -59,9 +59,9 @@ public class TaskService
         UnassignAllTagsFromTasks(taskIds, taskTagRepository);
         _ = _taskRepository.DeleteTaskByIds(taskIds);
     }
-    public void AssignTagToTask(Guid taskId, Guid tagId, ITaskTagRepository taskTagRepository, ITagRepository tagRepository)
+    public void AssignTagToTask(Guid tagId, Guid taskId, ITaskTagRepository taskTagRepository, ITagRepository tagRepository)
     {
-        if (IsTagAssignedToTask(taskId, tagId, taskTagRepository))
+        if (taskTagRepository.IsRelationExists(taskId, tagId))
             return; //The task already got this tag
 
         Task task = _taskRepository.GetTaskById(taskId);
@@ -77,7 +77,7 @@ public class TaskService
         TaskTag taskTag = new TaskTagBuilder(task, tag).Build();
         _ = taskTagRepository.AddTaskTag(taskTag);
     }
-    public void AssignTagsToTask(Guid taskId, IEnumerable<Guid> tagIds, ITaskTagRepository taskTagRepository, ITagRepository tagRepository)
+    public void AssignTagsToTask(IEnumerable<Guid> tagIds, Guid taskId, ITaskTagRepository taskTagRepository, ITagRepository tagRepository)
     {
         foreach (Guid tagId in tagIds)
         {
@@ -115,9 +115,5 @@ public class TaskService
             return;
 
         _ = taskTagRepository.DeleteTaskTagByIds(taskTags.Select(t => t.Id));
-    }
-    private bool IsTagAssignedToTask(Guid taskId, Guid tagId, ITaskTagRepository taskTagRepository)
-    {
-        return taskTagRepository.GetTaskTagsByTaskId(taskId).Any(t => t.TagId == tagId);
     }
 }

@@ -24435,9 +24435,2190 @@
     "Name": "Tag 2",
     "Description": "Description 2",
     "Color": {
-      "Red": 255,
-      "Green": 255,
-      "Blue": 255
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "dbd182f3-ada2-49af-aed3-0cc5316489a9",
+    "Name": "TagCRUD_AddTagAlreadyExisting_DuplicateKeyException",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "453e0e84-6eba-4e7a-8b88-be66cd53715e",
+    "Name": "AddTagWithAllParameters",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "bd745a78-e83c-4c75-ba4a-7f981c93bf1d"
+    ]
+  },
+  {
+    "Id": "fcc0214a-c2cb-4c11-86b7-28b04b05b87c",
+    "Name": "TagCRUD_AddTag_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "bffdef10-8881-4560-b753-34df31edf436",
+    "Name": "TagCRUD_GetAllTag_ShouldGetAllTags",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6bd830e3-e627-4b2d-bc60-4bac4331925e",
+    "Name": "TagCRUD_GetTagByIdWhenFound_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "f1be2922-0274-4259-bd7a-daf41aeef84f",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "0a8449bb-13a9-4d88-8829-889fb1d4ffb6"
+    ]
+  },
+  {
+    "Id": "712b4956-ddf4-4343-be57-8e8cfd5a8f7c",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "8dba2f89-4cc4-411b-839c-ab3b0cc43617",
+      "aec0bfd2-143c-49cc-a0bb-0eb7a047a028",
+      "91913abf-ccf9-4dfa-9745-663ea8dfa2e5"
+    ]
+  },
+  {
+    "Id": "ff3d3fe1-ecde-4882-a061-dfcad777fb6a",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "07145830-e8f0-4536-bee4-2c920741a5d5"
+    ]
+  },
+  {
+    "Id": "556c9021-8b96-4a0c-b7c1-18b76235d217",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "23e170c2-9020-4a89-9af4-a63d3dab397b"
+    ]
+  },
+  {
+    "Id": "50c0f7a2-602a-4bbb-9f98-b740ad71985e",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "0aaceae2-80fe-44be-ba3f-c6fa0d3fd7cc",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "84f1e8ee-4a98-434e-94f5-8e6a000d140e",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "245c5e57-1a15-46c2-a9ed-46c7d1bab6cf",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "c7c0d1bb-a744-4707-a769-233022cb2ad8",
+    "Name": "UpdateTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1aeb73ce-2d9e-4ed1-858e-6245981f5750",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "5ab91eee-ed96-4715-9663-706ca38dfe28",
+      "a731b461-271f-4d20-8de5-854f0e0fdce9",
+      "6f04db29-e6f2-47c4-84a7-4b27241ee1ea"
+    ]
+  },
+  {
+    "Id": "172129c9-de01-4f33-9722-e5c5a98ed43e",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "e2ce468a-9f50-4c2e-8b1f-bd60fcb75a63",
+      "2820810d-c6d5-4760-bf08-899ca6bf4f05",
+      "24a1ef04-3ab0-4535-9aff-21a249e62043"
+    ]
+  },
+  {
+    "Id": "a2688ca7-51a8-4c63-ba8a-57e8476565db",
+    "Name": "TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "e8c5be9f-9179-4b5e-a07b-097be6976942",
+      "a8154c1e-2302-4b5c-98c5-f469537230e0"
+    ]
+  },
+  {
+    "Id": "81acb9cf-0e11-4f1b-8f7a-d16e146ae414",
+    "Name": "TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "4529a7d7-9fc7-4b0a-a6d2-daafb1bbbe93",
+      "c60a59db-d2ee-4b9c-b93d-672ff818e289"
+    ]
+  },
+  {
+    "Id": "b8a69c26-4c93-4f64-99b1-0d9347bc5237",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "efb04235-70c6-471b-953b-7b2d485895cf",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "2a39ddae-3107-4eb5-9a6b-6d28329318e4",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "e88c3d68-ec1f-4056-9faa-bafb45900a44",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "21334836-3dc3-4aa7-8737-3c4d4d9e5d52",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "3bdee89a-0d2f-45d0-aee8-eae5b9e53045",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "dc7d3f04-8baa-4fbe-b5bc-3b0a46001303",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6e7f8f64-fbe3-485c-8dcf-de81321a0d5d",
+    "Name": "TagCRUD_AddTagAlreadyExisting_DuplicateKeyException",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "59012b68-e5a0-4431-b2d4-e93cdb42f5e5",
+    "Name": "AddTagWithAllParameters",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "1d0eb58d-06f6-46c7-aa68-5975531f56f5"
+    ]
+  },
+  {
+    "Id": "f12d545f-c7d8-4219-9ac9-d5e0e27249a3",
+    "Name": "TagCRUD_AddTag_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "528ce04b-b18d-4734-8b34-120b70ca6fe0",
+    "Name": "TagCRUD_GetAllTag_ShouldGetAllTags",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "cb22faee-3ca9-4665-9e7c-f032562e1321",
+    "Name": "TagCRUD_GetTagByIdWhenFound_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "baca71ca-3916-451d-ada2-7d6b91fa7c31",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "d9457d8a-b981-4763-a17e-0a081c634cdb"
+    ]
+  },
+  {
+    "Id": "b3a395e1-c581-42f2-9ae6-88976c17b75e",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "0154a1de-1d09-43c1-b564-571eafdc1e7d",
+      "1e636f0b-640c-4f9a-9128-97a7505c14ff",
+      "ba15d8cb-3ce1-434c-9e4d-05aebbe7fbb0"
+    ]
+  },
+  {
+    "Id": "619e6920-dac3-401b-a81f-a8457e6d067b",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "6c9c5850-8d6c-40b6-b0ba-db4f5f6d77a8"
+    ]
+  },
+  {
+    "Id": "7ee22692-79db-4dee-9579-4efe77416035",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "a6e283c6-f393-41bb-bd8e-c59905deadf4"
+    ]
+  },
+  {
+    "Id": "6cb8bf42-5c6c-4ea7-a9a7-74efa9d0a0cf",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "b65c4760-af8d-4e82-9fc5-134943d6a006",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "063a39cc-03f6-4edb-8599-7ceb5023a121",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "fb1bb364-ba96-4147-abd5-a49480730950",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "2374991d-7ac4-4305-aa75-f33b4cbca6ce",
+    "Name": "UpdateTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "72a9b971-1a23-4d23-8e43-eb58b33cce9a",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "db43101d-f816-49ef-b7e2-4c70defa168f",
+      "8c94b520-d57d-46ae-adc8-67c2039637dd",
+      "eec1d9af-4527-46ca-8b48-11bda753b311"
+    ]
+  },
+  {
+    "Id": "641f43a7-9b38-482e-8053-644f319477ec",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "a428c75d-4084-455d-91ff-fee260e28083",
+      "cf1451f0-1ee0-4d85-92bc-311d8e7929a8",
+      "c61b5702-edd1-4a9c-8c91-0922f3638a16"
+    ]
+  },
+  {
+    "Id": "f71cce8b-d821-42f0-a10d-0ca751c9de57",
+    "Name": "TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "3d066211-4341-4d7f-bd41-4f8f3df09744",
+      "c5e5d26b-4a27-4e65-9e27-e3e4af3c5437"
+    ]
+  },
+  {
+    "Id": "44cf65c6-0515-4b83-b1fc-4628e5666a12",
+    "Name": "TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "5947c839-3ed8-4604-b73e-064d527630dd",
+      "d74bba7e-6625-4cc5-bb76-4be292d734b2"
+    ]
+  },
+  {
+    "Id": "33a1f951-b781-4ee4-a39b-991170ad3a5c",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "65447344-d72e-481c-8b17-ede2b13e16d2",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "923fa7e0-acca-4ad4-b457-eecf7b5b6054",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "c2dc0991-af99-4ebd-9900-7a63fb06a9a8",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "03566bc0-7f09-4c2d-ba66-4933b1c81f65",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "ad7dcf53-aa0a-4b5e-a23f-356ff5a8e88c",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8491d69f-ac91-4123-a14d-6d62a65d629d",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1c3883fc-8e30-456a-8bc1-2fd976a158b6",
+    "Name": "TagCRUD_AddTagAlreadyExisting_DuplicateKeyException",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1d3ac06f-989f-4ed3-ae2e-9e81f6337c78",
+    "Name": "AddTagWithAllParameters",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "6ce4860b-5f57-481d-99dd-f4626ac57b89"
+    ]
+  },
+  {
+    "Id": "d0d06190-8d86-4cce-8b3d-a069acdba613",
+    "Name": "TagCRUD_AddTag_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "9c3d3b35-7f19-466a-b383-0b183f439a37",
+    "Name": "TagCRUD_GetAllTag_ShouldGetAllTags",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "dca5dea8-229c-4d31-8a03-6ec2d8fc99fa",
+    "Name": "TagCRUD_GetTagByIdWhenFound_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "d0a1158e-0e33-4e8e-bdea-dd62f8163f07",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "07813286-919c-4375-b53a-c7c35a1281f7"
+    ]
+  },
+  {
+    "Id": "9342d878-221a-460f-a8f2-2cbeb7e1485b",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "9c37aea2-49ea-4632-95df-378bfe819626",
+      "41935d61-cb7e-4384-bcb5-ebaec4978ff3",
+      "70914ab5-0d74-46df-92ea-1e3eb3f0db7d"
+    ]
+  },
+  {
+    "Id": "931a69a8-d0be-435a-b97f-99ef976321ab",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "4f376f40-c84f-44c1-9186-4e6ee806b4af"
+    ]
+  },
+  {
+    "Id": "6009018c-a5d3-42d1-95d4-d9da50448a1f",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "ad0d01f0-0e76-4748-a76d-1cc7b1461403"
+    ]
+  },
+  {
+    "Id": "c44c98bc-a53b-4965-9cee-c4952bdfbc02",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "c7eca13e-c3eb-4ac9-9aea-3eaa39c5d46f",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "50168eea-3e1d-4e84-b90b-b4d7e3ed6a4f",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "f9f0854a-10e9-4838-8e3f-c07fdaacacfe",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7f5fd127-8c2c-4ee8-8f1a-fc882f3be8ca",
+    "Name": "UpdateTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "fe0dd2ef-3d26-4e1b-bef0-3a386b760c53",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "16b9ab8a-8fdc-4c6b-a06d-b8925ccd5cb1",
+      "6b147349-eb50-4b6b-831b-e13b10cb9dff",
+      "d454444a-317d-4437-92cd-547380a05895"
+    ]
+  },
+  {
+    "Id": "f6cc46e2-3eaf-43f7-8480-644dc540fe41",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "564b21c8-9f8a-4ce6-871b-b6a4434f8c48",
+      "72fc9707-9d31-4000-99ff-183994a3ef15",
+      "e47c1078-ecac-4772-8b39-812b5eee027d"
+    ]
+  },
+  {
+    "Id": "05a3b435-6286-4d88-ae67-2503024dd69c",
+    "Name": "TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "29668594-1c8f-45cb-ad0f-75f5e1c14fbd",
+      "80173c31-3950-4787-bac4-d2aa11ead647"
+    ]
+  },
+  {
+    "Id": "6af44ec7-b7b1-4108-b501-0d3b3ce0f090",
+    "Name": "TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "1ec82743-36eb-4742-93cf-2b0c74fbea85",
+      "09aca9be-ea3a-4f0f-8006-0926f2f5eae5"
+    ]
+  },
+  {
+    "Id": "5b558180-20d9-47e0-a89c-fa808bf05d19",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "17b7c2f0-8b2c-4e4c-8c1b-0cb1828a9078",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6a474b5a-b4d5-43a2-a4c1-7ccd699176ed",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1191791b-f26f-4801-93f1-5a0de73350b4",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "c3852054-158f-4ffc-a77d-a25828f4b07a",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "9bef7dd0-a996-4b85-a223-e05b6c4f6080",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "348527a5-8f3d-4fe4-bfc7-39bcc18167d7",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "66300039-1702-4c56-a045-5959d597b5de",
+    "Name": "TagCRUD_AddTagAlreadyExisting_DuplicateKeyException",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "17f0d5c3-9747-49f0-bb2c-d9095f1194c4",
+    "Name": "AddTagWithAllParameters",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "6422d30d-3b84-4547-8f23-401e6802edb3"
+    ]
+  },
+  {
+    "Id": "d8e2e594-4186-4bef-bde9-5779ed44c294",
+    "Name": "TagCRUD_AddTag_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "c0dd170c-06ad-48bf-8ded-5415fca12d6b",
+    "Name": "TagCRUD_GetAllTag_ShouldGetAllTags",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "dbe4d86c-5927-4279-8391-e1d502169845",
+    "Name": "TagCRUD_GetTagByIdWhenFound_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "e2224d0b-a5d8-48f5-88f5-74e366a36251",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "797601b5-fae4-4efe-89b4-2510ac860814"
+    ]
+  },
+  {
+    "Id": "3f5593bc-e425-4564-838d-f07e6fd52b67",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "43527d31-5350-482a-8fed-9b99445dbec8",
+      "34b442f1-c490-45c1-ba59-c12bd9f03f05",
+      "8185cfef-8f18-4e4f-a663-f8e0898c5e0e"
+    ]
+  },
+  {
+    "Id": "c831c7ce-9e88-4cc0-aeb2-833ae4617098",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "6c71a058-14ea-45c6-80bd-bc2f82a7d0da"
+    ]
+  },
+  {
+    "Id": "9049f7bc-9c24-4994-8e9f-6213162ce828",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "ce9df6c1-9476-4cdb-82ee-e44c34227209"
+    ]
+  },
+  {
+    "Id": "6b7c6131-ea0d-4165-bb15-39fcefd83cbe",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "534a3e3d-b07a-4eaa-b117-e99f61d28575",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "db338270-8b7d-4fde-a16c-1de46c0bff30",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "bc50728f-94ed-414d-87ba-6c81eaa53656",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "2f8d01f6-b798-4c5e-a281-d312d8c3c2c3",
+    "Name": "UpdateTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "e04da546-4fb0-437a-b005-d4d8a598e1a2",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "321d7471-2dd4-4913-b2ed-a9f348e103b1",
+      "d9baf49c-2f71-49fa-b2c0-04c665341884",
+      "0f64b7e6-bacf-45ee-ae27-582a38aa4ccf"
+    ]
+  },
+  {
+    "Id": "764ea3a0-2a95-43ab-a19f-c22bbf8fd06c",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "85951b6f-4ad0-419f-affc-5c27eaf934d1",
+      "d616759d-3918-414e-a7e4-a3fbad6dd7e5",
+      "c02aae67-2cf6-46c6-a948-25fd5b41b7fa"
+    ]
+  },
+  {
+    "Id": "36918946-bbbf-45fd-b66c-93b0799d3880",
+    "Name": "TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "0eacfec0-3567-4075-8fca-4857dffc249b",
+      "d6ba07a3-cc9e-46f2-a6a7-d1a8c8f526e5"
+    ]
+  },
+  {
+    "Id": "08b27605-f18b-4299-afb7-94cf8d113bae",
+    "Name": "TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "de605ff8-9f5e-4d64-b4cc-3250dc9760db",
+      "979b0510-1f48-46ab-a2b9-927dbb2cdf29"
+    ]
+  },
+  {
+    "Id": "63a1f61b-4e8b-41eb-b322-488f4118acc0",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "83603c45-bffe-40b9-b20d-b25c1cdbb34b",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4f857710-037e-4ebe-a03e-24a83a056438",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "05e23ecd-531e-4b59-a183-993fbed582be",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "bb8bbba1-7e23-4668-99cf-6c4ed414f0fe",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "86ef7670-f69c-4c3e-8ed0-9f8319d573b4",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8c5c39e3-4fd2-4a62-a60c-832ccbda820d",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8011dbd3-8df6-4f64-a3e6-f8d3a09f73e9",
+    "Name": "TagCRUD_AddTagAlreadyExisting_DuplicateKeyException",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "c0d348fc-4ae1-499c-bd70-12affa6f6858",
+    "Name": "AddTagWithAllParameters",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "fdf8a024-e190-4b16-98cc-dc093db255ea"
+    ]
+  },
+  {
+    "Id": "f31d877b-3bbc-4e9c-9683-005dd2858770",
+    "Name": "TagCRUD_AddTag_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "57a27ad2-c131-44aa-b7a3-99defddb9c60",
+    "Name": "TagCRUD_GetAllTag_ShouldGetAllTags",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "d4590a51-d97c-436c-a4fa-0a5ae314510c",
+    "Name": "TagCRUD_GetTagByIdWhenFound_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "16292b41-86d1-4f9d-ad4c-6b3de1122b3b",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "937b3581-2096-46dc-a11c-493bb5f28f2b"
+    ]
+  },
+  {
+    "Id": "a12631df-9c59-457d-ae5e-6a1a2e0f6f85",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "2dec578e-aa97-4396-922c-8e6827efd1fa",
+      "20fee591-3fbc-4965-afe5-8247877761c6",
+      "1524f88f-ab9b-4dab-853b-83ade01f990b"
+    ]
+  },
+  {
+    "Id": "9b1622c4-c9c8-4c39-9551-776b3afd6801",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "923323cc-b48d-42d2-bacf-5d7770a63d4d"
+    ]
+  },
+  {
+    "Id": "7fda8a5f-8855-4395-a8e6-deb3355d6fff",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "78aa4ee5-fa79-4a56-afa3-c3dbf0897c7f"
+    ]
+  },
+  {
+    "Id": "15a20a5a-8e57-408c-86a6-6868631eaef7",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4cccac2f-3576-430d-8cfb-706963ab2153",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6ecf0e58-8444-4712-a333-9bdbb962dfe8",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7f4109c9-467a-43f3-8c62-8feacb3e6970",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "3ebd4e42-6037-402c-9e4d-943c5a09da40",
+    "Name": "UpdateTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4ce5b52d-9865-4574-85f5-0ae0d1d1dd09",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "8d1fb96a-598f-445a-9390-7b3f2f2dbdd1",
+      "fd47ada4-f2dc-44e8-9757-dca8d4ffb775",
+      "3ed7c6f4-f545-4bba-94f0-e1abd41f925f"
+    ]
+  },
+  {
+    "Id": "be1301d3-286a-4a19-b163-91feb93f95a8",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "07ec7fc0-ed34-40ed-a699-21eb7fe186c3",
+      "bc9cee62-62d9-41fe-a242-c91a521f9fcc",
+      "92c6912f-89a2-4e12-80a8-46fad0702cd2"
+    ]
+  },
+  {
+    "Id": "56f82cfb-4def-4163-b905-dc69bc7345df",
+    "Name": "TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "363ff846-ea06-4b91-8ac8-609ae366e80b",
+      "3189bb11-de3b-4dba-9137-732c9178cc47"
+    ]
+  },
+  {
+    "Id": "b410b8b1-eb21-40fc-b68d-d4165f3d48ec",
+    "Name": "TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "6341c1ff-e2fc-4fd6-a224-e5b8582e2acb",
+      "f387d08c-da91-426f-aa1f-868ea2cc3ae6"
+    ]
+  },
+  {
+    "Id": "815d79b1-deb1-4127-9973-ab0dbf5ac44c",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "2189cc90-83ba-46cd-a274-f182d722caaf",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "3a4efec3-928a-4082-86e1-de06d2cbb727",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "07ec3e3f-52ea-4b6f-8240-f26c0fbad262",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "0f58252f-234c-4a15-8243-f8b61ed9f8a4",
+    "Name": "TagName",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "bd0bf01c-2979-43f8-a16b-4da4c252e4fd"
+    ]
+  },
+  {
+    "Id": "ac441ce3-577b-4793-8e00-27ca54516784",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "ebefa037-2199-4029-8504-b00c08eada74",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "582774af-3632-4e42-95d8-87bc24babce0",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "862da2a4-6b23-4884-9133-44d2cd578b82",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7f6b0f76-46ad-409b-81fa-f483e277e1d8",
+    "Name": "TagCRUD_AddTagAlreadyExisting_DuplicateKeyException",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6f5571f3-d25c-4dd2-8eee-ff2e19304cdf",
+    "Name": "AddTagWithAllParameters",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "9baad2f7-3767-44b7-9c8b-f8337d3abeca"
+    ]
+  },
+  {
+    "Id": "4cc96f08-e119-4431-a325-4063d0e7d06a",
+    "Name": "TagCRUD_AddTag_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "013e6b66-ddfc-4916-ae84-d35b7172db71",
+    "Name": "TagCRUD_GetAllTag_ShouldGetAllTags",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "40d0f47b-0dce-42f9-892a-cfbade28a992",
+    "Name": "TagCRUD_GetTagByIdWhenFound_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "69af789e-2f40-4273-bd3e-45f8be16dd8e",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "6f7101fb-fde8-4026-9636-049681712433"
+    ]
+  },
+  {
+    "Id": "023f0f1a-7596-416f-9a4d-a00c52d8aa8a",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "0b6ce41b-8dcb-45fc-a923-8b031a260e5d",
+      "2e8c0b5a-4fe0-4f03-95ed-a849a0abc0b5",
+      "e3f84e4e-cf40-4502-b4df-46dd7beba992"
+    ]
+  },
+  {
+    "Id": "17bfe892-c1b5-4a43-85c6-8cb621d35d34",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "d34095c4-aa44-4b87-b532-941734f656b2"
+    ]
+  },
+  {
+    "Id": "4ba1ba5d-dcfa-4ca9-a940-a8b8bbff534e",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "5a8f2231-d6ed-4c4e-92d4-e78bebd8d938"
+    ]
+  },
+  {
+    "Id": "95b68f70-ecfe-42dd-a1fd-d2091e14a32a",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "3d3e24a7-dad8-4c0b-bc6e-57fad8c66502",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "0b5b7aef-8e76-4d53-94c1-491eba1652d5",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "ddd914a9-34a7-4698-a687-fd80918899f4",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4610ae37-3b32-4a64-9bbe-f5c2488c00e3",
+    "Name": "UpdateTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "c5c6e773-0246-45bb-b0d7-4d940643a616",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "7ad042b1-5fc4-468e-a948-33b74d352be3",
+      "e998ce68-7c2e-4812-abc7-a68284889dd3",
+      "dd92a74d-9f2e-447a-bd3c-c2ec06a23b56"
+    ]
+  },
+  {
+    "Id": "e4e38165-9f83-41b1-aeaa-cca3226eb418",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "893e5052-243b-4ac6-b9cd-711b3590e204",
+      "80c34b97-a651-4890-b0f9-067acc54311f",
+      "fe31f415-17c5-4fd0-b488-259cc277c5b3"
+    ]
+  },
+  {
+    "Id": "8277738a-ef4b-4ec0-b223-495c467f4a65",
+    "Name": "TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "f229bbfc-0b0a-4970-b22b-8990a6c34d72",
+      "8806a527-4125-45f4-ac8a-c71033a55214"
+    ]
+  },
+  {
+    "Id": "150526d2-9055-4576-bbf0-872848a5cced",
+    "Name": "TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "2f86608c-d435-4be4-917b-9d287c5deac5",
+      "790ac570-6d5d-4beb-a6dc-f8fe4d8caa42"
+    ]
+  },
+  {
+    "Id": "a3df862c-6f4b-4492-971b-25510f9bcf4a",
+    "Name": "TagName",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "140b88fc-2dea-4e4b-a52c-1c65ff0b517e"
+    ]
+  },
+  {
+    "Id": "8a068ba1-14b8-4292-8d4c-9b933a4ff43e",
+    "Name": "TagService_AddTagWithColor_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "116514d5-9c49-4fb0-9a93-842d39c2237c",
+    "Name": "TagService_AddTagWithDescription_ShouldAddTag",
+    "Description": "description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4d20de2b-ecaf-49bf-87d6-684f0e836d90",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "49c264b6-d3a8-4379-99a8-fcba7a21c693",
+    "Name": "TagService_GetAllTag_ShouldGetAllTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "b713bd5a-8207-4fad-9fae-03ea8630c7d7",
+    "Name": "TagService_GetAllTag_ShouldGetAllTag2",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "188b1727-494e-4f24-8ca1-ae9528c00a99",
+    "Name": "TagService_GetTagById_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "20ab9a36-f0fc-479d-8b17-eb989c8d1d7d",
+    "Name": "TagCRUD_AddTagAlreadyExisting_DuplicateKeyException",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "0de9ecb7-9ca9-46d1-a31b-7722087800be",
+    "Name": "AddTagWithAllParameters",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "76b3fe79-01b6-42aa-ba04-46e6ee1a4507"
+    ]
+  },
+  {
+    "Id": "bd7c439e-bf08-4406-8294-dfb57ddbf30e",
+    "Name": "TagCRUD_AddTag_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "225bf7bd-9667-47c0-b5db-ebec4f75326d",
+    "Name": "TagCRUD_GetAllTag_ShouldGetAllTags",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "aa507136-c1c6-4154-b4f7-ebf6370c17aa",
+    "Name": "TagCRUD_GetTagByIdWhenFound_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "aebc8cd7-79c4-4697-838a-81ef4cd14de2",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "73c3eb46-27e0-4caa-85ba-bb0aed3f1298"
+    ]
+  },
+  {
+    "Id": "adc2ca44-147f-456c-b96f-6d52aa68e646",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "571e4c36-3b14-41fd-b90f-6baaa87f6616",
+      "6c4cdaf3-36dc-43ba-95e4-12c7116e2255",
+      "1bc90a38-178e-4284-9059-cc8a188bbf8c"
+    ]
+  },
+  {
+    "Id": "50c6adb7-c26c-4903-a70b-16e6b4fa715a",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "7d095747-277f-4e76-b0a9-66ba6a839417"
+    ]
+  },
+  {
+    "Id": "d9d2f34b-a3f6-435b-94ab-868be85e74f4",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "a2a1721e-cf44-44a6-b6f4-6afd61b1a2b0"
+    ]
+  },
+  {
+    "Id": "799cfa0f-1e2f-459d-a3be-668b4eb8693f",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "0d987ab4-2c62-49e6-8e34-64d03c41ce08",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "02443810-795f-45d6-92cf-afbf489ccba8",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "78b3e572-3acd-4fe3-a334-02ee8003915f",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a2925371-d67a-4a6e-b7c2-defb5530fd4e",
+    "Name": "UpdateTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "9c0f8f88-07a2-47b9-b5fe-08fe23cb89e6",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "80dd6969-0ea0-4fd5-92fe-8f3518e68378",
+      "5ff56b56-f67d-4bfc-825c-ebfc01ca71d5",
+      "dd08752a-d60e-4bca-a3ca-cb3f9a2b7819"
+    ]
+  },
+  {
+    "Id": "ee99ce8b-c8ff-4e50-b702-259cdbd9c0c8",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "3ab5c333-2c4b-4d15-a4fc-7159fac83b3d",
+      "2babba42-a6c2-4a8d-b31c-ea2a620a3593",
+      "16265390-23c5-4296-a61e-f43b1a51d416"
+    ]
+  },
+  {
+    "Id": "54cc9c47-ad1b-4a4a-8705-61ecaff01e82",
+    "Name": "TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "c1616fed-d174-429f-ac1a-f43790bc6d2e",
+      "465f984e-3451-4df3-a6e7-aeadcb4e38e7"
+    ]
+  },
+  {
+    "Id": "baf88a20-5290-41f1-bd60-6edab745dd68",
+    "Name": "TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "07e0cfbf-4547-4155-b693-99494fe11cd5",
+      "c460d511-4068-41c0-952f-1775878d6d59"
+    ]
+  },
+  {
+    "Id": "d5e12a44-e4a3-435b-a7ce-9286dac3fc50",
+    "Name": "TagName",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "682c45bf-803d-40cd-822b-d83f022bfb5a"
+    ]
+  },
+  {
+    "Id": "ffc03e37-89a0-4caf-ab81-358e929a2c74",
+    "Name": "TagService_AddTagWithColor_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "d8a94529-fc26-4205-9d65-c47d13eff817",
+    "Name": "TagService_AddTagWithDescription_ShouldAddTag",
+    "Description": "description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6893ec3f-0ab1-4151-bc3c-9d1bf9913b1f",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "d66b28ba-1c28-4e40-8eba-de689cd99e3e",
+    "Name": "TagService_GetAllTag_ShouldGetAllTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "07409574-72bb-477a-9ebd-d908f4fed2da",
+    "Name": "TagService_GetAllTag_ShouldGetAllTag2",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "995e5852-19e7-4038-b7e3-6c1dc8cc792b",
+    "Name": "TagService_GetTagById_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "b09d60b3-9e8b-46fd-be38-7463770cb00e",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a138e3dc-465e-4fe4-b7b5-fba1b72fc74b",
+    "Name": "TagName",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "04147b1c-1a34-49af-bc15-8de0e001c450"
+    ]
+  },
+  {
+    "Id": "98f5c262-ebc1-40ad-93f1-6e0f695f8ff9",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "38a66c44-4f79-47fc-90df-a9943d106a68",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
     },
     "ParentTagIds": []
   }

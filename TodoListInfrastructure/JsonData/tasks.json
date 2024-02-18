@@ -2194,5 +2194,446 @@
     "DeadLine": "9999-12-31T23:59:59.9999999",
     "CreationTime": "0001-01-01T00:00:00",
     "IsCompleted": false
+  },
+  {
+    "Id": "03d395a8-8643-407d-90bb-1233f4772a73",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "7928ad51-058a-491f-bcbe-a0b68a4dfd27",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "e0a9f242-b742-4afb-9ade-492fa296a036",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "3e1414aa-760c-4ee6-a763-2ae5a3b93d3a",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks2",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "ae9ac5d3-7aef-4e82-857b-aeefa935a207",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks3",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "a0cf02ee-6526-4656-b6b1-86f834690281",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "ab22e4ea-5084-4590-b22d-6d444a812cb7",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "9f3c5dba-7d40-413a-8b8e-46eb765af23d",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "9cb90129-ae67-4652-bf3a-36e41fd7d90b",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "2177dfc7-0fb6-4fa4-90db-78aa63acb562",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "6d709b13-aec2-40d9-a8fd-240382bc68c2",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks2",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "9791c1ab-9444-4987-b798-a8c787e03616",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks3",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "20743117-d30d-4eb7-9271-dcb2f89e8d69",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "18238cb7-778a-48b7-a437-13844718fc44",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "dbd4b73a-2ba3-4a5b-b2c1-95bb0befd32f",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "ad2bdf43-a2a2-483f-b806-799f26527359",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "7bc62265-842a-4c52-8dae-c1582be5e84d",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "389559c1-63ec-410e-a864-21ee627b059e",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks2",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "c7ac1c9d-874f-4b11-a01b-0f44db6ce3a9",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks3",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "9df6195c-7d53-47cd-bc42-e85b2947bf0c",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "9abeba49-5fa8-45d6-a4c9-c1a1201bb068",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "e57aa588-6ebd-4d95-9c00-0ae6a59420e2",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "03f4aca9-d6f6-4849-901b-f0437a9f6e74",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "54385ba4-c27e-4ba2-8c67-c59a909dc12e",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "0084e4c6-a9f4-4764-b1af-71bbfe23d822",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks2",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "a1d2989c-b1ed-4ab5-89dd-8f0b048ce6eb",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks3",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "ec81903f-1833-49c7-8570-2be1297c1356",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "ef35906b-91a1-48e2-9057-a8c69942f45d",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "7c895741-3cf9-4206-8a37-9b24b7f8e36a",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "46faccd5-5e9c-4279-a82f-2ec78a83b1f7",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "2d62c60c-789e-4a02-97f1-81e4530a31e8",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "16295a29-c67f-41cb-ad2c-aa0cd423e96a",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks2",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "3c823012-8b46-4c92-8dc4-7e47f8d00d40",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks3",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "5a32b3fa-daec-42f6-9ed7-d0ed4e68add9",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "2ea5db01-e891-419e-8121-656b7157b87e",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "6ba0e426-62a4-4479-a7b0-6d3dfbfa479f",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "bbb10db1-f08d-4a80-93c7-d98e2bed6f88",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "b9d8c0ca-db33-483d-b4a9-1fada23bb3f4",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "609c644d-9566-4ba0-9413-c04cd0fa2a03",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks2",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "6e2cb5a4-3835-4488-9608-911666e89617",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks3",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "b9e49857-b439-42c6-b0e5-ca25e917abf4",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "31f72ff7-f49a-4f15-b764-c983b77bdf3b",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "f90ba1a3-5119-4009-b951-a9ae9608f739",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "ecfa7676-dc13-4955-b4ad-c00869330a83",
+    "Name": "TaskCRUD_AddTask_ShouldAddTask",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "50787a3e-f01c-4e98-aa0c-7a61fb996551",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "50108214-f5b3-4417-97d1-6985e94f2bea",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks2",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "c69dc31d-60c6-46d5-8d68-b6409e39cfd0",
+    "Name": "TaskCRUD_GetAllTask_ShouldReturnAllTasks3",
+    "Description": null,
+    "Priority": 1,
+    "DeadLine": "9999-12-31T23:59:59.9999999",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": false
+  },
+  {
+    "Id": "0e5d0b0c-1385-408a-be3a-14d2c7f0f9f2",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
+  },
+  {
+    "Id": "4c30d213-c2c6-4614-8767-21e5334ce1a2",
+    "Name": "Update Task",
+    "Description": "Description",
+    "Priority": 0,
+    "DeadLine": "2029-12-31T00:00:00",
+    "CreationTime": "0001-01-01T00:00:00",
+    "IsCompleted": true
   }
 ]

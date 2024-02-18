@@ -1,6 +1,6 @@
 ﻿namespace TodoList.Application.UnitTest.Services;
 [TestClass]
-public class TaskServiceTest
+public class TaskServiceTests
 {
-  //TODO faire les tests
+    //TODO faire les tests
 }
