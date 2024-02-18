@@ -23894,6 +23894,547 @@
     "Name": "Tag 2",
     "Description": "Description 2",
     "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "5ad1de92-e38a-4654-9b4b-763eb80f9b1f",
+    "Name": "TagCRUD_AddTagAlreadyExisting_DuplicateKeyException",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "ac438f3f-d63f-4e43-8f6c-d3d30de6ef8f",
+    "Name": "AddTagWithAllParameters",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "42e6633c-4f3d-4696-866f-bd2634adb27c"
+    ]
+  },
+  {
+    "Id": "0764a04b-0b43-4079-8d98-f5b48f871f84",
+    "Name": "TagCRUD_AddTag_ShouldAddTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "22c169af-d77e-403d-a1e2-2c0335d0ab4c",
+    "Name": "TagCRUD_GetAllTag_ShouldGetAllTags",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7d983ee9-ddca-4fec-9b0c-e052af74610b",
+    "Name": "TagCRUD_GetTagByIdWhenFound_ShouldGetTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "46d3a843-4b0a-4761-ba4b-648a43912915",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "13481bb6-729b-4fa7-a520-492d5123e0d3"
+    ]
+  },
+  {
+    "Id": "7c16279b-aeca-4bac-b92e-07436565015d",
+    "Name": "TagCRUD_UpdateTagAddParentTag_ShouldUpdateAddParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "eab5558b-317a-4e9d-8bf3-63f4dbeaa2f4",
+      "d45b7a63-8639-4d45-bd54-d157f20f2690",
+      "15ee5961-6315-46e4-a360-a23634920b71"
+    ]
+  },
+  {
+    "Id": "7537db2a-2602-4fa4-9225-b7481d3cd8c9",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "121a0832-4afc-4e2a-b603-982729fce8ca"
+    ]
+  },
+  {
+    "Id": "98170aec-43fb-4add-b04c-1239e418051c",
+    "Name": "UpdateTag2",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "b9e82272-8146-4fa9-abf8-fe10f0da96ec"
+    ]
+  },
+  {
+    "Id": "2699d3fd-4fcd-4188-930e-9653d3b457b3",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1f161e7c-b074-4fab-84e9-eca3cbd3dba2",
+    "Name": "TagCRUD_UpdateTagColor_ShouldUpdateTagColor",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4ff9b19c-45f7-4112-a489-978bd2a3b498",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "5394e903-b42d-4aef-80cd-1cc01a5a139b",
+    "Name": "TagCRUD_UpdateTagDescription_ShouldUpdateTagDescription",
+    "Description": "Description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "eee6c605-7c12-4268-ae19-dd308bbe1f7d",
+    "Name": "UpdateTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "20675552-1d4e-42f0-8418-d6c6e0dd3b38",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "99ee70a1-3cc0-43fe-b8b5-5a9de9686b01",
+      "4c033f32-6310-4ec7-9fe6-bdb332c5aba7",
+      "b248e225-9df5-4c62-944c-4bef7e244109"
+    ]
+  },
+  {
+    "Id": "dbb6f827-fbc8-434c-b14f-30273fbab5ec",
+    "Name": "TagCRUD_UpdateTagParentTag_ShouldUpdateTagParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "c97a126e-c3fc-4dbd-8466-2d78b150387c",
+      "2fecd247-1b8e-4f8c-94ef-c31291963e9b",
+      "ab752757-ce69-43a7-98ad-899a066ef641"
+    ]
+  },
+  {
+    "Id": "e40521be-4e99-436f-839c-4c6743334ef6",
+    "Name": "TagCRUD_UpdateTagRemoveParentTagWhenNoTagParentForThisId_ShouldReturnFalse",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "4cf1cf41-6e7f-4314-a372-b2ba0bff1463",
+      "91e33d03-dca0-43ae-8821-ead3495d589f"
+    ]
+  },
+  {
+    "Id": "bed269f9-cd04-4e18-a82b-a364bb770d66",
+    "Name": "TagCRUD_UpdateTagRemoveParentTag_ShouldUpdateRemoveParentTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "9e3be728-1c41-4bd4-92d1-8590d6c421f7",
+      "7613ccbd-d88f-4702-8a6c-1f4a78c92e37"
+    ]
+  },
+  {
+    "Id": "977bc853-af41-4c2e-8cd8-66a5092858c3",
+    "Name": "AddTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "d34549c8-3a8b-4ffe-a1da-fdee456fc899",
+    "Name": "AddTaskTagNameTag",
+    "Description": "AddTaskTag",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "977bc853-af41-4c2e-8cd8-66a5092858c3"
+    ]
+  },
+  {
+    "Id": "32a23968-b432-4417-9454-36d9ebb03a5e",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8c6745dd-5b07-40a2-8fa5-9ebaa1ae5076",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "32a23968-b432-4417-9454-36d9ebb03a5e"
+    ]
+  },
+  {
+    "Id": "a929f307-e4a0-4ec7-899c-521569672f18",
+    "Name": "DeleteTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "6103f52a-1c5e-4ccd-b18b-da2e10ecfab7",
+    "Name": "DeleteTaskTagNameTag",
+    "Description": "DeleteTaskTag",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "a929f307-e4a0-4ec7-899c-521569672f18"
+    ]
+  },
+  {
+    "Id": "387320eb-e266-41ea-894f-b116a46959a4",
+    "Name": "DeleteTaskTag2ParentNameTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "8509e467-8c92-4110-8207-3d7b38f97cb0",
+    "Name": "DeleteTaskTagNameTag2",
+    "Description": "DeleteTaskTag2",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "387320eb-e266-41ea-894f-b116a46959a4"
+    ]
+  },
+  {
+    "Id": "762fac57-1cff-48fc-8596-4fca225c427a",
+    "Name": "GetTaskTagsByTagIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a48f95fa-439d-472e-84c8-1a5bc2dd0347",
+    "Name": "GetTaskTagsByTagIdNameTag",
+    "Description": "GetTaskTagsByTagId",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "762fac57-1cff-48fc-8596-4fca225c427a"
+    ]
+  },
+  {
+    "Id": "071ce9be-b67e-466f-9b46-e590bdb871fd",
+    "Name": "GetTaskTagsByTaskIdParentNameTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "4ba3569c-9e40-4de1-aced-7173c747680a",
+    "Name": "GetTaskTagsByTaskIdNameTag",
+    "Description": "GetTaskTagsByTaskId",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "071ce9be-b67e-466f-9b46-e590bdb871fd"
+    ]
+  },
+  {
+    "Id": "444aa485-a137-4cd3-bfbf-4fc05a7052c1",
+    "Name": "IsRelationExistsFalseParentNameTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "b7c0e283-041d-4556-a671-ab0f8b307ab2",
+    "Name": "IsRelationExistsFalseNameTag",
+    "Description": "IsRelationExistsFalse",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "444aa485-a137-4cd3-bfbf-4fc05a7052c1"
+    ]
+  },
+  {
+    "Id": "14420dcf-4d5e-4a8d-a454-b5bdaae8cf58",
+    "Name": "IsRelationExistsTrueParentNameTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "88d42682-969a-4d57-bfca-23d884042980",
+    "Name": "IsRelationExistsTrueNameTag",
+    "Description": "IsRelationExistsTrue",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "14420dcf-4d5e-4a8d-a454-b5bdaae8cf58"
+    ]
+  },
+  {
+    "Id": "4f916568-ff06-4dfb-9978-670b987b0c55",
+    "Name": "UpdateTaskTagParentNameTag",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "7806f730-a00a-4261-a0e2-631e452089c5",
+    "Name": "UpdateTaskTagNameTag",
+    "Description": "UpdateTaskTag",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "4f916568-ff06-4dfb-9978-670b987b0c55"
+    ]
+  },
+  {
+    "Id": "43d87f56-6b83-4877-a848-63150d02c67e",
+    "Name": "UpdateTaskTagParentNameTag2",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "a2a4f6ae-ef70-45bd-aa74-a9c09757b226",
+    "Name": "UpdateTaskTagNameTag2",
+    "Description": "UpdateTaskTag2",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": [
+      "43d87f56-6b83-4877-a848-63150d02c67e"
+    ]
+  },
+  {
+    "Id": "44371da4-2426-4f1e-aac1-b855f65713c9",
+    "Name": "Tag 1",
+    "Description": "Description 1",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "1751894e-f7da-4517-ba61-5b7478af372c",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "eab4e302-8eb3-42ab-aa61-4050ce1edd0d",
+    "Name": "Tag 1",
+    "Description": "description",
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "49c79360-4698-467e-be80-dc72c4a59d98",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "ee0af2a4-863e-4472-8268-1a4a61b7d9bd",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "238f9e34-d0f2-4ee7-b238-456a4c28fff0",
+    "Name": "Tag 1",
+    "Description": null,
+    "Color": {
+      "Red": 0,
+      "Green": 0,
+      "Blue": 0
+    },
+    "ParentTagIds": []
+  },
+  {
+    "Id": "2ace8fb2-7b6f-466d-b6aa-595aac12f537",
+    "Name": "Tag 2",
+    "Description": "Description 2",
+    "Color": {
       "Red": 255,
       "Green": 255,
       "Blue": 255
